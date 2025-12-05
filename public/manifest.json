@@ -1,0 +1,24 @@
+{
+  "name": "Miles College Information Package",
+  "short_name": "Miles College",
+  "description": "Comprehensive information for counselors and prospective students about Miles College",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#5B2C6F",
+  "theme_color": "#5B2C6F",
+  "orientation": "portrait-primary",
+  "icons": [
+    {
+      "src": "/images/miles-logo.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "/images/miles-logo.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ]
+}
