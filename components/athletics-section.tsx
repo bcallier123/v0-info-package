@@ -19,60 +19,66 @@ export function AthleticsSection() {
   return (
     <section
       id="athletics"
-      className="py-24 bg-gradient-to-b from-background via-muted/20 to-background relative overflow-hidden"
+      className="py-32 bg-gradient-to-br from-[#1a0a2e] via-[#2d1b4e] to-[#1a0a2e] relative overflow-hidden"
     >
-      <div className="absolute top-20 left-10 w-96 h-96 bg-primary/5 rounded-full blur-3xl" />
-      <div className="absolute bottom-20 right-10 w-96 h-96 bg-secondary/5 rounded-full blur-3xl" />
+      {/* Decorative elements */}
+      <div className="absolute inset-0">
+        <div className="absolute top-20 left-10 w-[600px] h-[600px] bg-primary/10 rounded-full blur-[120px]" />
+        <div className="absolute bottom-20 right-10 w-[500px] h-[500px] bg-secondary/10 rounded-full blur-[100px]" />
+      </div>
+
+      {/* Top border accent */}
+      <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-transparent via-secondary to-transparent" />
 
       <div className="container mx-auto px-4 relative z-10">
-        <div className="text-center mb-16">
-          <div className="inline-flex items-center gap-2 bg-secondary/10 px-6 py-3 rounded-full mb-6 border border-secondary/20">
-            <Icons.trophy className="w-5 h-5 text-secondary" />
-            <Badge variant="secondary" className="text-sm font-bold px-4 py-2">
-              Golden Bears Athletics
-            </Badge>
+        <div className="text-center mb-20">
+          <div className="inline-flex items-center gap-3 bg-secondary/20 px-8 py-4 mb-8 border border-secondary/40">
+            <Icons.trophy className="w-6 h-6 text-secondary" />
+            <span className="text-base font-black text-secondary uppercase tracking-wide">Golden Bears Athletics</span>
           </div>
-          <h2 className="text-5xl md:text-6xl font-bold mb-6 text-balance bg-gradient-to-br from-primary via-primary to-primary/70 bg-clip-text text-transparent">
-            Championship Tradition
+          <h2 className="text-5xl md:text-7xl font-black mb-8 text-white tracking-tight">
+            CHAMPIONSHIP <span className="text-secondary">TRADITION</span>
           </h2>
-          <p className="text-xl text-muted-foreground max-w-3xl mx-auto text-pretty leading-relaxed">
+          <p className="text-xl text-white/80 max-w-3xl mx-auto leading-relaxed">
             Competing at the highest level in NCAA Division II and the SIAC Conference
           </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-16 max-w-7xl mx-auto">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-20 max-w-7xl mx-auto">
           <img
-            src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/IMG_0301-ghL2erasRMEFDY3AgbV5owZMdi1Kmv.jpg"
+            src="/images/img-0301.jpg"
             alt="Miles College women's basketball player going up for a shot during game"
-            className="w-full h-80 lg:h-96 object-cover rounded-2xl shadow-xl hover:shadow-2xl hover:-translate-y-2 transition-all duration-500 border-2 border-transparent hover:border-primary/30"
+            className="w-full h-96 object-cover shadow-2xl hover:-translate-y-2 transition-all duration-500 border-4 border-white/10 hover:border-secondary/50"
           />
           <img
-            src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/IMG_1551%202-TDbJ86gXalbsAu1ywQ8eo7WR5L8CbR.jpg"
+            src="/images/img-1551-202.jpg"
             alt="Miles College football player scoring touchdown"
-            className="w-full h-80 lg:h-96 object-cover rounded-2xl shadow-xl hover:shadow-2xl hover:-translate-y-2 transition-all duration-500 border-2 border-transparent hover:border-primary/30"
+            className="w-full h-96 object-cover shadow-2xl hover:-translate-y-2 transition-all duration-500 border-4 border-white/10 hover:border-secondary/50"
           />
           <img
-            src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/IMG_1552%202-2XP43OvA5FhWfH6vHc1X5b9AvgLBQf.jpg"
+            src="/images/img-1552-202.jpg"
             alt="Miles College football player running with the ball"
-            className="w-full h-80 lg:h-96 object-cover rounded-2xl shadow-xl hover:shadow-2xl hover:-translate-y-2 transition-all duration-500 border-2 border-transparent hover:border-primary/30"
+            className="w-full h-96 object-cover shadow-2xl hover:-translate-y-2 transition-all duration-500 border-4 border-white/10 hover:border-secondary/50"
           />
           <img
-            src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/IMG_0305-pvoqf0L1LYnh5FumvJQP0XpUENR3JT.jpg"
+            src="/images/img-0305.jpg"
             alt="Miles College men's golf team with championship trophy"
-            className="w-full h-80 lg:h-96 object-cover rounded-2xl shadow-xl hover:shadow-2xl hover:-translate-y-2 transition-all duration-500 md:col-span-2 lg:col-span-3 border-2 border-transparent hover:border-primary/30"
+            className="w-full h-96 object-cover shadow-2xl hover:-translate-y-2 transition-all duration-500 md:col-span-2 lg:col-span-3 border-4 border-white/10 hover:border-secondary/50"
           />
         </div>
 
         <div className="grid md:grid-cols-2 gap-8 max-w-6xl mx-auto">
-          <Card className="border-2 hover:shadow-2xl hover:-translate-y-1 transition-all duration-300 hover:border-secondary/30 bg-gradient-to-br from-card to-card/80">
+          <Card className="border-0 bg-white/5 backdrop-blur-sm hover:bg-white/10 transition-all duration-500">
             <CardHeader className="pb-4">
-              <div className="flex items-center gap-3 mb-2">
-                <div className="w-14 h-14 rounded-xl bg-secondary/10 flex items-center justify-center shadow-md">
-                  <Icons.trophy className="w-7 h-7 text-secondary" />
+              <div className="flex items-center gap-4 mb-2">
+                <div className="w-16 h-16 bg-gradient-to-br from-secondary to-secondary/80 flex items-center justify-center shadow-xl">
+                  <Icons.trophy className="w-8 h-8 text-white" />
                 </div>
                 <div>
-                  <CardTitle className="text-2xl font-bold">15 SIAC Championships</CardTitle>
-                  <p className="text-sm text-muted-foreground mt-1">Excellence across multiple sports</p>
+                  <CardTitle className="text-3xl font-black text-white uppercase tracking-wide">
+                    15 SIAC Championships
+                  </CardTitle>
+                  <p className="text-sm text-white/70 mt-1">Excellence across multiple sports</p>
                 </div>
               </div>
             </CardHeader>
@@ -81,69 +87,67 @@ export function AthleticsSection() {
                 {championships.map((item, i) => (
                   <div
                     key={i}
-                    className="flex justify-between items-center p-3 rounded-lg hover:bg-secondary/5 transition-colors"
+                    className="flex justify-between items-center p-4 bg-white/5 hover:bg-white/10 transition-all"
                   >
-                    <span className="font-bold text-base">{item.sport}</span>
-                    <Badge variant="secondary" className="font-bold text-sm px-3 py-1">
+                    <span className="font-bold text-lg text-white">{item.sport}</span>
+                    <Badge className="font-black text-sm px-4 py-2 bg-secondary text-white border-0">
                       {item.count} titles
                     </Badge>
                   </div>
                 ))}
-                <div className="pt-4 border-t-2 border-secondary/20">
-                  <div className="flex items-center gap-3 text-primary font-bold p-3 rounded-lg bg-primary/5">
+                <div className="pt-4 border-t border-white/20">
+                  <div className="flex items-center gap-3 text-secondary font-black p-4 bg-secondary/20">
                     <Icons.trophy className="w-6 h-6 flex-shrink-0" />
-                    <span className="text-base">National Championship (Men's Golf)</span>
+                    <span className="text-lg uppercase">National Championship (Men's Golf)</span>
                   </div>
                 </div>
               </div>
             </CardContent>
           </Card>
 
-          <Card className="border-2 hover:shadow-2xl hover:-translate-y-1 transition-all duration-300 hover:border-primary/30 bg-gradient-to-br from-card to-card/80">
+          <Card className="border-0 bg-white/5 backdrop-blur-sm hover:bg-white/10 transition-all duration-500">
             <CardHeader className="pb-4">
-              <div className="flex items-center gap-3 mb-2">
-                <div className="w-14 h-14 rounded-xl bg-primary/10 flex items-center justify-center shadow-md">
-                  <Icons.users className="w-7 h-7 text-primary" />
+              <div className="flex items-center gap-4 mb-2">
+                <div className="w-16 h-16 bg-gradient-to-br from-primary to-primary/80 flex items-center justify-center shadow-xl">
+                  <Icons.users className="w-8 h-8 text-white" />
                 </div>
                 <div>
-                  <CardTitle className="text-2xl font-bold">Athletic Programs</CardTitle>
-                  <p className="text-sm text-muted-foreground mt-1">11 varsity sports programs</p>
+                  <CardTitle className="text-3xl font-black text-white uppercase tracking-wide">
+                    Athletic Programs
+                  </CardTitle>
+                  <p className="text-sm text-white/70 mt-1">11 varsity sports programs</p>
                 </div>
               </div>
             </CardHeader>
             <CardContent className="space-y-6">
-              <div className="p-4 rounded-xl bg-primary/5 border border-primary/10">
-                <h4 className="font-bold mb-3 text-primary flex items-center gap-2">
+              <div className="p-5 bg-primary/20 border border-primary/30">
+                <h4 className="font-black mb-3 text-white flex items-center gap-2 uppercase tracking-wide">
                   <span className="text-lg">Men's Sports</span>
-                  <Badge variant="outline" className="text-xs">
-                    {sports.men.length} programs
-                  </Badge>
+                  <Badge className="text-xs bg-white/20 text-white border-0">{sports.men.length} programs</Badge>
                 </h4>
                 <div className="flex flex-wrap gap-2">
                   {sports.men.map((sport, i) => (
-                    <Badge key={i} variant="outline" className="font-semibold text-sm px-3 py-1.5 border-primary/30">
+                    <Badge key={i} className="font-bold text-sm px-4 py-2 bg-primary text-white border-0">
                       {sport}
                     </Badge>
                   ))}
                 </div>
               </div>
-              <div className="p-4 rounded-xl bg-secondary/5 border border-secondary/10">
-                <h4 className="font-bold mb-3 text-secondary flex items-center gap-2">
+              <div className="p-5 bg-secondary/20 border border-secondary/30">
+                <h4 className="font-black mb-3 text-white flex items-center gap-2 uppercase tracking-wide">
                   <span className="text-lg">Women's Sports</span>
-                  <Badge variant="outline" className="text-xs border-secondary/30">
-                    {sports.women.length} programs
-                  </Badge>
+                  <Badge className="text-xs bg-white/20 text-white border-0">{sports.women.length} programs</Badge>
                 </h4>
                 <div className="flex flex-wrap gap-2">
                   {sports.women.map((sport, i) => (
-                    <Badge key={i} variant="outline" className="font-semibold text-sm px-3 py-1.5 border-secondary/30">
+                    <Badge key={i} className="font-bold text-sm px-4 py-2 bg-secondary text-white border-0">
                       {sport}
                     </Badge>
                   ))}
                 </div>
               </div>
               <div className="pt-2">
-                <Badge variant="secondary" className="text-sm font-bold px-4 py-2">
+                <Badge className="text-sm font-black px-6 py-3 bg-white/10 text-white border border-white/20">
                   Cheerleaders & Auxiliaries
                 </Badge>
               </div>
@@ -151,16 +155,16 @@ export function AthleticsSection() {
           </Card>
         </div>
 
-        <div className="max-w-4xl mx-auto mt-12">
-          <Card className="border-2 hover:shadow-2xl transition-all duration-300 bg-gradient-to-r from-primary/5 via-secondary/5 to-primary/5 hover:border-primary/30">
-            <CardContent className="p-8">
+        <div className="max-w-4xl mx-auto mt-16">
+          <Card className="border-0 bg-gradient-to-r from-secondary/20 via-primary/20 to-secondary/20 backdrop-blur-sm">
+            <CardContent className="p-10">
               <div className="flex flex-col md:flex-row items-center justify-between gap-6">
                 <div className="text-center md:text-left">
-                  <h3 className="text-2xl font-bold mb-2 flex items-center gap-3 justify-center md:justify-start">
-                    <Icons.users className="w-7 h-7 text-primary" />
+                  <h3 className="text-3xl font-black mb-2 flex items-center gap-3 justify-center md:justify-start text-white uppercase tracking-wide">
+                    <Icons.users className="w-8 h-8 text-secondary" />
                     Meet Our Coaching Staff
                   </h3>
-                  <p className="text-muted-foreground text-base">
+                  <p className="text-white/80 text-lg">
                     Learn more about the dedicated professionals leading our championship programs
                   </p>
                 </div>
@@ -168,7 +172,7 @@ export function AthleticsSection() {
                   href="https://milesgoldenbears.com/staff-directory"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-flex items-center gap-2 bg-primary text-primary-foreground hover:bg-primary/90 px-8 py-4 rounded-xl font-bold text-base shadow-lg hover:shadow-xl transition-all hover:-translate-y-0.5 whitespace-nowrap"
+                  className="inline-flex items-center gap-2 bg-secondary text-white hover:bg-secondary/90 px-10 py-5 font-black text-lg shadow-xl hover:shadow-2xl transition-all hover:-translate-y-1 whitespace-nowrap uppercase tracking-wide"
                 >
                   View Staff Directory
                   <Icons.externalLink className="w-5 h-5" />
@@ -178,6 +182,9 @@ export function AthleticsSection() {
           </Card>
         </div>
       </div>
+
+      {/* Bottom border accent */}
+      <div className="absolute bottom-0 left-0 right-0 h-1 bg-gradient-to-r from-transparent via-primary to-transparent" />
     </section>
   )
 }

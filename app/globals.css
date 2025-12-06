@@ -4,16 +4,16 @@
 @custom-variant dark (&:is(.dark *));
 
 :root {
-  /* Vibrant, eye-catching color palette */
+  /* Refined professional color palette */
   --background: oklch(0.99 0.002 280);
   --foreground: oklch(0.12 0.02 280);
 
-  /* Bold Royal Purple - rich and commanding */
-  --primary: oklch(0.35 0.18 300);
+  /* Deep Royal Purple */
+  --primary: oklch(0.28 0.15 300);
   --primary-foreground: oklch(0.99 0.005 280);
 
-  /* Brilliant Gold - vibrant and attention-grabbing */
-  --secondary: oklch(0.8 0.18 75);
+  /* Rich Championship Gold */
+  --secondary: oklch(0.78 0.16 80);
   --secondary-foreground: oklch(0.12 0.02 280);
 
   --card: oklch(1 0 0);
@@ -22,21 +22,21 @@
   --popover-foreground: oklch(0.12 0.02 280);
   --muted: oklch(0.97 0.008 60);
   --muted-foreground: oklch(0.4 0.02 280);
-  --accent: oklch(0.8 0.18 75);
+  --accent: oklch(0.78 0.16 80);
   --accent-foreground: oklch(0.12 0.02 280);
   --destructive: oklch(0.577 0.245 27.325);
   --destructive-foreground: oklch(0.99 0.005 280);
   --border: oklch(0.9 0.008 60);
   --input: oklch(0.9 0.008 60);
-  --ring: oklch(0.35 0.18 300);
+  --ring: oklch(0.28 0.15 300);
 
-  --chart-1: oklch(0.35 0.18 300);
-  --chart-2: oklch(0.8 0.18 75);
+  --chart-1: oklch(0.28 0.15 300);
+  --chart-2: oklch(0.78 0.16 80);
   --chart-3: oklch(0.6 0.1 280);
   --chart-4: oklch(0.55 0.15 300);
   --chart-5: oklch(0.7 0.1 70);
 
-  --radius: 0.75rem;
+  --radius: 0rem;
 
   --sidebar: oklch(0.985 0 0);
   --sidebar-foreground: oklch(0.145 0 0);
@@ -143,6 +143,7 @@
     -webkit-tap-highlight-color: rgba(91, 44, 111, 0.2);
   }
 
+  /* Bold uppercase headings for professional look */
   h1,
   h2,
   h3,
@@ -151,12 +152,12 @@
   h6 {
     font-family: var(--font-montserrat);
     letter-spacing: -0.02em;
-    font-weight: 800;
+    font-weight: 900;
     text-transform: uppercase;
   }
 
   h1 {
-    letter-spacing: -0.03em;
+    letter-spacing: -0.04em;
   }
 
   blockquote {

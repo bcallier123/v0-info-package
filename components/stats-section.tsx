@@ -8,28 +8,28 @@ export function StatsSection() {
       value: "97%",
       label: "Students Awarded Scholarships",
       color: "text-secondary",
-      bgColor: "bg-secondary/10",
+      bgColor: "from-secondary/20 to-secondary/5",
     },
     {
       icon: Icons.users,
       value: "17:1",
       label: "Student-Teacher Ratio",
       color: "text-primary",
-      bgColor: "bg-primary/10",
+      bgColor: "from-primary/20 to-primary/5",
     },
     {
       icon: Icons.graduationCap,
       value: "30+",
       label: "Degree Programs",
       color: "text-secondary",
-      bgColor: "bg-secondary/10",
+      bgColor: "from-secondary/20 to-secondary/5",
     },
     {
       icon: Icons.calendar,
       value: "1898",
       label: "Founded",
       color: "text-primary",
-      bgColor: "bg-primary/10",
+      bgColor: "from-primary/20 to-primary/5",
     },
   ]
 
@@ -51,38 +51,49 @@ export function StatsSection() {
   return (
     <section
       id="stats"
-      className="py-24 bg-gradient-to-b from-background via-muted/30 to-background relative overflow-hidden"
+      className="py-32 bg-gradient-to-br from-[#1a0a2e] via-[#2d1b4e] to-[#1a0a2e] relative overflow-hidden"
     >
-      <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-secondary/30 to-transparent" />
-      <div className="absolute bottom-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-secondary/30 to-transparent" />
+      {/* Decorative elements */}
+      <div className="absolute inset-0">
+        <div className="absolute top-0 left-1/4 w-[600px] h-[600px] bg-secondary/10 rounded-full blur-[120px]" />
+        <div className="absolute bottom-0 right-1/4 w-[500px] h-[500px] bg-primary/10 rounded-full blur-[100px]" />
+      </div>
+
+      {/* Top border accent */}
+      <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-transparent via-secondary to-transparent" />
 
       <div className="container mx-auto px-4 relative z-10">
-        <div className="text-center mb-16">
-          <p className="text-secondary font-semibold uppercase tracking-widest text-sm mb-4">By The Numbers</p>
-          <h2 className="text-4xl md:text-5xl font-serif font-bold text-primary">Academic Excellence</h2>
-          <div className="flex items-center justify-center gap-4 mt-4">
-            <div className="h-px w-12 bg-secondary/50" />
-            <Icons.bookOpen className="w-5 h-5 text-secondary" />
-            <div className="h-px w-12 bg-secondary/50" />
+        <div className="text-center mb-20">
+          <p className="text-secondary font-black uppercase tracking-[0.3em] text-sm mb-6">BY THE NUMBERS</p>
+          <h2 className="text-5xl md:text-7xl font-black text-white mb-6 tracking-tight">
+            ACADEMIC <span className="text-secondary">EXCELLENCE</span>
+          </h2>
+          <div className="flex items-center justify-center gap-6">
+            <div className="h-[2px] w-20 bg-gradient-to-r from-transparent to-secondary" />
+            <Icons.bookOpen className="w-8 h-8 text-secondary" />
+            <div className="h-[2px] w-20 bg-gradient-to-l from-transparent to-secondary" />
           </div>
         </div>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 lg:gap-8 mb-20">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 mb-20">
           {stats.map((stat, index) => {
             const IconComponent = stat.icon
             return (
               <Card
                 key={index}
-                className="p-8 lg:p-10 text-center hover:shadow-xl hover:-translate-y-1 transition-all duration-300 border-2 hover:border-secondary/40 bg-card group rounded-xl"
+                className="relative p-10 text-center bg-white/5 backdrop-blur-sm border-0 hover:bg-white/10 transition-all duration-500 group overflow-hidden"
               >
-                <div
-                  className={`w-16 h-16 mx-auto mb-6 rounded-full ${stat.bgColor} flex items-center justify-center group-hover:scale-110 transition-transform duration-300 border-2 border-current/10`}
-                >
-                  <IconComponent className={`w-8 h-8 ${stat.color}`} />
-                </div>
-                <div className="text-5xl lg:text-6xl font-serif font-bold mb-3 text-primary">{stat.value}</div>
-                <div className="text-sm font-semibold text-muted-foreground text-balance leading-tight uppercase tracking-wide">
-                  {stat.label}
+                {/* Hover glow effect */}
+                <div className="absolute inset-0 bg-gradient-to-br from-secondary/0 to-secondary/0 group-hover:from-secondary/10 group-hover:to-primary/10 transition-all duration-500" />
+
+                <div className="relative z-10">
+                  <div
+                    className={`w-20 h-20 mx-auto mb-8 bg-gradient-to-br ${stat.bgColor} flex items-center justify-center group-hover:scale-110 transition-transform duration-500`}
+                  >
+                    <IconComponent className={`w-10 h-10 ${stat.color}`} />
+                  </div>
+                  <div className="text-6xl lg:text-7xl font-black mb-4 text-white tracking-tight">{stat.value}</div>
+                  <div className="text-sm font-bold text-white/70 uppercase tracking-wider">{stat.label}</div>
                 </div>
               </Card>
             )
@@ -96,18 +107,21 @@ export function StatsSection() {
               return (
                 <div
                   key={index}
-                  className="flex items-center gap-4 p-6 rounded-xl bg-card border-2 border-border hover:border-secondary/40 transition-all duration-300 hover:shadow-lg group"
+                  className="flex items-center gap-5 p-6 bg-white/5 backdrop-blur-sm border border-white/10 hover:border-secondary/50 transition-all duration-300 group"
                 >
-                  <div className="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center flex-shrink-0 group-hover:bg-secondary/20 transition-colors duration-300 border border-primary/20">
-                    <IconComponent className="w-6 h-6 text-primary group-hover:text-secondary transition-colors" />
+                  <div className="w-14 h-14 bg-gradient-to-br from-secondary/20 to-secondary/5 flex items-center justify-center flex-shrink-0 group-hover:from-secondary/30 group-hover:to-secondary/10 transition-all">
+                    <IconComponent className="w-7 h-7 text-secondary" />
                   </div>
-                  <p className="text-base font-semibold text-foreground leading-tight">{highlight.text}</p>
+                  <p className="text-lg font-bold text-white">{highlight.text}</p>
                 </div>
               )
             })}
           </div>
         </div>
       </div>
+
+      {/* Bottom border accent */}
+      <div className="absolute bottom-0 left-0 right-0 h-1 bg-gradient-to-r from-transparent via-primary to-transparent" />
     </section>
   )
 }
