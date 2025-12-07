@@ -143,9 +143,10 @@ export function ApplySection() {
                     <div className="flex-1">
                       <h3 className="font-black text-3xl mb-3 text-accent">Complete Enrollment</h3>
                       <p className="text-base text-muted-foreground leading-relaxed mb-4 font-medium">
-                        Once accepted, attend orientation, pay enrollment fees, register for classes, and start your Golden Bear journey!
+                        Once accepted, attend orientation, pay enrollment fees, register for classes, and start your
+                        Golden Bear journey!
                       </p>
-                      
+
                       <div className="mb-6 p-5 rounded-xl bg-gradient-to-br from-amber-50 to-orange-50 border-2 border-amber-200">
                         <div className="flex items-center gap-2 mb-3">
                           <Icons.alertCircle className="w-5 h-5 text-amber-600" />
@@ -168,7 +169,7 @@ export function ApplySection() {
                           </div>
                         </div>
                       </div>
-                      
+
                       <div className="grid sm:grid-cols-3 gap-3">
                         <div className="flex items-center gap-2 p-3 rounded-lg bg-white/80 border border-accent/20">
                           <Icons.check className="w-5 h-5 text-accent flex-shrink-0" />
@@ -181,43 +182,6 @@ export function ApplySection() {
                         <div className="flex items-center gap-2 p-3 rounded-lg bg-white/80 border border-accent/20">
                           <Icons.check className="w-5 h-5 text-accent flex-shrink-0" />
                           <span className="text-sm font-bold">Move In & Start!</span>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-
-              {/* Important Deadlines */}
-              <div className="mt-12 p-6 rounded-2xl bg-gradient-to-r from-primary/10 via-secondary/10 to-accent/10 border-2 border-primary/20">
-                <div className="flex items-start gap-4">
-                  <div className="w-14 h-14 rounded-xl bg-primary/20 flex items-center justify-center flex-shrink-0 shadow-lg">
-                    <Icons.info className="w-7 h-7 text-primary" />
-                  </div>
-                  <div className="flex-1">
-                    <h4 className="font-black text-2xl mb-4 text-primary">Important Dates</h4>
-                    <div className="grid md:grid-cols-2 gap-4">
-                      <div className="flex items-start gap-3">
-                        <div className="w-3 h-3 rounded-full bg-primary flex-shrink-0 mt-1.5" />
-                        <div>
-                          <span className="font-bold text-base block">Fall Semester Priority</span>
-                          <span className="text-sm text-muted-foreground">Apply by July 1st</span>
-                        </div>
-                      </div>
-                      <div className="flex items-start gap-3">
-                        <div className="w-3 h-3 rounded-full bg-secondary flex-shrink-0 mt-1.5" />
-                        <div>
-                          <span className="font-bold text-base block">Spring Semester</span>
-                          <span className="text-sm text-muted-foreground">Apply by November 1st</span>
-                        </div>
-                      </div>
-                      <div className="flex items-start gap-3 md:col-span-2">
-                        <div className="w-3 h-3 rounded-full bg-accent flex-shrink-0 mt-1.5" />
-                        <div>
-                          <span className="font-bold text-base block">FAFSA Priority Deadline</span>
-                          <span className="text-sm text-muted-foreground">
-                            Submit by March 1st for maximum financial aid
-                          </span>
                         </div>
                       </div>
                     </div>
