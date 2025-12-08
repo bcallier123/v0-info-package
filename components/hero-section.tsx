@@ -2,7 +2,6 @@ import { Badge } from "@/components/ui/badge"
 import { Button } from "@/components/ui/button"
 import { Icons } from "@/components/icons"
 import Image from "next/image"
-import Link from "next/link"
 
 export function HeroSection() {
   return (
@@ -95,16 +94,6 @@ export function HeroSection() {
                     <Icons.chevronRight className="w-6 h-6 ml-2 group-hover:translate-x-1 transition-transform" />
                   </a>
                 </Button>
-              </div>
-
-              <div className="animate-fade-in-up delay-400 pt-4">
-                <Link
-                  href="/chat"
-                  className="inline-flex items-center gap-2 px-6 py-3 bg-emerald-500 hover:bg-emerald-400 text-primary font-black text-base rounded-full shadow-lg hover:shadow-emerald-500/50 transition-all duration-300"
-                >
-                  <Icons.messageCircle className="w-5 h-5" />
-                  CHAT WITH MILES AI ENROLLMENT COACH
-                </Link>
               </div>
 
               <div className="flex flex-wrap items-center gap-8 pt-8 border-t border-white/20 animate-fade-in-up delay-400">
