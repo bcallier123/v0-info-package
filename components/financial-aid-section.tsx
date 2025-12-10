@@ -162,11 +162,17 @@ Email: bcallier@miles.edu`
               Financial Assistance
             </Badge>
           </div>
-          <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-4 text-balance bg-gradient-to-br from-primary via-secondary to-primary/70 bg-clip-text text-transparent">
-            Financial Aid & Grants
+          <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 text-balance">
+            <span className="bg-gradient-to-r from-primary via-primary/90 to-secondary bg-clip-text text-transparent">
+              Financial Aid
+            </span>
+            {" & "}
+            <span className="bg-gradient-to-r from-secondary via-secondary/90 to-primary bg-clip-text text-transparent">
+              Grant Opportunities
+            </span>
           </h2>
           <p className="text-lg md:text-xl text-muted-foreground max-w-3xl mx-auto text-pretty leading-relaxed">
-            Explore funding opportunities to make your Miles College education more affordable
+            Discover comprehensive funding resources to make your Miles College education more affordable and accessible
           </p>
         </div>
 
@@ -269,9 +275,9 @@ Email: bcallier@miles.edu`
 
               <div className="flex flex-col sm:flex-row gap-4 pt-4">
                 <Button size="lg" className="flex-1 h-14 text-base font-bold shadow-lg" asChild>
-                  <a 
-                    href="https://www.ache.edu/wp-content/Grants/ALA-STUDENT-GRANT-PROG-FORM-2025-2026.pdf" 
-                    target="_blank" 
+                  <a
+                    href="https://www.ache.edu/wp-content/Grants/ALA-STUDENT-GRANT-PROG-FORM-2025-2026.pdf"
+                    target="_blank"
                     rel="noopener noreferrer"
                   >
                     <Icons.fileText className="w-5 h-5 mr-2" />
@@ -323,13 +329,7 @@ Email: bcallier@miles.edu`
                 {scholarshipResources.map((resource, index) => {
                   const IconComponent = Icons[resource.icon as keyof typeof Icons]
                   return (
-                    <a
-                      key={index}
-                      href={resource.url}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="group"
-                    >
+                    <a key={index} href={resource.url} target="_blank" rel="noopener noreferrer" className="group">
                       <Card className="h-full transition-all duration-300 hover:shadow-xl hover:scale-105 hover:border-primary/50 border-2 cursor-pointer">
                         <CardContent className="p-5">
                           <div className="flex items-start gap-4">
@@ -355,7 +355,9 @@ Email: bcallier@miles.edu`
                 <div className="flex items-start gap-3">
                   <Icons.info className="w-6 h-6 text-blue-600 dark:text-blue-400 mt-0.5 flex-shrink-0" />
                   <div className="flex-1">
-                    <h4 className="font-bold text-blue-900 dark:text-blue-100 mb-2">Pro Tips for Scholarship Success</h4>
+                    <h4 className="font-bold text-blue-900 dark:text-blue-100 mb-2">
+                      Pro Tips for Scholarship Success
+                    </h4>
                     <ul className="text-sm text-blue-800 dark:text-blue-200 space-y-1 leading-relaxed">
                       <li>• Start searching early - many scholarships have deadlines months before the school year</li>
                       <li>• Apply to multiple scholarships to increase your chances</li>
