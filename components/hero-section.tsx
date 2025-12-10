@@ -2,7 +2,6 @@ import { Badge } from "@/components/ui/badge"
 import { Button } from "@/components/ui/button"
 import { Icons } from "@/components/icons"
 import Image from "next/image"
-import Link from "next/link"
 
 export function HeroSection() {
   return (
@@ -12,7 +11,7 @@ export function HeroSection() {
           src="/images/img-0036.jpg"
           alt="Miles College Graduate"
           fill
-          className="object-cover object-center opacity-90"
+          className="object-cover object-center opacity-100"
           priority
           quality={100}
         />
@@ -20,22 +19,21 @@ export function HeroSection() {
         <div className="absolute inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIzMDAiIGhlaWdodD0iMzAwIj48ZmlsdGVyIGlkPSJhIiB4PSIwIiB5PSIwIj48ZmVUdXJidWxlbmNlIGJhc2VGcmVxdWVuY3k9Ii43NSIgc3RpdGNoVGlsZXM9InN0aXRjaCIgdHlwZT0iZnJhY3RhbE5vaXNlIi8+PGZlQ29sb3JNYXRyaXggdHlwZT0ic2F0dXJhdGUiIHZhbHVlcz0iMCIvPjwvZmlsdGVyPjxyZWN0IHdpZHRoPSIxMDAlIiBoZWlnaHQ9IjEwMCUiIGZpbHRlcj0idXJsKCNhKSIgb3BhY2l0eT0iMC4wNSIvPjwvc3ZnPg==')] opacity-40 mix-blend-overlay" />
       </div>
 
-      {/* Cinematic gradient overlays */}
-      <div className="absolute inset-0 bg-gradient-to-r from-black/95 via-primary/90 to-black/60" />
-      <div className="absolute inset-0 bg-gradient-to-t from-black via-transparent to-primary/30" />
-      <div className="absolute inset-0 bg-gradient-to-br from-primary/70 via-transparent to-secondary/30" />
+      <div className="absolute inset-0 bg-gradient-to-r from-black/70 via-primary/60 to-transparent" />
+      <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-primary/20" />
+      <div className="absolute inset-0 bg-gradient-to-br from-primary/40 via-transparent to-secondary/20" />
 
       {/* Top accent line */}
       <div className="absolute top-0 left-0 w-full h-3 bg-gradient-to-r from-secondary via-yellow-400 to-secondary shadow-lg shadow-secondary/50" />
 
       <div
-        className="absolute top-0 right-0 w-[700px] h-[700px] bg-secondary/30 rounded-full blur-[180px] animate-pulse"
+        className="absolute top-0 right-0 w-[700px] h-[700px] bg-secondary/15 rounded-full blur-[180px] animate-pulse"
         style={{ animationDuration: "4s" }}
       />
-      <div className="absolute bottom-0 left-0 w-[900px] h-[900px] bg-primary/60 rounded-full blur-[220px]" />
-      <div className="absolute top-1/3 left-1/4 w-[400px] h-[400px] bg-secondary/20 rounded-full blur-[120px] float" />
+      <div className="absolute bottom-0 left-0 w-[900px] h-[900px] bg-primary/30 rounded-full blur-[220px]" />
+      <div className="absolute top-1/3 left-1/4 w-[400px] h-[400px] bg-secondary/10 rounded-full blur-[120px] float" />
       <div
-        className="absolute bottom-1/4 right-1/4 w-[500px] h-[500px] bg-yellow-400/10 rounded-full blur-[140px] float"
+        className="absolute bottom-1/4 right-1/4 w-[500px] h-[500px] bg-yellow-400/5 rounded-full blur-[140px] float"
         style={{ animationDelay: "1.5s" }}
       />
 
@@ -78,11 +76,11 @@ export function HeroSection() {
               </div>
 
               <div className="animate-fade-in-up delay-200">
-                <p className="text-xl md:text-2xl lg:text-3xl text-white/95 font-medium leading-relaxed max-w-2xl drop-shadow-lg">
-                  The <span className="text-secondary font-black text-3xl lg:text-4xl">ONLY</span> 4-year HBCU in
-                  Birmingham. Join a legacy of excellence with{" "}
-                  <span className="text-secondary font-black text-2xl lg:text-3xl">30+</span> degree programs and a{" "}
-                  <span className="text-secondary font-black text-2xl lg:text-3xl">17:1</span> student-faculty ratio.
+                <p className="text-lg md:text-xl lg:text-2xl text-white/90 leading-relaxed max-w-2xl">
+                  Birmingham&apos;s <span className="text-secondary font-bold">only 4-year HBCU</span>, established in
+                  1898. We offer over <span className="text-secondary font-bold">30 degree programs</span> with a
+                  personalized <span className="text-secondary font-bold">17:1 student-faculty ratio</span>, ensuring
+                  every Golden Bear receives the attention and support needed to excel.
                 </p>
               </div>
 
@@ -99,20 +97,6 @@ export function HeroSection() {
                     </span>
                     <span className="absolute inset-0 bg-gradient-to-r from-yellow-300 to-yellow-500 opacity-0 group-hover:opacity-100 transition-opacity shimmer" />
                   </a>
-                </Button>
-                <Button
-                  size="lg"
-                  variant="outline"
-                  className="group text-xl md:text-2xl px-12 py-8 font-black bg-white/10 backdrop-blur-sm border-3 border-white text-white hover:bg-white hover:text-primary transition-all duration-300 rounded-none hover:scale-105 shadow-xl hover:shadow-2xl"
-                  asChild
-                >
-                  <Link href="/chat">
-                    <span className="flex items-center gap-3">
-                      <Icons.sparkles className="w-7 h-7 mr-2" />
-                      AI COACH
-                      <Icons.chevronRight className="w-7 h-7 ml-2 group-hover:translate-x-2 transition-transform" />
-                    </span>
-                  </Link>
                 </Button>
               </div>
 

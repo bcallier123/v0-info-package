@@ -75,7 +75,7 @@ export function ScholarshipsSection() {
                 <CardTitle className="text-2xl font-black relative z-10">{scholarship.name}</CardTitle>
                 {scholarship.highlight && (
                   <Badge variant="outline" className="mt-3 border-2 border-current font-bold">
-                    ⭐ Most Prestigious
+                    Most Prestigious
                   </Badge>
                 )}
                 {scholarship.eligibility && (

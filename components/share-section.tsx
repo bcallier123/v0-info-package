@@ -31,7 +31,7 @@ export function ShareSection() {
 
   const shareViaSMS = () => {
     const message = encodeURIComponent(
-      `Discover Miles College! 🎓 97% scholarships, 30+ majors, NCAA Division II athletics, ESPN Band of the Year 2024. Learn more: ${shareUrl}`,
+      `Discover Miles College! 97% scholarships, 30+ majors, NCAA Division II athletics, ESPN Band of the Year 2024. Learn more: ${shareUrl}`,
     )
     window.open(`sms:?body=${message}`, "_blank")
   }
@@ -46,7 +46,7 @@ export function ShareSection() {
 
   const shareOnTwitter = () => {
     const text = encodeURIComponent(
-      "Discover Miles College - Birmingham's Premier HBCU! 97% scholarships, 30+ majors, NCAA Division II athletics 🎓",
+      "Discover Miles College - Birmingham's Premier HBCU! 97% scholarships, 30+ majors, NCAA Division II athletics",
     )
     window.open(
       `https://twitter.com/intent/tweet?url=${encodeURIComponent(shareUrl)}&text=${text}`,
