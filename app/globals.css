@@ -206,6 +206,12 @@
     animation: shimmer 2s infinite;
   }
 
+  /* Adding animate-shimmer class for text gradients */
+  .animate-shimmer {
+    background-size: 200% auto;
+    animation: shimmer 3s linear infinite;
+  }
+
   @keyframes shimmer {
     0% {
       background-position: 200% 0;
