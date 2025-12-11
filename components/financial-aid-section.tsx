@@ -91,10 +91,8 @@ INSTITUTIONAL DATE STAMP: _______________________
 
 For assistance with this application, contact:
 Miles College Financial Aid Office
-Or your admissions recruiter:
-Baily Callier, Admissions Recruiter Specialist
-Phone: 334-294-7984
-Email: bcallier@miles.edu`
+Phone: (205) 929-1665
+Email: financialaid@miles.edu`
 
     const blob = new Blob([formContent], { type: "text/plain" })
     const url = URL.createObjectURL(blob)
@@ -298,9 +296,8 @@ Email: bcallier@miles.edu`
               </div>
 
               <p className="text-xs text-muted-foreground text-center leading-relaxed pt-2 border-t">
-                The Alabama Student Grant Program is a state student assistance program established by the Legislature
-                of the State of Alabama to provide financial assistance to residents for undergraduate nonsectarian,
-                secular education at independent institutions.
+                For assistance with this application, contact the Miles College Financial Aid Office at (205) 929-1665
+                or your Admissions Office at (205) 929-1657.
               </p>
             </CardContent>
           </Card>
@@ -363,6 +360,89 @@ Email: bcallier@miles.edu`
                       <li>• Apply to multiple scholarships to increase your chances</li>
                       <li>• Watch out for scams - never pay to apply for scholarships</li>
                       <li>• Complete your FAFSA (Free Application for Federal Student Aid) at studentaid.gov</li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+            </CardContent>
+          </Card>
+
+          <Card className="bg-gradient-to-br from-primary/5 via-background to-secondary/5 border-2 border-primary/20 shadow-xl overflow-hidden">
+            <CardHeader className="pb-6">
+              <div className="flex flex-col md:flex-row items-start md:items-center gap-4 mb-2">
+                <div className="w-16 h-16 rounded-2xl bg-gradient-to-br from-primary to-primary/80 flex items-center justify-center shadow-xl flex-shrink-0">
+                  <Icons.award className="w-8 h-8 text-white" />
+                </div>
+                <div className="flex-1">
+                  <Badge variant="default" className="mb-3 font-bold">
+                    Miles College Grants & Scholarships
+                  </Badge>
+                  <CardTitle className="text-3xl md:text-4xl font-black text-balance">
+                    Miles College Financial Aid Options
+                  </CardTitle>
+                  <CardDescription className="text-base md:text-lg mt-2 leading-relaxed">
+                    Learn about the various grants and scholarships offered by Miles College
+                  </CardDescription>
+                </div>
+              </div>
+            </CardHeader>
+            <CardContent className="relative z-10 space-y-6">
+              <div className="grid md:grid-cols-2 gap-6">
+                <div className="space-y-4">
+                  <h3 className="font-bold text-xl text-primary flex items-center gap-2">
+                    <Icons.check className="w-5 h-5" />
+                    Grants
+                  </h3>
+                  <ul className="space-y-3 text-sm leading-relaxed">
+                    <li className="flex items-start gap-3">
+                      <div className="w-2 h-2 rounded-full bg-secondary mt-2 flex-shrink-0" />
+                      <span>Alabama Student Grant Program (ASGP): Up to $2,500/year for Alabama residents</span>
+                    </li>
+                  </ul>
+                </div>
+
+                <div className="space-y-4">
+                  <h3 className="font-bold text-xl text-primary flex items-center gap-2">
+                    <Icons.award className="w-5 h-5" />
+                    Scholarships
+                  </h3>
+                  <ul className="space-y-3 text-sm leading-relaxed">
+                    <li className="flex items-start gap-3">
+                      <div className="w-2 h-2 rounded-full bg-secondary mt-2 flex-shrink-0" />
+                      <span>Academic Excellence Scholarships (based on GPA/test scores)</span>
+                    </li>
+                    <li className="flex items-start gap-3">
+                      <div className="w-2 h-2 rounded-full bg-secondary mt-2 flex-shrink-0" />
+                      <span>Athletic Scholarships</span>
+                    </li>
+                    <li className="flex items-start gap-3">
+                      <div className="w-2 h-2 rounded-full bg-secondary mt-2 flex-shrink-0" />
+                      <span>Transfer Student Scholarships</span>
+                    </li>
+                    <li className="flex items-start gap-3">
+                      <div className="w-2 h-2 rounded-full bg-secondary mt-2 flex-shrink-0" />
+                      <span>Need-based institutional aid</span>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+
+              <div className="p-5 rounded-xl bg-gradient-to-r from-blue-50 to-blue-100/50 dark:from-blue-950/30 dark:to-blue-900/20 border-2 border-blue-200 dark:border-blue-800">
+                <div className="flex items-start gap-3">
+                  <Icons.info className="w-6 h-6 text-blue-600 dark:text-blue-400 mt-0.5 flex-shrink-0" />
+                  <div className="flex-1 space-y-2">
+                    <h4 className="font-bold text-blue-900 dark:text-blue-100">Additional Information</h4>
+                    <ul className="text-sm text-blue-800 dark:text-blue-200 space-y-1 leading-relaxed">
+                      <li>
+                        • Miles College makes higher education accessible through grants that don't need to be repaid.
+                      </li>
+                      <li>• Federal Grants: Pell Grant: Up to $7,395/year for qualifying students</li>
+                      <li>• Federal Grants: FSEOG: Additional federal grant aid</li>
+                      <li>• Federal Grants: Federal Work-Study: Earn while you learn</li>
+                      <li>
+                        • Most students receive multiple forms of aid. Complete your FAFSA (School Code: 001028) by our
+                        priority deadline to maximize your financial aid package!
+                      </li>
                     </ul>
                   </div>
                 </div>

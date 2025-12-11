@@ -2,6 +2,7 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/com
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion"
 import { Badge } from "@/components/ui/badge"
 import { Icons } from "@/components/icons"
+import { Button } from "@/components/ui/button"
 
 export function AcademicsSection() {
   const divisions = [
@@ -209,6 +210,40 @@ export function AcademicsSection() {
             </div>
           </CardContent>
         </Card>
+
+        <div className="mt-16 max-w-4xl mx-auto">
+          <Card className="border-2 border-primary/30 shadow-2xl bg-gradient-to-br from-primary/5 to-white">
+            <CardContent className="p-10">
+              <div className="flex flex-col md:flex-row items-center justify-between gap-6">
+                <div className="text-center md:text-left">
+                  <h3 className="text-3xl font-black mb-2 text-primary uppercase tracking-wide">
+                    Ready to Begin Your Academic Journey?
+                  </h3>
+                  <p className="text-muted-foreground text-lg">
+                    Connect with our admissions team to explore your program options
+                  </p>
+                </div>
+                <div className="flex flex-col sm:flex-row gap-3">
+                  <Button
+                    asChild
+                    size="lg"
+                    className="bg-primary hover:bg-primary/90 text-white font-black px-8 py-6 text-base shadow-xl hover:-translate-y-1 transition-all uppercase tracking-wide"
+                  >
+                    <a href="#apply">Apply Now</a>
+                  </Button>
+                  <Button
+                    asChild
+                    size="lg"
+                    variant="outline"
+                    className="border-2 border-primary text-primary hover:bg-primary hover:text-white font-black px-8 py-6 text-base shadow-lg hover:-translate-y-1 transition-all uppercase tracking-wide bg-transparent"
+                  >
+                    <a href="tel:205-929-1657">Contact Admissions</a>
+                  </Button>
+                </div>
+              </div>
+            </CardContent>
+          </Card>
+        </div>
       </div>
     </section>
   )

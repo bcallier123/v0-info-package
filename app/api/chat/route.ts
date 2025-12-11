@@ -137,7 +137,7 @@ const getSystemPrompt = (persona: string | null) => {
 - Tuition: $9,500/semester ($19,000/year for full-time)
 - Application portal: myexperience.miles.edu
 - School Code: 001028
-- Contact: Baily Callier, Admissions Recruiter - bcallier@miles.edu or (334) 294-7984`
+- Contact: Miles College Admissions Office - admissions@miles.edu or (205) 929-1657`
 
   const personaContext = {
     freshman:
@@ -248,8 +248,8 @@ function getRuleBasedResponse(
 **To check your status:**
 1. Log in to myexperience.miles.edu
 2. Or contact Admissions directly:
-   • Baily Callier: (334) 294-7984
-   • Email: bcallier@miles.edu
+   • Phone: (205) 929-1657
+   • Email: admissions@miles.edu
 
 Would you like me to have someone reach out to you?`,
       captureLeadRequest: true,
@@ -315,7 +315,7 @@ export async function POST(req: Request) {
       {
         error: "Failed to get response from AI",
         message:
-          "I'm having trouble connecting. Please contact Baily Callier at (334) 294-7984 or bcallier@miles.edu for immediate assistance.",
+          "I'm having trouble connecting. Please contact Miles College Admissions at (205) 929-1657 or admissions@miles.edu for immediate assistance.",
       },
       { status: 500 },
     )

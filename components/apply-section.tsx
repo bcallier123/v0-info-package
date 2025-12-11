@@ -228,32 +228,30 @@ export function ApplySection() {
               <div className="absolute top-0 right-0 w-64 h-64 bg-white rounded-full blur-3xl" />
             </div>
             <CardHeader className="text-center pb-4 relative z-10">
-              <Badge className="mx-auto mb-3 bg-white/20 text-white border-white/30 font-bold">
-                Your Personal Recruiter
-              </Badge>
-              <CardTitle className="text-3xl md:text-4xl font-black">Baily Callier</CardTitle>
+              <Badge className="mx-auto mb-3 bg-white/20 text-white border-white/30 font-bold">Admissions Office</Badge>
+              <CardTitle className="text-3xl md:text-4xl font-black">Miles College Admissions</CardTitle>
               <CardDescription className="text-white/90 text-lg font-semibold mt-2">
-                Admissions Recruiter Specialist
+                Ready to Help You Apply
               </CardDescription>
             </CardHeader>
             <CardContent className="relative z-10">
               <div className="grid sm:grid-cols-2 gap-4">
                 <a
-                  href="tel:+13342947984"
+                  href="tel:+12059291657"
                   className="flex items-center gap-4 p-5 rounded-xl bg-white/10 backdrop-blur-sm border border-white/20 hover:bg-white/20 transition-all group"
-                  aria-label="Call Baily Callier at 334-294-7984"
+                  aria-label="Call Miles College Admissions at 205-929-1657"
                 >
                   <div className="w-14 h-14 rounded-xl bg-white/20 flex items-center justify-center flex-shrink-0 group-hover:scale-110 transition-transform">
                     <Icons.phone className="w-7 h-7 text-white" />
                   </div>
                   <div>
                     <div className="font-bold text-sm text-white/80 mb-1">Call or Text</div>
-                    <div className="text-lg font-black">(334) 294-7984</div>
+                    <div className="text-lg font-black">(205) 929-1657</div>
                   </div>
                 </a>
 
                 <a
-                  href="mailto:bcallier@miles.edu"
+                  href="mailto:admissions@miles.edu"
                   className="flex items-center gap-4 p-5 rounded-xl bg-white/10 backdrop-blur-sm border border-white/20 hover:bg-white/20 transition-all group"
                 >
                   <div className="w-14 h-14 rounded-xl bg-white/20 flex items-center justify-center flex-shrink-0 group-hover:scale-110 transition-transform">
@@ -261,7 +259,7 @@ export function ApplySection() {
                   </div>
                   <div>
                     <div className="font-bold text-sm text-white/80 mb-1">Email</div>
-                    <div className="text-base font-bold break-all">bcallier@miles.edu</div>
+                    <div className="text-base font-bold break-all">admissions@miles.edu</div>
                   </div>
                 </a>
               </div>

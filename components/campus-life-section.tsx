@@ -1,6 +1,7 @@
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
 import { Icons } from "@/components/icons"
+import { Button } from "@/components/ui/button"
 
 export function CampusLifeSection() {
   const highlights = [
@@ -219,6 +220,44 @@ export function CampusLifeSection() {
               className="w-full h-72 object-cover shadow-2xl hover:shadow-3xl hover:-translate-y-2 transition-all duration-500 border-4 border-white"
             />
           </div>
+        </div>
+
+        <div className="mt-20 max-w-4xl mx-auto">
+          <Card className="border-2 border-secondary/30 shadow-2xl bg-gradient-to-br from-secondary/5 to-white">
+            <CardContent className="p-10">
+              <div className="text-center">
+                <div className="w-20 h-20 bg-gradient-to-br from-secondary to-secondary/80 flex items-center justify-center mx-auto mb-6 shadow-xl">
+                  <Icons.calendar className="w-10 h-10 text-white" />
+                </div>
+                <h3 className="text-4xl font-black mb-4 text-secondary uppercase tracking-wide">
+                  Experience Campus Life Firsthand
+                </h3>
+                <p className="text-muted-foreground text-xl mb-8 max-w-2xl mx-auto">
+                  Schedule a campus tour to see our vibrant community, meet current students, and explore our facilities
+                </p>
+                <div className="flex flex-col sm:flex-row gap-4 justify-center">
+                  <Button
+                    asChild
+                    size="lg"
+                    className="bg-secondary hover:bg-secondary/90 text-white font-black px-10 py-6 text-lg shadow-xl hover:-translate-y-1 transition-all uppercase tracking-wide"
+                  >
+                    <a href="https://www.miles.edu/admissions/visit/" target="_blank" rel="noopener noreferrer">
+                      Schedule a Visit
+                      <Icons.externalLink className="w-5 h-5 ml-2" />
+                    </a>
+                  </Button>
+                  <Button
+                    asChild
+                    size="lg"
+                    variant="outline"
+                    className="border-2 border-secondary text-secondary hover:bg-secondary hover:text-white font-black px-10 py-6 text-lg shadow-lg hover:-translate-y-1 transition-all uppercase tracking-wide bg-transparent"
+                  >
+                    <a href="tel:205-929-1657">Call Admissions</a>
+                  </Button>
+                </div>
+              </div>
+            </CardContent>
+          </Card>
         </div>
       </div>
     </section>

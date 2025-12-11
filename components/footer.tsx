@@ -33,21 +33,21 @@ export function Footer() {
           <div className="py-10 border-y border-white/20">
             <div className="max-w-2xl mx-auto">
               <p className="text-sm font-black text-secondary mb-4 uppercase tracking-widest">
-                Questions? Contact Your Recruiter
+                Questions? Contact Admissions
               </p>
               <div className="flex flex-wrap justify-center items-center gap-6 text-lg">
                 <div className="flex items-center gap-3">
                   <div className="w-10 h-10 bg-secondary/20 flex items-center justify-center">
                     <Icons.phone className="w-5 h-5 text-secondary" />
                   </div>
-                  <span className="font-black">Baily Callier</span>
+                  <span className="font-black">Admissions Office</span>
                 </div>
-                <a href="tel:3342947984" className="hover:text-secondary transition-colors font-black text-xl">
-                  (334) 294-7984
+                <a href="tel:2059291657" className="hover:text-secondary transition-colors font-black text-xl">
+                  (205) 929-1657
                 </a>
                 <span className="text-white/40 hidden md:inline">•</span>
-                <a href="mailto:bcallier@miles.edu" className="hover:text-secondary transition-colors font-bold">
-                  bcallier@miles.edu
+                <a href="mailto:admissions@miles.edu" className="hover:text-secondary transition-colors font-bold">
+                  admissions@miles.edu
                 </a>
               </div>
             </div>

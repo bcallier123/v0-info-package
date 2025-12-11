@@ -1,6 +1,7 @@
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
 import { Icons } from "@/components/icons"
+import { Button } from "@/components/ui/button"
 
 export function AthleticsSection() {
   const sports = {
@@ -177,6 +178,44 @@ export function AthleticsSection() {
                   View Staff Directory
                   <Icons.externalLink className="w-5 h-5" />
                 </a>
+              </div>
+            </CardContent>
+          </Card>
+        </div>
+
+        <div className="mt-12 max-w-4xl mx-auto">
+          <Card className="border-0 bg-white/5 backdrop-blur-sm">
+            <CardContent className="p-10">
+              <div className="text-center">
+                <div className="w-20 h-20 bg-gradient-to-br from-primary to-primary/80 flex items-center justify-center mx-auto mb-6 shadow-xl">
+                  <Icons.trophy className="w-10 h-10 text-white" />
+                </div>
+                <h3 className="text-4xl font-black mb-4 text-white uppercase tracking-wide">
+                  Interested in Playing for the Golden Bears?
+                </h3>
+                <p className="text-white/80 text-xl mb-8 max-w-2xl mx-auto">
+                  Contact our athletic department to learn about recruitment opportunities and scholarship programs
+                </p>
+                <div className="flex flex-col sm:flex-row gap-4 justify-center">
+                  <Button
+                    asChild
+                    size="lg"
+                    className="bg-primary hover:bg-primary/90 text-white font-black px-10 py-6 text-lg shadow-xl hover:-translate-y-1 transition-all uppercase tracking-wide"
+                  >
+                    <a href="https://milesgoldenbears.com" target="_blank" rel="noopener noreferrer">
+                      Athletic Recruitment
+                      <Icons.externalLink className="w-5 h-5 ml-2" />
+                    </a>
+                  </Button>
+                  <Button
+                    asChild
+                    size="lg"
+                    variant="outline"
+                    className="border-2 border-white text-white hover:bg-white hover:text-primary font-black px-10 py-6 text-lg shadow-lg hover:-translate-y-1 transition-all uppercase tracking-wide bg-transparent"
+                  >
+                    <a href="mailto:athletics@miles.edu">Email Athletics</a>
+                  </Button>
+                </div>
               </div>
             </CardContent>
           </Card>
