@@ -47,23 +47,23 @@ export function AthleticsSection() {
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-20 max-w-7xl mx-auto">
           <img
-            src="/images/img-0301.jpg"
-            alt="Miles College women's basketball player going up for a shot during game"
+            src="/images/dscf4009.jpg"
+            alt="Miles College women's basketball team huddle"
             className="w-full h-96 object-cover shadow-2xl hover:-translate-y-2 transition-all duration-500 border-4 border-white/10 hover:border-secondary/50"
           />
           <img
-            src="/images/img-1551-202.jpg"
-            alt="Miles College football player scoring touchdown"
+            src="/images/dscf0659.jpg"
+            alt="Miles College Golden Bears flag at football game"
             className="w-full h-96 object-cover shadow-2xl hover:-translate-y-2 transition-all duration-500 border-4 border-white/10 hover:border-secondary/50"
           />
           <img
-            src="/images/img-1552-202.jpg"
-            alt="Miles College football player running with the ball"
+            src="/images/20240203-dscf2616.jpg"
+            alt="Miles College softball pitcher in action"
             className="w-full h-96 object-cover shadow-2xl hover:-translate-y-2 transition-all duration-500 border-4 border-white/10 hover:border-secondary/50"
           />
           <img
-            src="/images/img-0305.jpg"
-            alt="Miles College men's golf team with championship trophy"
+            src="/images/dscf3763.jpg"
+            alt="Miles College esports team"
             className="w-full h-96 object-cover shadow-2xl hover:-translate-y-2 transition-all duration-500 md:col-span-2 lg:col-span-3 border-4 border-white/10 hover:border-secondary/50"
           />
         </div>

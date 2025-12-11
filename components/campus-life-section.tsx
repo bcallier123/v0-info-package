@@ -168,19 +168,34 @@ export function CampusLifeSection() {
         <div className="mb-20">
           <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
             <img
-              src="/images/library-group.jpg"
-              alt="Miles College students and leaders in library"
+              src="/images/2023-10-11-20at-204.jpg"
+              alt="Miles College student at computer lab"
               className="w-full h-80 object-cover shadow-2xl hover:shadow-3xl hover:-translate-y-2 transition-all duration-500 border-4 border-white"
             />
             <img
-              src="/images/homecoming-court.jpg"
-              alt="Miles College Homecoming Court"
+              src="/images/dscf7529.jpeg"
+              alt="Miles College classroom learning"
               className="w-full h-80 object-cover shadow-2xl hover:shadow-3xl hover:-translate-y-2 transition-all duration-500 border-4 border-white"
             />
             <img
-              src="/images/campus-event.jpg"
-              alt="Students at campus event"
+              src="/images/mbkl3897.jpg"
+              alt="Miles College student in science lab"
               className="w-full h-80 object-cover shadow-2xl hover:shadow-3xl hover:-translate-y-2 transition-all duration-500 sm:col-span-2 md:col-span-1 border-4 border-white"
+            />
+          </div>
+        </div>
+
+        <div className="mb-20">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <img
+              src="/images/20240201-dscf7396.jpg"
+              alt="Miles College student retention event - dance performance"
+              className="w-full h-96 object-cover shadow-2xl hover:shadow-3xl hover:-translate-y-2 transition-all duration-500 border-4 border-white"
+            />
+            <img
+              src="/images/20240201-dscf7379.jpg"
+              alt="Miles College student retention event - community celebration"
+              className="w-full h-96 object-cover shadow-2xl hover:shadow-3xl hover:-translate-y-2 transition-all duration-500 border-4 border-white"
             />
           </div>
         </div>
@@ -210,13 +225,13 @@ export function CampusLifeSection() {
 
           <div className="space-y-6">
             <img
-              src="/images/design-mode/IMG_0302.jpg"
-              alt="Miles College students at tailgate"
+              src="/images/dscf4133.jpg"
+              alt="Miles College student on campus"
               className="w-full h-72 object-cover shadow-2xl hover:shadow-3xl hover:-translate-y-2 transition-all duration-500 border-4 border-white"
             />
             <img
-              src="/images/graduation-ceremony.jpg"
-              alt="Miles College graduation ceremony"
+              src="/images/dscf3763.jpg"
+              alt="Miles College esports students"
               className="w-full h-72 object-cover shadow-2xl hover:shadow-3xl hover:-translate-y-2 transition-all duration-500 border-4 border-white"
             />
           </div>

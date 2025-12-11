@@ -8,8 +8,8 @@ export function HeroSection() {
     <section id="about" className="relative text-white overflow-hidden min-h-screen">
       <div className="absolute inset-0 bg-black">
         <Image
-          src="/images/img-0036.jpg"
-          alt="Miles College Graduate"
+          src="/images/img-0036.jpeg"
+          alt="Miles College proud graduate in cap and gown"
           fill
           className="object-cover object-center opacity-100"
           priority
