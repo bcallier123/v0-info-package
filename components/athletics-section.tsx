@@ -62,8 +62,8 @@ export function AthleticsSection() {
             className="w-full h-96 object-cover shadow-2xl hover:-translate-y-2 transition-all duration-500 border-4 border-white/10 hover:border-secondary/50"
           />
           <img
-            src="/images/dscf3763.jpg"
-            alt="Miles College esports team"
+            src="/images/20231021-clb06660.jpg"
+            alt="Miles College Golden Bear mascot with marching band at game day"
             className="w-full h-96 object-cover shadow-2xl hover:-translate-y-2 transition-all duration-500 md:col-span-2 lg:col-span-3 border-4 border-white/10 hover:border-secondary/50"
           />
         </div>

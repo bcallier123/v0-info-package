@@ -188,8 +188,8 @@ export function CampusLifeSection() {
         <div className="mb-20">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             <img
-              src="/images/20240201-dscf7396.jpg"
-              alt="Miles College student retention event - dance performance"
+              src="/images/img-0306.jpg"
+              alt="Miles College dance team member performing in purple and gold"
               className="w-full h-96 object-cover shadow-2xl hover:shadow-3xl hover:-translate-y-2 transition-all duration-500 border-4 border-white"
             />
             <img
