@@ -61,11 +61,7 @@ export function AthleticsSection() {
             alt="Miles College softball pitcher in action"
             className="w-full h-96 object-cover shadow-2xl hover:-translate-y-2 transition-all duration-500 border-4 border-white/10 hover:border-secondary/50"
           />
-          <img
-            src="/images/20231021-clb06660.jpg"
-            alt="Miles College Golden Bear mascot with marching band at game day"
-            className="w-full h-96 object-cover shadow-2xl hover:-translate-y-2 transition-all duration-500 md:col-span-2 lg:col-span-3 border-4 border-white/10 hover:border-secondary/50"
-          />
+          
         </div>
 
         <div className="grid md:grid-cols-2 gap-8 max-w-6xl mx-auto">
