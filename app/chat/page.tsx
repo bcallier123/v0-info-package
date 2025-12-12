@@ -16,6 +16,12 @@ interface Message {
   timestamp?: Date
 }
 
+interface ConnectionStatus {
+  connected: boolean
+  checking: boolean
+  lastCheck?: Date
+}
+
 export default function ChatPage() {
   const [messages, setMessages] = useState<Message[]>([
     {
@@ -27,6 +33,10 @@ export default function ChatPage() {
   ])
   const [input, setInput] = useState("")
   const [isLoading, setIsLoading] = useState(false)
+  const [connectionStatus, setConnectionStatus] = useState<ConnectionStatus>({
+    connected: false,
+    checking: true,
+  })
   const messagesEndRef = useRef<HTMLDivElement>(null)
 
   const scrollToBottom = () => {
@@ -36,6 +46,33 @@ export default function ChatPage() {
   useEffect(() => {
     scrollToBottom()
   }, [messages])
+
+  useEffect(() => {
+    checkConnection()
+    const interval = setInterval(checkConnection, 120000)
+    return () => clearInterval(interval)
+  }, [])
+
+  const checkConnection = async () => {
+    setConnectionStatus((prev) => ({ ...prev, checking: true }))
+    try {
+      const response = await fetch("/api/chat", { method: "GET" })
+      const data = await response.json()
+      setConnectionStatus({
+        connected: data.dgxConnected || false,
+        checking: false,
+        lastCheck: new Date(),
+      })
+      console.log("[v0] DGX connection status:", data.dgxConnected ? "CONNECTED" : "OFFLINE")
+    } catch (error) {
+      console.error("[v0] Connection check failed:", error)
+      setConnectionStatus({
+        connected: false,
+        checking: false,
+        lastCheck: new Date(),
+      })
+    }
+  }
 
   const quickQuestions = [
     { icon: Icons.graduationCap, text: "What programs does Miles College offer?", category: "Academics" },
@@ -56,24 +93,46 @@ export default function ChatPage() {
     setIsLoading(true)
 
     try {
+      console.log("[v0] Sending message to API")
       const response = await fetch("/api/chat", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ message: userMessage }),
+        body: JSON.stringify({
+          message: userMessage,
+          conversationHistory: messages.slice(-6),
+        }),
       })
 
-      if (!response.ok) throw new Error("Failed to get response")
+      if (!response.ok) {
+        const errorData = await response.json().catch(() => null)
+        throw new Error(errorData?.error || "Failed to get response")
+      }
 
       const data = await response.json()
+      console.log("[v0] Received response from API")
+
+      if (data.isOffline || data.isDGXError) {
+        setConnectionStatus((prev) => ({ ...prev, connected: false, lastCheck: new Date() }))
+      } else if (data.source === "dgx-ai") {
+        setConnectionStatus((prev) => ({ ...prev, connected: true, lastCheck: new Date() }))
+      }
+
       setMessages((prev) => [...prev, { role: "assistant", content: data.message, timestamp: new Date() }])
     } catch (error) {
       console.error("[v0] Chat error:", error)
+      setConnectionStatus((prev) => ({ ...prev, connected: false, lastCheck: new Date() }))
       setMessages((prev) => [
         ...prev,
         {
           role: "assistant",
-          content:
-            "I'm having trouble connecting to the DGX Spark server. Please make sure it's running at http://192.168.1.25:8000 or contact us directly at (334) 294-7984.",
+          content: `I'm having trouble connecting right now. Please try again or contact Miles College directly:
+
+**Admissions Office:**
+• Phone: (205) 929-1657
+• Email: admissions@miles.edu
+• Apply online: myexperience.miles.edu
+
+Is there anything specific I can help you find?`,
           timestamp: new Date(),
         },
       ])
@@ -105,7 +164,22 @@ export default function ChatPage() {
                   <div className="w-14 h-14 rounded-full bg-gradient-to-br from-secondary via-yellow-400 to-yellow-500 flex items-center justify-center shadow-2xl shadow-secondary/50 animate-glow">
                     <Icons.sparkles className="w-7 h-7 text-primary animate-pulse" />
                   </div>
-                  <div className="absolute -bottom-1 -right-1 w-5 h-5 bg-green-400 rounded-full border-2 border-[#1a0a2e] animate-pulse" />
+                  <div
+                    className={`absolute -bottom-1 -right-1 w-5 h-5 rounded-full border-2 border-[#1a0a2e] ${
+                      connectionStatus.checking
+                        ? "bg-yellow-400 animate-pulse"
+                        : connectionStatus.connected
+                          ? "bg-green-400 animate-pulse"
+                          : "bg-red-400"
+                    }`}
+                    title={
+                      connectionStatus.checking
+                        ? "Checking connection..."
+                        : connectionStatus.connected
+                          ? "DGX Connected"
+                          : "DGX Offline - Using fallback responses"
+                    }
+                  />
                 </div>
                 <div>
                   <h1 className="font-black text-2xl text-white tracking-tight">MILES AI COACH</h1>
@@ -115,8 +189,16 @@ export default function ChatPage() {
                 </div>
               </div>
             </div>
-            <Badge className="px-4 py-2 bg-secondary text-primary border-0 font-black uppercase text-xs shadow-lg shadow-secondary/50">
-              Live AI
+            <Badge
+              className={`px-4 py-2 border-0 font-black uppercase text-xs shadow-lg ${
+                connectionStatus.checking
+                  ? "bg-yellow-400 text-primary shadow-yellow-400/50"
+                  : connectionStatus.connected
+                    ? "bg-secondary text-primary shadow-secondary/50"
+                    : "bg-red-500 text-white shadow-red-500/50"
+              }`}
+            >
+              {connectionStatus.checking ? "Checking..." : connectionStatus.connected ? "Live AI" : "Offline Mode"}
             </Badge>
           </div>
         </div>
@@ -239,7 +321,9 @@ export default function ChatPage() {
               </Button>
             </div>
             <p className="text-xs text-white/40 mt-3 text-center">
-              Powered by your local DGX Spark AI • Responses are generated in real-time
+              {connectionStatus.connected
+                ? "Powered by your DGX Spark AI • Responses are generated in real-time"
+                : "Running in offline mode • Rule-based responses active"}
             </p>
           </form>
         </Card>

@@ -2,6 +2,10 @@ import { NextResponse } from "next/server"
 
 const DGX_API_URL = process.env.NEXT_PUBLIC_MILES_API_URL || "http://192.168.1.25:8000"
 const DGX_MODEL = process.env.DGX_MODEL || "llama3"
+const AI_API_KEY = process.env.AI_API_KEY // Optional authentication key
+
+let lastHealthCheck: { success: boolean; timestamp: number } | null = null
+const HEALTH_CHECK_CACHE_MS = 60000 // Cache for 1 minute
 
 const KNOWLEDGE_BASE = {
   apply: {
@@ -259,6 +263,37 @@ Would you like me to have someone reach out to you?`,
   return responses[intent] || { message: "" }
 }
 
+async function checkDGXConnection(): Promise<boolean> {
+  // Return cached result if recent
+  if (lastHealthCheck && Date.now() - lastHealthCheck.timestamp < HEALTH_CHECK_CACHE_MS) {
+    return lastHealthCheck.success
+  }
+
+  try {
+    console.log("[v0] Checking DGX connection at:", DGX_API_URL)
+    const controller = new AbortController()
+    const timeoutId = setTimeout(() => controller.abort(), 5000) // 5 second timeout
+
+    const response = await fetch(`${DGX_API_URL}/v1/models`, {
+      method: "GET",
+      headers: AI_API_KEY ? { Authorization: `Bearer ${AI_API_KEY}` } : {},
+      signal: controller.signal,
+    })
+
+    clearTimeout(timeoutId)
+
+    const success = response.ok
+    lastHealthCheck = { success, timestamp: Date.now() }
+
+    console.log("[v0] DGX connection status:", success ? "CONNECTED" : "FAILED")
+    return success
+  } catch (error) {
+    console.log("[v0] DGX connection failed:", error instanceof Error ? error.message : "Unknown error")
+    lastHealthCheck = { success: false, timestamp: Date.now() }
+    return false
+  }
+}
+
 export async function POST(req: Request) {
   try {
     const { message, persona, leadData, conversationHistory } = await req.json()
@@ -267,55 +302,142 @@ export async function POST(req: Request) {
       return NextResponse.json({ error: "Invalid message" }, { status: 400 })
     }
 
+    console.log("[v0] Processing message:", message.substring(0, 50) + "...")
+
     const intent = detectIntent(message)
 
     if (intent) {
       const ruleResponse = getRuleBasedResponse(intent, persona)
       if (ruleResponse.message) {
+        console.log("[v0] Returning rule-based response for intent:", intent)
         return NextResponse.json(ruleResponse)
       }
+    }
+
+    const isDGXAvailable = await checkDGXConnection()
+
+    if (!isDGXAvailable) {
+      console.log("[v0] DGX unavailable, returning fallback response")
+      return NextResponse.json({
+        message: `I'm currently running in offline mode. Here's what I can help you with:
+
+**Apply to Miles College:**
+• Visit myexperience.miles.edu to start your application
+• Miles College School Code: 001028
+
+**Contact Admissions:**
+• Phone: (205) 929-1657
+• Email: admissions@miles.edu
+
+**Quick Info:**
+• 30+ degree programs across Business, Education, Sciences, and more
+• Tuition: $9,500 per semester
+• 17:1 student-faculty ratio
+• 126+ years of excellence
+
+What specific information would you like to know?`,
+        isOffline: true,
+      })
     }
 
     const systemPrompt = getSystemPrompt(persona)
 
     const messages = [
       { role: "system", content: systemPrompt },
-      ...(conversationHistory || []).map((msg: any) => ({
+      ...(conversationHistory || []).slice(-10).map((msg: any) => ({
         role: msg.role,
         content: msg.content,
       })),
       { role: "user", content: message },
     ]
 
+    console.log("[v0] Sending request to DGX at:", DGX_API_URL)
+
+    const controller = new AbortController()
+    const timeoutId = setTimeout(() => controller.abort(), 30000) // 30 second timeout
+
     const response = await fetch(`${DGX_API_URL}/v1/chat/completions`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
+        ...(AI_API_KEY ? { Authorization: `Bearer ${AI_API_KEY}` } : {}),
       },
       body: JSON.stringify({
         model: DGX_MODEL,
         messages,
         temperature: 0.7,
         max_tokens: 500,
+        stream: false,
       }),
+      signal: controller.signal,
     })
 
+    clearTimeout(timeoutId)
+
     if (!response.ok) {
+      const errorText = await response.text().catch(() => "Unknown error")
+      console.error("[v0] DGX API error:", response.status, errorText)
       throw new Error(`DGX API error: ${response.status}`)
     }
 
     const data = await response.json()
-    const assistantMessage =
-      data.choices?.[0]?.message?.content || "I'm having trouble responding right now. Please try again."
+    console.log("[v0] Received response from DGX")
 
-    return NextResponse.json({ message: assistantMessage })
+    const assistantMessage = data.choices?.[0]?.message?.content
+
+    if (!assistantMessage) {
+      throw new Error("No content in AI response")
+    }
+
+    return NextResponse.json({
+      message: assistantMessage,
+      model: DGX_MODEL,
+      source: "dgx-ai",
+    })
   } catch (error) {
     console.error("[v0] Chat API error:", error)
+
+    let errorMessage =
+      "I'm having trouble connecting to the AI server. Please contact Miles College Admissions for immediate assistance:"
+
+    if (error instanceof Error) {
+      if (error.name === "AbortError") {
+        errorMessage = "The AI response took too long. Please try a simpler question or contact us at (205) 929-1657."
+      } else if (error.message.includes("fetch")) {
+        errorMessage = `The DGX Spark server appears to be offline. Please ensure it's running at ${DGX_API_URL} or contact admissions at (205) 929-1657.`
+      }
+    }
+
     return NextResponse.json(
       {
-        error: "Failed to get response from AI",
+        error: "AI_CONNECTION_FAILED",
         message:
-          "I'm having trouble connecting. Please contact Miles College Admissions at (205) 929-1657 or admissions@miles.edu for immediate assistance.",
+          errorMessage +
+          "\n\n**Contact Info:**\n• Phone: (205) 929-1657\n• Email: admissions@miles.edu\n• Website: miles.edu",
+        isDGXError: true,
+      },
+      { status: 500 },
+    )
+  }
+}
+
+export async function GET() {
+  try {
+    const isDGXAvailable = await checkDGXConnection()
+
+    return NextResponse.json({
+      status: "ok",
+      dgxConnected: isDGXAvailable,
+      dgxUrl: DGX_API_URL,
+      model: DGX_MODEL,
+      timestamp: new Date().toISOString(),
+    })
+  } catch (error) {
+    return NextResponse.json(
+      {
+        status: "error",
+        dgxConnected: false,
+        error: error instanceof Error ? error.message : "Unknown error",
       },
       { status: 500 },
     )
