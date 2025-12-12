@@ -1,6 +1,6 @@
 import { NextResponse } from "next/server"
 
-const DGX_API_URL = process.env.NEXT_PUBLIC_MILES_API_URL || "http://192.168.1.25:8000"
+const DGX_API_URL = process.env.NEXT_PUBLIC_MILES_API_URL || "http://192.168.1.25:8000/v1"
 const DGX_MODEL = process.env.DGX_MODEL || "llama3"
 const AI_API_KEY = process.env.AI_API_KEY // Optional authentication key
 
@@ -274,7 +274,7 @@ async function checkDGXConnection(): Promise<boolean> {
     const controller = new AbortController()
     const timeoutId = setTimeout(() => controller.abort(), 5000) // 5 second timeout
 
-    const response = await fetch(`${DGX_API_URL}/v1/models`, {
+    const response = await fetch(`${DGX_API_URL}/models`, {
       method: "GET",
       headers: AI_API_KEY ? { Authorization: `Bearer ${AI_API_KEY}` } : {},
       signal: controller.signal,
@@ -356,7 +356,7 @@ What specific information would you like to know?`,
     const controller = new AbortController()
     const timeoutId = setTimeout(() => controller.abort(), 30000) // 30 second timeout
 
-    const response = await fetch(`${DGX_API_URL}/v1/chat/completions`, {
+    const response = await fetch(`${DGX_API_URL}/chat/completions`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",

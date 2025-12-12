@@ -71,10 +71,10 @@ python -m vllm.entrypoints.openai.api_server \
 curl http://localhost:8000/v1/models
 
 # Test from your web server (remote)
-curl http://YOUR_DGX_IP:8000/v1/models
+curl http://192.168.1.25:8000/v1/models
 
 # Test chat completions
-curl http://YOUR_DGX_IP:8000/v1/chat/completions \
+curl http://192.168.1.25:8000/v1/chat/completions \
   -H "Content-Type: application/json" \
   -d '{
     "model": "llama3",
@@ -96,17 +96,17 @@ On your Next.js web server:
 \`\`\`bash
 # Create .env.local file
 cat > .env.local << EOF
-NEXT_PUBLIC_MILES_API_URL=http://YOUR_DGX_IP:8000
+NEXT_PUBLIC_MILES_API_URL=http://192.168.1.25:8000/v1
 DGX_MODEL=llama3
 AI_API_KEY=your_optional_security_key
 EOF
 \`\`\`
 
-**Important:** Replace `YOUR_DGX_IP` with your actual DGX IP address.
+**Important:** The URL must include the `/v1` path as shown above.
 
 **Checklist:**
 - [ ] `.env.local` file created
-- [ ] `NEXT_PUBLIC_MILES_API_URL` points to correct DGX IP and port
+- [ ] `NEXT_PUBLIC_MILES_API_URL` is `http://192.168.1.25:8000/v1`
 - [ ] `DGX_MODEL` matches the model you're running
 - [ ] Environment variables loaded (restart dev server)
 
@@ -140,7 +140,7 @@ Expected response:
 {
   "status": "ok",
   "dgxConnected": true,
-  "dgxUrl": "http://192.168.1.25:8000",
+  "dgxUrl": "http://192.168.1.25:8000/v1",
   "model": "llama3",
   "timestamp": "2024-01-01T00:00:00.000Z"
 }
@@ -149,7 +149,7 @@ Expected response:
 **Checklist:**
 - [ ] Health check endpoint returns 200 status
 - [ ] `dgxConnected` is `true`
-- [ ] `dgxUrl` is correct
+- [ ] `dgxUrl` is `http://192.168.1.25:8000/v1`
 - [ ] Timestamp is current
 
 ## Step 6: Test Error Handling
@@ -287,11 +287,11 @@ npm run dev | grep "\[v0\]"
 ## Quick Reference Commands
 
 \`\`\`bash
-# Check DGX server status
-curl http://YOUR_DGX_IP:8000/v1/models
+# Check DGX server status (use correct endpoint with /v1)
+curl http://192.168.1.25:8000/v1/models
 
 # Test chat completion
-curl http://YOUR_DGX_IP:8000/v1/chat/completions \
+curl http://192.168.1.25:8000/v1/chat/completions \
   -H "Content-Type: application/json" \
   -d '{"model":"llama3","messages":[{"role":"user","content":"Test"}]}'
 
