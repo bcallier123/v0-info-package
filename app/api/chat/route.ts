@@ -1,6 +1,6 @@
 import { NextResponse } from "next/server"
 
-const DGX_API_URL = process.env.NEXT_PUBLIC_MILES_API_URL || "http://192.168.1.25:8000/v1"
+const DGX_API_URL = process.env.DGX_API_URL || "http://192.168.1.25:8000/v1"
 const DGX_MODEL = process.env.DGX_MODEL || "llama3"
 const AI_API_KEY = process.env.AI_API_KEY
 
