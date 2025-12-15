@@ -26,6 +26,22 @@ export function Navigation() {
     return () => window.removeEventListener("scroll", handleScroll)
   }, [])
 
+  useEffect(() => {
+    const handleEscape = (e: KeyboardEvent) => {
+      if (e.key === "Escape") setIsOpen(false)
+    }
+    if (isOpen) {
+      document.addEventListener("keydown", handleEscape)
+      document.body.style.overflow = "hidden"
+    } else {
+      document.body.style.overflow = ""
+    }
+    return () => {
+      document.removeEventListener("keydown", handleEscape)
+      document.body.style.overflow = ""
+    }
+  }, [isOpen])
+
   const admissionsLinks = [
     { title: "Apply Now", href: "https://myexperience.miles.edu", description: "Start your application online" },
     { title: "How to Apply", href: "#apply", description: "3 simple steps to enrollment" },
@@ -51,12 +67,12 @@ export function Navigation() {
   return (
     <nav
       className={cn(
-        "sticky top-0 z-50 bg-primary text-primary-foreground transition-all duration-300",
-        isScrolled ? "shadow-xl py-2" : "shadow-lg py-3",
+        "sticky top-0 z-50 bg-primary text-primary-foreground transition-all duration-300 safe-top",
+        isScrolled ? "shadow-xl py-1 sm:py-2" : "shadow-lg py-2 sm:py-3",
       )}
     >
       <div className="container mx-auto px-4">
-        <div className="flex items-center justify-between h-16">
+        <div className="flex items-center justify-between h-14 sm:h-16">
           {/* Logo */}
           <div className="flex items-center">
             <a href="#hero" className="flex items-center">
@@ -65,7 +81,7 @@ export function Navigation() {
                 alt="Miles College - Where Excellence Meets Tradition"
                 width={200}
                 height={60}
-                className="h-14 w-auto"
+                className="h-10 sm:h-14 w-auto"
                 priority
               />
             </a>
@@ -188,9 +204,8 @@ export function Navigation() {
             </div>
           </div>
 
-          {/* Mobile Menu Toggle */}
           <button
-            className="lg:hidden touch-target flex items-center justify-center no-select"
+            className="lg:hidden touch-target-lg flex items-center justify-center no-select p-2 -mr-2 rounded-lg hover:bg-white/10 active:bg-white/20 transition-colors"
             onClick={() => setIsOpen(!isOpen)}
             aria-label="Toggle menu"
             aria-expanded={isOpen}
@@ -200,81 +215,90 @@ export function Navigation() {
         </div>
 
         {isOpen && (
-          <div className="lg:hidden py-4 space-y-6 animate-fade-in-up border-t border-white/20 max-h-[80vh] overflow-y-auto">
-            {/* About */}
-            <div>
-              <a
-                href="#about"
-                className="block py-3 px-4 text-sm font-semibold hover:text-secondary hover:bg-white/10 transition-colors rounded-lg"
-                onClick={() => setIsOpen(false)}
-              >
-                About Miles College
-              </a>
-            </div>
-
-            {/* Admissions Section */}
-            <div>
-              <h3 className="px-4 text-xs font-bold uppercase tracking-wider text-secondary mb-2">Admissions</h3>
-              {admissionsLinks.map((link) => (
+          <>
+            {/* Backdrop */}
+            <div className="lg:hidden fixed inset-0 top-[56px] bg-black/50 z-40" onClick={() => setIsOpen(false)} />
+            {/* Menu Content */}
+            <div className="lg:hidden fixed left-0 right-0 top-[56px] bg-primary z-50 py-4 space-y-4 animate-fade-in-up border-t border-white/20 max-h-[calc(100vh-56px)] overflow-y-auto safe-bottom">
+              {/* About */}
+              <div className="px-4">
                 <a
-                  key={link.href}
-                  href={link.href}
-                  {...(link.href.startsWith("http") && { target: "_blank", rel: "noopener noreferrer" })}
-                  className="block py-2 px-4 text-sm hover:text-secondary hover:bg-white/10 transition-colors rounded-lg"
+                  href="#about"
+                  className="block py-3 px-4 text-base font-semibold hover:text-secondary hover:bg-white/10 transition-colors rounded-lg touch-target"
                   onClick={() => setIsOpen(false)}
                 >
-                  {link.title}
+                  About Miles College
                 </a>
-              ))}
-            </div>
+              </div>
 
-            {/* Academics Section */}
-            <div>
-              <h3 className="px-4 text-xs font-bold uppercase tracking-wider text-secondary mb-2">Academics</h3>
-              {academicsLinks.map((link) => (
-                <a
-                  key={link.href}
-                  href={link.href}
-                  {...(link.href.startsWith("http") && { target: "_blank", rel: "noopener noreferrer" })}
-                  className="block py-2 px-4 text-sm hover:text-secondary hover:bg-white/10 transition-colors rounded-lg"
-                  onClick={() => setIsOpen(false)}
+              {/* Admissions Section */}
+              <div className="px-4">
+                <h3 className="px-4 text-xs font-bold uppercase tracking-wider text-secondary mb-2">Admissions</h3>
+                {admissionsLinks.map((link) => (
+                  <a
+                    key={link.href}
+                    href={link.href}
+                    {...(link.href.startsWith("http") && { target: "_blank", rel: "noopener noreferrer" })}
+                    className="block py-3 px-4 text-base hover:text-secondary hover:bg-white/10 transition-colors rounded-lg touch-target"
+                    onClick={() => setIsOpen(false)}
+                  >
+                    {link.title}
+                  </a>
+                ))}
+              </div>
+
+              {/* Academics Section */}
+              <div className="px-4">
+                <h3 className="px-4 text-xs font-bold uppercase tracking-wider text-secondary mb-2">Academics</h3>
+                {academicsLinks.map((link) => (
+                  <a
+                    key={link.href}
+                    href={link.href}
+                    {...(link.href.startsWith("http") && { target: "_blank", rel: "noopener noreferrer" })}
+                    className="block py-3 px-4 text-base hover:text-secondary hover:bg-white/10 transition-colors rounded-lg touch-target"
+                    onClick={() => setIsOpen(false)}
+                  >
+                    {link.title}
+                  </a>
+                ))}
+              </div>
+
+              {/* Campus Life Section */}
+              <div className="px-4">
+                <h3 className="px-4 text-xs font-bold uppercase tracking-wider text-secondary mb-2">Campus Life</h3>
+                {campusLinks.map((link) => (
+                  <a
+                    key={link.href}
+                    href={link.href}
+                    {...(link.href.startsWith("http") && { target: "_blank", rel: "noopener noreferrer" })}
+                    className="block py-3 px-4 text-base hover:text-secondary hover:bg-white/10 transition-colors rounded-lg touch-target"
+                    onClick={() => setIsOpen(false)}
+                  >
+                    {link.title}
+                  </a>
+                ))}
+              </div>
+
+              <div className="px-4 space-y-3 pt-4 border-t border-white/20">
+                <Button
+                  variant="outline"
+                  size="lg"
+                  className="w-full font-semibold bg-transparent touch-target-lg text-base"
+                  asChild
                 >
-                  {link.title}
-                </a>
-              ))}
+                  <a href="tel:205-929-1657">
+                    <Icons.phone className="w-5 h-5 mr-2" />
+                    Call Admissions
+                  </a>
+                </Button>
+                <Button variant="secondary" size="lg" className="w-full font-bold touch-target-lg text-base" asChild>
+                  <a href="https://myexperience.miles.edu" target="_blank" rel="noopener noreferrer">
+                    Apply Now - FREE
+                  </a>
+                </Button>
+              </div>
             </div>
-
-            {/* Campus Life Section */}
-            <div>
-              <h3 className="px-4 text-xs font-bold uppercase tracking-wider text-secondary mb-2">Campus Life</h3>
-              {campusLinks.map((link) => (
-                <a
-                  key={link.href}
-                  href={link.href}
-                  {...(link.href.startsWith("http") && { target: "_blank", rel: "noopener noreferrer" })}
-                  className="block py-2 px-4 text-sm hover:text-secondary hover:bg-white/10 transition-colors rounded-lg"
-                  onClick={() => setIsOpen(false)}
-                >
-                  {link.title}
-                </a>
-              ))}
-            </div>
-
-            {/* Mobile CTAs */}
-            <div className="px-4 space-y-3 pt-4 border-t border-white/20">
-              <Button variant="outline" size="lg" className="w-full font-semibold bg-transparent" asChild>
-                <a href="tel:205-929-1657">
-                  <Icons.phone className="w-4 h-4 mr-2" />
-                  Call Admissions
-                </a>
-              </Button>
-              <Button variant="secondary" size="lg" className="w-full font-bold" asChild>
-                <a href="https://myexperience.miles.edu" target="_blank" rel="noopener noreferrer">
-                  Apply Now
-                </a>
-              </Button>
-            </div>
-          </div>
+          </>
         )}
       </div>
     </nav>

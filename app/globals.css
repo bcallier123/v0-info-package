@@ -329,17 +329,60 @@
     animation-delay: 500ms;
   }
 
+  /* Mobile-first responsive utilities */
+  .mobile-padding {
+    @apply px-4 sm:px-6 lg:px-8;
+  }
+
+  .mobile-text-balance {
+    text-wrap: balance;
+  }
+
+  /* Improved touch targets for mobile */
   .touch-target {
     min-height: 44px;
     min-width: 44px;
   }
 
-  .no-select {
-    -webkit-user-select: none;
-    -moz-user-select: none;
-    user-select: none;
+  .touch-target-lg {
+    min-height: 48px;
+    min-width: 48px;
   }
 
+  /* Mobile scroll snap */
+  .snap-x-mandatory {
+    scroll-snap-type: x mandatory;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .snap-start {
+    scroll-snap-align: start;
+  }
+
+  /* Hide scrollbar but allow scroll */
+  .scrollbar-hide {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+  .scrollbar-hide::-webkit-scrollbar {
+    display: none;
+  }
+
+  /* Mobile-optimized animations - reduced motion */
+  @media (prefers-reduced-motion: reduce) {
+    .animate-fade-in-up,
+    .animate-fade-in-left,
+    .animate-fade-in-right,
+    .animate-scale-in,
+    .float,
+    .shimmer,
+    .animate-shimmer,
+    .pulse-glow {
+      animation: none !important;
+    }
+  }
+
+  /* Safe areas for notched devices */
   .safe-top {
     padding-top: env(safe-area-inset-top);
   }
@@ -351,6 +394,101 @@
   }
   .safe-right {
     padding-right: env(safe-area-inset-right);
+  }
+
+  /* No select for interactive elements */
+  .no-select {
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    user-select: none;
+  }
+
+  /* Mobile-specific text sizes */
+  .text-responsive-hero {
+    @apply text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl;
+  }
+
+  .text-responsive-section {
+    @apply text-3xl sm:text-4xl md:text-5xl lg:text-6xl;
+  }
+
+  /* Prevent text overflow on mobile */
+  .text-clamp {
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+
+  .line-clamp-2 {
+    -webkit-line-clamp: 2;
+  }
+
+  .line-clamp-3 {
+    -webkit-line-clamp: 3;
+  }
+
+  /* Mobile card improvements */
+  .card-mobile {
+    @apply p-4 sm:p-6 lg:p-8;
+  }
+
+  /* Sticky mobile header support */
+  .sticky-header {
+    position: sticky;
+    top: 0;
+    z-index: 50;
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+  }
+
+  /* Mobile image aspect ratios */
+  .aspect-mobile-hero {
+    aspect-ratio: 9 / 16;
+  }
+
+  @media (min-width: 640px) {
+    .aspect-mobile-hero {
+      aspect-ratio: 16 / 9;
+    }
+  }
+
+  /* Improved focus states for accessibility */
+  .focus-visible-ring {
+    @apply focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-secondary focus-visible:ring-offset-2;
+  }
+}
+
+/* Mobile-specific media query overrides */
+@media (max-width: 640px) {
+  /* Reduce padding on mobile */
+  .container {
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+
+  /* Stack flex items on mobile */
+  .mobile-stack {
+    flex-direction: column;
+  }
+
+  /* Full width buttons on mobile */
+  .mobile-full-width {
+    width: 100%;
+  }
+
+  /* Reduce font sizes slightly on very small screens */
+  h1 {
+    font-size: clamp(2rem, 10vw, 3.5rem);
+  }
+
+  h2 {
+    font-size: clamp(1.75rem, 8vw, 2.5rem);
+  }
+
+  /* Ensure images don't overflow */
+  img {
+    max-width: 100%;
+    height: auto;
   }
 }
 
