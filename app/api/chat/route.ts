@@ -12,101 +12,170 @@ const KNOWLEDGE_BASE = {
   apply: {
     general: `**How to Apply to Miles College:**
 
-1. Visit myexperience.miles.edu to complete your online application
-2. There is NO application fee
-3. Applications are accepted on a rolling basis
-4. You can apply as an adult, non-traditional, or returning student
-5. Decision typically takes 2-3 weeks after all documents are received
+1. Visit **myexperience.miles.edu** to complete your online application
+2. There is **NO application fee** - completely FREE!
+3. Applications accepted on a **rolling basis** (apply anytime!)
+4. Decision typically takes **2-3 weeks** after all documents received
 
-**To check your application status:**
-Log in to myexperience.miles.edu or call (205) 929-1657
+**After You Apply:**
+- Check your email for confirmation
+- Log in to portal to track status
+- Submit required documents
+- Complete FAFSA (Code: 001028)
 
 **Made a mistake?** Contact admissions to update your application.
-**Missing documents?** You can still start the process - submit what you have and complete the rest later.`,
+**Missing documents?** You can still start - submit what you have!`,
 
-    freshman: `**Freshman Application Process:**
+    freshman: `**Freshman Application Checklist:**
 
-**Step 1:** Apply online at myexperience.miles.edu (FREE - no application fee!)
-**Step 2:** Send your high school transcript (counselor sends electronically or mail to Admissions)
-**Step 3:** Complete FAFSA at studentaid.gov (Miles School Code: 001028)
+**Step 1:** Apply FREE at myexperience.miles.edu
+**Step 2:** Send high school transcript (counselor sends electronically or mail)
+**Step 3:** Complete FAFSA at studentaid.gov (Code: **001028**)
 **Step 4:** Take placement test if no ACT/SAT scores
-**Step 5:** Get your Miles email & student ID
-**Step 6:** Pay orientation/housing fees and apply for housing
+**Step 5:** Receive acceptance & student credentials
+**Step 6:** Pay $150 orientation fee + $300 housing deposit (if living on campus)
+**Step 7:** Attend orientation & register for classes
 
-**Application Deadline:** Rolling admissions - apply anytime!
-**Decision Time:** Usually 2-3 weeks after all documents received`,
+**Timeline:** Rolling admissions - apply anytime!
+**Decision:** Usually 2-3 weeks after complete application`,
 
-    transfer: `**Transfer Student Application:**
+    transfer: `**Transfer Student Checklist:**
 
-**Step 1:** Apply online at myexperience.miles.edu (FREE!)
+**Step 1:** Apply FREE at myexperience.miles.edu
 **Step 2:** Request official transcripts from ALL previous colleges
-**Step 3:** Complete FAFSA at studentaid.gov (Code: 001028)
-**Step 4:** Submit final high school transcript if you have less than 24 college credits
-**Step 5:** Get your Miles email & student ID
-**Step 6:** Pay orientation/housing fees and apply for housing
+**Step 3:** Submit high school transcript (if less than 24 college credits)
+**Step 4:** Complete FAFSA at studentaid.gov (Code: **001028**)
+**Step 5:** Receive acceptance & credit evaluation
+**Step 6:** Pay fees & register for classes
 
-**Transfer Credits:** We accept credits from accredited institutions. Your transcript will be evaluated after admission.
-**Mid-semester transfers:** Contact admissions to discuss options.`,
+**Credit Transfer:**
+- Credits from accredited institutions evaluated after admission
+- Generally C or better courses may transfer
+- We accept community college credits!
+
+**Questions?** Call (205) 929-1657`,
 
     late: `**Late Applications:**
-Yes, we accept late applications! Miles College has rolling admissions. Contact the Admissions Office at (205) 929-1657 to discuss your timeline and options.`,
+Yes! Miles College has **rolling admissions** - we accept applications year-round. Contact Admissions at (205) 929-1657 to discuss your timeline and ensure you don't miss important deadlines for housing and financial aid.`,
 
     noSSN: `**Applying Without a Social Security Number:**
-Yes, you can apply without a Social Security number. Contact the Admissions Office at (205) 929-1657 for guidance on completing your application.`,
+Yes, you can apply without an SSN. Contact the Admissions Office at (205) 929-1657 for guidance on completing your application and financial aid options.`,
+
+    nextSteps: `**I'm Accepted - What's Next?**
+
+Congratulations! Here's your next steps:
+
+1. **Pay Orientation Fee** ($150) - required for all new students
+2. **Complete FAFSA** at studentaid.gov (Code: 001028)
+3. **Apply for Housing** if living on campus ($300 deposit)
+4. **Submit Shot Records** & medical forms
+5. **Attend Orientation** - mandatory for all new students
+6. **Register for Classes** - happens during orientation
+7. **Set Up Student Email** & portal access
+
+**Questions?** Call (205) 929-1657 or email admissions@miles.edu`,
   },
 
   // ADMISSION REQUIREMENTS
   requirements: {
     gpa: `**GPA Requirements:**
-Miles College considers the whole student, not just GPA. While we look for students with strong academic records, we also value leadership, community involvement, and potential. Contact admissions to discuss your specific situation.`,
+Miles College takes a holistic approach to admissions. While we value strong academics, we also consider:
+- Leadership experience
+- Community involvement
+- Personal growth potential
+- Extracurricular activities
 
-    testScores: `**ACT/SAT Requirements:**
-ACT and SAT scores are NOT required for admission. If you don't have test scores, you'll take our placement test instead to help us place you in the right courses.
+**Don't have a perfect GPA?** Apply anyway! We believe in student potential.
+Contact admissions to discuss your specific situation: (205) 929-1657`,
 
-**If you have scores:** Submit them - they can help with scholarship consideration.
-**No scores?** No problem! Schedule a placement test with Mrs. Underwood at (205) 929-1000.`,
+    testScores: `**ACT/SAT - NOT Required!**
 
-    documents: `**Required Documents for Admission:**
-- Completed online application at myexperience.miles.edu
-- Official high school transcript (or GED certificate)
-- Official college transcripts (for transfer students)
+Good news: ACT and SAT scores are **optional** for admission!
+
+**If you have scores:** Submit them - they may help with scholarships
+**No scores?** Take our **FREE placement test** instead
+
+**To schedule placement test:**
+Contact Mrs. Underwood at (205) 929-1000
+
+**Test covers:**
+- Math skills
+- Reading comprehension  
+- Writing assessment
+- Takes about 2-3 hours`,
+
+    documents: `**Required Documents:**
+
+**All Students:**
+- Completed application (myexperience.miles.edu)
+- Official high school transcript OR GED certificate
 - ACT/SAT scores (optional - placement test available)
+
+**Transfer Students Also Need:**
+- Official transcripts from ALL colleges attended
 
 **We Accept:**
 - GED students
-- Homeschool students (with proper documentation)
+- Homeschool students
 - International students
 - Dual-enrollment students
 
-**Recommendation letters are NOT required** but can strengthen your application.`,
+**Recommendation letters:** Not required, but can strengthen your application`,
 
-    ged: `**GED Students:**
-Yes! Miles College welcomes GED students. Submit your official GED certificate along with your application. You may need to take the placement test for course placement.`,
+    ged: `**GED Students Welcome!**
 
-    homeschool: `**Homeschool Students:**
-Yes! We accept homeschool students. You'll need:
+Yes, Miles College accepts GED students!
+
+**What you need:**
+- Completed application
+- Official GED certificate/transcript
+- Complete FAFSA for financial aid
+
+**May need:** Placement test for course placement
+
+Apply today at myexperience.miles.edu!`,
+
+    homeschool: `**Homeschool Students Welcome!**
+
+Miles College accepts homeschool students.
+
+**Requirements:**
 - Transcript showing completed coursework
-- Documentation of your homeschool program
+- Documentation of homeschool program
 - ACT/SAT scores OR take our placement test
 
-Contact admissions at (205) 929-1657 for specific requirements.`,
+Contact admissions for specific requirements: (205) 929-1657`,
 
     international: `**International Students:**
-Yes! Miles College welcomes international students. Additional requirements include:
-- English proficiency documentation (TOEFL/IELTS)
-- Credential evaluation of foreign transcripts
-- Financial documentation for visa purposes
 
-Contact our International Student Services for guidance.`,
+Miles College welcomes international students!
+
+**Additional Requirements:**
+- English proficiency (TOEFL/IELTS)
+- Credential evaluation of foreign transcripts
+- Financial documentation for visa (I-20)
+- Copy of passport
+
+Contact International Student Services for guidance.
+Admissions: (205) 929-1657`,
+
+    dualEnrollment: `**Dual Enrollment Students:**
+
+Yes! We accept dual enrollment students and credits.
+
+Your college credits earned during high school can transfer to Miles. Contact admissions to discuss how your credits will apply.
+
+Phone: (205) 929-1657`,
   },
 
   // TRANSCRIPTS & DOCUMENTS
   transcript: {
-    highschool: `**Sending Your High School Transcript:**
+    highschool: `**Sending High School Transcripts:**
 
-**Electronic (Preferred):**
-- Have your counselor send via Parchment
-- Or use your school's electronic system
+**Electronic (Fastest):**
+- Parchment - YES, we accept it!
+- Your school's electronic system
+- Have counselor send directly
 
 **By Mail:**
 Miles College, Office of Admissions
@@ -114,491 +183,778 @@ Miles College, Office of Admissions
 Fairfield, AL 35064
 
 **Important:**
-- Must be OFFICIAL (sealed with school stamp/signature)
-- Unofficial transcripts accepted initially, but official required for final enrollment
-- Allow 7-10 business days for processing
-- Check your portal if it's not showing after 2 weeks`,
+- Must be OFFICIAL (sealed/stamped)
+- Allow 7-10 business days to process
+- Check portal after 2 weeks if not showing
 
-    college: `**Sending College Transcripts (Transfer Students):**
+**Can my counselor upload it?** Yes! Ask them to send electronically.`,
 
-Request official transcripts from ALL colleges you've attended - even if you didn't complete the program.
+    college: `**Sending College Transcripts:**
+
+Request official transcripts from **ALL** colleges attended - even if you didn't finish.
 
 **Send to:**
 Miles College, Office of Admissions
 5500 Myron Massey Blvd
 Fairfield, AL 35064
 
-**Electronic transcripts:** Preferred and process faster
-**We accept Parchment:** Yes!
-**Processing time:** 7-10 business days
+**Electronic transcripts:** Preferred - process faster
+**Parchment:** Yes, accepted!
+**Processing:** 7-10 business days
 
-**Not showing in your portal?** Contact admissions at (205) 929-1657`,
+**Not showing after 2 weeks?** Call (205) 929-1657`,
+
+    processing: `**Transcript Processing:**
+
+**Timeline:** 7-10 business days after receipt
+
+**Not showing in portal?**
+1. Confirm transcript was sent
+2. Wait full 10 business days
+3. Contact admissions: (205) 929-1657
+
+**Unofficial transcripts:** Accepted initially, but official required for enrollment`,
   },
 
   // FINANCIAL AID & FAFSA
-  fafsa: `**FAFSA & Financial Aid:**
+  fafsa: `**FAFSA - Your Key to Financial Aid!**
 
-**Complete FAFSA at:** studentaid.gov
-**Miles College School Code:** 001028 (You need this!)
+**Website:** studentaid.gov
+**Miles College Code:** **001028** (You need this!)
 
-**When to file:** As soon as possible after October 1st
-**Priority Deadline:** March 1st for best financial aid packages
+**When to File:**
+- Opens October 1st each year
+- **Priority Deadline:** March 1st
+- File ASAP for best aid package!
 
-**What you need:**
-- Social Security Number
-- Driver's License (if applicable)
-- Federal tax returns
-- Records of untaxed income
+**What You Need:**
 - FSA ID (create at studentaid.gov)
+- Social Security Number
+- Federal tax returns (or estimates)
+- Records of untaxed income
 
-**Dependent vs Independent:**
-- Most students under 24 need parent information
-- If parents won't provide info, contact our Financial Aid office for options
-- Independent students: You may qualify if you're 24+, married, a veteran, or have dependents
+**Parent Information:**
+- Most students under 24 need parent info
+- Parents won't help? Contact Financial Aid for options
+- Independent? You may qualify if 24+, married, veteran, or have dependents
 
-**How long to process:** 3-5 days for electronic submission
+**Processing Time:** 3-5 days electronically
 
-**Missed the deadline?** You can still apply - contact Financial Aid at (205) 929-1665`,
+**Questions?** Financial Aid: (205) 929-1665`,
 
-  financialAid: `**Financial Aid Available at Miles College:**
+  financialAid: `**Financial Aid at Miles College:**
 
-**Federal Aid:**
-- Pell Grants (don't need to repay!)
+**Federal Aid (Complete FAFSA):**
+- Pell Grants (FREE money - no repayment!)
 - Federal Supplemental Grants
 - Federal Work-Study
 - Federal Student Loans
 
 **State Aid:**
 - Alabama Student Grant Program
+- State scholarships
 
-**Institutional Aid:**
-- Miles College Scholarships
-- Academic Scholarships
+**Miles College Aid:**
+- Academic Merit Scholarships
 - Athletic Scholarships
 - Music/Band Scholarships
+- Leadership Awards
+- Departmental Scholarships
 
-**Payment Plans:** Yes! We offer payment plans. Contact the Business Office.
+**Payment Plans:** Yes! Contact Business Office: (205) 929-1000
 
-**Important:** Complete your FAFSA (Code: 001028) to see what you qualify for!
+**FAFSA Code:** 001028
+**Financial Aid Office:** (205) 929-1665`,
 
-Contact Financial Aid: (205) 929-1665 or financialaid@miles.edu`,
+  fafsaParents: `**FAFSA & Parent Information:**
+
+**Do parents need to complete FAFSA?**
+Most students under 24 are considered "dependent" and need parent financial information.
+
+**What if parents won't provide info?**
+Contact our Financial Aid Office - there may be options:
+- Dependency override request
+- Alternative documentation
+- Special circumstances consideration
+
+**Independent Student Status:**
+You may qualify if you're:
+- 24 years or older
+- Married
+- A veteran
+- Have legal dependents
+- Were in foster care
+
+Financial Aid: (205) 929-1665`,
 
   // SCHOLARSHIPS
   scholarships: `**Scholarships at Miles College:**
 
 **Types Available:**
-- Academic Merit Scholarships
+- Academic Merit (GPA-based)
 - Athletic Scholarships
 - Music/Band Scholarships
-- Leadership Scholarships
+- Leadership Awards
 - Departmental Scholarships
+- External/Community Scholarships
 
 **How to Apply:**
-Many scholarships are automatically considered when you apply. Additional scholarships may require separate applications.
+- Many are AUTOMATIC with your admission application
+- Some require separate applications
+- Athletic/Band - contact coaches directly
 
-**Requirements:**
+**Eligibility:**
 - GPA requirements vary by scholarship
-- Test scores can help but are not always required
-- Maintain required GPA to renew
+- Test scores can help but not always required
+- Must maintain GPA to renew
 
-**Combining Scholarships:** Yes, some scholarships can be combined with other aid!
+**Good to Know:**
+- Transfer students ARE eligible!
+- Adult students CAN qualify!
+- Some scholarships combine with other aid
 
-**Transfer Students:** Yes, transfer students are eligible for scholarships!
+**Timeline:** Decisions usually come with or shortly after admission
 
-**Adult/Non-traditional Students:** Yes, you can qualify!
-
-**Timeline:** Scholarship decisions usually come with or shortly after your admission decision.
-
-Contact the Financial Aid Office: (205) 929-1665`,
+Contact Financial Aid: (205) 929-1665`,
 
   // HOUSING & CAMPUS LIFE
-  housing: `**Housing at Miles College:**
+  housing: `**Campus Housing:**
 
 **How to Apply:**
-1. Log in to your student portal (OneLogin)
-2. Complete the housing application
-3. Pay the $300 housing deposit
-4. Submit required medical forms and shot records
+1. Log in to student portal
+2. Complete housing application
+3. Pay $300 housing deposit
+4. Submit medical forms & shot records
+5. Receive room assignment
 
 **Housing Options:**
 - Traditional residence halls
-- Suite-style living
-- All residents must have a meal plan
+- Suite-style rooms
+- Meal plan required for residents
 
-**Costs:** Varies by room type ($4,000-$5,500 per semester)
+**Costs:** $4,000-$5,500 per semester (varies by room type)
 
-**Freshman Requirement:** First-year students are encouraged to live on campus but it's not mandatory.
+**Freshman Requirement:** Encouraged but not mandatory
 
-**Deadlines:** Apply early - housing fills up fast!
+**What's Included:** Bed, desk, dresser, closet
+**You Bring:** Bedding, personal items, decorations
 
-**Co-ed Dorms?** Separate male and female residence halls.
+**Deadlines:** Apply early - rooms fill fast!
 
-**What's Included:** Bed, desk, dresser, closet space. You bring bedding, personal items, and decorations.
+**Co-ed?** Separate male and female halls
 
-**Off-Campus Living:** Upperclassmen may live off campus with approval.
-
-Contact Housing: (205) 929-1000`,
+Housing Office: (205) 929-1000`,
 
   mealPlans: `**Meal Plans:**
-All students living on campus are required to have a meal plan.
 
-**Options vary by tier** - contact the Business Office for current meal plan options and pricing.
+All on-campus residents must have a meal plan.
 
-**Dining locations:** Main cafeteria and campus eateries
+**Options:** Multiple tiers available
+**Dining:** Main cafeteria + campus eateries
+**Flexibility:** Various meal swipes per week
 
-Contact the Business Office for details.`,
+Contact Business Office for current plans and pricing: (205) 929-1000`,
+
+  offCampus: `**Living Off Campus:**
+
+**First-year students:** Encouraged to live on campus but not required
+
+**Upperclassmen:** May live off campus with approval
+
+**Benefits of On-Campus:**
+- Walking distance to classes
+- Campus community experience
+- Meal plan convenience
+- Support services nearby
+
+Questions? Housing: (205) 929-1000`,
 
   // ACADEMICS & MAJORS
   programs: `**Academic Programs at Miles College:**
 
-We offer 30+ degree programs across 5 divisions:
+**30+ Degree Programs in 5 Divisions:**
 
 **Business & Accounting:**
-- Business Administration
-- Accounting
-- Marketing
+Business Administration, Accounting, Marketing
 
 **Education:**
-- Elementary Education
-- Secondary Education
-- Special Education
+Elementary, Secondary, Special Education
 
 **Humanities:**
-- English
-- Communications/Mass Media
-- Music
-- Philosophy & Religion
+English, Communications/Mass Media, Music, Philosophy & Religion
 
 **Natural Sciences & Mathematics:**
-- Biology (Pre-Med track available)
-- Chemistry
-- Mathematics
-- Computer Science
-- Environmental Science
+Biology (Pre-Med track), Chemistry, Mathematics, Computer Science, Environmental Science
 
 **Social & Behavioral Sciences:**
-- Criminal Justice
-- History
-- Political Science
-- Psychology
-- Social Work
-- Sociology
+Criminal Justice, History, Political Science, Psychology, Social Work, Sociology
 
 **Special Programs:**
 - Honors Program
 - Pre-Law Track
 - Pre-Med Track
-- Study Abroad Opportunities
-- Internship Programs
+- Study Abroad
+- Internships
 
 **Class Size:** 17:1 student-faculty ratio
-**Online Programs:** Some courses available online
-**Evening/Weekend:** Contact your advisor about scheduling options
+**Online:** Some courses available
 
 Want details about a specific major? Ask me!`,
 
   changeMajor: `**Changing Your Major:**
-Yes, you can change your major! Many students do. Meet with your academic advisor to discuss your options and create a new academic plan. There's no penalty for changing majors, though it may affect your graduation timeline.`,
 
-  tutoring: `**Tutoring & Academic Support:**
-Yes! Free tutoring is available through the Academic Success Center.
+Yes! You can change your major at Miles College.
 
-**Services include:**
+**How:**
+1. Meet with your academic advisor
+2. Discuss your interests and goals
+3. Complete major change form
+4. Create new academic plan
+
+**Important:**
+- No penalty for changing
+- May affect graduation timeline
+- Some majors have prerequisites
+
+Many students change majors - it's normal!`,
+
+  tutoring: `**Academic Support Services:**
+
+**FREE Tutoring Available:**
 - One-on-one tutoring
-- Study groups
-- Writing center assistance
-- Math lab support
+- Group study sessions
+- Writing Center help
+- Math Lab support
 
-Contact your advisor or the Academic Success Center for schedules.`,
+**Academic Success Center:**
+- Study skills workshops
+- Time management help
+- Test preparation
+
+**How to Access:**
+Contact your advisor or visit the Academic Success Center
+
+All services are FREE for Miles students!`,
+
+  classSize: `**Class Sizes:**
+
+**Student-Faculty Ratio:** 17:1
+
+This means:
+- Professors know your name
+- Personal attention & mentorship
+- Engaging class discussions
+- Easy access to faculty
+- No huge lecture halls
+
+Our small classes help you succeed!`,
 
   // TRANSFER & CREDITS
-  transfer: `**Transfer Student Information:**
+  transfer: `**Transfer Students:**
 
-**We Accept Transfer Students!**
+**We Welcome Transfers!**
 
 **Credit Evaluation:**
-- Credits from accredited institutions are evaluated after admission
-- Generally, credits with C or better may transfer
-- Your transcript is reviewed course-by-course
+- Credits from accredited institutions
+- Evaluated after admission
+- Generally C or better transfers
+- Course-by-course review
 
-**GPA Requirement:** Good academic standing from previous institution
+**Requirements:**
+- Good standing at previous institution
+- Official transcripts from ALL colleges
+- FAFSA completion
 
-**Financial Aid:** Yes, transfer students qualify for federal and institutional aid
+**Transfer Students Get:**
+- Financial aid eligibility
+- Scholarship opportunities
+- Campus housing access
+- Full support services
 
-**Housing:** Yes, transfer students can live on campus
+**Community College:** Yes, we accept those credits!
 
-**Scholarships:** Yes, transfer students are eligible for scholarships
+**Mid-semester transfer?** Contact admissions to discuss.
 
-**Mid-semester Transfers:** Contact admissions to discuss options
+Apply at myexperience.miles.edu
+Questions: (205) 929-1657`,
 
-**Community College Credits:** Yes, we accept them!
+  creditEvaluation: `**How Credits Transfer:**
 
-To see how your credits might transfer, contact admissions at (205) 929-1657`,
+Your transcript is evaluated after admission:
+
+1. Official transcripts reviewed
+2. Courses matched to Miles equivalents
+3. Credits with C or better typically transfer
+4. Evaluation sent to you
+
+**Factors:**
+- Accreditation of previous school
+- Course content match
+- Grade earned
+- Degree requirements
+
+**Timeline:** Usually 2-4 weeks after admission
+
+Questions about specific credits? Contact Registrar after admission.`,
 
   // PARENT & FAMILY QUESTIONS
-  parents: `**Information for Parents & Families:**
+  parents: `**Information for Parents:**
 
-**FERPA Notice:** Due to privacy laws, we cannot share student information without written consent from the student. Students can authorize parent access through the Registrar's Office.
+**FERPA Privacy:**
+Due to federal law, we need student consent to share information. Students can authorize parent access through the Registrar.
 
 **Paying Tuition:**
-- Online through the student portal
-- Payment plans available through the Business Office
-- Third-party billing available
+- Online through student portal
+- Payment plans available (Business Office)
+- Third-party billing options
 
 **Campus Safety:**
 - 24/7 campus security
 - Emergency notification system
 - Well-lit campus
-- Safe and supportive environment
+- Safe, supportive environment
 
-**Support Services:**
+**Support for Your Student:**
 - Academic advising
 - Career counseling
 - Mental health services
-- Disability support services
-- First-generation student programs
+- Disability support
+- First-generation programs
 
-**Parent Contact:**
+**Key Contacts:**
 Admissions: (205) 929-1657
 Financial Aid: (205) 929-1665
 Business Office: (205) 929-1000
+Campus Security: 24/7 available`,
 
-**Emergency Contact:** Campus Security - available 24/7`,
+  safety: `**Campus Safety:**
+
+Miles College prioritizes student safety!
+
+**Security Features:**
+- 24/7 Campus Security patrol
+- Emergency notification system
+- Well-lit grounds & walkways
+- Security escorts available
+- Safe, supportive community
+
+**Emergency?**
+Campus Security available 24/7
+
+We're committed to a safe learning environment.`,
 
   // PORTALS, EMAIL & TECH
   portal: `**Student Portal & Technology:**
 
-**OneLogin Portal:**
-This is your gateway to everything at Miles College!
-
-**Getting Your Login:**
-1. After acceptance, you'll receive your student ID number
-2. Your Miles email format: firstnamelastname@students.miles.edu
-3. OneLogin access is set up after you pay enrollment fees
-
-**Having Login Issues?**
-- Contact IT Help Desk
-- Try password reset first
-- Allow 24-48 hours after paying fees for portal activation
-
-**What's in OneLogin:**
+**OneLogin Portal - Your Hub for Everything:**
 - Class registration
 - Financial aid status
 - Housing application
 - Academic records
-- Campus announcements
+- Grades & schedules
 
-**Never received login info?** Contact IT or Admissions at (205) 929-1657`,
+**Getting Access:**
+1. Receive acceptance
+2. Pay enrollment fees
+3. Portal activated within 24-48 hours
+4. Login info sent to personal email
+
+**Student Email Format:**
+firstnamelastname@students.miles.edu
+
+**Can't Log In?**
+1. Try password reset first
+2. Check spam for login info
+3. Contact IT Help Desk
+4. Or call (205) 929-1657
+
+**Never received credentials?**
+Contact Admissions: (205) 929-1657`,
+
+  passwordReset: `**Password Reset:**
+
+**To reset your password:**
+1. Go to the login page
+2. Click "Forgot Password"
+3. Follow email instructions
+
+**Still can't access?**
+Contact IT Help Desk or Admissions: (205) 929-1657`,
 
   // ORIENTATION, REGISTRATION & NEXT STEPS
-  orientation: `**Orientation & Registration:**
+  orientation: `**Orientation - REQUIRED for All New Students!**
 
-**Orientation is REQUIRED** for all new students!
-
-**What Happens at Orientation:**
-- Meet faculty and staff
+**What Happens:**
+- Meet faculty & staff
 - Take placement tests (if needed)
 - Register for classes
-- Learn about campus resources
-- Get your student ID
+- Learn campus resources
+- Get student ID
 - Tour campus
 - Meet other new students
+- Have fun!
 
-**Dates:** Orientation dates are sent after admission. Usually held in summer before fall semester.
+**Dates:** Sent after admission (usually summer for fall semester)
 
-**Virtual Option:** Virtual registration may be available - contact admissions.
+**Cost:** $150 orientation fee (one-time)
 
-**Fees:** $150 orientation fee (one-time, required)
+**Virtual Option:** May be available - ask admissions
 
-**Missed Orientation?** Contact admissions immediately at (205) 929-1657 to make arrangements.
+**Missed Orientation?**
+Contact admissions IMMEDIATELY: (205) 929-1657
 
-**Class Registration:**
-- Happens during or after orientation
-- Your advisor will help you select courses
-- Register through your student portal`,
+**Registration:**
+- Happens during orientation
+- Advisor helps select courses
+- Also available through portal after`,
 
-  classStart: `**When Do Classes Start?**
-- Fall Semester: Usually late August
-- Spring Semester: Usually mid-January
-- Summer Sessions: May/June
+  registration: `**Class Registration:**
 
-Check the academic calendar on miles.edu for specific dates.`,
+**When:** During or after orientation
+
+**How:**
+1. Meet with academic advisor
+2. Discuss course schedule
+3. Register through student portal
+4. Pay any required fees
+
+**Before You Can Register:**
+- Complete orientation (new students)
+- Clear any holds on account
+- Meet with advisor
+
+**Need Help?**
+Contact your advisor or Registrar's Office`,
+
+  classStart: `**Academic Calendar:**
+
+**Fall Semester:** Late August start
+**Spring Semester:** Mid-January start
+**Summer Sessions:** May/June
+
+Check miles.edu for specific dates each year.`,
 
   // SUPPORT SERVICES
   support: `**Student Support Services:**
 
 **Academic Support:**
 - Academic Advising
-- Tutoring Center
+- FREE Tutoring
 - Writing Center
 - Math Lab
 
 **Personal Support:**
 - Counseling Services (mental health)
 - Career Services
-- Disability Support Services (ADA accommodations)
-- First-Generation Student Programs
+- Disability Support (ADA)
+- First-Generation Programs
 
 **Campus Life:**
 - 50+ Student Organizations
 - Greek Life
 - Student Government
 - Campus Ministries
-- Mentoring Programs
+- Intramural Sports
 
 **Career Development:**
 - Career Counseling
-- Resume Assistance
+- Resume Help
 - Internship Placement
 - Job Fairs
 
-**Childcare:** Contact Student Affairs about local resources.
+All services are here to help you succeed!`,
 
-All support services are here to help you succeed!`,
+  mentalHealth: `**Mental Health & Counseling:**
+
+FREE counseling services available to all students!
+
+**Services:**
+- Individual counseling
+- Crisis support
+- Stress management
+- Wellness resources
+
+**Confidential & supportive environment**
+
+Contact Student Affairs for appointments.`,
+
+  disability: `**Disability Support Services:**
+
+Miles College provides ADA accommodations for students with disabilities.
+
+**Services may include:**
+- Extended test time
+- Note-taking assistance
+- Accessible materials
+- Other reasonable accommodations
+
+**How to Request:**
+1. Contact Disability Services
+2. Provide documentation
+3. Meet with coordinator
+4. Receive accommodation plan
+
+Contact Student Affairs to get started.`,
 
   // CAMPUS VISITS
-  visits: `**Campus Visits & Tours:**
+  visits: `**Visit Miles College!**
 
-**Schedule a Visit:**
-Contact Admissions at (205) 929-1657 or email admissions@miles.edu
+**Schedule a Tour:**
+Call: (205) 929-1657
+Email: admissions@miles.edu
 
 **Tour Options:**
 - Individual campus tours
-- Group visits (high schools, churches, organizations)
-- Virtual tours available
+- Group visits (schools, churches, organizations)
+- Virtual tours online
 
 **What to Expect:**
 - Campus walking tour
 - Meet with admissions counselor
 - Information session
-- Q&A opportunity
+- Q&A time
 
-**Bring Your Parents:** Family members are welcome.
+**Bring Your Family!** Parents and guests welcome.
 
-**Preview Days/Open House:** Special events throughout the year - check miles.edu for dates.
+**Preview Days/Open House:**
+Special events throughout the year - check miles.edu
 
-**High School Visits:** Yes, our recruiters visit high schools! Ask your counselor to request a visit.`,
+**Can't Visit In Person?**
+Ask about virtual tour options!`,
 
   // SPECIAL SITUATIONS
   nervous: `**Feeling Nervous About College?**
+
 That's completely normal! Here's what helps:
 
-- **Visit campus** - it feels less scary when you know the place
-- **Connect with current students** - they were once where you are
-- **Reach out to your advisor** - they're here to help
-- **Join orientation activities** - you'll meet people just like you
-- **Use support services** - tutoring, counseling, everything is free
+**Before You Arrive:**
+- Visit campus - familiarity reduces anxiety
+- Connect with other incoming students online
+- Ask questions - no question is silly!
 
-Miles College has a family atmosphere. You'll find your community here. We believe in you!`,
+**When You Get Here:**
+- Attend ALL orientation activities
+- Introduce yourself to roommates & neighbors
+- Join a student organization
+- Use support services - they're free!
 
-  outOfSchool: `**Returning After Years Away?**
-Welcome back to education! You absolutely can apply.
+**Remember:**
+- Everyone is new once
+- Staff WANT to help you
+- Miles has a family atmosphere
+- You belong here!
 
-**What you need:**
-- Complete the application at myexperience.miles.edu
-- Submit transcripts (high school and any college)
+We believe in you!`,
+
+  outOfSchool: `**Returning After Time Away?**
+
+Welcome back to education! You CAN do this!
+
+**You're Not Alone:**
+Many Miles students are adult learners returning after time away.
+
+**What You Need:**
+- Complete application at myexperience.miles.edu
+- Submit transcripts (HS and any college)
 - Complete FAFSA for financial aid
 - Take placement test if needed
 
-**Support for Adult Learners:**
+**Support for You:**
 - Flexible scheduling options
+- Understanding advisors
 - Academic support services
 - Financial aid available
-- Advisors who understand adult student needs
 
-You're never too old to pursue your degree. Contact us at (205) 929-1657!`,
+**Age is just a number** - pursue your degree!
 
-  workFullTime: `**Working Full-Time?**
-Many Miles College students work while attending!
+Call: (205) 929-1657`,
+
+  workFullTime: `**Working While Attending?**
+
+Many Miles students work - you can too!
 
 **Options:**
-- Evening courses may be available
-- Some online/hybrid options
-- Part-time enrollment is possible
-- Financial aid available for part-time students
+- Evening courses (some available)
+- Online/hybrid classes (ask about availability)
+- Part-time enrollment possible
+- Weekend options for some programs
 
-Talk to an advisor about creating a schedule that works with your job. Call (205) 929-1657.`,
+**Financial Aid:**
+Part-time students can receive aid too!
+
+**Tips:**
+- Talk to advisor about manageable schedule
+- Be realistic about course load
+- Use time management resources
+
+Contact an advisor: (205) 929-1657`,
 
   haveKids: `**Students with Children:**
-Yes, you can absolutely attend Miles College as a parent!
+
+Yes, you can pursue your degree as a parent!
 
 **Support Available:**
 - Flexible scheduling options
-- Financial aid for childcare expenses (through FAFSA)
-- Understanding faculty and staff
+- Understanding faculty
+- Financial aid may help with childcare costs
 - Other student-parents in our community
 
-Contact Student Affairs about local childcare resources. You can do this!`,
+**FAFSA:**
+May include childcare in cost of attendance
+
+**Resources:**
+Contact Student Affairs about local childcare options
+
+You can do this - many have before you!`,
 
   oweOtherSchool: `**Owe Another School Money?**
-You can still apply and be admitted to Miles College!
 
-**However:** You'll need to resolve holds at previous institutions before official transcripts can be released. This may affect:
-- Transfer credit evaluation
+You can still apply to Miles!
+
+**Important to Know:**
+- Apply and get admitted to Miles
+- Resolve balance at previous school for transcripts
+- Work with previous school on payment plan
+- Talk to our Financial Aid about options
+
+**Your balance affects:**
+- Transfer credit evaluation (needs official transcript)
 - Financial aid processing
 
-**Options:**
-- Work with the previous school on a payment plan
-- Apply to Miles while resolving the balance
-- Talk to our Financial Aid office about options
-
-Contact admissions to discuss your specific situation: (205) 929-1657`,
+**Don't let this stop you** - contact admissions to discuss: (205) 929-1657`,
 
   denied: `**Previously Denied?**
-You may be able to reapply! Circumstances that can help:
 
+You may be able to reapply!
+
+**What Helps:**
 - Improved academic record
 - Additional coursework completed
 - New test scores
 - Changed circumstances
+- Time passed
 
-Contact admissions at (205) 929-1657 to discuss your situation and reapplication options.`,
+**How to Reapply:**
+Contact admissions to discuss your situation and options.
 
-  waitlisted: `**What Does Waitlist Mean?**
-Being waitlisted means you meet our requirements but we're waiting on space availability.
+Phone: (205) 929-1657
+Email: admissions@miles.edu
+
+Don't give up on your goals!`,
+
+  waitlisted: `**Waitlisted - What Now?**
+
+Being waitlisted means you meet requirements but space is limited.
 
 **What to Do:**
-- Keep your application active
-- Submit any missing documents
-- Consider alternative start terms
-- Stay in contact with admissions
+1. Keep your application active
+2. Submit any missing documents
+3. Consider alternative start terms
+4. Stay in contact with admissions
+5. Respond promptly to any requests
 
-You'll be notified as soon as a decision is made. Questions? Call (205) 929-1657.`,
-}
+**You'll be notified** as soon as a decision is made.
 
-const getSystemPrompt = (persona: string | null) => {
-  const basePrompt = `You are Miles Assistant, an AI enrollment coach for Miles College, a prestigious HBCU in Birmingham, Alabama established in 1898.
+Questions? Call (205) 929-1657`,
 
-**Key Facts:**
-- The ONLY 4-year HBCU in Birmingham
+  missingDocuments: `**Missing Documents?**
+
+Don't let missing documents stop you!
+
+**You Can:**
+- Start your application now
+- Submit documents as you get them
+- Work with admissions on alternatives
+
+**Common Solutions:**
+- Request transcripts ASAP
+- Ask counselors to expedite
+- Communicate with admissions about delays
+
+Start your application at myexperience.miles.edu
+Call with questions: (205) 929-1657`,
+
+  // CONTACT INFORMATION
+  contact: `**Contact Miles College:**
+
+**Admissions Office:**
+Phone: (205) 929-1657
+Email: admissions@miles.edu
+
+**Financial Aid:**
+Phone: (205) 929-1665
+Email: financialaid@miles.edu
+
+**Business Office:**
+Phone: (205) 929-1000
+
+**Housing:**
+Phone: (205) 929-1000
+
+**Main Campus:**
+Phone: (205) 929-1000
+
+**Address:**
+Miles College
+5500 Myron Massey Blvd
+Fairfield, AL 35064
+
+**Online:**
+Website: miles.edu
+Apply: myexperience.miles.edu
+FAFSA Code: 001028`,
+
+  // ATHLETICS
+  athletics: `**Golden Bears Athletics:**
+
+Miles College is NCAA Division II and a member of the SIAC!
+
+**Sports Programs:**
+- Football
+- Men's & Women's Basketball
+- Baseball
+- Softball
+- Track & Field
+- Cross Country
+- Volleyball
+- Golf
+- Tennis
+- Esports
+
+**Athletic Scholarships:**
+Contact coaches directly for recruitment info
+
+**Cheer & Dance:**
+Purple Marching Machine Band
+Golden Bear Cheerleaders
+Dance Team
+
+Go Golden Bears!`,
+
+  // ABOUT MILES
+  about: `**About Miles College:**
+
+**Established:** 1898
+**Location:** Fairfield, Alabama (Birmingham metro)
+**Distinction:** The ONLY 4-year HBCU in Birmingham!
+
+**Quick Facts:**
 - 30+ degree programs
 - 17:1 student-faculty ratio
-- NCAA Division II athletics (Golden Bears)
-- Tuition: $9,500/semester
-- Application portal: myexperience.miles.edu
-- FAFSA School Code: 001028
-- NO APPLICATION FEE
-- Admissions: (205) 929-1657 / admissions@miles.edu
-- Financial Aid: (205) 929-1665 / financialaid@miles.edu`
+- NCAA Division II athletics
+- Rich HBCU heritage
+- Strong alumni network
 
-  const personaContext: Record<string, string> = {
-    freshman:
-      "\n\nYou're helping a prospective freshman. Focus on the freshman application process, campus life, and first-year experience.",
-    transfer:
-      "\n\nYou're helping a transfer student. Focus on credit transfer, transcript requirements, and transition support.",
-    parent:
-      "\n\nYou're helping a parent. Focus on safety, cost, support systems, and how to help their student succeed.",
-    counselor:
-      "\n\nYou're helping a high school counselor. Focus on group visits, transcript processes, admission events, and recruiter contacts.",
-    current:
-      "\n\nYou're helping a current Miles College student. Focus on campus resources, academic support, and student services.",
-  }
+**Campus:**
+- Beautiful historic campus
+- Modern facilities
+- Safe, supportive environment
+- Family atmosphere
 
-  return (
-    basePrompt +
-    ((persona && personaContext[persona]) || "") +
-    "\n\nBe friendly, helpful, and encouraging. Provide accurate information and encourage action."
-  )
+**Mission:**
+Developing students intellectually, ethically, and spiritually to serve others.
+
+Visit us to experience the Miles difference!`,
 }
 
 function detectIntent(message: string): string | null {
@@ -615,9 +971,10 @@ function detectIntent(message: string): string | null {
       "admission",
       "get in",
       "submit application",
+      "applying",
     ],
-    applicationFee: ["application fee", "cost to apply", "pay to apply"],
-    applicationDeadline: ["deadline", "when apply", "last day to apply", "application deadline"],
+    applicationFee: ["application fee", "cost to apply", "pay to apply", "fee to apply", "free to apply"],
+    applicationDeadline: ["deadline", "when apply", "last day to apply", "application deadline", "too late"],
     applicationStatus: [
       "application status",
       "am i accepted",
@@ -625,75 +982,181 @@ function detectIntent(message: string): string | null {
       "acceptance",
       "check status",
       "hear back",
+      "decision",
     ],
-    lateApplication: ["late application", "apply late", "missed deadline"],
-    updateApplication: ["update application", "change application", "mistake on application", "fix application"],
-    noSSN: ["no ssn", "without social security number", "social security"],
+    nextSteps: ["accepted", "what now", "what's next", "next steps", "got in", "i'm in", "admitted"],
+    lateApplication: ["late application", "apply late", "missed deadline", "still apply"],
+    updateApplication: [
+      "update application",
+      "change application",
+      "mistake on application",
+      "fix application",
+      "error on application",
+    ],
+    noSSN: ["no ssn", "without social security", "social security", "no social"],
 
     // Requirements
-    gpaRequirement: ["gpa", "what gpa", "gpa need", "grades need"],
-    testScores: ["act", "sat", "test scores", "test required", "no act", "no sat", "without act", "without sat"],
-    requirements: ["requirements", "what do i need", "documents required", "admission requirements"],
-    ged: ["ged", "no diploma", "no high school"],
-    homeschool: ["homeschool", "home school", "homeschooled"],
-    international: ["international", "from another country", "foreign student", "visa"],
-    placementTest: ["placement test", "placement exam", "testing", "schedule test"],
+    gpaRequirement: ["gpa", "what gpa", "gpa need", "grades need", "grade requirement", "minimum gpa"],
+    testScores: [
+      "act",
+      "sat",
+      "test scores",
+      "test required",
+      "no act",
+      "no sat",
+      "without act",
+      "without sat",
+      "standardized test",
+    ],
+    placementTest: ["placement test", "placement exam", "testing", "schedule test", "take test"],
+    requirements: [
+      "requirements",
+      "what do i need",
+      "documents required",
+      "admission requirements",
+      "need to apply",
+      "what documents",
+    ],
+    ged: ["ged", "no diploma", "no high school", "equivalency"],
+    homeschool: ["homeschool", "home school", "homeschooled", "home-school"],
+    international: ["international", "from another country", "foreign student", "visa", "i-20", "overseas"],
+    dualEnrollment: ["dual enrollment", "dual credit", "college credit high school"],
+    recommendation: ["recommendation", "letters of rec", "letter of recommendation"],
 
     // Transcripts
-    transcript: ["transcript", "send grades", "official transcript", "send transcript"],
-    transcriptHighSchool: ["high school transcript", "hs transcript"],
-    transcriptCollege: ["college transcript", "previous college", "transfer transcript"],
+    transcript: ["transcript", "send grades", "official transcript", "send transcript", "grades sent"],
+    transcriptHighSchool: ["high school transcript", "hs transcript", "secondary transcript"],
+    transcriptCollege: ["college transcript", "previous college", "transfer transcript", "university transcript"],
     parchment: ["parchment"],
+    transcriptProcessing: ["transcript processing", "how long transcript", "transcript received", "transcript showing"],
 
     // Financial Aid & FAFSA
-    fafsa: ["fafsa", "financial aid application", "apply for aid"],
-    financialAid: ["financial aid", "money for college", "afford college", "pay for college"],
-    schoolCode: ["school code", "fafsa code", "college code", "001028"],
-    scholarships: ["scholarship", "scholarships", "free money", "merit aid"],
-    paymentPlan: ["payment plan", "pay over time", "installments"],
+    fafsa: ["fafsa", "financial aid application", "apply for aid", "file fafsa", "complete fafsa"],
+    fafsaParents: [
+      "parent fafsa",
+      "parents won't",
+      "parent information",
+      "parent tax",
+      "dependent",
+      "independent student",
+    ],
+    financialAid: [
+      "financial aid",
+      "money for college",
+      "afford college",
+      "pay for college",
+      "aid available",
+      "grants",
+      "loans",
+    ],
+    schoolCode: ["school code", "fafsa code", "college code", "001028", "miles code"],
+    scholarships: [
+      "scholarship",
+      "scholarships",
+      "free money",
+      "merit aid",
+      "academic scholarship",
+      "athletic scholarship",
+    ],
+    paymentPlan: ["payment plan", "pay over time", "installments", "monthly payment"],
 
     // Costs
-    costs: ["cost", "tuition", "how much", "price", "afford", "expensive"],
+    costs: ["cost", "tuition", "how much", "price", "afford", "expensive", "fees", "total cost"],
 
     // Housing
-    housing: ["housing", "dorm", "residence hall", "live on campus", "room", "roommate"],
-    mealPlan: ["meal plan", "food", "cafeteria", "dining"],
-    moveIn: ["move in", "move-in", "when move"],
+    housing: ["housing", "dorm", "residence hall", "live on campus", "room", "roommate", "on-campus housing"],
+    mealPlan: ["meal plan", "food", "cafeteria", "dining", "eat on campus"],
+    offCampus: ["off campus", "off-campus", "live at home", "commuter", "apartment"],
 
     // Academics
-    programs: ["major", "majors", "program", "programs", "degree", "what can i study", "courses"],
+    programs: [
+      "major",
+      "majors",
+      "program",
+      "programs",
+      "degree",
+      "what can i study",
+      "courses",
+      "fields of study",
+      "departments",
+    ],
     changeMajor: ["change major", "switch major", "different major"],
-    online: ["online", "virtual", "remote", "distance"],
-    classSize: ["class size", "how many students", "student faculty ratio"],
-    tutoring: ["tutoring", "tutor", "help with classes", "academic help"],
-    internship: ["internship", "work experience", "job training"],
+    online: ["online", "virtual", "remote", "distance", "online classes", "hybrid"],
+    classSize: ["class size", "how many students", "student faculty ratio", "small classes"],
+    tutoring: ["tutoring", "tutor", "help with classes", "academic help", "study help", "writing center", "math lab"],
+    internship: ["internship", "work experience", "job training", "hands-on"],
 
     // Transfer
-    transfer: ["transfer", "from another college", "community college", "transfer credits", "credits transfer"],
+    transfer: [
+      "transfer",
+      "from another college",
+      "community college",
+      "transfer credits",
+      "credits transfer",
+      "transfer student",
+    ],
+    creditEvaluation: ["credits evaluate", "how many credits", "credits count", "credits accepted"],
 
     // Parents
-    parents: ["parent", "family", "mom", "dad", "guardian", "pay tuition"],
-    safety: ["safe", "safety", "security", "campus security"],
+    parents: ["parent", "family", "mom", "dad", "guardian", "pay tuition", "parent information"],
+    safety: ["safe", "safety", "security", "campus security", "crime", "secure"],
 
     // Portal & Tech
-    portal: ["portal", "login", "sign in", "onelogin", "student email", "email", "password", "can't log in"],
-    studentId: ["student id", "id number", "student number"],
+    portal: [
+      "portal",
+      "login",
+      "sign in",
+      "onelogin",
+      "student email",
+      "email",
+      "password",
+      "can't log in",
+      "access account",
+    ],
+    studentId: ["student id", "id number", "student number", "miles id"],
+    passwordReset: ["reset password", "forgot password", "password help", "can't login"],
 
     // Orientation & Registration
-    orientation: ["orientation", "register for classes", "registration", "enroll in classes"],
-    classStart: ["when do classes", "classes start", "semester start", "when does school"],
+    orientation: ["orientation", "new student orientation", "mandatory orientation"],
+    registration: [
+      "register for classes",
+      "registration",
+      "enroll in classes",
+      "sign up for classes",
+      "class schedule",
+    ],
+    classStart: ["when do classes", "classes start", "semester start", "when does school", "first day"],
 
     // Support Services
-    support: ["support", "help", "counseling", "disability", "mental health", "career services", "advising"],
-    organizations: ["clubs", "organizations", "activities", "greek", "fraternity", "sorority"],
+    support: ["support", "help", "services available", "resources", "student services"],
+    mentalHealth: ["counseling", "mental health", "therapy", "stress", "anxiety", "depression"],
+    disability: ["disability", "ada", "accommodation", "special needs", "learning disability"],
+    organizations: [
+      "clubs",
+      "organizations",
+      "activities",
+      "greek",
+      "fraternity",
+      "sorority",
+      "student life",
+      "extracurricular",
+    ],
 
     // Campus Visits
-    visits: ["visit", "tour", "campus tour", "see campus", "open house", "preview day"],
+    visits: ["visit", "tour", "campus tour", "see campus", "open house", "preview day", "come to campus"],
 
     // Special Situations
-    nervous: ["nervous", "scared", "anxious", "worried about college"],
-    outOfSchool: ["been years", "out of school", "returning", "adult student", "going back"],
-    workFullTime: ["work full time", "working", "have a job", "full time job"],
+    nervous: ["nervous", "scared", "anxious", "worried about college", "afraid", "not ready"],
+    outOfSchool: [
+      "been years",
+      "out of school",
+      "returning",
+      "adult student",
+      "going back",
+      "older student",
+      "non-traditional",
+    ],
+    workFullTime: ["work full time", "working", "have a job", "full time job", "employed", "work while"],
     haveKids: [
       "have kids",
       "children",
@@ -701,13 +1164,41 @@ function detectIntent(message: string): string | null {
       "parent student",
       "mom going to college",
       "dad going to college",
+      "childcare",
     ],
-    oweOtherSchool: ["owe another school", "balance at", "hold at", "owe money"],
-    denied: ["denied", "rejected", "not accepted", "reapply"],
+    oweOtherSchool: ["owe another school", "balance at", "hold at", "owe money", "debt at previous"],
+    denied: ["denied", "rejected", "not accepted", "reapply", "turned down"],
     waitlisted: ["waitlist", "wait list", "waitlisted"],
+    missingDocuments: ["missing documents", "don't have documents", "can't get transcript", "document issues"],
 
     // Contact
-    contact: ["contact", "phone number", "email", "talk to someone", "reach", "call"],
+    contact: [
+      "contact",
+      "phone number",
+      "email",
+      "talk to someone",
+      "reach",
+      "call",
+      "who do i contact",
+      "get in touch",
+    ],
+
+    // Athletics
+    athletics: [
+      "sports",
+      "athletics",
+      "football",
+      "basketball",
+      "baseball",
+      "softball",
+      "track",
+      "athlete",
+      "play sports",
+      "golden bears",
+    ],
+
+    // About Miles
+    about: ["about miles", "tell me about", "what is miles", "miles college", "hbcu", "history of miles", "why miles"],
   }
 
   for (const [intent, keywords] of Object.entries(intents)) {
@@ -719,174 +1210,335 @@ function detectIntent(message: string): string | null {
   return null
 }
 
+const getSystemPrompt = (persona: string | null) => {
+  const basePrompt = `You are Miles Assistant, the official AI enrollment coach for Miles College, a prestigious HBCU in Birmingham, Alabama established in 1898.
+
+**CRITICAL FACTS - Always accurate:**
+- Miles College is the ONLY 4-year HBCU in Birmingham
+- 30+ degree programs across 5 divisions
+- 17:1 student-faculty ratio
+- NCAA Division II athletics (Golden Bears, SIAC Conference)
+- Tuition: $9,500/semester
+- Application portal: myexperience.miles.edu
+- FAFSA School Code: 001028
+- NO APPLICATION FEE - completely free to apply!
+- Admissions: (205) 929-1657 / admissions@miles.edu
+- Financial Aid: (205) 929-1665 / financialaid@miles.edu
+- Business Office: (205) 929-1000
+
+**Your personality:**
+- Warm, encouraging, and professional
+- Proud of Miles College heritage
+- Patient with questions
+- Action-oriented - guide users to next steps
+- Never condescending
+
+**Important guidelines:**
+- If unsure, direct to admissions: (205) 929-1657
+- Always encourage applying
+- Emphasize support services
+- Be accurate - don't make up information`
+
+  const personaContext: Record<string, string> = {
+    freshman:
+      "\n\n**User Context:** Prospective freshman. Focus on freshman application process, campus life experience, making the transition from high school.",
+    transfer:
+      "\n\n**User Context:** Transfer student. Focus on credit transfer process, transcript requirements, how their previous credits may apply.",
+    parent:
+      "\n\n**User Context:** Parent/guardian. Focus on safety, cost breakdown, support systems, how to help their student succeed, payment options.",
+    counselor:
+      "\n\n**User Context:** High school counselor. Focus on group visits, transcript submission process, recruitment events, how to refer students.",
+    current:
+      "\n\n**User Context:** Current Miles student. Focus on campus resources, registration, academic support, student services.",
+  }
+
+  return basePrompt + (persona && personaContext[persona] ? personaContext[persona] : "")
+}
+
 function getRuleBasedResponse(
   intent: string,
   persona: string | null,
 ): {
   message: string
-  buttons?: Array<{ text: string; action: string }>
-  captureLeadRequest?: boolean
+  buttons?: Array<{ text: string; action: string; type?: string }>
 } {
   const responses: Record<string, any> = {
     // Application responses
     apply: {
       message: KNOWLEDGE_BASE.apply[persona === "transfer" ? "transfer" : "freshman"],
       buttons: [
-        { text: "Start My Application", action: "https://myexperience.miles.edu" },
+        { text: "Start My Application", action: "https://myexperience.miles.edu", type: "primary" },
         { text: "What documents do I need?", action: "requirements" },
         { text: "Talk to Admissions", action: "contact" },
       ],
-      captureLeadRequest: true,
     },
     applicationFee: {
-      message: `**Great News - NO Application Fee!**\n\nMiles College does NOT charge an application fee. Apply for FREE at myexperience.miles.edu\n\nReady to get started?`,
-      buttons: [{ text: "Apply Now (Free!)", action: "https://myexperience.miles.edu" }],
+      message: `**Great News - NO Application Fee!**
+
+Miles College does NOT charge an application fee.
+Apply for FREE at myexperience.miles.edu
+
+Ready to get started?`,
+      buttons: [{ text: "Apply Now (Free!)", action: "https://myexperience.miles.edu", type: "primary" }],
     },
     applicationDeadline: {
-      message: `**Application Deadlines:**\n\nMiles College has **rolling admissions** - which means you can apply anytime!\n\n**However, for best results:**\n- Apply early for best housing options\n- Complete FAFSA by March 1st for priority financial aid\n- Submit all documents promptly for faster decisions\n\nDecisions typically take 2-3 weeks after all documents are received.`,
-      buttons: [{ text: "Apply Now", action: "https://myexperience.miles.edu" }],
+      message: `**Application Deadlines:**
+
+Miles College has **rolling admissions** - apply anytime!
+
+**For Best Results:**
+- Apply early for housing priority
+- Complete FAFSA by March 1st for best aid
+- Submit documents promptly
+
+**Decision Time:** 2-3 weeks after complete application`,
+      buttons: [{ text: "Apply Now", action: "https://myexperience.miles.edu", type: "primary" }],
     },
     applicationStatus: {
-      message: KNOWLEDGE_BASE.apply.general.split("**To check your status:**")[1]
-        ? `**Checking Your Application Status:**\n\n1. Log in to myexperience.miles.edu\n2. View your application dashboard\n3. Check for any missing documents\n\n**Still have questions?**\nCall Admissions: (205) 929-1657\nEmail: admissions@miles.edu\n\nDecisions typically take 2-3 weeks after all documents are received.`
-        : `**Check Your Application Status:**\n\nLog in to myexperience.miles.edu to view your status and any missing documents.\n\nQuestions? Call (205) 929-1657`,
+      message: `**Check Your Application Status:**
+
+1. Log in at myexperience.miles.edu
+2. View your application dashboard
+3. Check for missing documents
+
+**Questions?**
+Call: (205) 929-1657
+Email: admissions@miles.edu
+
+Decisions typically take 2-3 weeks after all documents received.`,
       buttons: [
-        { text: "Check Status Portal", action: "https://myexperience.miles.edu" },
+        { text: "Check Status", action: "https://myexperience.miles.edu", type: "primary" },
         { text: "Contact Admissions", action: "contact" },
+      ],
+    },
+    nextSteps: {
+      message: KNOWLEDGE_BASE.apply.nextSteps,
+      buttons: [
+        { text: "Access Portal", action: "https://myexperience.miles.edu", type: "primary" },
+        { text: "Complete FAFSA", action: "https://studentaid.gov" },
+        { text: "Questions?", action: "contact" },
       ],
     },
     lateApplication: {
       message: KNOWLEDGE_BASE.apply.late,
       buttons: [
-        { text: "Apply Now", action: "https://myexperience.miles.edu" },
+        { text: "Apply Now", action: "https://myexperience.miles.edu", type: "primary" },
         { text: "Call Admissions", action: "tel:2059291657" },
       ],
     },
     updateApplication: {
-      message: `**Need to Update Your Application?**\n\nMade a mistake or need to add information? No problem!\n\n**Contact Admissions:**\n- Phone: (205) 929-1657\n- Email: admissions@miles.edu\n\nThey can help you make corrections or updates to your application.`,
-      buttons: [{ text: "Email Admissions", action: "mailto:admissions@miles.edu" }],
+      message: `**Need to Update Your Application?**
+
+Made a mistake or need to add information? No problem!
+
+**Contact Admissions:**
+Phone: (205) 929-1657
+Email: admissions@miles.edu
+
+They can help you make corrections or updates.`,
+      buttons: [
+        { text: "Email Admissions", action: "mailto:admissions@miles.edu", type: "primary" },
+        { text: "Call Now", action: "tel:2059291657" },
+      ],
     },
     noSSN: {
       message: KNOWLEDGE_BASE.apply.noSSN,
       buttons: [{ text: "Contact Admissions", action: "contact" }],
     },
 
-    // Requirements responses
+    // Requirements
     gpaRequirement: {
       message: KNOWLEDGE_BASE.requirements.gpa,
       buttons: [
-        { text: "Apply Anyway", action: "https://myexperience.miles.edu" },
+        { text: "Apply Anyway!", action: "https://myexperience.miles.edu", type: "primary" },
         { text: "Talk to Admissions", action: "contact" },
       ],
     },
     testScores: {
       message: KNOWLEDGE_BASE.requirements.testScores,
       buttons: [
-        { text: "Schedule Placement Test", action: "contact" },
-        { text: "Apply Now", action: "https://myexperience.miles.edu" },
+        { text: "Apply Now", action: "https://myexperience.miles.edu", type: "primary" },
+        { text: "Schedule Placement Test", action: "tel:2059291000" },
       ],
+    },
+    placementTest: {
+      message: `**Placement Test Information:**
+
+If you don't have ACT/SAT scores, take our FREE placement test!
+
+**To Schedule:**
+Call Mrs. Underwood at (205) 929-1000
+
+**What's Covered:**
+- Math skills
+- Reading comprehension
+- Writing assessment
+
+**Duration:** About 2-3 hours
+
+**Tip:** Review basic algebra and grammar beforehand!`,
+      buttons: [{ text: "Call to Schedule", action: "tel:2059291000", type: "primary" }],
     },
     requirements: {
       message: KNOWLEDGE_BASE.requirements.documents,
       buttons: [
-        { text: "Start Application", action: "https://myexperience.miles.edu" },
-        { text: "How do I send transcripts?", action: "transcript" },
+        { text: "Start Application", action: "https://myexperience.miles.edu", type: "primary" },
+        { text: "How to Send Transcripts", action: "transcript" },
       ],
     },
     ged: {
       message: KNOWLEDGE_BASE.requirements.ged,
-      buttons: [{ text: "Apply Now", action: "https://myexperience.miles.edu" }],
+      buttons: [{ text: "Apply Now", action: "https://myexperience.miles.edu", type: "primary" }],
     },
     homeschool: {
       message: KNOWLEDGE_BASE.requirements.homeschool,
-      buttons: [{ text: "Contact Admissions", action: "contact" }],
+      buttons: [
+        { text: "Apply Now", action: "https://myexperience.miles.edu", type: "primary" },
+        { text: "Contact Admissions", action: "contact" },
+      ],
     },
     international: {
       message: KNOWLEDGE_BASE.requirements.international,
       buttons: [{ text: "Contact Admissions", action: "contact" }],
     },
-    placementTest: {
-      message: KNOWLEDGE_BASE.requirements.testScores.includes("placement test")
-        ? `**Placement Test Information:**\n\nIf you don't have ACT or SAT scores, you'll take the Miles College Placement Test.\n\n**Contact to Schedule:**\nMrs. Underwood at (205) 929-1000\n\n**What to Expect:**\n- Reading comprehension\n- Math skills assessment\n- Writing sample\n- About 2-3 hours\n\n**Tip:** Review basic algebra and grammar before your test!`
-        : `**Placement Test:**\n\nSchedule your placement test by calling (205) 929-1000 and asking for the Testing Center.`,
-      buttons: [{ text: "Call to Schedule", action: "tel:2059291000" }],
+    dualEnrollment: {
+      message: KNOWLEDGE_BASE.requirements.dualEnrollment,
+      buttons: [
+        { text: "Apply Now", action: "https://myexperience.miles.edu", type: "primary" },
+        { text: "Questions?", action: "contact" },
+      ],
+    },
+    recommendation: {
+      message: `**Recommendation Letters:**
+
+Recommendation letters are **NOT required** for admission to Miles College.
+
+However, strong letters can enhance your application if you want to submit them.
+
+**If submitting:**
+Have recommenders send to:
+admissions@miles.edu`,
+      buttons: [{ text: "Apply Now", action: "https://myexperience.miles.edu", type: "primary" }],
     },
 
-    // Transcript responses
+    // Transcripts
     transcript: {
       message: persona === "transfer" ? KNOWLEDGE_BASE.transcript.college : KNOWLEDGE_BASE.transcript.highschool,
-      buttons: [
-        { text: "What's next after transcripts?", action: "apply" },
-        { text: "Contact Admissions", action: "contact" },
-      ],
+      buttons: [{ text: "What's Next?", action: "apply" }],
     },
     transcriptHighSchool: {
       message: KNOWLEDGE_BASE.transcript.highschool,
-      buttons: [{ text: "Got it! What's next?", action: "apply" }],
+      buttons: [{ text: "Got it! Now what?", action: "apply" }],
     },
     transcriptCollege: {
       message: KNOWLEDGE_BASE.transcript.college,
-      buttons: [{ text: "How many credits will transfer?", action: "transfer" }],
+      buttons: [{ text: "How Credits Transfer", action: "transfer" }],
     },
     parchment: {
-      message: `**Yes, We Accept Parchment!**\n\nHave your school send your transcript through Parchment to Miles College Admissions.\n\n**Processing time:** 7-10 business days after receipt.\n\nNot showing in your portal after 2 weeks? Contact admissions at (205) 929-1657.`,
+      message: `**Yes, We Accept Parchment!**
+
+Have your school send transcripts through Parchment to Miles College Admissions.
+
+**Processing:** 7-10 business days
+
+**Not showing after 2 weeks?**
+Call: (205) 929-1657`,
+      buttons: [{ text: "Check Application Status", action: "https://myexperience.miles.edu" }],
+    },
+    transcriptProcessing: {
+      message: KNOWLEDGE_BASE.transcript.processing,
+      buttons: [{ text: "Contact Admissions", action: "contact" }],
     },
 
-    // Financial Aid responses
+    // Financial Aid
     fafsa: {
       message: KNOWLEDGE_BASE.fafsa,
       buttons: [
-        { text: "Go to FAFSA", action: "https://studentaid.gov" },
-        { text: "What aid is available?", action: "financialAid" },
-        { text: "Contact Financial Aid", action: "contact" },
+        { text: "Go to FAFSA", action: "https://studentaid.gov", type: "primary" },
+        { text: "What Aid is Available?", action: "financialAid" },
+        { text: "Contact Financial Aid", action: "tel:2059291665" },
+      ],
+    },
+    fafsaParents: {
+      message: KNOWLEDGE_BASE.fafsaParents,
+      buttons: [
+        { text: "Complete FAFSA", action: "https://studentaid.gov", type: "primary" },
+        { text: "Contact Financial Aid", action: "tel:2059291665" },
       ],
     },
     financialAid: {
       message: KNOWLEDGE_BASE.financialAid,
       buttons: [
-        { text: "Start FAFSA", action: "https://studentaid.gov" },
-        { text: "Learn About Scholarships", action: "scholarships" },
+        { text: "Start FAFSA", action: "https://studentaid.gov", type: "primary" },
+        { text: "View Scholarships", action: "scholarships" },
       ],
     },
     schoolCode: {
-      message: `**Miles College FAFSA School Code:**\n\n# 001028\n\nEnter this code when completing your FAFSA at studentaid.gov to have your financial aid information sent to Miles College.\n\n**Need help with FAFSA?**\nContact Financial Aid: (205) 929-1665`,
-      buttons: [{ text: "Complete FAFSA", action: "https://studentaid.gov" }],
+      message: `**Miles College FAFSA Code:**
+
+# 001028
+
+Enter this code when completing your FAFSA at studentaid.gov
+
+**Need help with FAFSA?**
+Financial Aid: (205) 929-1665`,
+      buttons: [{ text: "Complete FAFSA", action: "https://studentaid.gov", type: "primary" }],
     },
     scholarships: {
       message: KNOWLEDGE_BASE.scholarships,
       buttons: [
-        { text: "Apply to Miles", action: "https://myexperience.miles.edu" },
-        { text: "Contact Financial Aid", action: "contact" },
+        { text: "Apply to Miles", action: "https://myexperience.miles.edu", type: "primary" },
+        { text: "Contact Financial Aid", action: "tel:2059291665" },
       ],
     },
     paymentPlan: {
-      message: `**Payment Plans Available!**\n\nYes, Miles College offers payment plans to help manage tuition costs.\n\n**Contact the Business Office:**\nPhone: (205) 929-1000\n\nThey can explain available plans and help you set one up.`,
-      buttons: [{ text: "Call Business Office", action: "tel:2059291000" }],
+      message: `**Payment Plans Available!**
+
+Yes, Miles College offers payment plans!
+
+**Contact Business Office:**
+Phone: (205) 929-1000
+
+They can explain available plans and help you set one up.`,
+      buttons: [{ text: "Call Business Office", action: "tel:2059291000", type: "primary" }],
     },
 
     // Costs
     costs: {
-      message: `**Miles College Costs:**\n\n**Tuition:** $9,500 per semester ($19,000/year full-time)\n**Room & Board:** $4,000-$5,500 per semester (varies by room type)\n**Orientation Fee:** $150 (one-time, new students)\n**Housing Deposit:** $300 (if living on campus)\n\n**Good News:**\n- NO application fee!\n- Payment plans available\n- Most students receive financial aid\n\nComplete your FAFSA (Code: 001028) to see what aid you qualify for!`,
+      message: `**Miles College Costs:**
+
+**Tuition:** $9,500/semester ($19,000/year full-time)
+**Room & Board:** $4,000-$5,500/semester
+**Orientation Fee:** $150 (one-time)
+**Housing Deposit:** $300 (if on-campus)
+
+**Great News:**
+- NO application fee!
+- Payment plans available
+- Most students receive financial aid
+
+Complete FAFSA (Code: 001028) to see your aid!`,
       buttons: [
-        { text: "Apply for Financial Aid", action: "fafsa" },
+        { text: "Apply for Aid", action: "https://studentaid.gov", type: "primary" },
         { text: "View Scholarships", action: "scholarships" },
       ],
-      captureLeadRequest: true,
     },
 
     // Housing
     housing: {
       message: KNOWLEDGE_BASE.housing,
       buttons: [
-        { text: "Apply for Housing", action: "https://myexperience.miles.edu" },
-        { text: "What about meal plans?", action: "mealPlan" },
+        { text: "Apply for Housing", action: "https://myexperience.miles.edu", type: "primary" },
+        { text: "Meal Plans", action: "mealPlan" },
       ],
     },
     mealPlan: {
       message: KNOWLEDGE_BASE.mealPlans,
+      buttons: [{ text: "Contact Business Office", action: "tel:2059291000" }],
     },
-    moveIn: {
-      message: `**Move-In Information:**\n\nMove-in typically occurs one week before classes start.\n\n**Fall Semester:** Late August\n**Spring Semester:** Early January\n\nYou'll receive specific move-in dates and times after completing your housing application and paying your deposit.\n\n**Questions?** Contact Housing at (205) 929-1000`,
+    offCampus: {
+      message: KNOWLEDGE_BASE.offCampus,
+      buttons: [{ text: "Housing Questions", action: "tel:2059291000" }],
     },
 
     // Academics
@@ -894,32 +1546,55 @@ function getRuleBasedResponse(
       message: KNOWLEDGE_BASE.programs,
       buttons: [
         { text: "View Full List", action: "https://www.miles.edu/academics" },
-        { text: "Apply Now", action: "https://myexperience.miles.edu" },
+        { text: "Apply Now", action: "https://myexperience.miles.edu", type: "primary" },
       ],
     },
     changeMajor: {
       message: KNOWLEDGE_BASE.changeMajor,
     },
     online: {
-      message: `**Online & Flexible Options:**\n\nMiles College offers some courses in online and hybrid formats.\n\n**For specific availability:**\nContact your academic advisor or the Registrar's Office.\n\n**Evening/Weekend Classes:** Some programs offer flexible scheduling. Discuss options with your advisor.`,
+      message: `**Online & Flexible Options:**
+
+Some courses available in online and hybrid formats.
+
+**For Availability:**
+Contact your academic advisor or Registrar's Office.
+
+**Evening/Weekend:** Some programs offer flexible scheduling.`,
+      buttons: [{ text: "Contact Us", action: "contact" }],
     },
     classSize: {
-      message: `**Class Sizes at Miles College:**\n\n**Student-Faculty Ratio:** 17:1\n\nThis means you get personalized attention from professors who know your name and care about your success!\n\n**Benefits:**\n- Direct access to professors\n- Engaging class discussions\n- Mentorship opportunities\n- No getting lost in large lecture halls`,
+      message: KNOWLEDGE_BASE.classSize,
+      buttons: [{ text: "Apply Now", action: "https://myexperience.miles.edu", type: "primary" }],
     },
     tutoring: {
       message: KNOWLEDGE_BASE.tutoring,
     },
     internship: {
-      message: `**Internships at Miles College:**\n\nYes! We help students gain real-world experience through internships.\n\n**Services:**\n- Career Services assistance\n- Industry connections\n- Resume and interview prep\n- Academic credit for internships\n\nContact Career Services for opportunities in your field.`,
+      message: `**Internships at Miles:**
+
+We help students gain real-world experience!
+
+**Services:**
+- Career Services guidance
+- Industry connections
+- Resume & interview prep
+- Academic credit for internships
+
+Contact Career Services for opportunities in your field.`,
     },
 
     // Transfer
     transfer: {
       message: KNOWLEDGE_BASE.transfer,
       buttons: [
-        { text: "Apply as Transfer", action: "https://myexperience.miles.edu" },
+        { text: "Apply as Transfer", action: "https://myexperience.miles.edu", type: "primary" },
         { text: "Contact Admissions", action: "contact" },
       ],
+    },
+    creditEvaluation: {
+      message: KNOWLEDGE_BASE.creditEvaluation,
+      buttons: [{ text: "Apply Now", action: "https://myexperience.miles.edu", type: "primary" }],
     },
 
     // Parents
@@ -931,49 +1606,88 @@ function getRuleBasedResponse(
       ],
     },
     safety: {
-      message: `**Campus Safety:**\n\nMiles College takes safety seriously!\n\n**Security Features:**\n- 24/7 Campus Security patrol\n- Emergency notification system\n- Well-lit campus grounds\n- Security escorts available\n- Safe and supportive community\n\n**Emergency Contact:**\nCampus Security is available 24/7\n\nWe're committed to providing a safe learning environment for all students.`,
+      message: KNOWLEDGE_BASE.safety,
+      buttons: [{ text: "Visit Campus", action: "visits" }],
     },
 
     // Portal & Tech
     portal: {
       message: KNOWLEDGE_BASE.portal,
       buttons: [
-        { text: "Go to Portal", action: "https://myexperience.miles.edu" },
-        { text: "Contact IT Help", action: "contact" },
+        { text: "Go to Portal", action: "https://myexperience.miles.edu", type: "primary" },
+        { text: "Need Help?", action: "contact" },
       ],
     },
     studentId: {
-      message: `**Getting Your Student ID:**\n\nYour student ID number is assigned after your application is processed.\n\n**How to get it:**\n1. Check your acceptance email\n2. Log in to myexperience.miles.edu\n3. Or contact Admissions: (205) 929-1657\n\n**Physical ID Card:** You'll receive this during orientation or at the campus ID office.`,
+      message: `**Getting Your Student ID:**
+
+Your ID number is assigned after application processing.
+
+**How to Get It:**
+1. Check your acceptance email
+2. Log in to myexperience.miles.edu
+3. Or call: (205) 929-1657
+
+**Physical ID Card:** Issued during orientation or at campus ID office.`,
+      buttons: [{ text: "Access Portal", action: "https://myexperience.miles.edu" }],
+    },
+    passwordReset: {
+      message: KNOWLEDGE_BASE.passwordReset,
+      buttons: [{ text: "Contact Help", action: "contact" }],
     },
 
     // Orientation
     orientation: {
       message: KNOWLEDGE_BASE.orientation,
-      buttons: [{ text: "Apply Now", action: "https://myexperience.miles.edu" }],
+      buttons: [{ text: "Apply Now", action: "https://myexperience.miles.edu", type: "primary" }],
+    },
+    registration: {
+      message: KNOWLEDGE_BASE.registration,
+      buttons: [{ text: "Access Portal", action: "https://myexperience.miles.edu" }],
     },
     classStart: {
       message: KNOWLEDGE_BASE.classStart,
+      buttons: [{ text: "View Academic Calendar", action: "https://www.miles.edu" }],
     },
 
     // Support
     support: {
       message: KNOWLEDGE_BASE.support,
     },
+    mentalHealth: {
+      message: KNOWLEDGE_BASE.mentalHealth,
+    },
+    disability: {
+      message: KNOWLEDGE_BASE.disability,
+    },
     organizations: {
-      message: `**Student Organizations:**\n\nMiles College has 50+ student organizations!\n\n**Options Include:**\n- Academic honor societies\n- Greek fraternities and sororities\n- Student Government Association\n- Campus ministries and religious groups\n- Cultural organizations\n- Service and volunteer groups\n- Club sports and recreation\n- Music and arts groups\n\n**Get involved** during orientation or at the beginning of each semester!`,
+      message: `**Student Organizations:**
+
+Miles College has **50+ organizations!**
+
+**Options Include:**
+- Academic honor societies
+- Greek fraternities & sororities
+- Student Government
+- Campus ministries
+- Cultural organizations
+- Service groups
+- Club sports
+- Music & arts
+
+**Get Involved** during orientation or at semester start!`,
     },
 
     // Visits
     visits: {
       message: KNOWLEDGE_BASE.visits,
       buttons: [
-        { text: "Schedule a Tour", action: "contact" },
+        { text: "Schedule Tour", action: "tel:2059291657", type: "primary" },
         { text: "Virtual Tour", action: "https://www.miles.edu/visit" },
       ],
-      captureLeadRequest: true,
     },
 
-    // Special situations
+    // Special Situations
     nervous: {
       message: KNOWLEDGE_BASE.nervous,
       buttons: [
@@ -984,7 +1698,7 @@ function getRuleBasedResponse(
     outOfSchool: {
       message: KNOWLEDGE_BASE.outOfSchool,
       buttons: [
-        { text: "Apply Now", action: "https://myexperience.miles.edu" },
+        { text: "Apply Now", action: "https://myexperience.miles.edu", type: "primary" },
         { text: "Talk to Admissions", action: "contact" },
       ],
     },
@@ -994,7 +1708,7 @@ function getRuleBasedResponse(
     },
     haveKids: {
       message: KNOWLEDGE_BASE.haveKids,
-      buttons: [{ text: "Apply Now", action: "https://myexperience.miles.edu" }],
+      buttons: [{ text: "Apply Now", action: "https://myexperience.miles.edu", type: "primary" }],
     },
     oweOtherSchool: {
       message: KNOWLEDGE_BASE.oweOtherSchool,
@@ -1008,13 +1722,36 @@ function getRuleBasedResponse(
       message: KNOWLEDGE_BASE.waitlisted,
       buttons: [{ text: "Contact Admissions", action: "contact" }],
     },
+    missingDocuments: {
+      message: KNOWLEDGE_BASE.missingDocuments,
+      buttons: [
+        { text: "Start Application", action: "https://myexperience.miles.edu", type: "primary" },
+        { text: "Contact Admissions", action: "contact" },
+      ],
+    },
 
     // Contact
     contact: {
-      message: `**Contact Miles College:**\n\n**Admissions Office:**\nPhone: (205) 929-1657\nEmail: admissions@miles.edu\n\n**Financial Aid Office:**\nPhone: (205) 929-1665\nEmail: financialaid@miles.edu\n\n**Main Campus:**\nPhone: (205) 929-1000\n\n**Address:**\nMiles College\n5500 Myron Massey Blvd\nFairfield, AL 35064\n\n**Website:** miles.edu\n**Application Portal:** myexperience.miles.edu`,
+      message: KNOWLEDGE_BASE.contact,
       buttons: [
-        { text: "Call Admissions", action: "tel:2059291657" },
+        { text: "Call Admissions", action: "tel:2059291657", type: "primary" },
         { text: "Email Admissions", action: "mailto:admissions@miles.edu" },
+        { text: "Apply Online", action: "https://myexperience.miles.edu" },
+      ],
+    },
+
+    // Athletics
+    athletics: {
+      message: KNOWLEDGE_BASE.athletics,
+      buttons: [{ text: "Apply Now", action: "https://myexperience.miles.edu", type: "primary" }],
+    },
+
+    // About
+    about: {
+      message: KNOWLEDGE_BASE.about,
+      buttons: [
+        { text: "Schedule a Visit", action: "visits" },
+        { text: "Apply Now", action: "https://myexperience.miles.edu", type: "primary" },
       ],
     },
   }
@@ -1023,15 +1760,13 @@ function getRuleBasedResponse(
 }
 
 async function checkDGXConnection(): Promise<boolean> {
-  // Return cached result if recent
   if (lastHealthCheck && Date.now() - lastHealthCheck.timestamp < HEALTH_CHECK_CACHE_MS) {
     return lastHealthCheck.success
   }
 
   try {
-    console.log("[v0] Checking DGX connection at:", DGX_API_URL)
     const controller = new AbortController()
-    const timeoutId = setTimeout(() => controller.abort(), 5000) // 5 second timeout
+    const timeoutId = setTimeout(() => controller.abort(), 5000)
 
     const response = await fetch(`${DGX_API_URL}/models`, {
       method: "GET",
@@ -1043,11 +1778,8 @@ async function checkDGXConnection(): Promise<boolean> {
 
     const success = response.ok
     lastHealthCheck = { success, timestamp: Date.now() }
-
-    console.log("[v0] DGX connection status:", success ? "CONNECTED" : "FAILED")
     return success
   } catch (error) {
-    console.log("[v0] DGX connection failed:", error instanceof Error ? error.message : "Unknown error")
     lastHealthCheck = { success: false, timestamp: Date.now() }
     return false
   }
@@ -1061,25 +1793,47 @@ export async function POST(req: Request) {
       return NextResponse.json({ error: "Invalid message" }, { status: 400 })
     }
 
-    console.log("[v0] Processing message:", message.substring(0, 50) + "...")
-
+    // Check for rule-based response first
     const intent = detectIntent(message)
 
     if (intent) {
       const ruleResponse = getRuleBasedResponse(intent, persona)
       if (ruleResponse.message) {
-        console.log("[v0] Returning rule-based response for intent:", intent)
-        return NextResponse.json(ruleResponse)
+        return NextResponse.json({
+          ...ruleResponse,
+          source: "rule-based",
+        })
       }
     }
 
+    // Try DGX AI
     const isDGXAvailable = await checkDGXConnection()
 
     if (!isDGXAvailable) {
-      console.log("[v0] DGX unavailable, returning fallback response")
       return NextResponse.json({
-        message: `I'd be happy to help! Here's some quick information:\n\n**Apply to Miles College:**\nmyexperience.miles.edu (FREE - no application fee!)\n\n**FAFSA School Code:** 001028\n\n**Contact Admissions:**\nPhone: (205) 929-1657\nEmail: admissions@miles.edu\n\n**Quick Facts:**\n- 30+ degree programs\n- 17:1 student-faculty ratio\n- Tuition: $9,500/semester\n- The ONLY 4-year HBCU in Birmingham!\n\nWhat specific question can I help you with?`,
+        message: `I'd be happy to help! Here's some quick information:
+
+**Apply to Miles College:**
+myexperience.miles.edu (FREE - no application fee!)
+
+**FAFSA School Code:** 001028
+
+**Contact Admissions:**
+Phone: (205) 929-1657
+Email: admissions@miles.edu
+
+**Quick Facts:**
+- 30+ degree programs
+- 17:1 student-faculty ratio
+- Tuition: $9,500/semester
+- The ONLY 4-year HBCU in Birmingham!
+
+What specific question can I help you with?`,
         isOffline: true,
+        buttons: [
+          { text: "Apply Now", action: "https://myexperience.miles.edu", type: "primary" },
+          { text: "Contact Us", action: "tel:2059291657" },
+        ],
       })
     }
 
@@ -1094,10 +1848,8 @@ export async function POST(req: Request) {
       { role: "user", content: message },
     ]
 
-    console.log("[v0] Sending request to DGX at:", DGX_API_URL)
-
     const controller = new AbortController()
-    const timeoutId = setTimeout(() => controller.abort(), 30000) // 30 second timeout
+    const timeoutId = setTimeout(() => controller.abort(), 30000)
 
     const response = await fetch(`${DGX_API_URL}/chat/completions`, {
       method: "POST",
@@ -1118,14 +1870,10 @@ export async function POST(req: Request) {
     clearTimeout(timeoutId)
 
     if (!response.ok) {
-      const errorText = await response.text().catch(() => "Unknown error")
-      console.error("[v0] DGX API error:", response.status, errorText)
       throw new Error(`DGX API error: ${response.status}`)
     }
 
     const data = await response.json()
-    console.log("[v0] Received response from DGX")
-
     const assistantMessage = data.choices?.[0]?.message?.content
 
     if (!assistantMessage) {
@@ -1138,15 +1886,11 @@ export async function POST(req: Request) {
       source: "dgx-ai",
     })
   } catch (error) {
-    console.error("[v0] Chat API error:", error)
-
     let errorMessage = "I'm having trouble connecting right now, but I can still help!\n\n"
 
     if (error instanceof Error) {
       if (error.name === "AbortError") {
-        errorMessage = "The AI response took too long. Please try a simpler question or contact us at (205) 929-1657."
-      } else if (error.message.includes("fetch")) {
-        errorMessage = `The DGX Spark server appears to be offline. Please ensure it's running at ${DGX_API_URL} or contact admissions at (205) 929-1657.`
+        errorMessage = "The AI response took too long. Please try a simpler question or contact us directly."
       }
     }
 
@@ -1155,8 +1899,19 @@ export async function POST(req: Request) {
         error: "AI_CONNECTION_FAILED",
         message:
           errorMessage +
-          "\n\n**Contact Info:**\n• Admissions: (205) 929-1657\n• Email: admissions@miles.edu\n• Apply: myexperience.miles.edu\n\n**FAFSA Code:** 001028\n\nWhat would you like to know? I have answers to common questions!",
+          `**Contact Info:**
+- Admissions: (205) 929-1657
+- Email: admissions@miles.edu
+- Apply: myexperience.miles.edu
+
+**FAFSA Code:** 001028
+
+What would you like to know? I have answers to common questions!`,
         isDGXError: true,
+        buttons: [
+          { text: "Apply Now", action: "https://myexperience.miles.edu", type: "primary" },
+          { text: "Call Admissions", action: "tel:2059291657" },
+        ],
       },
       { status: 500 },
     )
