@@ -33,7 +33,7 @@
 ## Architecture
 
 ### Project Structure
-\`\`\`
+```
 miles-college-website/
 ├── app/                          # Next.js App Router
 │   ├── api/                      # API Routes
@@ -54,7 +54,7 @@ miles-college-website/
 ├── next.config.mjs               # Next.js configuration
 └── package.json                  # Dependencies
 
-\`\`\`
+```
 
 ### Technology Stack
 
@@ -80,24 +80,24 @@ miles-college-website/
 ## Development Setup
 
 ### Prerequisites
-\`\`\`bash
+```bash
 Node.js >= 18.x
 npm or pnpm package manager
 Git version control
-\`\`\`
+```
 
 ### Local Development
 
 1. **Clone & Install**
-\`\`\`bash
+```bash
 git clone <repository-url>
 cd miles-college-website
 pnpm install
-\`\`\`
+```
 
 2. **Environment Variables**
 Create `.env.local`:
-\`\`\`env
+```env
 # AI Chatbot Configuration
 NEXT_PUBLIC_AI_API_URL=http://your-dgx-spark-server:port/v1/chat/completions
 AI_API_KEY=your_api_key_here
@@ -108,13 +108,13 @@ NEXT_PUBLIC_ANALYTICS_ID=your_analytics_id
 # Contact Information
 NEXT_PUBLIC_CONTACT_EMAIL=admissions@miles.edu
 NEXT_PUBLIC_CONTACT_PHONE=(205) 929-1657
-\`\`\`
+```
 
 3. **Run Development Server**
-\`\`\`bash
+```bash
 pnpm dev
 # Access at http://localhost:3000
-\`\`\`
+```
 
 ### Development Workflow
 
@@ -132,7 +132,7 @@ pnpm dev
 **Current Status**: Images are unoptimized (development mode)
 
 **Production Configuration**:
-\`\`\`javascript
+```javascript
 // next.config.mjs
 const nextConfig = {
   images: {
@@ -143,7 +143,7 @@ const nextConfig = {
     domains: ['hebbkx1anhila5yf.public.blob.vercel-storage.com'],
   },
 }
-\`\`\`
+```
 
 **Image Best Practices**:
 - Use Next.js `<Image>` component for automatic optimization
@@ -159,7 +159,7 @@ const nextConfig = {
 - Component-level splitting with dynamic imports
 
 **Manual Optimization**:
-\`\`\`typescript
+```typescript
 // Lazy load heavy components
 import dynamic from 'next/dynamic'
 
@@ -167,18 +167,18 @@ const FloatingChatWidget = dynamic(
   () => import('@/components/floating-chat-widget'),
   { ssr: false } // Client-side only
 )
-\`\`\`
+```
 
 ### 3. Bundle Size Optimization
 
 **Analysis**:
-\`\`\`bash
+```bash
 # Add to package.json scripts
 "analyze": "ANALYZE=true next build"
 
 # Install bundle analyzer
 pnpm add -D @next/bundle-analyzer
-\`\`\`
+```
 
 **Optimization Strategies**:
 - Tree-shake unused code
@@ -193,15 +193,15 @@ pnpm add -D @next/bundle-analyzer
 - Dynamic content: `Cache-Control: public, s-maxage=60, stale-while-revalidate`
 
 **API Routes**:
-\`\`\`typescript
+```typescript
 export const dynamic = 'force-dynamic' // No cache for chat API
 export const runtime = 'nodejs' // Use Node.js runtime for AI
-\`\`\`
+```
 
 ### 5. Fonts Optimization
 
 **Current Setup**:
-\`\`\`typescript
+```typescript
 import { Geist, Geist_Mono } from 'next/font/google'
 
 const geistSans = Geist({ 
@@ -209,7 +209,7 @@ const geistSans = Geist({
   display: 'swap', // Prevent layout shift
   preload: true
 })
-\`\`\`
+```
 
 ---
 
@@ -222,19 +222,19 @@ const geistSans = Geist({
 - `.env.production` (production secrets)
 
 **Public vs Private**:
-\`\`\`env
+```env
 # Public (exposed to browser)
 NEXT_PUBLIC_API_URL=https://...
 
 # Private (server-only)
 AI_API_KEY=secret_key
 DATABASE_URL=connection_string
-\`\`\`
+```
 
 ### 2. API Security
 
 **Rate Limiting**:
-\`\`\`typescript
+```typescript
 // app/api/chat/route.ts
 const rateLimit = new Map()
 
@@ -248,21 +248,21 @@ function checkRateLimit(ip: string): boolean {
   rateLimit.set(ip, [...recentRequests, now])
   return true
 }
-\`\`\`
+```
 
 **Input Validation**:
-\`\`\`typescript
+```typescript
 import { z } from 'zod'
 
 const chatSchema = z.object({
   message: z.string().min(1).max(500),
   persona: z.enum(['freshman', 'transfer', 'parent', 'counselor'])
 })
-\`\`\`
+```
 
 ### 3. Content Security Policy
 
-\`\`\`typescript
+```typescript
 // next.config.mjs
 const nextConfig = {
   async headers() {
@@ -287,12 +287,12 @@ const nextConfig = {
     ]
   }
 }
-\`\`\`
+```
 
 ### 4. TypeScript Configuration
 
 **Strict Mode** (Production):
-\`\`\`json
+```json
 {
   "compilerOptions": {
     "strict": true,
@@ -301,7 +301,7 @@ const nextConfig = {
     "noFallthroughCasesInSwitch": true
   }
 }
-\`\`\`
+```
 
 ---
 
@@ -335,7 +335,7 @@ const nextConfig = {
 - Zero-config deployment
 
 **Setup**:
-\`\`\`bash
+```bash
 # Install Vercel CLI
 npm i -g vercel
 
@@ -344,10 +344,10 @@ vercel
 
 # Production deployment
 vercel --prod
-\`\`\`
+```
 
 **Configuration** (`vercel.json`):
-\`\`\`json
+```json
 {
   "buildCommand": "pnpm build",
   "outputDirectory": ".next",
@@ -358,12 +358,12 @@ vercel --prod
     "AI_API_KEY": "@ai_api_key"
   }
 }
-\`\`\`
+```
 
 #### Option 2: Docker Container
 
 **Dockerfile**:
-\`\`\`dockerfile
+```dockerfile
 FROM node:18-alpine AS base
 
 # Install dependencies only when needed
@@ -411,30 +411,30 @@ ENV PORT=3000
 ENV HOSTNAME="0.0.0.0"
 
 CMD ["node", "server.js"]
-\`\`\`
+```
 
 **Build & Run**:
-\`\`\`bash
+```bash
 docker build -t miles-college-website .
 docker run -p 3000:3000 miles-college-website
-\`\`\`
+```
 
 #### Option 3: Traditional VPS/Server
 
 **Build**:
-\`\`\`bash
+```bash
 pnpm build
-\`\`\`
+```
 
 **Start Production Server**:
-\`\`\`bash
+```bash
 pnpm start
 # Or with PM2
 pm2 start npm --name "miles-website" -- start
-\`\`\`
+```
 
 **Nginx Reverse Proxy**:
-\`\`\`nginx
+```nginx
 server {
     listen 80;
     server_name miles.edu www.miles.edu;
@@ -448,12 +448,12 @@ server {
         proxy_cache_bypass $http_upgrade;
     }
 }
-\`\`\`
+```
 
 ### Build Optimization
 
 **Production Build Script**:
-\`\`\`json
+```json
 {
   "scripts": {
     "build": "next build",
@@ -462,10 +462,10 @@ server {
     "deploy": "npm run build && pm2 restart miles-website"
   }
 }
-\`\`\`
+```
 
 **next.config.mjs** (Production):
-\`\`\`javascript
+```javascript
 const nextConfig = {
   reactStrictMode: true,
   poweredByHeader: false,
@@ -500,7 +500,7 @@ const nextConfig = {
     ]
   },
 }
-\`\`\`
+```
 
 ---
 
@@ -510,7 +510,7 @@ const nextConfig = {
 
 **Important**: DGX Spark is your AI inference server, NOT the web hosting platform.
 
-\`\`\`
+```
 ┌─────────────────┐         ┌──────────────────┐
 │  User's Browser │ ───────>│  Next.js Website │
 │                 │         │  (Vercel/VPS)    │
@@ -523,7 +523,7 @@ const nextConfig = {
                             │   AI Server      │
                             │   (GPU Inference)│
                             └──────────────────┘
-\`\`\`
+```
 
 ### DGX Spark Setup
 
@@ -531,21 +531,21 @@ const nextConfig = {
 
 Your DGX Spark should run an inference server:
 
-\`\`\`python
+```python
 # Example: vLLM server on DGX
 python -m vllm.entrypoints.openai.api_server \
     --model meta-llama/Llama-2-70b-chat-hf \
     --host 0.0.0.0 \
     --port 8000 \
     --gpu-memory-utilization 0.95
-\`\`\`
+```
 
 **2. Network Configuration**
 
 Options for exposing DGX to website:
 
 **Option A: Reverse Proxy** (Recommended)
-\`\`\`nginx
+```nginx
 # On public server
 server {
     listen 443 ssl;
@@ -562,7 +562,7 @@ server {
         add_header Access-Control-Allow-Origin https://miles.edu;
     }
 }
-\`\`\`
+```
 
 **Option B: VPN/Private Network**
 - Keep DGX on private network
@@ -570,15 +570,15 @@ server {
 - API calls go through secure tunnel
 
 **Option C: Cloud Tunnel** (Development)
-\`\`\`bash
+```bash
 # Use ngrok for testing
 ngrok http 8000
 # Provides: https://abc123.ngrok.io
-\`\`\`
+```
 
 **3. API Authentication**
 
-\`\`\`typescript
+```typescript
 // app/api/chat/route.ts
 const AI_API_URL = process.env.AI_API_URL // http://dgx-spark:8000/v1/chat/completions
 const AI_API_KEY = process.env.AI_API_KEY // Secret key
@@ -602,7 +602,7 @@ export async function POST(req: Request) {
   
   return response
 }
-\`\`\`
+```
 
 ### Security Considerations
 
@@ -612,14 +612,14 @@ export async function POST(req: Request) {
 - Use different keys for dev/prod
 
 **2. Rate Limiting**
-\`\`\`typescript
+```typescript
 // Prevent abuse of your GPU resources
 const MAX_REQUESTS_PER_IP = 10 // per minute
 const MAX_TOKENS_PER_REQUEST = 500
-\`\`\`
+```
 
 **3. Input Sanitization**
-\`\`\`typescript
+```typescript
 // Prevent prompt injection
 function sanitizeInput(message: string): string {
   // Remove system prompt attempts
@@ -627,14 +627,14 @@ function sanitizeInput(message: string): string {
     .replace(/system:|assistant:|user:/gi, '')
     .substring(0, 500)
 }
-\`\`\`
+```
 
 **4. Firewall Rules**
-\`\`\`bash
+```bash
 # Only allow website server IP to access DGX
 sudo ufw allow from <website-server-ip> to any port 8000
 sudo ufw deny 8000
-\`\`\`
+```
 
 ### Performance Tuning
 
@@ -643,14 +643,14 @@ sudo ufw deny 8000
 - **Production**: Larger model (70B parameters) for quality
 
 **2. Batching**
-\`\`\`python
+```python
 # vLLM config
 --max-num-batched-tokens 4096
 --max-num-seqs 256
-\`\`\`
+```
 
 **3. Caching**
-\`\`\`typescript
+```typescript
 // Cache common responses
 const responseCache = new Map<string, string>()
 
@@ -658,16 +658,16 @@ function getCachedResponse(question: string): string | null {
   const normalized = question.toLowerCase().trim()
   return responseCache.get(normalized) || null
 }
-\`\`\`
+```
 
 **4. Fallback Strategy**
-\`\`\`typescript
+```typescript
 // If DGX is down, use fallback responses
 const fallbackResponses = {
   'admissions': 'For admissions information, call (205) 929-1657',
   'financial_aid': 'Visit our Financial Aid office or email financialaid@miles.edu',
 }
-\`\`\`
+```
 
 ---
 
@@ -676,11 +676,11 @@ const fallbackResponses = {
 ### 1. Error Tracking
 
 **Sentry Integration**:
-\`\`\`bash
+```bash
 pnpm add @sentry/nextjs
-\`\`\`
+```
 
-\`\`\`typescript
+```typescript
 // sentry.client.config.ts
 import * as Sentry from '@sentry/nextjs'
 
@@ -689,12 +689,12 @@ Sentry.init({
   tracesSampleRate: 1.0,
   environment: process.env.NODE_ENV,
 })
-\`\`\`
+```
 
 ### 2. Analytics
 
 **Vercel Analytics**:
-\`\`\`typescript
+```typescript
 // app/layout.tsx
 import { Analytics } from '@vercel/analytics/react'
 
@@ -708,10 +708,10 @@ export default function RootLayout({ children }) {
     </html>
   )
 }
-\`\`\`
+```
 
 **Google Analytics**:
-\`\`\`typescript
+```typescript
 // lib/gtag.ts
 export const GA_TRACKING_ID = process.env.NEXT_PUBLIC_GA_ID
 
@@ -720,11 +720,11 @@ export const pageview = (url: string) => {
     page_path: url,
   })
 }
-\`\`\`
+```
 
 ### 3. Health Checks
 
-\`\`\`typescript
+```typescript
 // app/api/health/route.ts
 export async function GET() {
   const checks = {
@@ -752,12 +752,12 @@ async function checkAIBackend(): Promise<string> {
     return 'down'
   }
 }
-\`\`\`
+```
 
 ### 4. Logging
 
 **Structured Logging**:
-\`\`\`typescript
+```typescript
 // lib/logger.ts
 export const logger = {
   info: (message: string, meta?: object) => {
@@ -773,7 +773,7 @@ export const logger = {
     }))
   }
 }
-\`\`\`
+```
 
 ### 5. Backup Strategy
 
@@ -795,7 +795,7 @@ export const logger = {
 
 ### 1. Metadata Configuration
 
-\`\`\`typescript
+```typescript
 // app/layout.tsx
 export const metadata = {
   title: {
@@ -829,11 +829,11 @@ export const metadata = {
     },
   },
 }
-\`\`\`
+```
 
 ### 2. Sitemap Generation
 
-\`\`\`typescript
+```typescript
 // app/sitemap.ts
 export default function sitemap() {
   return [
@@ -852,11 +852,11 @@ export default function sitemap() {
     // ... more pages
   ]
 }
-\`\`\`
+```
 
 ### 3. robots.txt
 
-\`\`\`typescript
+```typescript
 // app/robots.ts
 export default function robots() {
   return {
@@ -868,11 +868,11 @@ export default function robots() {
     sitemap: 'https://miles.edu/sitemap.xml',
   }
 }
-\`\`\`
+```
 
 ### 4. Structured Data
 
-\`\`\`typescript
+```typescript
 // JSON-LD Schema
 const organizationSchema = {
   '@context': 'https://schema.org',
@@ -894,7 +894,7 @@ const organizationSchema = {
     contactType: 'Admissions'
   }
 }
-\`\`\`
+```
 
 ---
 
@@ -902,7 +902,7 @@ const organizationSchema = {
 
 ### GitHub Actions Workflow
 
-\`\`\`yaml
+```yaml
 # .github/workflows/deploy.yml
 name: Deploy to Production
 
@@ -943,7 +943,7 @@ jobs:
           vercel-org-id: ${{ secrets.ORG_ID }}
           vercel-project-id: ${{ secrets.PROJECT_ID }}
           vercel-args: '--prod'
-\`\`\`
+```
 
 ---
 

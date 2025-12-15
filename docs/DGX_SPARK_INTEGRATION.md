@@ -6,7 +6,7 @@ Your NVIDIA DGX Spark system serves as the AI inference backend for the Miles Co
 
 ## Architecture
 
-\`\`\`
+```
 ┌─────────────┐
 │   Browser   │
 └──────┬──────┘
@@ -25,14 +25,14 @@ Your NVIDIA DGX Spark system serves as the AI inference backend for the Miles Co
 │   AI Server     │
 │   (GPU)         │
 └─────────────────┘
-\`\`\`
+```
 
 ## Setup Instructions
 
 ### 1. Install Inference Server on DGX Spark
 
 **Option A: vLLM (Recommended)**
-\`\`\`bash
+```bash
 pip install vllm
 
 # Start server
@@ -42,31 +42,31 @@ python -m vllm.entrypoints.openai.api_server \
     --port 8000 \
     --gpu-memory-utilization 0.9 \
     --max-num-batched-tokens 4096
-\`\`\`
+```
 
 **Option B: TGI (Text Generation Inference)**
-\`\`\`bash
+```bash
 docker run --gpus all --shm-size 1g -p 8000:80 \
     ghcr.io/huggingface/text-generation-inference:latest \
     --model-id meta-llama/Llama-2-70b-chat-hf
-\`\`\`
+```
 
 **Option C: Ollama**
-\`\`\`bash
+```bash
 ollama serve
 ollama run llama2:70b
-\`\`\`
+```
 
 ### 2. Secure the API Endpoint
 
 **Generate API Key**:
-\`\`\`bash
+```bash
 openssl rand -hex 32
 # Use this as AI_API_KEY
-\`\`\`
+```
 
 **Add Authentication Middleware**:
-\`\`\`python
+```python
 # middleware.py
 from fastapi import HTTPException, Security
 from fastapi.security.api_key import APIKeyHeader
@@ -77,18 +77,18 @@ api_key_header = APIKeyHeader(name="Authorization")
 def verify_api_key(api_key: str = Security(api_key_header)):
     if api_key != f"Bearer {API_KEY}":
         raise HTTPException(status_code=403, detail="Invalid API Key")
-\`\`\`
+```
 
 ### 3. Network Configuration
 
 **Option A: VPN (Most Secure)**
-\`\`\`bash
+```bash
 # Connect website server to DGX via VPN
 # Use internal IP: http://10.0.0.5:8000
-\`\`\`
+```
 
 **Option B: Reverse Proxy**
-\`\`\`nginx
+```nginx
 # On edge server
 upstream dgx_backend {
     server dgx-spark.internal:8000;
@@ -103,27 +103,27 @@ server {
         proxy_set_header Authorization $http_authorization;
     }
 }
-\`\`\`
+```
 
 **Option C: Cloudflare Tunnel**
-\`\`\`bash
+```bash
 # Secure tunnel without opening ports
 cloudflared tunnel create miles-ai
 cloudflared tunnel route dns miles-ai ai.miles.edu
 cloudflared tunnel run miles-ai
-\`\`\`
+```
 
 ### 4. Update Website Configuration
 
-\`\`\`env
+```env
 # .env.production
 AI_API_URL=https://ai.miles.edu/v1/chat/completions
 AI_API_KEY=your_generated_key_here
-\`\`\`
+```
 
 ## Testing the Integration
 
-\`\`\`bash
+```bash
 # Test from website server
 curl -X POST https://ai.miles.edu/v1/chat/completions \
   -H "Authorization: Bearer YOUR_API_KEY" \
@@ -133,7 +133,7 @@ curl -X POST https://ai.miles.edu/v1/chat/completions \
     "messages": [{"role": "user", "content": "Hello"}],
     "max_tokens": 100
   }'
-\`\`\`
+```
 
 ## Performance Optimization
 
@@ -142,13 +142,13 @@ curl -X POST https://ai.miles.edu/v1/chat/completions \
 - **Production**: 70B parameter model (quality)
 
 ### Batching Configuration
-\`\`\`bash
+```bash
 --max-num-seqs 256  # Process multiple requests
 --max-model-len 4096  # Context window
-\`\`\`
+```
 
 ### Caching
-\`\`\`python
+```python
 # Cache frequent questions
 from functools import lru_cache
 
@@ -156,17 +156,17 @@ from functools import lru_cache
 def get_cached_response(question: str) -> str:
     # ... generate response
     pass
-\`\`\`
+```
 
 ## Monitoring
 
 ### GPU Utilization
-\`\`\`bash
+```bash
 watch -n 1 nvidia-smi
-\`\`\`
+```
 
 ### Request Logs
-\`\`\`python
+```python
 import logging
 
 logging.basicConfig(level=logging.INFO)
@@ -176,13 +176,13 @@ logger = logging.getLogger(__name__)
 async def chat(request: ChatRequest):
     logger.info(f"Request from {request.client.host}")
     # ... handle request
-\`\`\`
+```
 
 ### Metrics Dashboard
-\`\`\`bash
+```bash
 # Prometheus + Grafana
 docker-compose up -d prometheus grafana
-\`\`\`
+```
 
 ## Troubleshooting
 

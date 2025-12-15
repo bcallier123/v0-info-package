@@ -2,7 +2,7 @@
 
 ## Development
 
-\`\`\`bash
+```bash
 # Install dependencies
 pnpm install
 
@@ -15,42 +15,42 @@ pnpm build
 
 # Start production server
 pnpm start
-\`\`\`
+```
 
 ## Environment Setup
 
 Create `.env.local`:
-\`\`\`env
+```env
 NEXT_PUBLIC_AI_API_URL=http://your-dgx-spark:8000/v1/chat/completions
 AI_API_KEY=your_secret_key
-\`\`\`
+```
 
 ## Deploy to Vercel
 
-\`\`\`bash
+```bash
 # Install Vercel CLI
 npm i -g vercel
 
 # Deploy
 vercel --prod
-\`\`\`
+```
 
 ## DGX Spark Configuration
 
 Your DGX Spark should expose an OpenAI-compatible API endpoint:
 
-\`\`\`bash
+```bash
 # Example with vLLM
 python -m vllm.entrypoints.openai.api_server \
     --model your-model \
     --host 0.0.0.0 \
     --port 8000
-\`\`\`
+```
 
 Set the URL in your environment variables:
-\`\`\`
+```
 NEXT_PUBLIC_AI_API_URL=https://your-dgx-api.example.com/v1/chat/completions
-\`\`\`
+```
 
 ## Common Issues
 

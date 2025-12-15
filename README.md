@@ -31,10 +31,10 @@ The chatbot is powered by your local DGX Spark server. To configure:
 
 Add these to your Vercel project or `.env.local`:
 
-\`\`\`env
+```env
 DGX_API_URL=http://192.168.1.25:8000/v1
 DGX_MODEL=llama3
-\`\`\`
+```
 
 ### Local Development
 
@@ -46,13 +46,13 @@ For local development, the chatbot connects to:
 
 If you need to start your vLLM server on DGX:
 
-\`\`\`bash
+```bash
 docker run --gpus all \
   -p 8000:8000 \
   vllm/vllm-openai:latest \
   --model meta-llama/Llama-3.1-8B-Instruct \
   --served-model-name llama3
-\`\`\`
+```
 
 ### Production Deployment
 
@@ -76,9 +76,9 @@ Continue building your app on:
 
 ## Local Development
 
-\`\`\`bash
+```bash
 npm install
 npm run dev
-\`\`\`
+```
 
 Visit `http://localhost:3000` to view the app locally.

@@ -23,7 +23,7 @@ This checklist ensures your DGX Spark AI chatbot is fully functional and ready f
 
 ### Option A: Ollama (Easiest - Recommended for Testing)
 
-\`\`\`bash
+```bash
 # On your DGX system
 curl -fsSL https://ollama.com/install.sh | sh
 
@@ -35,7 +35,7 @@ ollama pull llama3
 
 # Test it works
 ollama run llama3 "Hello, test response"
-\`\`\`
+```
 
 **Checklist:**
 - [ ] Ollama installed successfully
@@ -45,7 +45,7 @@ ollama run llama3 "Hello, test response"
 
 ### Option B: vLLM (Best Performance)
 
-\`\`\`bash
+```bash
 # Install vLLM
 pip install vllm
 
@@ -56,7 +56,7 @@ python -m vllm.entrypoints.openai.api_server \
     --port 8000 \
     --dtype auto \
     --gpu-memory-utilization 0.9
-\`\`\`
+```
 
 **Checklist:**
 - [ ] vLLM installed successfully
@@ -66,7 +66,7 @@ python -m vllm.entrypoints.openai.api_server \
 
 ## Step 2: Test DGX Server Connection
 
-\`\`\`bash
+```bash
 # Test from your DGX system (local)
 curl http://localhost:8000/v1/models
 
@@ -81,7 +81,7 @@ curl http://192.168.1.25:8000/v1/chat/completions \
     "messages": [{"role": "user", "content": "Hello"}],
     "max_tokens": 100
   }'
-\`\`\`
+```
 
 **Checklist:**
 - [ ] `/v1/models` endpoint returns model list
@@ -93,14 +93,14 @@ curl http://192.168.1.25:8000/v1/chat/completions \
 
 On your Next.js web server:
 
-\`\`\`bash
+```bash
 # Create .env.local file
 cat > .env.local << EOF
 NEXT_PUBLIC_MILES_API_URL=http://192.168.1.25:8000/v1
 DGX_MODEL=llama3
 AI_API_KEY=your_optional_security_key
 EOF
-\`\`\`
+```
 
 **Important:** The URL must include the `/v1` path as shown above.
 
@@ -112,12 +112,12 @@ EOF
 
 ## Step 4: Test Web Application
 
-\`\`\`bash
+```bash
 # Start your Next.js development server
 npm run dev
 
 # Navigate to http://localhost:3000/chat
-\`\`\`
+```
 
 **Checklist:**
 - [ ] Chat page loads without errors
@@ -130,13 +130,13 @@ npm run dev
 
 Test the health check endpoint:
 
-\`\`\`bash
+```bash
 # Should return connection status
 curl http://localhost:3000/api/chat
-\`\`\`
+```
 
 Expected response:
-\`\`\`json
+```json
 {
   "status": "ok",
   "dgxConnected": true,
@@ -144,7 +144,7 @@ Expected response:
   "model": "llama3",
   "timestamp": "2024-01-01T00:00:00.000Z"
 }
-\`\`\`
+```
 
 **Checklist:**
 - [ ] Health check endpoint returns 200 status
@@ -183,13 +183,13 @@ Choose one security method:
 - [ ] Test connection through VPN
 
 ### Method B: Reverse Proxy with Authentication
-\`\`\`bash
+```bash
 # Install nginx on DGX
 sudo apt install nginx
 
 # Configure nginx with authentication
 # See docs/DGX_SPARK_INTEGRATION.md for full config
-\`\`\`
+```
 
 - [ ] Nginx installed and configured
 - [ ] SSL/TLS certificate installed
@@ -197,7 +197,7 @@ sudo apt install nginx
 - [ ] Test authenticated requests
 
 ### Method C: Cloudflare Tunnel
-\`\`\`bash
+```bash
 # Install cloudflared
 curl -L https://github.com/cloudflare/cloudflared/releases/latest/download/cloudflared-linux-amd64 -o cloudflared
 sudo mv cloudflared /usr/local/bin
@@ -206,7 +206,7 @@ sudo chmod +x /usr/local/bin/cloudflared
 # Create tunnel
 cloudflared tunnel create miles-dgx
 cloudflared tunnel route dns miles-dgx dgx.yourdomain.com
-\`\`\`
+```
 
 - [ ] Cloudflare tunnel created
 - [ ] DNS configured
@@ -226,13 +226,13 @@ cloudflared tunnel route dns miles-dgx dgx.yourdomain.com
 
 Set up monitoring to catch issues:
 
-\`\`\`bash
+```bash
 # Monitor DGX logs
 tail -f /var/log/ollama.log  # or vllm logs
 
 # Monitor Next.js logs for [v0] messages
 npm run dev | grep "\[v0\]"
-\`\`\`
+```
 
 **Checklist:**
 - [ ] Log monitoring in place
@@ -286,7 +286,7 @@ npm run dev | grep "\[v0\]"
 
 ## Quick Reference Commands
 
-\`\`\`bash
+```bash
 # Check DGX server status (use correct endpoint with /v1)
 curl http://192.168.1.25:8000/v1/models
 
@@ -306,7 +306,7 @@ sudo journalctl -u ollama -f
 
 # Test web app health
 curl http://localhost:3000/api/chat
-\`\`\`
+```
 
 ## Success Criteria
 
