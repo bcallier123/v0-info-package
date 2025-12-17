@@ -68,20 +68,20 @@ export function Navigation() {
     <>
       <nav
         className={cn(
-          "fixed top-0 left-0 right-0 z-50 bg-primary text-primary-foreground transition-all duration-300 safe-top",
-          isScrolled ? "shadow-xl py-1.5 sm:py-2" : "shadow-lg py-2 sm:py-3",
+          "fixed top-0 left-0 right-0 z-50 bg-primary text-primary-foreground transition-all duration-300",
+          isScrolled ? "shadow-xl" : "shadow-lg",
         )}
       >
-        <div className="container mx-auto px-3 sm:px-4">
-          <div className="flex items-center justify-between h-11 sm:h-14">
-            <div className="flex items-center">
+        <div className="container mx-auto px-4">
+          <div className="flex items-center justify-between h-14 sm:h-16 md:h-18">
+            <div className="flex items-center flex-shrink-0">
               <a href="#hero" className="flex items-center">
                 <Image
                   src="/images/design-mode/IMG_1498.PNG.png"
                   alt="Miles College"
                   width={160}
                   height={48}
-                  className="h-7 sm:h-10 md:h-12 w-auto"
+                  className="h-8 sm:h-10 md:h-12 w-auto"
                   priority
                 />
               </a>
@@ -202,12 +202,12 @@ export function Navigation() {
             </div>
 
             <button
-              className="lg:hidden flex items-center justify-center w-11 h-11 -mr-1.5 rounded-lg hover:bg-white/10 active:bg-white/20 transition-colors touch-target"
+              className="lg:hidden flex items-center justify-center w-12 h-12 rounded-lg hover:bg-white/10 active:bg-white/20 transition-colors"
               onClick={() => setIsOpen(!isOpen)}
               aria-label="Toggle menu"
               aria-expanded={isOpen}
             >
-              {isOpen ? <Icons.close className="w-5 h-5" /> : <Icons.menu className="w-5 h-5" />}
+              {isOpen ? <Icons.close className="w-6 h-6" /> : <Icons.menu className="w-6 h-6" />}
             </button>
           </div>
 
@@ -215,96 +215,87 @@ export function Navigation() {
             <>
               {/* Backdrop */}
               <div
-                className="lg:hidden fixed inset-0 top-[52px] sm:top-[64px] bg-black/60 backdrop-blur-sm z-40 animate-fade-in"
+                className="lg:hidden fixed inset-0 top-14 sm:top-16 bg-black/60 backdrop-blur-sm z-40"
                 onClick={() => setIsOpen(false)}
               />
               {/* Menu Content */}
-              <div className="lg:hidden fixed left-0 right-0 top-[52px] sm:top-[64px] bg-primary z-50 border-t border-white/10 max-h-[calc(100vh-52px)] sm:max-h-[calc(100vh-64px)] overflow-y-auto safe-bottom animate-fade-in-up">
-                <div className="py-2">
+              <div className="lg:hidden fixed left-0 right-0 top-14 sm:top-16 bg-primary z-50 border-t border-white/10 max-h-[calc(100vh-56px)] sm:max-h-[calc(100vh-64px)] overflow-y-auto">
+                <div className="py-3">
                   {/* About */}
                   <a
                     href="#about"
-                    className="flex items-center gap-3 py-3.5 px-4 text-sm font-semibold hover:text-secondary hover:bg-white/5 transition-colors active:bg-white/10 touch-target"
+                    className="flex items-center gap-3 py-4 px-5 text-base font-semibold hover:text-secondary hover:bg-white/5 transition-colors active:bg-white/10"
                     onClick={() => setIsOpen(false)}
                   >
-                    <Icons.info className="w-4 h-4 text-secondary" />
+                    <Icons.info className="w-5 h-5 text-secondary" />
                     About Miles College
                   </a>
 
                   {/* Admissions Section */}
-                  <div className="border-t border-white/10 mt-1 pt-1">
-                    <p className="px-4 py-2 text-[10px] font-bold uppercase tracking-wider text-secondary">
-                      Admissions
-                    </p>
+                  <div className="border-t border-white/10 mt-2 pt-2">
+                    <p className="px-5 py-2 text-xs font-bold uppercase tracking-wider text-secondary">Admissions</p>
                     {admissionsLinks.map((link) => (
                       <a
                         key={link.href}
                         href={link.href}
                         {...(link.href.startsWith("http") && { target: "_blank", rel: "noopener noreferrer" })}
-                        className="flex items-center gap-3 py-3 px-4 text-sm hover:text-secondary hover:bg-white/5 transition-colors active:bg-white/10 touch-target"
+                        className="flex items-center gap-3 py-3.5 px-5 text-base hover:text-secondary hover:bg-white/5 transition-colors active:bg-white/10"
                         onClick={() => setIsOpen(false)}
                       >
-                        <Icons.chevronRight className="w-3 h-3 text-white/40" />
+                        <Icons.chevronRight className="w-4 h-4 text-white/40" />
                         {link.title}
                       </a>
                     ))}
                   </div>
 
                   {/* Academics Section */}
-                  <div className="border-t border-white/10 mt-1 pt-1">
-                    <p className="px-4 py-2 text-[10px] font-bold uppercase tracking-wider text-secondary">Academics</p>
+                  <div className="border-t border-white/10 mt-2 pt-2">
+                    <p className="px-5 py-2 text-xs font-bold uppercase tracking-wider text-secondary">Academics</p>
                     {academicsLinks.map((link) => (
                       <a
                         key={link.href}
                         href={link.href}
                         {...(link.href.startsWith("http") && { target: "_blank", rel: "noopener noreferrer" })}
-                        className="flex items-center gap-3 py-3 px-4 text-sm hover:text-secondary hover:bg-white/5 transition-colors active:bg-white/10 touch-target"
+                        className="flex items-center gap-3 py-3.5 px-5 text-base hover:text-secondary hover:bg-white/5 transition-colors active:bg-white/10"
                         onClick={() => setIsOpen(false)}
                       >
-                        <Icons.chevronRight className="w-3 h-3 text-white/40" />
+                        <Icons.chevronRight className="w-4 h-4 text-white/40" />
                         {link.title}
                       </a>
                     ))}
                   </div>
 
                   {/* Campus Life Section */}
-                  <div className="border-t border-white/10 mt-1 pt-1">
-                    <p className="px-4 py-2 text-[10px] font-bold uppercase tracking-wider text-secondary">
-                      Campus Life
-                    </p>
+                  <div className="border-t border-white/10 mt-2 pt-2">
+                    <p className="px-5 py-2 text-xs font-bold uppercase tracking-wider text-secondary">Campus Life</p>
                     {campusLinks.map((link) => (
                       <a
                         key={link.href}
                         href={link.href}
                         {...(link.href.startsWith("http") && { target: "_blank", rel: "noopener noreferrer" })}
-                        className="flex items-center gap-3 py-3 px-4 text-sm hover:text-secondary hover:bg-white/5 transition-colors active:bg-white/10 touch-target"
+                        className="flex items-center gap-3 py-3.5 px-5 text-base hover:text-secondary hover:bg-white/5 transition-colors active:bg-white/10"
                         onClick={() => setIsOpen(false)}
                       >
-                        <Icons.chevronRight className="w-3 h-3 text-white/40" />
+                        <Icons.chevronRight className="w-4 h-4 text-white/40" />
                         {link.title}
                       </a>
                     ))}
                   </div>
 
                   {/* CTA Buttons */}
-                  <div className="px-4 py-4 space-y-2.5 border-t border-white/10 mt-2">
+                  <div className="px-5 py-5 space-y-3 border-t border-white/10 mt-3">
                     <Button
                       variant="outline"
-                      size="default"
-                      className="w-full font-semibold bg-transparent text-sm h-12 touch-target-lg"
+                      size="lg"
+                      className="w-full font-semibold bg-transparent text-base h-14"
                       asChild
                     >
                       <a href="tel:205-929-1657">
-                        <Icons.phone className="w-4 h-4 mr-2" />
+                        <Icons.phone className="w-5 h-5 mr-2" />
                         Call Admissions
                       </a>
                     </Button>
-                    <Button
-                      variant="secondary"
-                      size="default"
-                      className="w-full font-bold text-sm h-12 touch-target-lg"
-                      asChild
-                    >
+                    <Button variant="secondary" size="lg" className="w-full font-bold text-base h-14" asChild>
                       <a href="https://myexperience.miles.edu" target="_blank" rel="noopener noreferrer">
                         Apply Now - FREE
                       </a>
@@ -317,14 +308,15 @@ export function Navigation() {
         </div>
       </nav>
 
-      <div className="fixed bottom-4 right-4 z-40 lg:hidden safe-bottom">
+      <div className="fixed bottom-6 right-4 z-40 lg:hidden">
         <Button
           size="lg"
-          className="h-14 w-14 rounded-full bg-secondary hover:bg-yellow-400 text-primary shadow-2xl hover:shadow-3xl transition-all pulse-glow touch-target-lg"
+          className="h-14 px-6 rounded-full bg-secondary hover:bg-yellow-400 text-primary font-bold shadow-2xl transition-all"
           asChild
         >
-          <a href="https://myexperience.miles.edu" target="_blank" rel="noopener noreferrer" aria-label="Apply Now">
-            <Icons.arrowRight className="w-6 h-6" />
+          <a href="https://myexperience.miles.edu" target="_blank" rel="noopener noreferrer">
+            <span className="mr-2">Apply</span>
+            <Icons.arrowRight className="w-5 h-5" />
           </a>
         </Button>
       </div>
