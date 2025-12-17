@@ -36,7 +36,7 @@ function renderMarkdown(text: string) {
     if (part.startsWith("#")) {
       const headerText = part.replace(/^#+\s*/, "")
       return (
-        <span key={index} className="text-lg sm:text-xl font-black text-secondary block mb-2">
+        <span key={index} className="text-base sm:text-lg font-black text-secondary block mb-2">
           {headerText}
         </span>
       )
@@ -201,23 +201,23 @@ export default function ChatPage() {
   return (
     <div className="min-h-[100svh] bg-gradient-to-br from-[#1a0a2e] via-primary/95 to-background">
       <div className="sticky top-0 z-50 border-b-2 border-secondary/30 bg-[#1a0a2e]/95 backdrop-blur-xl shadow-xl safe-top">
-        <div className="container mx-auto px-3 sm:px-6 py-3 sm:py-4">
+        <div className="container mx-auto px-3 sm:px-6 py-2.5 sm:py-4">
           <div className="flex items-center justify-between gap-2">
             <div className="flex items-center gap-2 sm:gap-4 min-w-0">
               <Link
                 href="/"
-                className="text-white hover:text-secondary transition-colors group flex items-center gap-1 sm:gap-2 touch-target flex-shrink-0"
+                className="text-white hover:text-secondary transition-colors group flex items-center gap-1 touch-target flex-shrink-0"
               >
-                <Icons.arrowRight className="w-5 h-5 sm:w-6 sm:h-6 rotate-180 group-hover:-translate-x-1 transition-transform" />
-                <span className="text-xs sm:text-sm font-black uppercase hidden sm:inline">Back</span>
+                <Icons.arrowRight className="w-5 h-5 rotate-180 group-hover:-translate-x-1 transition-transform" />
+                <span className="text-xs font-black uppercase hidden sm:inline">Back</span>
               </Link>
               <div className="flex items-center gap-2 sm:gap-3 min-w-0">
                 <div className="relative flex-shrink-0">
-                  <div className="w-10 h-10 sm:w-14 sm:h-14 rounded-full bg-gradient-to-br from-secondary via-yellow-400 to-yellow-500 flex items-center justify-center shadow-2xl shadow-secondary/50">
-                    <Icons.sparkles className="w-5 h-5 sm:w-7 sm:h-7 text-primary" />
+                  <div className="w-9 h-9 sm:w-12 sm:h-12 rounded-full bg-gradient-to-br from-secondary via-yellow-400 to-yellow-500 flex items-center justify-center shadow-xl shadow-secondary/50">
+                    <Icons.sparkles className="w-4 h-4 sm:w-6 sm:h-6 text-primary" />
                   </div>
                   <div
-                    className={`absolute -bottom-0.5 -right-0.5 w-3.5 h-3.5 sm:w-5 sm:h-5 rounded-full border-2 border-[#1a0a2e] ${
+                    className={`absolute -bottom-0.5 -right-0.5 w-3 h-3 sm:w-4 sm:h-4 rounded-full border-2 border-[#1a0a2e] ${
                       connectionStatus.checking
                         ? "bg-yellow-400 animate-pulse"
                         : connectionStatus.connected
@@ -227,22 +227,22 @@ export default function ChatPage() {
                   />
                 </div>
                 <div className="min-w-0">
-                  <h1 className="font-black text-base sm:text-2xl text-white tracking-tight truncate">MILES AI</h1>
-                  <p className="text-[10px] sm:text-xs text-white/70 font-bold uppercase tracking-wider hidden xs:block">
-                    Enrollment Assistant
+                  <h1 className="font-black text-sm sm:text-xl text-white tracking-tight truncate">MILES AI</h1>
+                  <p className="text-[9px] sm:text-xs text-white/70 font-bold uppercase tracking-wider hidden xs:block">
+                    Enrollment Coach
                   </p>
                 </div>
               </div>
             </div>
-            <div className="flex items-center gap-1.5 sm:gap-3 flex-shrink-0">
-              <div className="hidden sm:flex items-center gap-1 sm:gap-2">
+            <div className="flex items-center gap-1 sm:gap-2 flex-shrink-0">
+              <div className="hidden sm:flex items-center gap-1">
                 {personas.map((p) => {
                   const IconComp = p.icon
                   return (
                     <button
                       key={p.id}
                       onClick={() => setPersona(persona === p.id ? null : p.id)}
-                      className={`px-2 sm:px-3 py-1 sm:py-1.5 text-[10px] sm:text-xs font-bold uppercase rounded-full transition-all flex items-center gap-1 touch-target ${
+                      className={`px-2 py-1 text-[10px] font-bold uppercase rounded-full transition-all flex items-center gap-1 touch-target ${
                         persona === p.id ? "bg-secondary text-primary" : "bg-white/10 text-white/70 hover:bg-white/20"
                       }`}
                     >
@@ -253,7 +253,7 @@ export default function ChatPage() {
                 })}
               </div>
               <Badge
-                className={`px-2 sm:px-4 py-1 sm:py-2 border-0 font-black uppercase text-[10px] sm:text-xs shadow-lg ${
+                className={`px-2 sm:px-3 py-1 border-0 font-black uppercase text-[9px] sm:text-xs shadow-lg ${
                   connectionStatus.checking
                     ? "bg-yellow-400 text-primary"
                     : connectionStatus.connected
@@ -268,22 +268,21 @@ export default function ChatPage() {
         </div>
       </div>
 
-      <div className="container mx-auto px-2 sm:px-6 py-4 sm:py-8 max-w-5xl">
-        <Card className="bg-white/5 backdrop-blur-2xl border-2 border-white/10 shadow-2xl overflow-hidden">
-          {/* Messages */}
-          <ScrollArea className="h-[50vh] sm:h-[55vh] md:h-[60vh] px-3 sm:px-6 py-4 sm:py-6">
-            <div className="space-y-4 sm:space-y-6">
+      <div className="container mx-auto px-2 sm:px-6 py-3 sm:py-8 max-w-5xl">
+        <Card className="bg-white/5 backdrop-blur-xl border-2 border-white/10 shadow-2xl overflow-hidden">
+          <ScrollArea className="h-[55vh] sm:h-[55vh] md:h-[60vh] px-3 sm:px-6 py-3 sm:py-6">
+            <div className="space-y-3 sm:space-y-6">
               {messages.map((message, index) => (
                 <div
                   key={index}
                   className={`flex gap-2 sm:gap-4 ${message.role === "user" ? "justify-end" : "justify-start"}`}
                 >
                   {message.role === "assistant" && (
-                    <div className="w-8 h-8 sm:w-10 sm:h-10 rounded-full bg-gradient-to-br from-secondary to-yellow-400 flex items-center justify-center flex-shrink-0 shadow-lg shadow-secondary/40">
-                      <Icons.sparkles className="w-4 h-4 sm:w-5 sm:h-5 text-primary" />
+                    <div className="w-7 h-7 sm:w-10 sm:h-10 rounded-full bg-gradient-to-br from-secondary to-yellow-400 flex items-center justify-center flex-shrink-0 shadow-lg shadow-secondary/40">
+                      <Icons.sparkles className="w-3.5 h-3.5 sm:w-5 sm:h-5 text-primary" />
                     </div>
                   )}
-                  <div className="flex flex-col gap-2 sm:gap-3 max-w-[85%] sm:max-w-[80%]">
+                  <div className="flex flex-col gap-2 max-w-[85%] sm:max-w-[80%]">
                     <div
                       className={`p-3 sm:p-5 rounded-2xl ${
                         message.role === "user"
@@ -291,7 +290,7 @@ export default function ChatPage() {
                           : "bg-white/10 text-white backdrop-blur-sm border border-white/20"
                       }`}
                     >
-                      <div className="text-sm sm:text-base leading-relaxed whitespace-pre-wrap">
+                      <div className="text-[13px] sm:text-base leading-relaxed whitespace-pre-wrap">
                         {renderMarkdown(message.content)}
                       </div>
                     </div>
@@ -301,7 +300,7 @@ export default function ChatPage() {
                           <button
                             key={btnIndex}
                             onClick={() => handleButtonAction(button)}
-                            className={`px-3 sm:px-4 py-1.5 sm:py-2 text-xs sm:text-sm font-bold rounded-full transition-all touch-target ${
+                            className={`px-2.5 sm:px-4 py-1.5 sm:py-2 text-[11px] sm:text-sm font-bold rounded-full transition-all touch-target ${
                               button.type === "primary"
                                 ? "bg-secondary text-primary hover:bg-yellow-400 shadow-lg shadow-secondary/30"
                                 : "bg-white/10 text-white hover:bg-white/20 border border-white/30"
@@ -313,25 +312,25 @@ export default function ChatPage() {
                       </div>
                     )}
                     {message.timestamp && (
-                      <span className="text-[10px] sm:text-xs text-white/40 px-1 sm:px-2">
+                      <span className="text-[9px] sm:text-xs text-white/40 px-1">
                         {message.timestamp.toLocaleTimeString([], { hour: "2-digit", minute: "2-digit" })}
                       </span>
                     )}
                   </div>
                   {message.role === "user" && (
-                    <div className="w-8 h-8 sm:w-10 sm:h-10 rounded-full bg-white/10 backdrop-blur-sm flex items-center justify-center flex-shrink-0 border border-white/30">
-                      <Icons.users className="w-4 h-4 sm:w-5 sm:h-5 text-white" />
+                    <div className="w-7 h-7 sm:w-10 sm:h-10 rounded-full bg-white/10 backdrop-blur-sm flex items-center justify-center flex-shrink-0 border border-white/30">
+                      <Icons.users className="w-3.5 h-3.5 sm:w-5 sm:h-5 text-white" />
                     </div>
                   )}
                 </div>
               ))}
               {isLoading && (
                 <div className="flex gap-2 sm:gap-4 justify-start">
-                  <div className="w-8 h-8 sm:w-10 sm:h-10 rounded-full bg-gradient-to-br from-secondary to-yellow-400 flex items-center justify-center flex-shrink-0 shadow-lg shadow-secondary/40">
-                    <Icons.sparkles className="w-4 h-4 sm:w-5 sm:h-5 text-primary animate-spin" />
+                  <div className="w-7 h-7 sm:w-10 sm:h-10 rounded-full bg-gradient-to-br from-secondary to-yellow-400 flex items-center justify-center flex-shrink-0 shadow-lg shadow-secondary/40">
+                    <Icons.sparkles className="w-3.5 h-3.5 sm:w-5 sm:h-5 text-primary animate-spin" />
                   </div>
                   <div className="bg-white/10 text-white backdrop-blur-sm border border-white/20 p-3 sm:p-5 rounded-2xl">
-                    <div className="flex gap-1.5 sm:gap-2">
+                    <div className="flex gap-1.5">
                       <div className="w-1.5 h-1.5 sm:w-2 sm:h-2 bg-secondary rounded-full animate-bounce" />
                       <div
                         className="w-1.5 h-1.5 sm:w-2 sm:h-2 bg-secondary rounded-full animate-bounce"
@@ -350,27 +349,27 @@ export default function ChatPage() {
           </ScrollArea>
 
           {messages.length === 1 && (
-            <div className="px-3 sm:px-6 pb-4 sm:pb-6 pt-2 border-t border-white/10">
-              <p className="text-white/60 text-xs sm:text-sm font-bold mb-3 sm:mb-4 uppercase tracking-wider flex items-center gap-2">
+            <div className="px-3 sm:px-6 pb-3 sm:pb-6 pt-2 border-t border-white/10">
+              <p className="text-white/60 text-[10px] sm:text-sm font-bold mb-2 sm:mb-4 uppercase tracking-wider flex items-center gap-2">
                 <Icons.messageCircle className="w-3 h-3 sm:w-4 sm:h-4" />
                 Popular Questions:
               </p>
-              <div className="grid grid-cols-2 lg:grid-cols-4 gap-2 sm:gap-3">
+              <div className="grid grid-cols-2 gap-2 sm:gap-3">
                 {quickQuestions.map((question, index) => {
                   const IconComponent = question.icon
                   return (
                     <button
                       key={index}
                       onClick={() => handleQuickQuestion(question.text)}
-                      className="group text-left p-3 sm:p-4 bg-white/5 hover:bg-white/10 border border-white/20 hover:border-secondary/50 transition-all text-white text-xs sm:text-sm flex flex-col gap-1.5 sm:gap-2 rounded-xl hover:shadow-lg hover:shadow-secondary/10 touch-target"
+                      className="group text-left p-2.5 sm:p-4 bg-white/5 hover:bg-white/10 border border-white/20 hover:border-secondary/50 transition-all text-white text-[11px] sm:text-sm flex flex-col gap-1 sm:gap-2 rounded-xl touch-target"
                     >
-                      <div className="flex items-center gap-1.5 sm:gap-2">
-                        <IconComponent className="w-3 h-3 sm:w-4 sm:h-4 text-secondary group-hover:scale-110 transition-transform" />
-                        <span className="text-[10px] sm:text-xs text-white/50 uppercase tracking-wider font-bold truncate">
+                      <div className="flex items-center gap-1.5">
+                        <IconComponent className="w-3 h-3 sm:w-4 sm:h-4 text-secondary" />
+                        <span className="text-[9px] sm:text-xs text-white/50 uppercase tracking-wider font-bold truncate">
                           {question.category}
                         </span>
                       </div>
-                      <span className="font-semibold line-clamp-2">{question.text}</span>
+                      <span className="font-semibold line-clamp-2 text-[11px] sm:text-sm">{question.text}</span>
                     </button>
                   )
                 })}
@@ -379,39 +378,39 @@ export default function ChatPage() {
           )}
 
           <form onSubmit={handleSubmit} className="p-3 sm:p-6 border-t border-white/10 bg-white/5 safe-bottom">
-            <div className="flex gap-2 sm:gap-3">
+            <div className="flex gap-2">
               <div className="relative flex-1">
                 <Input
                   value={input}
                   onChange={(e) => setInput(e.target.value)}
-                  placeholder="Ask about Miles College..."
-                  className="w-full bg-white/10 backdrop-blur-sm border border-white/20 focus:border-secondary text-white placeholder:text-white/40 px-4 sm:px-6 py-5 sm:py-6 text-sm sm:text-base pr-10 sm:pr-12 rounded-xl transition-all"
+                  placeholder="Ask about Miles..."
+                  className="w-full bg-white/10 backdrop-blur-sm border border-white/20 focus:border-secondary text-white placeholder:text-white/40 px-3 sm:px-6 py-4 sm:py-6 text-sm pr-10 rounded-xl transition-all"
                   disabled={isLoading}
                 />
-                <div className="absolute right-3 sm:right-4 top-1/2 -translate-y-1/2">
-                  <Icons.messageCircle className="w-4 h-4 sm:w-5 sm:h-5 text-white/30" />
+                <div className="absolute right-3 top-1/2 -translate-y-1/2">
+                  <Icons.messageCircle className="w-4 h-4 text-white/30" />
                 </div>
               </div>
               <Button
                 type="submit"
                 disabled={isLoading || !input.trim()}
-                className="bg-gradient-to-r from-secondary via-yellow-400 to-secondary hover:from-yellow-400 hover:via-secondary hover:to-yellow-400 text-primary font-black px-4 sm:px-8 shadow-xl shadow-secondary/40 hover:shadow-secondary/60 transition-all disabled:opacity-50 rounded-xl touch-target-lg"
+                className="bg-gradient-to-r from-secondary to-yellow-400 hover:from-yellow-400 hover:to-secondary text-primary font-black px-4 sm:px-8 shadow-xl shadow-secondary/40 transition-all disabled:opacity-50 rounded-xl touch-target-lg"
               >
                 {isLoading ? <Icons.sparkles className="w-5 h-5 animate-spin" /> : <Icons.send className="w-5 h-5" />}
               </Button>
             </div>
-            <p className="text-[10px] sm:text-xs text-white/40 mt-2 sm:mt-3 text-center">
-              {connectionStatus.connected ? "Powered by DGX Spark AI" : "Using comprehensive FAQ database"}
+            <p className="text-[9px] sm:text-xs text-white/40 mt-2 text-center">
+              {connectionStatus.connected ? "Powered by DGX Spark AI" : "Using FAQ database"}
             </p>
           </form>
         </Card>
 
-        <div className="mt-4 sm:mt-6 flex flex-col sm:flex-row flex-wrap justify-center gap-2 sm:gap-4">
+        <div className="mt-3 sm:mt-6 flex flex-col sm:flex-row flex-wrap justify-center gap-2 sm:gap-4">
           <a
             href="https://myexperience.miles.edu"
             target="_blank"
             rel="noopener noreferrer"
-            className="flex items-center justify-center gap-2 px-4 sm:px-6 py-3 bg-secondary text-primary font-bold rounded-full hover:bg-yellow-400 transition-all shadow-lg shadow-secondary/30 touch-target text-sm sm:text-base"
+            className="flex items-center justify-center gap-2 px-4 sm:px-6 py-3 bg-secondary text-primary font-bold rounded-full hover:bg-yellow-400 transition-all shadow-lg shadow-secondary/30 touch-target text-sm"
           >
             <Icons.fileText className="w-4 h-4" />
             Apply Now - FREE!
@@ -420,17 +419,17 @@ export default function ChatPage() {
             href="https://studentaid.gov"
             target="_blank"
             rel="noopener noreferrer"
-            className="flex items-center justify-center gap-2 px-4 sm:px-6 py-3 bg-white/10 text-white font-bold rounded-full hover:bg-white/20 transition-all border border-white/30 touch-target text-sm sm:text-base"
+            className="flex items-center justify-center gap-2 px-4 sm:px-6 py-3 bg-white/10 text-white font-bold rounded-full hover:bg-white/20 transition-all border border-white/30 touch-target text-sm"
           >
             <Icons.dollarSign className="w-4 h-4" />
             Complete FAFSA
           </a>
           <a
             href="tel:2059291657"
-            className="flex items-center justify-center gap-2 px-4 sm:px-6 py-3 bg-white/10 text-white font-bold rounded-full hover:bg-white/20 transition-all border border-white/30 touch-target text-sm sm:text-base"
+            className="flex items-center justify-center gap-2 px-4 sm:px-6 py-3 bg-white/10 text-white font-bold rounded-full hover:bg-white/20 transition-all border border-white/30 touch-target text-sm"
           >
             <Icons.phone className="w-4 h-4" />
-            Call (205) 929-1657
+            (205) 929-1657
           </a>
         </div>
       </div>
