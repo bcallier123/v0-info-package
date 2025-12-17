@@ -68,12 +68,12 @@ export function Navigation() {
     <>
       <nav
         className={cn(
-          "fixed top-0 left-0 right-0 z-50 bg-primary text-primary-foreground transition-all duration-300",
-          isScrolled ? "shadow-xl" : "shadow-lg",
+          "fixed top-0 left-0 right-0 z-50 bg-primary text-primary-foreground transition-all duration-300 safe-top",
+          isScrolled ? "shadow-xl py-2 sm:py-2" : "shadow-lg py-2.5 sm:py-3",
         )}
       >
-        <div className="container mx-auto px-4">
-          <div className="flex items-center justify-between h-14 sm:h-16 md:h-18">
+        <div className="container mx-auto px-4 sm:px-6">
+          <div className="flex items-center justify-between h-14 sm:h-16">
             <div className="flex items-center flex-shrink-0">
               <a href="#hero" className="flex items-center">
                 <Image
@@ -81,7 +81,7 @@ export function Navigation() {
                   alt="Miles College"
                   width={160}
                   height={48}
-                  className="h-8 sm:h-10 md:h-12 w-auto"
+                  className="h-9 sm:h-10 md:h-12 w-auto"
                   priority
                 />
               </a>
@@ -215,11 +215,11 @@ export function Navigation() {
             <>
               {/* Backdrop */}
               <div
-                className="lg:hidden fixed inset-0 top-14 sm:top-16 bg-black/60 backdrop-blur-sm z-40"
+                className="lg:hidden fixed inset-0 top-[72px] sm:top-[80px] bg-black/60 backdrop-blur-sm z-40 animate-fade-in"
                 onClick={() => setIsOpen(false)}
               />
               {/* Menu Content */}
-              <div className="lg:hidden fixed left-0 right-0 top-14 sm:top-16 bg-primary z-50 border-t border-white/10 max-h-[calc(100vh-56px)] sm:max-h-[calc(100vh-64px)] overflow-y-auto">
+              <div className="lg:hidden fixed left-0 right-0 top-[72px] sm:top-[80px] bg-primary z-50 border-t border-white/10 max-h-[calc(100vh-72px)] sm:max-h-[calc(100vh-80px)] overflow-y-auto safe-bottom animate-fade-in-up">
                 <div className="py-3">
                   {/* About */}
                   <a
@@ -233,7 +233,7 @@ export function Navigation() {
 
                   {/* Admissions Section */}
                   <div className="border-t border-white/10 mt-2 pt-2">
-                    <p className="px-5 py-2 text-xs font-bold uppercase tracking-wider text-secondary">Admissions</p>
+                    <p className="px-5 py-2.5 text-xs font-bold uppercase tracking-wider text-secondary">Admissions</p>
                     {admissionsLinks.map((link) => (
                       <a
                         key={link.href}
@@ -250,7 +250,7 @@ export function Navigation() {
 
                   {/* Academics Section */}
                   <div className="border-t border-white/10 mt-2 pt-2">
-                    <p className="px-5 py-2 text-xs font-bold uppercase tracking-wider text-secondary">Academics</p>
+                    <p className="px-5 py-2.5 text-xs font-bold uppercase tracking-wider text-secondary">Academics</p>
                     {academicsLinks.map((link) => (
                       <a
                         key={link.href}
@@ -267,7 +267,7 @@ export function Navigation() {
 
                   {/* Campus Life Section */}
                   <div className="border-t border-white/10 mt-2 pt-2">
-                    <p className="px-5 py-2 text-xs font-bold uppercase tracking-wider text-secondary">Campus Life</p>
+                    <p className="px-5 py-2.5 text-xs font-bold uppercase tracking-wider text-secondary">Campus Life</p>
                     {campusLinks.map((link) => (
                       <a
                         key={link.href}
@@ -308,14 +308,14 @@ export function Navigation() {
         </div>
       </nav>
 
-      <div className="fixed bottom-6 right-4 z-40 lg:hidden">
+      <div className="fixed bottom-5 right-5 z-40 lg:hidden safe-bottom">
         <Button
           size="lg"
-          className="h-14 px-6 rounded-full bg-secondary hover:bg-yellow-400 text-primary font-bold shadow-2xl transition-all"
+          className="h-14 px-5 rounded-full bg-secondary hover:bg-yellow-400 text-primary shadow-2xl hover:shadow-3xl transition-all font-bold text-sm gap-2"
           asChild
         >
           <a href="https://myexperience.miles.edu" target="_blank" rel="noopener noreferrer">
-            <span className="mr-2">Apply</span>
+            Apply Now
             <Icons.arrowRight className="w-5 h-5" />
           </a>
         </Button>
