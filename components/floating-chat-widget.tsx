@@ -198,14 +198,14 @@ export function FloatingChatWidget() {
     <>
       <button
         onClick={() => setIsOpen(!isOpen)}
-        className="fixed bottom-6 right-6 z-50 w-[60px] h-[60px] rounded-full flex items-center justify-center group transition-all hover:scale-105 shadow-[0_6px_20px_rgba(0,0,0,0.15)]"
+        className="fixed bottom-20 lg:bottom-6 right-4 lg:right-6 z-50 w-14 h-14 lg:w-[60px] lg:h-[60px] rounded-full flex items-center justify-center group transition-all hover:scale-105 shadow-[0_6px_20px_rgba(0,0,0,0.15)] touch-target"
         style={{ backgroundColor: "#4B2E83" }}
         aria-label={isOpen ? "Close Miles Assistant chat" : "Open Miles Assistant chat"}
       >
         {isOpen ? (
-          <Icons.x className="w-7 h-7 text-white transition-transform group-hover:rotate-90" />
+          <Icons.x className="w-6 h-6 lg:w-7 lg:h-7 text-white transition-transform group-hover:rotate-90" />
         ) : (
-          <Icons.messageCircle className="w-7 h-7 text-white" />
+          <Icons.messageCircle className="w-6 h-6 lg:w-7 lg:h-7 text-white" />
         )}
         {!isOpen && (
           <div
@@ -218,29 +218,32 @@ export function FloatingChatWidget() {
 
       {isOpen && (
         <div
-          className="fixed bottom-[90px] right-6 z-50 w-[calc(100vw-3rem)] md:w-[400px] animate-fade-in-up"
+          className="fixed bottom-[152px] lg:bottom-[104px] right-4 lg:right-6 z-50 w-[calc(100vw-2rem)] md:w-[420px] animate-fade-in-up"
           role="dialog"
           aria-label="Miles Assistant chat window"
         >
           <Card
             className="overflow-hidden"
             style={{
-              height: "70vh",
+              height: "min(55vh, 480px)",
               borderRadius: "18px",
               boxShadow: "0 10px 40px rgba(0,0,0,0.25)",
             }}
           >
-            <div className="h-[70px] px-4 flex items-center justify-between" style={{ backgroundColor: "#4B2E83" }}>
+            <div
+              className="h-[60px] lg:h-[70px] px-4 flex items-center justify-between"
+              style={{ backgroundColor: "#4B2E83" }}
+            >
               <div className="flex items-center gap-3">
                 <div
-                  className="w-10 h-10 rounded-full flex items-center justify-center font-black text-white text-lg"
+                  className="w-9 h-9 lg:w-10 lg:h-10 rounded-full flex items-center justify-center font-black text-white text-base lg:text-lg"
                   style={{ backgroundColor: "rgba(255,255,255,0.2)" }}
                 >
                   M
                 </div>
                 <div>
-                  <h3 className="font-bold text-white text-base leading-tight">Miles Assistant</h3>
-                  <p className="text-white/80 text-xs leading-tight flex items-center gap-1.5">
+                  <h3 className="font-bold text-white text-sm lg:text-base leading-tight">Miles Assistant</h3>
+                  <p className="text-white/80 text-[10px] lg:text-xs leading-tight flex items-center gap-1.5">
                     <span
                       className="w-2 h-2 rounded-full"
                       style={{ backgroundColor: "#10B981" }}
@@ -259,22 +262,27 @@ export function FloatingChatWidget() {
               </button>
             </div>
 
-            <ScrollArea className="flex-1 px-4 py-4 bg-white" style={{ height: "calc(70vh - 70px - 180px)" }}>
-              <div className="space-y-4">
+            <ScrollArea
+              className="flex-1 px-3 lg:px-4 py-3 lg:py-4 bg-white"
+              style={{ height: "calc(min(55vh, 480px) - 64px - 140px)" }}
+            >
+              <div className="space-y-3 lg:space-y-4">
                 {messages.map((message, index) => (
                   <div key={index}>
-                    <div className={`flex gap-2.5 ${message.role === "user" ? "justify-end" : "justify-start"}`}>
+                    <div
+                      className={`flex gap-2 lg:gap-2.5 ${message.role === "user" ? "justify-end" : "justify-start"}`}
+                    >
                       {message.role === "assistant" && (
                         <div
-                          className="w-8 h-8 rounded-full flex items-center justify-center flex-shrink-0 font-black text-white text-sm"
+                          className="w-7 h-7 lg:w-8 lg:h-8 rounded-full flex items-center justify-center flex-shrink-0 font-black text-white text-xs lg:text-sm"
                           style={{ backgroundColor: "#4B2E83" }}
                         >
                           M
                         </div>
                       )}
-                      <div className="flex flex-col gap-1 max-w-[75%]">
+                      <div className="flex flex-col gap-1 max-w-[80%] lg:max-w-[75%]">
                         <div
-                          className={`px-4 py-2.5 text-sm leading-relaxed ${
+                          className={`px-3 lg:px-4 py-2 lg:py-2.5 text-xs lg:text-sm leading-relaxed ${
                             message.role === "user" ? "text-white" : "bg-white border text-gray-900"
                           }`}
                           style={
@@ -286,7 +294,7 @@ export function FloatingChatWidget() {
                           <p className="whitespace-pre-wrap">{message.content}</p>
                         </div>
                         {message.timestamp && (
-                          <span className="text-[11px] text-gray-400 px-2">
+                          <span className="text-[10px] lg:text-[11px] text-gray-400 px-2">
                             {message.timestamp.toLocaleTimeString([], { hour: "2-digit", minute: "2-digit" })}
                           </span>
                         )}
@@ -294,12 +302,12 @@ export function FloatingChatWidget() {
                     </div>
 
                     {message.buttons && message.buttons.length > 0 && (
-                      <div className="mt-3 ml-11 space-y-2">
+                      <div className="mt-2 lg:mt-3 ml-9 lg:ml-11 space-y-1.5 lg:space-y-2">
                         {message.buttons.map((button, btnIndex) => (
                           <button
                             key={btnIndex}
                             onClick={() => handleButtonClick(button.action)}
-                            className="w-full text-left px-4 py-2.5 bg-white hover:text-white border text-gray-700 text-sm font-medium transition-all touch-target"
+                            className="w-full text-left px-3 lg:px-4 py-2 lg:py-2.5 bg-white hover:text-white border text-gray-700 text-xs lg:text-sm font-medium transition-all touch-target"
                             style={{
                               borderColor: "#4B2E83",
                               borderRadius: "9999px",
@@ -320,18 +328,18 @@ export function FloatingChatWidget() {
                   </div>
                 ))}
                 {isLoading && (
-                  <div className="flex gap-2.5 justify-start">
+                  <div className="flex gap-2 lg:gap-2.5 justify-start">
                     <div
-                      className="w-8 h-8 rounded-full flex items-center justify-center flex-shrink-0 font-black text-white text-sm"
+                      className="w-7 h-7 lg:w-8 lg:h-8 rounded-full flex items-center justify-center flex-shrink-0 font-black text-white text-xs lg:text-sm"
                       style={{ backgroundColor: "#4B2E83" }}
                     >
                       M
                     </div>
                     <div
-                      className="bg-white border px-4 py-3 flex items-center gap-1"
+                      className="bg-white border px-3 lg:px-4 py-2 lg:py-3 flex items-center gap-1"
                       style={{ borderColor: "#E5E0F4", borderRadius: "16px" }}
                     >
-                      <span className="text-xs text-gray-500 mr-2">Miles Assistant is typing</span>
+                      <span className="text-[10px] lg:text-xs text-gray-500 mr-2">Miles Assistant is typing</span>
                       <div className="flex gap-1">
                         <div
                           className="w-1.5 h-1.5 rounded-full animate-bounce"
@@ -354,16 +362,16 @@ export function FloatingChatWidget() {
             </ScrollArea>
 
             {persona && messages.length > 1 && (
-              <div className="px-4 py-3 border-t border-gray-100 bg-gray-50">
-                <p className="text-gray-600 text-xs font-semibold mb-2.5">Quick Actions</p>
-                <div className="grid grid-cols-2 gap-2">
+              <div className="px-3 lg:px-4 py-2 lg:py-3 border-t border-gray-100 bg-gray-50">
+                <p className="text-gray-600 text-[10px] lg:text-xs font-semibold mb-2">Quick Actions</p>
+                <div className="grid grid-cols-2 gap-1.5 lg:gap-2">
                   {getQuickQuestions().map((question, index) => {
                     const IconComponent = question.icon
                     return (
                       <button
                         key={index}
                         onClick={() => handleQuickQuestion(question.text)}
-                        className="text-left p-2.5 bg-white hover:border-2 border text-gray-700 text-xs flex items-start gap-2 transition-all touch-target"
+                        className="text-left p-2 lg:p-2.5 bg-white hover:border-2 border text-gray-700 text-[10px] lg:text-xs flex items-start gap-1.5 lg:gap-2 transition-all touch-target"
                         style={{
                           borderColor: "#E5E0F4",
                           borderRadius: "12px",
@@ -378,7 +386,10 @@ export function FloatingChatWidget() {
                           e.currentTarget.style.borderWidth = "1px"
                         }}
                       >
-                        <IconComponent className="w-4 h-4 flex-shrink-0 mt-0.5" style={{ color: "#4B2E83" }} />
+                        <IconComponent
+                          className="w-3.5 h-3.5 lg:w-4 lg:h-4 flex-shrink-0 mt-0.5"
+                          style={{ color: "#4B2E83" }}
+                        />
                         <span className="font-medium leading-tight">{question.text}</span>
                       </button>
                     )
@@ -387,13 +398,13 @@ export function FloatingChatWidget() {
               </div>
             )}
 
-            <form onSubmit={handleSubmit} className="px-4 py-4 border-t border-gray-100 bg-white">
-              <div className="flex gap-2.5 items-end">
+            <form onSubmit={handleSubmit} className="px-3 lg:px-4 py-3 lg:py-4 border-t border-gray-100 bg-white">
+              <div className="flex gap-2 lg:gap-2.5 items-end">
                 <Input
                   value={input}
                   onChange={(e) => setInput(e.target.value)}
-                  placeholder="Type your question or choose an option..."
-                  className="flex-1 bg-gray-50 border-gray-200 text-gray-900 placeholder:text-gray-400 text-sm px-4 py-3"
+                  placeholder="Type your question..."
+                  className="flex-1 bg-gray-50 border-gray-200 text-gray-900 placeholder:text-gray-400 text-xs lg:text-sm px-3 lg:px-4 py-2.5 lg:py-3"
                   style={{ borderRadius: "12px", minHeight: "44px" }}
                   disabled={isLoading}
                   aria-label="Type your message"
@@ -407,7 +418,7 @@ export function FloatingChatWidget() {
                 <Button
                   type="submit"
                   disabled={isLoading || !input.trim()}
-                  className="text-white font-semibold px-4 py-3 shadow-sm disabled:opacity-50 touch-target"
+                  className="text-white font-semibold px-3 lg:px-4 py-2.5 lg:py-3 shadow-sm disabled:opacity-50 touch-target"
                   style={{
                     backgroundColor: "#4B2E83",
                     borderRadius: "12px",
@@ -416,7 +427,7 @@ export function FloatingChatWidget() {
                   }}
                   aria-label="Send message"
                 >
-                  <Icons.send className="w-5 h-5" />
+                  <Icons.send className="w-4 h-4 lg:w-5 lg:h-5" />
                 </Button>
               </div>
             </form>

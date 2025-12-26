@@ -17,10 +17,20 @@ import { cn } from "@/lib/utils"
 export function Navigation() {
   const [isOpen, setIsOpen] = useState(false)
   const [isScrolled, setIsScrolled] = useState(false)
+  const [activeSection, setActiveSection] = useState("hero")
 
   useEffect(() => {
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 10)
+
+      const sections = ["hero", "about", "apply", "academics", "campus-life", "athletics"]
+      for (const section of sections.reverse()) {
+        const element = document.getElementById(section)
+        if (element && window.scrollY >= element.offsetTop - 100) {
+          setActiveSection(section)
+          break
+        }
+      }
     }
     window.addEventListener("scroll", handleScroll, { passive: true })
     return () => window.removeEventListener("scroll", handleScroll)
@@ -64,23 +74,32 @@ export function Navigation() {
     { title: "Student Resources", href: "https://www.miles.edu/student-services", description: "Support services" },
   ]
 
+  const bottomNavItems = [
+    { id: "hero", icon: Icons.home, label: "Home", href: "#hero" },
+    { id: "apply", icon: Icons.fileText, label: "Apply", href: "#apply" },
+    { id: "academics", icon: Icons.graduationCap, label: "Programs", href: "#academics" },
+    { id: "campus-life", icon: Icons.heart, label: "Campus", href: "#campus-life" },
+    { id: "chat", icon: Icons.messageCircle, label: "Chat", href: "/chat" },
+  ]
+
   return (
     <>
+      {/* Top Navigation Bar */}
       <nav
         className={cn(
           "fixed top-0 left-0 right-0 z-50 bg-primary text-primary-foreground transition-all duration-300 safe-top",
-          isScrolled ? "shadow-xl py-1.5 sm:py-2" : "shadow-lg py-2 sm:py-3",
+          isScrolled ? "shadow-xl" : "shadow-lg",
         )}
       >
         <div className="container mx-auto px-4 sm:px-6">
-          <div className="flex items-center justify-between h-14 sm:h-16">
+          <div className="flex items-center justify-between h-16">
             <div className="flex items-center flex-shrink-0">
-              <a href="#hero" className="flex items-center">
+              <a href="#hero" className="flex items-center py-2">
                 <Image
                   src="/images/design-mode/IMG_1498.PNG.png"
                   alt="Miles College"
-                  width={160}
-                  height={48}
+                  width={180}
+                  height={54}
                   className="h-10 sm:h-11 md:h-12 w-auto"
                   priority
                 />
@@ -201,99 +220,93 @@ export function Navigation() {
               </div>
             </div>
 
-            <button
-              className="lg:hidden flex items-center justify-center w-12 h-12 -mr-2 rounded-lg hover:bg-white/10 active:bg-white/20 transition-colors touch-target"
-              onClick={() => setIsOpen(!isOpen)}
-              aria-label="Toggle menu"
-              aria-expanded={isOpen}
-            >
-              {isOpen ? <Icons.close className="w-7 h-7" /> : <Icons.menu className="w-7 h-7" />}
-            </button>
+            <div className="lg:hidden flex items-center gap-1">
+              <a
+                href="tel:2059291657"
+                className="flex items-center justify-center w-12 h-12 rounded-full hover:bg-white/10 transition-colors"
+                aria-label="Call Admissions"
+              >
+                <Icons.phone className="w-5 h-5" />
+              </a>
+              <button
+                className="flex items-center justify-center w-12 h-12 rounded-full hover:bg-white/10 transition-colors"
+                onClick={() => setIsOpen(!isOpen)}
+                aria-label="Toggle menu"
+                aria-expanded={isOpen}
+              >
+                {isOpen ? <Icons.close className="w-6 h-6" /> : <Icons.menu className="w-6 h-6" />}
+              </button>
+            </div>
           </div>
 
+          {/* Mobile Menu Dropdown */}
           {isOpen && (
             <>
-              {/* Backdrop */}
               <div
-                className="lg:hidden fixed inset-0 top-[64px] bg-black/60 backdrop-blur-sm z-40 animate-fade-in"
+                className="lg:hidden fixed inset-0 top-16 bg-black/60 backdrop-blur-sm z-40 animate-fade-in"
                 onClick={() => setIsOpen(false)}
               />
-              <div className="lg:hidden fixed left-0 right-0 top-[64px] bg-primary z-50 border-t border-white/10 max-h-[calc(100vh-64px)] overflow-y-auto safe-bottom animate-fade-in-up">
-                <div className="py-2">
-                  {/* About */}
+              <div className="lg:hidden fixed left-0 right-0 top-16 bg-primary z-50 border-t border-white/10 max-h-[calc(100vh-64px-72px)] overflow-y-auto animate-fade-in-up">
+                <div className="py-3">
                   <a
                     href="#about"
-                    className="flex items-center gap-3 py-4 px-5 text-base font-semibold hover:text-secondary hover:bg-white/5 transition-colors active:bg-white/10 touch-target"
+                    className="flex items-center gap-4 py-4 px-6 text-lg font-semibold hover:text-secondary hover:bg-white/5 transition-colors"
                     onClick={() => setIsOpen(false)}
                   >
-                    <Icons.info className="w-5 h-5 text-secondary" />
+                    <Icons.info className="w-6 h-6 text-secondary" />
                     About Miles College
                   </a>
 
-                  {/* Admissions Section */}
-                  <div className="border-t border-white/10 mt-1 pt-1">
-                    <p className="px-5 py-2 text-xs font-bold uppercase tracking-wider text-secondary">Admissions</p>
+                  <div className="border-t border-white/10 mt-2 pt-2">
+                    <p className="px-6 py-3 text-xs font-bold uppercase tracking-wider text-secondary">Admissions</p>
                     {admissionsLinks.map((link) => (
                       <a
                         key={link.href}
                         href={link.href}
                         {...(link.href.startsWith("http") && { target: "_blank", rel: "noopener noreferrer" })}
-                        className="flex items-center gap-3 py-3.5 px-5 text-[15px] hover:text-secondary hover:bg-white/5 transition-colors active:bg-white/10 touch-target"
+                        className="flex items-center gap-4 py-4 px-6 text-base hover:text-secondary hover:bg-white/5 transition-colors"
                         onClick={() => setIsOpen(false)}
                       >
-                        <Icons.chevronRight className="w-4 h-4 text-white/40" />
+                        <Icons.chevronRight className="w-5 h-5 text-white/40" />
                         {link.title}
                       </a>
                     ))}
                   </div>
 
-                  {/* Academics Section */}
-                  <div className="border-t border-white/10 mt-1 pt-1">
-                    <p className="px-5 py-2 text-xs font-bold uppercase tracking-wider text-secondary">Academics</p>
+                  <div className="border-t border-white/10 mt-2 pt-2">
+                    <p className="px-6 py-3 text-xs font-bold uppercase tracking-wider text-secondary">Academics</p>
                     {academicsLinks.map((link) => (
                       <a
                         key={link.href}
                         href={link.href}
                         {...(link.href.startsWith("http") && { target: "_blank", rel: "noopener noreferrer" })}
-                        className="flex items-center gap-3 py-3.5 px-5 text-[15px] hover:text-secondary hover:bg-white/5 transition-colors active:bg-white/10 touch-target"
+                        className="flex items-center gap-4 py-4 px-6 text-base hover:text-secondary hover:bg-white/5 transition-colors"
                         onClick={() => setIsOpen(false)}
                       >
-                        <Icons.chevronRight className="w-4 h-4 text-white/40" />
+                        <Icons.chevronRight className="w-5 h-5 text-white/40" />
                         {link.title}
                       </a>
                     ))}
                   </div>
 
-                  {/* Campus Life Section */}
-                  <div className="border-t border-white/10 mt-1 pt-1">
-                    <p className="px-5 py-2 text-xs font-bold uppercase tracking-wider text-secondary">Campus Life</p>
+                  <div className="border-t border-white/10 mt-2 pt-2">
+                    <p className="px-6 py-3 text-xs font-bold uppercase tracking-wider text-secondary">Campus Life</p>
                     {campusLinks.map((link) => (
                       <a
                         key={link.href}
                         href={link.href}
                         {...(link.href.startsWith("http") && { target: "_blank", rel: "noopener noreferrer" })}
-                        className="flex items-center gap-3 py-3.5 px-5 text-[15px] hover:text-secondary hover:bg-white/5 transition-colors active:bg-white/10 touch-target"
+                        className="flex items-center gap-4 py-4 px-6 text-base hover:text-secondary hover:bg-white/5 transition-colors"
                         onClick={() => setIsOpen(false)}
                       >
-                        <Icons.chevronRight className="w-4 h-4 text-white/40" />
+                        <Icons.chevronRight className="w-5 h-5 text-white/40" />
                         {link.title}
                       </a>
                     ))}
                   </div>
 
-                  <div className="px-4 py-4 space-y-3 border-t border-white/10 mt-2">
-                    <Button
-                      variant="outline"
-                      size="lg"
-                      className="w-full font-semibold bg-transparent text-base h-12"
-                      asChild
-                    >
-                      <a href="tel:205-929-1657">
-                        <Icons.phone className="w-5 h-5 mr-2" />
-                        Call Admissions
-                      </a>
-                    </Button>
-                    <Button variant="secondary" size="lg" className="w-full font-bold text-base h-12" asChild>
+                  <div className="px-5 py-5 space-y-3 border-t border-white/10 mt-3">
+                    <Button variant="secondary" size="lg" className="w-full font-bold text-lg h-14" asChild>
                       <a href="https://myexperience.miles.edu" target="_blank" rel="noopener noreferrer">
                         Apply Now - FREE
                       </a>
@@ -306,18 +319,30 @@ export function Navigation() {
         </div>
       </nav>
 
-      <div className="fixed bottom-4 right-4 z-40 lg:hidden safe-bottom">
-        <Button
-          size="lg"
-          className="h-12 px-5 rounded-full bg-secondary hover:bg-yellow-400 text-primary shadow-2xl transition-all font-bold text-sm gap-2"
-          asChild
-        >
-          <a href="https://myexperience.miles.edu" target="_blank" rel="noopener noreferrer">
-            Apply Now
-            <Icons.arrowRight className="w-4 h-4" />
-          </a>
-        </Button>
-      </div>
+      <nav className="lg:hidden fixed bottom-0 left-0 right-0 z-40 bg-primary/98 backdrop-blur-xl border-t border-white/10">
+        <div className="flex items-center justify-around h-[72px] px-1 safe-bottom">
+          {bottomNavItems.map((item) => {
+            const IconComponent = item.icon
+            const isActive =
+              activeSection === item.id ||
+              (item.id === "chat" && typeof window !== "undefined" && window.location.pathname === "/chat")
+            return (
+              <a
+                key={item.id}
+                href={item.href}
+                className={cn(
+                  "flex flex-col items-center justify-center flex-1 h-14 rounded-lg transition-all relative mx-0.5 touch-target",
+                  isActive ? "text-secondary bg-white/10" : "text-white/70 hover:text-white",
+                )}
+              >
+                <IconComponent className={cn("w-6 h-6 mb-1", isActive && "scale-110")} />
+                <span className="text-[11px] font-bold uppercase tracking-wide">{item.label}</span>
+                {isActive && <span className="absolute bottom-1.5 w-1.5 h-1.5 bg-secondary rounded-full" />}
+              </a>
+            )
+          })}
+        </div>
+      </nav>
     </>
   )
 }
