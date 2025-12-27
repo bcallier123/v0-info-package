@@ -3,7 +3,7 @@ import { Icons } from "@/components/icons"
 
 export function Footer() {
   return (
-    <footer className="bg-gradient-to-br from-[#1a0a2e] via-[#2d1b4e] to-[#1a0a2e] text-white py-12 sm:py-20 relative overflow-hidden">
+    <footer className="bg-gradient-to-br from-[#1a0a2e] via-[#2d1b4e] to-[#1a0a2e] text-white py-12 sm:py-20 pb-24 lg:pb-20 relative overflow-hidden">
       {/* Decorative elements - hidden on mobile */}
       <div className="absolute top-0 left-1/4 w-[400px] h-[400px] bg-secondary/5 rounded-full blur-[100px] hidden sm:block" />
       <div className="absolute bottom-0 right-1/4 w-[300px] h-[300px] bg-primary/5 rounded-full blur-[80px] hidden sm:block" />

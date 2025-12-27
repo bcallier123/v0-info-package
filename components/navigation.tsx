@@ -84,12 +84,13 @@ export function Navigation() {
 
   return (
     <>
-      {/* Top Navigation Bar */}
+      {/* Top Navigation Bar - Fixed 64px height */}
       <nav
         className={cn(
-          "fixed top-0 left-0 right-0 z-50 bg-primary text-primary-foreground transition-all duration-300 safe-top",
+          "fixed top-0 left-0 right-0 z-50 bg-primary text-primary-foreground transition-all duration-300",
           isScrolled ? "shadow-xl" : "shadow-lg",
         )}
+        style={{ paddingTop: "env(safe-area-inset-top)" }}
       >
         <div className="container mx-auto px-4 sm:px-6">
           <div className="flex items-center justify-between h-16">
@@ -223,13 +224,13 @@ export function Navigation() {
             <div className="lg:hidden flex items-center gap-1">
               <a
                 href="tel:2059291657"
-                className="flex items-center justify-center w-12 h-12 rounded-full hover:bg-white/10 transition-colors"
+                className="flex items-center justify-center w-11 h-11 rounded-full hover:bg-white/10 transition-colors"
                 aria-label="Call Admissions"
               >
                 <Icons.phone className="w-5 h-5" />
               </a>
               <button
-                className="flex items-center justify-center w-12 h-12 rounded-full hover:bg-white/10 transition-colors"
+                className="flex items-center justify-center w-11 h-11 rounded-full hover:bg-white/10 transition-colors"
                 onClick={() => setIsOpen(!isOpen)}
                 aria-label="Toggle menu"
                 aria-expanded={isOpen}
@@ -245,8 +246,15 @@ export function Navigation() {
               <div
                 className="lg:hidden fixed inset-0 top-16 bg-black/60 backdrop-blur-sm z-40 animate-fade-in"
                 onClick={() => setIsOpen(false)}
+                style={{ paddingTop: "env(safe-area-inset-top)" }}
               />
-              <div className="lg:hidden fixed left-0 right-0 top-16 bg-primary z-50 border-t border-white/10 max-h-[calc(100vh-64px-72px)] overflow-y-auto animate-fade-in-up">
+              <div
+                className="lg:hidden fixed left-0 right-0 top-16 bg-primary z-50 border-t border-white/10 overflow-y-auto animate-fade-in-up"
+                style={{
+                  maxHeight: "calc(100vh - 64px - 72px - env(safe-area-inset-top) - env(safe-area-inset-bottom))",
+                  marginTop: "env(safe-area-inset-top)",
+                }}
+              >
                 <div className="py-3">
                   <a
                     href="#about"
@@ -319,8 +327,12 @@ export function Navigation() {
         </div>
       </nav>
 
-      <nav className="lg:hidden fixed bottom-0 left-0 right-0 z-40 bg-primary/98 backdrop-blur-xl border-t border-white/10">
-        <div className="flex items-center justify-around h-[72px] px-1 safe-bottom">
+      {/* Bottom Navigation Bar - Fixed 72px height */}
+      <nav
+        className="lg:hidden fixed bottom-0 left-0 right-0 z-40 bg-primary/98 backdrop-blur-xl border-t border-white/10"
+        style={{ paddingBottom: "env(safe-area-inset-bottom)" }}
+      >
+        <div className="flex items-center justify-around h-[72px] px-1">
           {bottomNavItems.map((item) => {
             const IconComponent = item.icon
             const isActive =
@@ -331,7 +343,7 @@ export function Navigation() {
                 key={item.id}
                 href={item.href}
                 className={cn(
-                  "flex flex-col items-center justify-center flex-1 h-14 rounded-lg transition-all relative mx-0.5 touch-target",
+                  "flex flex-col items-center justify-center flex-1 h-16 rounded-lg transition-all relative mx-0.5",
                   isActive ? "text-secondary bg-white/10" : "text-white/70 hover:text-white",
                 )}
               >

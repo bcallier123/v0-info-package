@@ -198,7 +198,7 @@ export function FloatingChatWidget() {
     <>
       <button
         onClick={() => setIsOpen(!isOpen)}
-        className="fixed bottom-20 lg:bottom-6 right-4 lg:right-6 z-50 w-14 h-14 lg:w-[60px] lg:h-[60px] rounded-full flex items-center justify-center group transition-all hover:scale-105 shadow-[0_6px_20px_rgba(0,0,0,0.15)] touch-target"
+        className="fixed z-50 w-14 h-14 lg:w-[60px] lg:h-[60px] rounded-full flex items-center justify-center group transition-all hover:scale-105 shadow-[0_6px_20px_rgba(0,0,0,0.15)] bottom-[88px] right-4 lg:bottom-6 lg:right-6"
         style={{ backgroundColor: "#4B2E83" }}
         aria-label={isOpen ? "Close Miles Assistant chat" : "Open Miles Assistant chat"}
       >
@@ -218,7 +218,7 @@ export function FloatingChatWidget() {
 
       {isOpen && (
         <div
-          className="fixed bottom-[152px] lg:bottom-[104px] right-4 lg:right-6 z-50 w-[calc(100vw-2rem)] md:w-[420px] animate-fade-in-up"
+          className="fixed z-50 w-[calc(100vw-2rem)] md:w-[420px] animate-fade-in-up bottom-[160px] right-4 lg:bottom-[104px] lg:right-6"
           role="dialog"
           aria-label="Miles Assistant chat window"
         >

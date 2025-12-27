@@ -199,8 +199,11 @@ export default function ChatPage() {
   }
 
   return (
-    <div className="min-h-[100svh] bg-gradient-to-br from-[#1a0a2e] via-primary/95 to-background pb-16 lg:pb-0">
-      <div className="sticky top-0 z-50 border-b-2 border-secondary/30 bg-[#1a0a2e]/95 backdrop-blur-xl shadow-xl safe-top">
+    <div className="min-h-[100svh] bg-gradient-to-br from-[#1a0a2e] via-primary/95 to-background pb-20 lg:pb-0">
+      <div
+        className="sticky top-0 z-50 border-b-2 border-secondary/30 bg-[#1a0a2e]/95 backdrop-blur-xl shadow-xl"
+        style={{ paddingTop: "env(safe-area-inset-top)" }}
+      >
         <div className="container mx-auto px-3 sm:px-6 py-2 sm:py-4">
           <div className="flex items-center justify-between gap-2">
             <div className="flex items-center gap-2 sm:gap-4 min-w-0">
@@ -269,7 +272,7 @@ export default function ChatPage() {
 
       <div className="container mx-auto px-2 sm:px-6 py-3 sm:py-8 max-w-5xl">
         <Card className="bg-white/5 backdrop-blur-xl border-2 border-white/10 shadow-2xl overflow-hidden">
-          <ScrollArea className="h-[calc(100svh-220px)] sm:h-[55vh] md:h-[60vh] px-3 sm:px-6 py-3 sm:py-6">
+          <ScrollArea className="h-[calc(100svh-280px)] sm:h-[55vh] md:h-[60vh] px-3 sm:px-6 py-3 sm:py-6">
             <div className="space-y-3 sm:space-y-6">
               {messages.map((message, index) => (
                 <div
