@@ -476,10 +476,11 @@
   }
 }
 
+/* Mobile optimizations */
 @media (max-width: 640px) {
   .container {
-    padding-left: 1.25rem;
-    padding-right: 1.25rem;
+    padding-left: 1rem;
+    padding-right: 1rem;
   }
 
   .mobile-stack {
@@ -491,22 +492,29 @@
   }
 
   h1 {
-    font-size: clamp(2rem, 10vw, 3.5rem);
+    font-size: clamp(1.75rem, 8vw, 3rem);
   }
 
   h2 {
-    font-size: clamp(1.75rem, 8vw, 2.5rem);
+    font-size: clamp(1.5rem, 6vw, 2.25rem);
   }
 
   img {
     max-width: 100%;
     height: auto;
   }
-
-  /* Add bottom padding to main content for bottom nav */
-  main,
-  #__next > div:first-child {
-    padding-bottom: 64px;
+  
+  /* Ensure buttons have proper touch targets */
+  button,
+  a[role="button"],
+  [type="button"],
+  [type="submit"] {
+    min-height: 44px;
+  }
+  
+  /* Better text rendering on mobile */
+  body {
+    text-rendering: optimizeLegibility;
   }
 }
 
@@ -523,6 +531,13 @@
   }
   .group:hover .group-hover\:scale-110 {
     transform: none !important;
+  }
+  
+  /* Better active states for touch devices */
+  a:active,
+  button:active {
+    transform: scale(0.97);
+    transition: transform 0.1s ease-out;
   }
 }
 

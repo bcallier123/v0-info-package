@@ -69,27 +69,27 @@ export function CampusLifeSection() {
         </div>
 
         <div className="mb-10 sm:mb-16 lg:mb-20">
-          <div className="flex sm:grid sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6 overflow-x-auto sm:overflow-visible pb-4 sm:pb-0 snap-x-mandatory scrollbar-hide -mx-4 px-4 sm:mx-0 sm:px-0">
+          <div className="flex sm:grid sm:grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-6 overflow-x-auto sm:overflow-visible pb-4 sm:pb-0 snap-x-mandatory scrollbar-hide -mx-4 px-4 sm:mx-0 sm:px-0">
             {highlights.map((item, index) => {
               const IconComponent = item.icon
               return (
                 <Card
                   key={index}
-                  className="text-center border-2 border-gray-200 hover:border-primary/50 bg-white hover:shadow-2xl sm:hover:-translate-y-2 transition-all duration-500 group flex-shrink-0 w-[280px] sm:w-auto snap-start"
+                  className="text-center border-2 border-gray-200 hover:border-primary/50 bg-white hover:shadow-2xl sm:hover:-translate-y-2 transition-all duration-500 group flex-shrink-0 w-[240px] sm:w-auto snap-start active:scale-[0.98]"
                 >
-                  <CardHeader className="pb-2 sm:pb-3">
-                    <div className="w-14 h-14 sm:w-20 sm:h-20 mx-auto mb-4 sm:mb-6 bg-gradient-to-br from-primary to-primary/80 flex items-center justify-center group-hover:scale-110 transition-transform duration-500 shadow-xl">
-                      <IconComponent className="w-7 h-7 sm:w-10 sm:h-10 text-white" />
+                  <CardHeader className="pb-2 sm:pb-3 px-3 sm:px-6">
+                    <div className="w-12 h-12 sm:w-16 sm:h-16 lg:w-20 lg:h-20 mx-auto mb-3 sm:mb-4 lg:mb-6 bg-gradient-to-br from-primary to-primary/80 flex items-center justify-center group-hover:scale-110 transition-transform duration-500 shadow-xl">
+                      <IconComponent className="w-6 h-6 sm:w-8 sm:h-8 lg:w-10 lg:h-10 text-white" />
                     </div>
-                    <Badge className="mx-auto mb-2 sm:mb-3 font-black text-[10px] sm:text-xs bg-secondary text-white border-0 uppercase tracking-wide">
+                    <Badge className="mx-auto mb-2 sm:mb-3 font-black text-[9px] sm:text-[10px] lg:text-xs bg-secondary text-white border-0 uppercase tracking-wide px-2 sm:px-3">
                       {item.badge}
                     </Badge>
-                    <CardTitle className="text-base sm:text-xl font-black uppercase tracking-wide">
+                    <CardTitle className="text-sm sm:text-base lg:text-xl font-black uppercase tracking-wide leading-tight">
                       {item.title}
                     </CardTitle>
                   </CardHeader>
-                  <CardContent className="pt-0">
-                    <p className="text-xs sm:text-sm text-muted-foreground leading-relaxed font-medium">
+                  <CardContent className="pt-0 px-3 sm:px-6 pb-4 sm:pb-6">
+                    <p className="text-[11px] sm:text-xs lg:text-sm text-muted-foreground leading-relaxed font-medium">
                       {item.description}
                     </p>
                   </CardContent>
@@ -173,24 +173,24 @@ export function CampusLifeSection() {
         </div>
 
         <div className="mb-10 sm:mb-16 lg:mb-20">
-          <div className="flex sm:grid sm:grid-cols-2 md:grid-cols-3 gap-4 sm:gap-6 overflow-x-auto sm:overflow-visible pb-4 sm:pb-0 snap-x-mandatory scrollbar-hide -mx-4 px-4 sm:mx-0 sm:px-0">
+          <div className="flex sm:grid sm:grid-cols-2 md:grid-cols-3 gap-3 sm:gap-6 overflow-x-auto sm:overflow-visible pb-4 sm:pb-0 snap-x-mandatory scrollbar-hide -mx-4 px-4 sm:mx-0 sm:px-0">
             <img
               src="/images/2023-10-11-20at-204.jpg"
               alt="Miles College student at computer lab"
               loading="lazy"
-              className="w-[280px] sm:w-full h-64 sm:h-80 object-cover shadow-2xl hover:shadow-3xl sm:hover:-translate-y-2 transition-all duration-500 border-4 border-white flex-shrink-0 snap-start"
+              className="w-[240px] sm:w-full h-56 sm:h-72 lg:h-80 object-cover shadow-2xl hover:shadow-3xl sm:hover:-translate-y-2 transition-all duration-500 border-4 border-white flex-shrink-0 snap-start active:scale-[0.98]"
             />
             <img
               src="/images/dscf7529.jpeg"
               alt="Miles College classroom learning"
               loading="lazy"
-              className="w-[280px] sm:w-full h-64 sm:h-80 object-cover shadow-2xl hover:shadow-3xl sm:hover:-translate-y-2 transition-all duration-500 border-4 border-white flex-shrink-0 snap-start"
+              className="w-[240px] sm:w-full h-56 sm:h-72 lg:h-80 object-cover shadow-2xl hover:shadow-3xl sm:hover:-translate-y-2 transition-all duration-500 border-4 border-white flex-shrink-0 snap-start active:scale-[0.98]"
             />
             <img
               src="/images/mbkl3897.jpg"
               alt="Miles College student in science lab"
               loading="lazy"
-              className="w-[280px] sm:w-full h-64 sm:h-80 object-cover shadow-2xl hover:shadow-3xl sm:hover:-translate-y-2 transition-all duration-500 sm:col-span-2 md:col-span-1 border-4 border-white flex-shrink-0 snap-start"
+              className="w-[240px] sm:w-full h-56 sm:h-72 lg:h-80 object-cover shadow-2xl hover:shadow-3xl sm:hover:-translate-y-2 transition-all duration-500 sm:col-span-2 md:col-span-1 border-4 border-white flex-shrink-0 snap-start active:scale-[0.98]"
             />
           </div>
         </div>

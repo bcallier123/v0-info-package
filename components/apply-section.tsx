@@ -7,62 +7,62 @@ export function ApplySection() {
   return (
     <section
       id="apply"
-      className="py-24 bg-gradient-to-br from-primary via-primary/95 to-secondary text-primary-foreground relative overflow-hidden"
+      className="py-12 sm:py-16 lg:py-24 bg-gradient-to-br from-primary via-primary/95 to-secondary text-primary-foreground relative overflow-hidden"
     >
       <div className="absolute inset-0 opacity-10">
-        <div className="absolute top-10 left-10 w-96 h-96 bg-secondary rounded-full blur-3xl" />
-        <div className="absolute bottom-10 right-10 w-96 h-96 bg-accent rounded-full blur-3xl" />
+        <div className="absolute top-10 left-10 w-64 sm:w-96 h-64 sm:h-96 bg-secondary rounded-full blur-3xl" />
+        <div className="absolute bottom-10 right-10 w-64 sm:w-96 h-64 sm:h-96 bg-accent rounded-full blur-3xl" />
       </div>
 
-      <div className="container mx-auto px-4 relative z-10">
-        <div className="text-center mb-16">
-          <div className="inline-flex items-center gap-2 bg-white/10 backdrop-blur-sm px-6 py-3 rounded-full mb-6 border border-white/20">
-            <Icons.graduationCap className="w-5 h-5" />
-            <span className="text-sm font-bold">Start Your Journey</span>
+      <div className="container mx-auto px-4 sm:px-6 relative z-10">
+        <div className="text-center mb-8 sm:mb-12 lg:mb-16">
+          <div className="inline-flex items-center gap-2 bg-white/10 backdrop-blur-sm px-4 sm:px-6 py-2 sm:py-3 rounded-full mb-4 sm:mb-6 border border-white/20">
+            <Icons.graduationCap className="w-4 h-4 sm:w-5 sm:h-5" />
+            <span className="text-xs sm:text-sm font-bold">Start Your Journey</span>
           </div>
-          <h2 className="text-5xl md:text-6xl font-black mb-6 text-balance">Ready to Apply?</h2>
-          <p className="text-xl md:text-2xl text-primary-foreground/95 max-w-3xl mx-auto text-pretty font-semibold">
+          <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-black mb-4 sm:mb-6 text-balance">Ready to Apply?</h2>
+          <p className="text-base sm:text-lg md:text-xl lg:text-2xl text-primary-foreground/95 max-w-3xl mx-auto text-pretty font-semibold px-4">
             Your path to becoming a Golden Bear starts here—just 3 easy steps
           </p>
         </div>
 
-        <div className="max-w-6xl mx-auto mb-16">
+        <div className="max-w-6xl mx-auto mb-8 sm:mb-12 lg:mb-16">
           <Card className="border-0 shadow-2xl bg-white/95 backdrop-blur overflow-hidden">
-            <CardHeader className="text-center pb-8 bg-gradient-to-br from-primary/5 to-secondary/5">
-              <Badge className="mx-auto mb-4 bg-primary text-primary-foreground font-bold text-base px-6 py-2 shadow-lg">
+            <CardHeader className="text-center pb-4 sm:pb-6 lg:pb-8 bg-gradient-to-br from-primary/5 to-secondary/5 px-4 sm:px-6">
+              <Badge className="mx-auto mb-3 sm:mb-4 bg-primary text-primary-foreground font-bold text-xs sm:text-sm lg:text-base px-4 sm:px-6 py-1.5 sm:py-2 shadow-lg">
                 Simple 3-Step Process
               </Badge>
-              <CardTitle className="text-4xl md:text-5xl font-black text-balance">Become a Golden Bear</CardTitle>
-              <CardDescription className="text-lg mt-3 font-semibold">
+              <CardTitle className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-black text-balance">Become a Golden Bear</CardTitle>
+              <CardDescription className="text-sm sm:text-base lg:text-lg mt-2 sm:mt-3 font-semibold">
                 Follow this easy path to enrollment at Miles College
               </CardDescription>
             </CardHeader>
-            <CardContent className="p-8 md:p-12">
+            <CardContent className="p-4 sm:p-6 md:p-8 lg:p-12">
               <div className="space-y-8">
                 {/* Step 1 - Apply */}
                 <div className="relative">
-                  <div className="flex flex-col md:flex-row items-start gap-6 p-8 rounded-2xl bg-gradient-to-br from-primary/10 to-primary/5 border-2 border-primary/30 hover:border-primary/50 transition-all group shadow-lg hover:shadow-xl">
-                    <div className="relative">
-                      <div className="w-20 h-20 rounded-2xl bg-primary text-white flex items-center justify-center shadow-xl group-hover:scale-110 transition-transform">
-                        <span className="text-4xl font-black">1</span>
+                  <div className="flex flex-col md:flex-row items-start gap-4 sm:gap-6 p-4 sm:p-6 lg:p-8 rounded-xl sm:rounded-2xl bg-gradient-to-br from-primary/10 to-primary/5 border-2 border-primary/30 hover:border-primary/50 transition-all group shadow-lg hover:shadow-xl">
+                    <div className="relative flex-shrink-0">
+                      <div className="w-14 h-14 sm:w-16 sm:h-16 lg:w-20 lg:h-20 rounded-xl sm:rounded-2xl bg-primary text-white flex items-center justify-center shadow-xl group-hover:scale-110 transition-transform">
+                        <span className="text-2xl sm:text-3xl lg:text-4xl font-black">1</span>
                       </div>
-                      <div className="absolute -bottom-2 -right-2 w-10 h-10 rounded-xl bg-secondary/80 flex items-center justify-center">
-                        <Icons.fileText className="w-5 h-5 text-white" />
+                      <div className="absolute -bottom-1.5 -right-1.5 sm:-bottom-2 sm:-right-2 w-7 h-7 sm:w-8 sm:h-8 lg:w-10 lg:h-10 rounded-lg sm:rounded-xl bg-secondary/80 flex items-center justify-center">
+                        <Icons.fileText className="w-3.5 h-3.5 sm:w-4 sm:h-4 lg:w-5 lg:h-5 text-white" />
                       </div>
                     </div>
                     <div className="flex-1">
-                      <h3 className="font-black text-3xl mb-3 text-primary">Apply Online</h3>
-                      <p className="text-base text-muted-foreground leading-relaxed mb-4 font-medium">
-                        Complete your free application online. It takes just 15 minutes and there's no application fee.
+                      <h3 className="font-black text-xl sm:text-2xl lg:text-3xl mb-2 sm:mb-3 text-primary">Apply Online</h3>
+                      <p className="text-sm sm:text-base text-muted-foreground leading-relaxed mb-3 sm:mb-4 font-medium">
+                        Complete your free application online. It takes just 15 minutes and there&apos;s no application fee.
                       </p>
-                      <div className="flex flex-wrap gap-3">
-                        <Button size="lg" className="font-bold shadow-lg" asChild>
+                      <div className="flex flex-col sm:flex-row gap-2 sm:gap-3">
+                        <Button size="lg" className="font-bold shadow-lg w-full sm:w-auto text-sm sm:text-base py-5 sm:py-6" asChild>
                           <a href="https://myexperience.miles.edu" target="_blank" rel="noopener noreferrer">
-                            <Icons.graduationCap className="w-5 h-5 mr-2" />
+                            <Icons.graduationCap className="w-4 h-4 sm:w-5 sm:h-5 mr-2" />
                             Start Application
                           </a>
                         </Button>
-                        <div className="flex items-center gap-2 text-sm text-muted-foreground font-semibold px-4 py-3 bg-white/80 rounded-lg border border-primary/20">
+                        <div className="flex items-center justify-center gap-2 text-xs sm:text-sm text-muted-foreground font-semibold px-3 sm:px-4 py-2.5 sm:py-3 bg-white/80 rounded-lg border border-primary/20">
                           <Icons.check className="w-4 h-4 text-primary" />
                           No Fee Required
                         </div>
@@ -77,36 +77,36 @@ export function ApplySection() {
 
                 {/* Step 2 - Submit Documents */}
                 <div className="relative">
-                  <div className="flex flex-col md:flex-row items-start gap-6 p-8 rounded-2xl bg-gradient-to-br from-secondary/10 to-secondary/5 border-2 border-secondary/30 hover:border-secondary/50 transition-all group shadow-lg hover:shadow-xl">
-                    <div className="relative">
-                      <div className="w-20 h-20 rounded-2xl bg-secondary text-white flex items-center justify-center shadow-xl group-hover:scale-110 transition-transform">
-                        <span className="text-4xl font-black">2</span>
+                  <div className="flex flex-col md:flex-row items-start gap-4 sm:gap-6 p-4 sm:p-6 lg:p-8 rounded-xl sm:rounded-2xl bg-gradient-to-br from-secondary/10 to-secondary/5 border-2 border-secondary/30 hover:border-secondary/50 transition-all group shadow-lg hover:shadow-xl">
+                    <div className="relative flex-shrink-0">
+                      <div className="w-14 h-14 sm:w-16 sm:h-16 lg:w-20 lg:h-20 rounded-xl sm:rounded-2xl bg-secondary text-white flex items-center justify-center shadow-xl group-hover:scale-110 transition-transform">
+                        <span className="text-2xl sm:text-3xl lg:text-4xl font-black">2</span>
                       </div>
-                      <div className="absolute -bottom-2 -right-2 w-10 h-10 rounded-xl bg-accent/80 flex items-center justify-center">
-                        <Icons.book className="w-5 h-5 text-white" />
+                      <div className="absolute -bottom-1.5 -right-1.5 sm:-bottom-2 sm:-right-2 w-7 h-7 sm:w-8 sm:h-8 lg:w-10 lg:h-10 rounded-lg sm:rounded-xl bg-accent/80 flex items-center justify-center">
+                        <Icons.book className="w-3.5 h-3.5 sm:w-4 sm:h-4 lg:w-5 lg:h-5 text-white" />
                       </div>
                     </div>
                     <div className="flex-1">
-                      <h3 className="font-black text-3xl mb-3 text-secondary">Submit Your Documents</h3>
-                      <p className="text-base text-muted-foreground leading-relaxed mb-4 font-medium">
+                      <h3 className="font-black text-xl sm:text-2xl lg:text-3xl mb-2 sm:mb-3 text-secondary">Submit Your Documents</h3>
+                      <p className="text-sm sm:text-base text-muted-foreground leading-relaxed mb-3 sm:mb-4 font-medium">
                         Send us your transcripts and complete your FAFSA to unlock financial aid opportunities.
                       </p>
-                      <div className="grid sm:grid-cols-2 gap-4">
-                        <div className="p-4 rounded-xl bg-white/80 border border-secondary/20">
-                          <div className="flex items-center gap-2 mb-2">
-                            <Icons.book className="w-5 h-5 text-secondary" />
-                            <span className="font-bold text-sm">Transcripts</span>
+                      <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4">
+                        <div className="p-3 sm:p-4 rounded-lg sm:rounded-xl bg-white/80 border border-secondary/20">
+                          <div className="flex items-center gap-2 mb-1.5 sm:mb-2">
+                            <Icons.book className="w-4 h-4 sm:w-5 sm:h-5 text-secondary" />
+                            <span className="font-bold text-xs sm:text-sm">Transcripts</span>
                           </div>
-                          <p className="text-sm text-muted-foreground">
+                          <p className="text-xs sm:text-sm text-muted-foreground">
                             High school or college transcripts sent to Admissions
                           </p>
                         </div>
-                        <div className="p-4 rounded-xl bg-white/80 border border-secondary/20">
-                          <div className="flex items-center gap-2 mb-2">
-                            <Icons.dollarSign className="w-5 h-5 text-secondary" />
-                            <span className="font-bold text-sm">FAFSA</span>
+                        <div className="p-3 sm:p-4 rounded-lg sm:rounded-xl bg-white/80 border border-secondary/20">
+                          <div className="flex items-center gap-2 mb-1.5 sm:mb-2">
+                            <Icons.dollarSign className="w-4 h-4 sm:w-5 sm:h-5 text-secondary" />
+                            <span className="font-bold text-xs sm:text-sm">FAFSA</span>
                           </div>
-                          <p className="text-sm text-muted-foreground">
+                          <p className="text-xs sm:text-sm text-muted-foreground">
                             File at{" "}
                             <a
                               href="https://studentaid.gov"

@@ -3,7 +3,7 @@ import { Icons } from "@/components/icons"
 
 export function Footer() {
   return (
-    <footer className="bg-gradient-to-br from-[#1a0a2e] via-[#2d1b4e] to-[#1a0a2e] text-white py-12 sm:py-20 pb-24 lg:pb-20 relative overflow-hidden">
+    <footer className="bg-gradient-to-br from-[#1a0a2e] via-[#2d1b4e] to-[#1a0a2e] text-white py-12 sm:py-20 pb-28 lg:pb-20 mb-[72px] lg:mb-0 relative overflow-hidden">
       {/* Decorative elements - hidden on mobile */}
       <div className="absolute top-0 left-1/4 w-[400px] h-[400px] bg-secondary/5 rounded-full blur-[100px] hidden sm:block" />
       <div className="absolute bottom-0 right-1/4 w-[300px] h-[300px] bg-primary/5 rounded-full blur-[80px] hidden sm:block" />
@@ -46,14 +46,14 @@ export function Footer() {
                 </div>
                 <a
                   href="tel:2059291657"
-                  className="hover:text-secondary transition-colors font-black text-lg sm:text-xl touch-target"
+                  className="hover:text-secondary transition-colors font-black text-lg sm:text-xl touch-target flex items-center justify-center min-h-[48px]"
                 >
                   (205) 929-1657
                 </a>
                 <span className="text-white/40 hidden md:inline">|</span>
                 <a
                   href="mailto:admissions@miles.edu"
-                  className="hover:text-secondary transition-colors font-bold text-sm sm:text-base touch-target"
+                  className="hover:text-secondary transition-colors font-bold text-sm sm:text-base touch-target flex items-center justify-center min-h-[48px]"
                 >
                   admissions@miles.edu
                 </a>

@@ -99,15 +99,18 @@ export default function RootLayout({
   children: React.ReactNode
 }>) {
   return (
-    <html lang="en" className="bg-background">
+    <html lang="en" className="bg-background scroll-smooth">
       <head>
         <link rel="icon" href="/images/logo-clean.png" />
         <link rel="apple-touch-icon" href="/images/logo-clean.png" />
         <meta name="apple-mobile-web-app-capable" content="yes" />
         <meta name="mobile-web-app-capable" content="yes" />
+        <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
       </head>
-      <body className={`${montserrat.variable} ${dmSans.variable} font-sans antialiased pb-[72px] lg:pb-0`}>
-        {children}
+      <body className={`${montserrat.variable} ${dmSans.variable} font-sans antialiased min-h-screen`}>
+        <main className="relative">
+          {children}
+        </main>
         <FloatingChatWidget />
       </body>
     </html>
