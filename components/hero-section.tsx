@@ -109,24 +109,24 @@ export function HeroSection() {
 
               {/* Stats */}
               <div className="pt-4 sm:pt-8 border-t border-white/20 animate-fade-in-up delay-400">
-                <div className="grid grid-cols-3 gap-3 sm:flex sm:gap-8 lg:gap-12">
-                  <div className="text-center sm:text-left">
-                    <p className="text-2xl sm:text-4xl md:text-5xl font-black text-secondary leading-none">30+</p>
-                    <p className="text-[10px] sm:text-xs md:text-sm text-white/70 font-semibold uppercase tracking-wider mt-1">
+                <div className="grid grid-cols-3 gap-2 sm:flex sm:gap-8 lg:gap-12">
+                  <div className="text-center sm:text-left p-2 sm:p-0 rounded-lg bg-white/5 sm:bg-transparent">
+                    <p className="text-xl sm:text-4xl md:text-5xl font-black text-secondary leading-none">30+</p>
+                    <p className="text-[9px] sm:text-xs md:text-sm text-white/70 font-semibold uppercase tracking-wider mt-1">
                       Programs
                     </p>
                   </div>
                   <div className="hidden sm:block w-px h-12 sm:h-16 bg-white/30 flex-shrink-0" />
-                  <div className="text-center sm:text-left">
-                    <p className="text-2xl sm:text-4xl md:text-5xl font-black text-secondary leading-none">17:1</p>
-                    <p className="text-[10px] sm:text-xs md:text-sm text-white/70 font-semibold uppercase tracking-wider mt-1">
+                  <div className="text-center sm:text-left p-2 sm:p-0 rounded-lg bg-white/5 sm:bg-transparent">
+                    <p className="text-xl sm:text-4xl md:text-5xl font-black text-secondary leading-none">17:1</p>
+                    <p className="text-[9px] sm:text-xs md:text-sm text-white/70 font-semibold uppercase tracking-wider mt-1">
                       Ratio
                     </p>
                   </div>
                   <div className="hidden sm:block w-px h-12 sm:h-16 bg-white/30 flex-shrink-0" />
-                  <div className="text-center sm:text-left">
-                    <p className="text-2xl sm:text-4xl md:text-5xl font-black text-secondary leading-none">126+</p>
-                    <p className="text-[10px] sm:text-xs md:text-sm text-white/70 font-semibold uppercase tracking-wider mt-1">
+                  <div className="text-center sm:text-left p-2 sm:p-0 rounded-lg bg-white/5 sm:bg-transparent">
+                    <p className="text-xl sm:text-4xl md:text-5xl font-black text-secondary leading-none">126+</p>
+                    <p className="text-[9px] sm:text-xs md:text-sm text-white/70 font-semibold uppercase tracking-wider mt-1">
                       Years
                     </p>
                   </div>

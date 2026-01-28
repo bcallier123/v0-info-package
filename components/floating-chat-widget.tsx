@@ -198,12 +198,12 @@ export function FloatingChatWidget() {
     <>
       <button
         onClick={() => setIsOpen(!isOpen)}
-        className="fixed z-50 w-14 h-14 lg:w-[60px] lg:h-[60px] rounded-full flex items-center justify-center group transition-all hover:scale-105 shadow-[0_6px_20px_rgba(0,0,0,0.15)] bottom-[88px] right-4 lg:bottom-6 lg:right-6"
+        className="fixed z-50 w-14 h-14 lg:w-[60px] lg:h-[60px] rounded-full flex items-center justify-center group transition-all duration-200 hover:scale-105 active:scale-95 shadow-[0_6px_20px_rgba(0,0,0,0.2)] bottom-[92px] right-4 lg:bottom-6 lg:right-6"
         style={{ backgroundColor: "#4B2E83" }}
         aria-label={isOpen ? "Close Miles Assistant chat" : "Open Miles Assistant chat"}
       >
         {isOpen ? (
-          <Icons.x className="w-6 h-6 lg:w-7 lg:h-7 text-white transition-transform group-hover:rotate-90" />
+          <Icons.x className="w-6 h-6 lg:w-7 lg:h-7 text-white transition-transform duration-200 group-hover:rotate-90" />
         ) : (
           <Icons.messageCircle className="w-6 h-6 lg:w-7 lg:h-7 text-white" />
         )}
@@ -218,15 +218,15 @@ export function FloatingChatWidget() {
 
       {isOpen && (
         <div
-          className="fixed z-50 w-[calc(100vw-2rem)] md:w-[420px] animate-fade-in-up bottom-[160px] right-4 lg:bottom-[104px] lg:right-6"
+          className="fixed z-50 w-[calc(100vw-1.5rem)] sm:w-[calc(100vw-2rem)] md:w-[420px] animate-fade-in-up bottom-[164px] right-3 sm:right-4 lg:bottom-[104px] lg:right-6"
           role="dialog"
           aria-label="Miles Assistant chat window"
         >
           <Card
             className="overflow-hidden"
             style={{
-              height: "min(55vh, 480px)",
-              borderRadius: "18px",
+              height: "min(50vh, 440px)",
+              borderRadius: "16px",
               boxShadow: "0 10px 40px rgba(0,0,0,0.25)",
             }}
           >
@@ -264,7 +264,7 @@ export function FloatingChatWidget() {
 
             <ScrollArea
               className="flex-1 px-3 lg:px-4 py-3 lg:py-4 bg-white"
-              style={{ height: "calc(min(55vh, 480px) - 64px - 140px)" }}
+              style={{ height: "calc(min(50vh, 440px) - 60px - 130px)" }}
             >
               <div className="space-y-3 lg:space-y-4">
                 {messages.map((message, index) => (
