@@ -1,6 +1,7 @@
 import { HeroSection } from "@/components/hero-section"
 import { StatsSection } from "@/components/stats-section"
 import { AcademicsSection } from "@/components/academics-section"
+import { DgxSparkSection } from "@/components/dgx-spark-section"
 import { CampusLifeSection } from "@/components/campus-life-section"
 import { CostsSection } from "@/components/costs-section"
 import { ScholarshipsSection } from "@/components/scholarships-section"
@@ -15,6 +16,7 @@ export default function PresentationPage() {
     <HeroSection key="hero" />,
     <StatsSection key="stats" />,
     <AcademicsSection key="academics" />,
+    <DgxSparkSection key="dgx-spark" />,
     <CampusLifeSection key="campus-life" />,
     <CostsSection key="costs" />,
     <ScholarshipsSection key="scholarships" />,

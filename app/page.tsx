@@ -1,6 +1,7 @@
 import { HeroSection } from "@/components/hero-section"
 import { StatsSection } from "@/components/stats-section"
 import { AcademicsSection } from "@/components/academics-section"
+import { DgxSparkSection } from "@/components/dgx-spark-section"
 import { CampusLifeSection } from "@/components/campus-life-section"
 import { CostsSection } from "@/components/costs-section"
 import { ScholarshipsSection } from "@/components/scholarships-section"
@@ -22,6 +23,8 @@ export default function Home() {
       {/* Why Miles? Foundation */}
       <AcademicsSection />
       {/* What can I study? */}
+      <DgxSparkSection />
+      {/* AI Innovation */}
       <CampusLifeSection />
       {/* What's student life like? */}
       <AthleticsSection />
