@@ -198,14 +198,14 @@ export function FloatingChatWidget() {
     <>
       <button
         onClick={() => setIsOpen(!isOpen)}
-        className="fixed z-50 w-14 h-14 lg:w-[60px] lg:h-[60px] rounded-full flex items-center justify-center group transition-all duration-200 hover:scale-105 active:scale-95 shadow-[0_6px_20px_rgba(0,0,0,0.2)] bottom-[92px] right-4 lg:bottom-6 lg:right-6"
+        className="fixed z-50 w-[60px] h-[60px] rounded-full flex items-center justify-center group transition-all duration-200 hover:scale-105 active:scale-95 shadow-[0_6px_20px_rgba(0,0,0,0.2)] bottom-6 right-6"
         style={{ backgroundColor: "#4B2E83" }}
         aria-label={isOpen ? "Close Miles Assistant chat" : "Open Miles Assistant chat"}
       >
         {isOpen ? (
-          <Icons.x className="w-6 h-6 lg:w-7 lg:h-7 text-white transition-transform duration-200 group-hover:rotate-90" />
+          <Icons.x className="w-7 h-7 text-white transition-transform duration-200 group-hover:rotate-90" />
         ) : (
-          <Icons.messageCircle className="w-6 h-6 lg:w-7 lg:h-7 text-white" />
+          <Icons.messageCircle className="w-7 h-7 text-white" />
         )}
         {!isOpen && (
           <div
@@ -218,7 +218,7 @@ export function FloatingChatWidget() {
 
       {isOpen && (
         <div
-          className="fixed z-50 w-[calc(100vw-1.5rem)] sm:w-[calc(100vw-2rem)] md:w-[420px] animate-fade-in-up bottom-[164px] right-3 sm:right-4 lg:bottom-[104px] lg:right-6"
+          className="fixed z-50 w-[420px] max-w-[calc(100vw-2rem)] animate-fade-in-up bottom-[104px] right-6"
           role="dialog"
           aria-label="Miles Assistant chat window"
         >
