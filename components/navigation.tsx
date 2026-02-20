@@ -1,6 +1,6 @@
 "use client"
 
-import { useState, useEffect, useCallback } from "react"
+import { useState, useEffect } from "react"
 import { Button } from "@/components/ui/button"
 import { Icons } from "@/components/icons"
 import Image from "next/image"
@@ -15,51 +15,15 @@ import {
 import { cn } from "@/lib/utils"
 
 export function Navigation() {
-  const [isOpen, setIsOpen] = useState(false)
   const [isScrolled, setIsScrolled] = useState(false)
-  const [activeSection, setActiveSection] = useState("hero")
-  const [isMobile, setIsMobile] = useState(false)
-
-  // Detect mobile device
-  useEffect(() => {
-    const checkMobile = () => setIsMobile(window.innerWidth < 1024)
-    checkMobile()
-    window.addEventListener("resize", checkMobile)
-    return () => window.removeEventListener("resize", checkMobile)
-  }, [])
 
   useEffect(() => {
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 10)
-
-      const sections = ["hero", "about", "apply", "academics", "campus-life", "athletics"]
-      for (const section of sections.reverse()) {
-        const element = document.getElementById(section)
-        if (element && window.scrollY >= element.offsetTop - 100) {
-          setActiveSection(section)
-          break
-        }
-      }
     }
     window.addEventListener("scroll", handleScroll, { passive: true })
     return () => window.removeEventListener("scroll", handleScroll)
   }, [])
-
-  useEffect(() => {
-    const handleEscape = (e: KeyboardEvent) => {
-      if (e.key === "Escape") setIsOpen(false)
-    }
-    if (isOpen) {
-      document.addEventListener("keydown", handleEscape)
-      document.body.style.overflow = "hidden"
-    } else {
-      document.body.style.overflow = ""
-    }
-    return () => {
-      document.removeEventListener("keydown", handleEscape)
-      document.body.style.overflow = ""
-    }
-  }, [isOpen])
 
   const admissionsLinks = [
     { title: "Apply Now", href: "https://myexperience.miles.edu", description: "Start your application online" },
@@ -81,14 +45,6 @@ export function Navigation() {
     { title: "Athletics", href: "#athletics", description: "NCAA Division II sports" },
     { title: "Housing", href: "https://www.miles.edu/housing", description: "On-campus residence halls" },
     { title: "Student Resources", href: "https://www.miles.edu/student-services", description: "Support services" },
-  ]
-
-  const bottomNavItems = [
-    { id: "hero", icon: Icons.home, label: "Home", href: "#hero" },
-    { id: "apply", icon: Icons.fileText, label: "Apply", href: "#apply" },
-    { id: "academics", icon: Icons.graduationCap, label: "Programs", href: "#academics" },
-    { id: "campus-life", icon: Icons.heart, label: "Campus", href: "#campus-life" },
-    { id: "chat", icon: Icons.messageCircle, label: "Chat", href: "/chat" },
   ]
 
   return (
@@ -116,8 +72,8 @@ export function Navigation() {
               </a>
             </div>
 
-            {/* Desktop Navigation */}
-            <div className="hidden lg:flex items-center gap-4">
+            {/* Navigation */}
+            <div className="flex items-center gap-4">
               <NavigationMenu>
                 <NavigationMenuList className="gap-2">
                   <NavigationMenuItem>
@@ -230,157 +186,14 @@ export function Navigation() {
               </div>
             </div>
 
-            <div className="lg:hidden flex items-center gap-1">
-              <a
-                href="tel:2059291657"
-                className="flex items-center justify-center w-12 h-12 rounded-full hover:bg-white/10 transition-colors"
-                aria-label="Call Admissions"
-              >
-                <Icons.phone className="w-5 h-5" />
-              </a>
-              <button
-                className="flex items-center justify-center w-12 h-12 rounded-full hover:bg-white/10 transition-colors"
-                onClick={() => setIsOpen(!isOpen)}
-                aria-label="Toggle menu"
-                aria-expanded={isOpen}
-              >
-                {isOpen ? <Icons.close className="w-6 h-6" /> : <Icons.menu className="w-6 h-6" />}
-              </button>
-            </div>
+
           </div>
 
-          {/* Mobile Menu Dropdown */}
-          {isOpen && (
-            <>
-              <div
-                className="lg:hidden fixed inset-0 top-16 bg-black/60 backdrop-blur-sm z-40 animate-fade-in"
-                onClick={() => setIsOpen(false)}
-                style={{ paddingTop: "env(safe-area-inset-top)" }}
-              />
-              <div
-                className="lg:hidden fixed left-0 right-0 top-16 bg-primary z-50 border-t border-white/10 overflow-y-auto animate-fade-in-up"
-                style={{
-                  maxHeight: "calc(100vh - 64px - 72px - env(safe-area-inset-top) - env(safe-area-inset-bottom))",
-                  marginTop: "env(safe-area-inset-top)",
-                }}
-              >
-                <div className="py-3">
-                  <a
-                    href="#about"
-                    className="flex items-center gap-4 py-4 px-6 text-lg font-semibold hover:text-secondary hover:bg-white/5 transition-colors"
-                    onClick={() => setIsOpen(false)}
-                  >
-                    <Icons.info className="w-6 h-6 text-secondary" />
-                    About Miles College
-                  </a>
 
-                  <div className="border-t border-white/10 mt-2 pt-2">
-                    <p className="px-6 py-3 text-xs font-bold uppercase tracking-wider text-secondary">Admissions</p>
-                    {admissionsLinks.map((link) => (
-                      <a
-                        key={link.href}
-                        href={link.href}
-                        {...(link.href.startsWith("http") && { target: "_blank", rel: "noopener noreferrer" })}
-                        className="flex items-center gap-4 py-4 px-6 text-base hover:text-secondary hover:bg-white/5 transition-colors"
-                        onClick={() => setIsOpen(false)}
-                      >
-                        <Icons.chevronRight className="w-5 h-5 text-white/40" />
-                        {link.title}
-                      </a>
-                    ))}
-                  </div>
-
-                  <div className="border-t border-white/10 mt-2 pt-2">
-                    <p className="px-6 py-3 text-xs font-bold uppercase tracking-wider text-secondary">Academics</p>
-                    {academicsLinks.map((link) => (
-                      <a
-                        key={link.href}
-                        href={link.href}
-                        {...(link.href.startsWith("http") && { target: "_blank", rel: "noopener noreferrer" })}
-                        className="flex items-center gap-4 py-4 px-6 text-base hover:text-secondary hover:bg-white/5 transition-colors"
-                        onClick={() => setIsOpen(false)}
-                      >
-                        <Icons.chevronRight className="w-5 h-5 text-white/40" />
-                        {link.title}
-                      </a>
-                    ))}
-                  </div>
-
-                  <div className="border-t border-white/10 mt-2 pt-2">
-                    <p className="px-6 py-3 text-xs font-bold uppercase tracking-wider text-secondary">Campus Life</p>
-                    {campusLinks.map((link) => (
-                      <a
-                        key={link.href}
-                        href={link.href}
-                        {...(link.href.startsWith("http") && { target: "_blank", rel: "noopener noreferrer" })}
-                        className="flex items-center gap-4 py-4 px-6 text-base hover:text-secondary hover:bg-white/5 transition-colors"
-                        onClick={() => setIsOpen(false)}
-                      >
-                        <Icons.chevronRight className="w-5 h-5 text-white/40" />
-                        {link.title}
-                      </a>
-                    ))}
-                  </div>
-
-                  <div className="px-5 py-5 space-y-3 border-t border-white/10 mt-3">
-                    <Button variant="secondary" size="lg" className="w-full font-bold text-lg h-14" asChild>
-                      <a href="https://myexperience.miles.edu" target="_blank" rel="noopener noreferrer">
-                        Apply Now - FREE
-                      </a>
-                    </Button>
-                  </div>
-                </div>
-              </div>
-            </>
-          )}
         </div>
       </nav>
 
-      {/* Bottom Navigation Bar - Fixed 72px height */}
-      <nav
-        className="lg:hidden fixed bottom-0 left-0 right-0 z-40 bg-primary/98 backdrop-blur-xl border-t border-white/10 shadow-[0_-4px_20px_rgba(0,0,0,0.15)]"
-        style={{ paddingBottom: "env(safe-area-inset-bottom)" }}
-      >
-        <div className="flex items-center justify-around h-[72px] px-2">
-          {bottomNavItems.map((item) => {
-            const IconComponent = item.icon
-            const isActive =
-              activeSection === item.id ||
-              (item.id === "chat" && typeof window !== "undefined" && window.location.pathname === "/chat")
-            return (
-              <a
-                key={item.id}
-                href={item.href}
-                className={cn(
-                  "flex flex-col items-center justify-center flex-1 h-[64px] rounded-xl transition-all duration-200 relative mx-1 active:scale-95",
-                  isActive 
-                    ? "text-secondary bg-white/15" 
-                    : "text-white/60 hover:text-white hover:bg-white/5",
-                )}
-              >
-                <div className={cn(
-                  "relative mb-1 transition-transform duration-200",
-                  isActive && "scale-110"
-                )}>
-                  <IconComponent className="w-6 h-6" />
-                  {isActive && (
-                    <span className="absolute -top-1 -right-1 w-2 h-2 bg-secondary rounded-full animate-pulse" />
-                  )}
-                </div>
-                <span className={cn(
-                  "text-[10px] font-bold uppercase tracking-wider transition-all",
-                  isActive ? "text-secondary" : "text-white/60"
-                )}>
-                  {item.label}
-                </span>
-              </a>
-            )
-          })}
-        </div>
-      </nav>
 
-      {/* Bottom nav spacer for body content */}
-      <div className="lg:hidden h-[72px]" style={{ paddingBottom: "env(safe-area-inset-bottom)" }} />
     </>
   )
 }
