@@ -73,7 +73,7 @@ export function Navigation() {
             </div>
 
             {/* Navigation */}
-            <div className="flex items-center gap-4">
+            <div className="flex items-center gap-4 min-w-0">
               <NavigationMenu>
                 <NavigationMenuList className="gap-2">
                   <NavigationMenuItem>
