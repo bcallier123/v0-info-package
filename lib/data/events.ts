@@ -1,0 +1,58 @@
+import type { Event } from "@/lib/types"
+
+export const events: Event[] = [
+  {
+    id: "e1",
+    title: "Spring Open House",
+    date: "March 15, 2026",
+    time: "9:00 AM - 2:00 PM",
+    location: "Miles College Campus",
+    description: "Tour campus, meet faculty and staff, learn about academic programs, and discover what makes Miles College special. Lunch provided for all attendees.",
+    category: "admissions",
+  },
+  {
+    id: "e2",
+    title: "Preview Day",
+    date: "April 5, 2026",
+    time: "10:00 AM - 3:00 PM",
+    location: "Student Center",
+    description: "An exclusive day for admitted students to experience life at Miles College. Includes class visits, student panel, financial aid workshops, and residence hall tours.",
+    category: "admissions",
+  },
+  {
+    id: "e3",
+    title: "Homecoming Week",
+    date: "October 18-24, 2026",
+    time: "Various",
+    location: "Campus-wide",
+    description: "Join us for a week of celebration featuring the Purple Marching Machine, tailgating, the homecoming game, step show, and the coronation ceremony.",
+    category: "social",
+  },
+  {
+    id: "e4",
+    title: "Honors Convocation",
+    date: "April 20, 2026",
+    time: "11:00 AM",
+    location: "Pearson Auditorium",
+    description: "Annual ceremony recognizing outstanding academic achievement, leadership, and service among Miles College students.",
+    category: "academic",
+  },
+  {
+    id: "e5",
+    title: "SIAC Basketball Tournament",
+    date: "February 24-28, 2026",
+    time: "Various",
+    location: "Bill Harris Arena, Birmingham",
+    description: "Cheer on the Golden Bears as they compete in the Southern Intercollegiate Athletic Conference basketball championship tournament.",
+    category: "athletic",
+  },
+  {
+    id: "e6",
+    title: "Career & Internship Fair",
+    date: "March 25, 2026",
+    time: "10:00 AM - 2:00 PM",
+    location: "Student Center Ballroom",
+    description: "Connect with 50+ employers from Birmingham and beyond. Bring your resume and dress professionally. Open to all majors.",
+    category: "academic",
+  },
+]

@@ -1,0 +1,55 @@
+import type { HousingOption } from "@/lib/types"
+
+export const housingOptions: HousingOption[] = [
+  {
+    id: "h1",
+    name: "Pitts Hall",
+    type: "residence-hall",
+    description: "Traditional residence hall for male students featuring double-occupancy rooms in a community-style setting. Recently renovated with modern amenities.",
+    amenities: ["Wi-Fi", "Laundry facilities", "Common lounge", "Study rooms", "Air conditioning", "24-hour security"],
+    cost: "$3,200/semester",
+    capacity: "120 students",
+    gender: "male",
+  },
+  {
+    id: "h2",
+    name: "Oliver Hall",
+    type: "residence-hall",
+    description: "Traditional residence hall for female students with a vibrant community atmosphere. Features comfortable rooms and supportive residential staff.",
+    amenities: ["Wi-Fi", "Laundry facilities", "Kitchen access", "Study lounge", "Air conditioning", "24-hour security"],
+    cost: "$3,200/semester",
+    capacity: "150 students",
+    gender: "female",
+  },
+  {
+    id: "h3",
+    name: "New Women's Residence Hall",
+    type: "residence-hall",
+    description: "Our newest residence hall offering suite-style living for female students. Features modern design and premium amenities for comfortable living.",
+    amenities: ["Wi-Fi", "Suite-style bathrooms", "Laundry facilities", "Fitness area", "Study rooms", "Air conditioning", "24-hour security"],
+    cost: "$4,000/semester",
+    capacity: "100 students",
+    gender: "female",
+  },
+  {
+    id: "h4",
+    name: "19-Meal Plan",
+    type: "meal-plan",
+    description: "Our most popular meal plan offering 19 meals per week (breakfast, lunch, and dinner Monday-Friday, plus brunch and dinner on weekends) and $100 in dining dollars.",
+    cost: "$2,500/semester",
+  },
+  {
+    id: "h5",
+    name: "14-Meal Plan",
+    type: "meal-plan",
+    description: "A flexible plan offering 14 meals per week with $150 in dining dollars for use at campus dining locations.",
+    cost: "$2,200/semester",
+  },
+  {
+    id: "h6",
+    name: "10-Meal Plan",
+    type: "meal-plan",
+    description: "Our most flexible plan with 10 meals per week and $200 in dining dollars. Available for upperclassmen and commuter students.",
+    cost: "$1,800/semester",
+  },
+]

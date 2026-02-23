@@ -2,7 +2,7 @@ import type React from "react"
 import type { Metadata, Viewport } from "next"
 import { Montserrat, DM_Sans } from "next/font/google"
 import "./globals.css"
-import { FloatingChatWidget } from "@/components/floating-chat-widget"
+
 
 const montserrat = Montserrat({
   weight: ["400", "500", "600", "700", "800", "900"],
@@ -108,10 +108,7 @@ export default function RootLayout({
         <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
       </head>
       <body className={`${montserrat.variable} ${dmSans.variable} font-sans antialiased min-h-screen`}>
-        <main className="relative">
-          {children}
-        </main>
-        <FloatingChatWidget />
+        {children}
       </body>
     </html>
   )
