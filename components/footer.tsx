@@ -1,17 +1,93 @@
+import Link from "next/link"
 import { Badge } from "@/components/ui/badge"
 import { Icons } from "@/components/icons"
 
+const footerLinks = {
+  admissions: [
+    { label: "Apply Now", href: "/apply" },
+    { label: "Admissions Overview", href: "/admissions" },
+    { label: "Deadlines", href: "/deadlines" },
+    { label: "Visit Campus", href: "/visit" },
+  ],
+  academics: [
+    { label: "Programs", href: "/programs" },
+    { label: "Explore Miles", href: "/explore" },
+  ],
+  financials: [
+    { label: "Tuition & Costs", href: "/costs" },
+    { label: "Financial Aid", href: "/financial-aid" },
+    { label: "Scholarships", href: "/scholarships" },
+  ],
+  campus: [
+    { label: "Campus Life", href: "/campus-life" },
+    { label: "Housing & Dining", href: "/housing-dining" },
+    { label: "FAQ", href: "/faq" },
+    { label: "Directory", href: "/directory" },
+  ],
+}
+
 export function Footer() {
   return (
-    <footer className="bg-gradient-to-br from-[#1a0a2e] via-[#2d1b4e] to-[#1a0a2e] text-white py-12 sm:py-20 pb-28 lg:pb-20 mb-[72px] lg:mb-0 relative overflow-hidden">
-      {/* Decorative elements - hidden on mobile */}
+    <footer className="bg-gradient-to-br from-[#1a0a2e] via-[#2d1b4e] to-[#1a0a2e] text-white relative overflow-hidden">
+      {/* Decorative */}
       <div className="absolute top-0 left-1/4 w-[400px] h-[400px] bg-secondary/5 rounded-full blur-[100px] hidden sm:block" />
       <div className="absolute bottom-0 right-1/4 w-[300px] h-[300px] bg-primary/5 rounded-full blur-[80px] hidden sm:block" />
-
-      {/* Top border accent */}
       <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-transparent via-secondary to-transparent" />
 
-      <div className="container mx-auto px-4 relative z-10">
+      <div className="container mx-auto px-4 relative z-10 py-12 sm:py-20">
+        {/* Link columns */}
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-8 mb-12">
+          <div>
+            <h4 className="text-xs font-bold uppercase tracking-widest text-secondary mb-4">Admissions</h4>
+            <ul className="flex flex-col gap-2">
+              {footerLinks.admissions.map((link) => (
+                <li key={link.href}>
+                  <Link href={link.href} className="text-sm text-white/70 hover:text-secondary transition-colors font-medium">
+                    {link.label}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </div>
+          <div>
+            <h4 className="text-xs font-bold uppercase tracking-widest text-secondary mb-4">Academics</h4>
+            <ul className="flex flex-col gap-2">
+              {footerLinks.academics.map((link) => (
+                <li key={link.href}>
+                  <Link href={link.href} className="text-sm text-white/70 hover:text-secondary transition-colors font-medium">
+                    {link.label}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </div>
+          <div>
+            <h4 className="text-xs font-bold uppercase tracking-widest text-secondary mb-4">Financials</h4>
+            <ul className="flex flex-col gap-2">
+              {footerLinks.financials.map((link) => (
+                <li key={link.href}>
+                  <Link href={link.href} className="text-sm text-white/70 hover:text-secondary transition-colors font-medium">
+                    {link.label}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </div>
+          <div>
+            <h4 className="text-xs font-bold uppercase tracking-widest text-secondary mb-4">Campus</h4>
+            <ul className="flex flex-col gap-2">
+              {footerLinks.campus.map((link) => (
+                <li key={link.href}>
+                  <Link href={link.href} className="text-sm text-white/70 hover:text-secondary transition-colors font-medium">
+                    {link.label}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </div>
+        </div>
+
+        {/* Center section */}
         <div className="text-center space-y-6 sm:space-y-10">
           <div>
             <h3 className="text-2xl sm:text-4xl md:text-5xl font-black mb-2 sm:mb-4 uppercase tracking-wide">
@@ -44,17 +120,11 @@ export function Footer() {
                   </div>
                   <span className="font-black text-sm sm:text-base">Admissions Office</span>
                 </div>
-                <a
-                  href="tel:2059291657"
-                  className="hover:text-secondary transition-colors font-black text-lg sm:text-xl touch-target flex items-center justify-center min-h-[48px]"
-                >
+                <a href="tel:2059291657" className="hover:text-secondary transition-colors font-black text-lg sm:text-xl touch-target flex items-center justify-center min-h-[48px]">
                   (205) 929-1657
                 </a>
                 <span className="text-white/40 hidden md:inline">|</span>
-                <a
-                  href="mailto:admissions@miles.edu"
-                  className="hover:text-secondary transition-colors font-bold text-sm sm:text-base touch-target flex items-center justify-center min-h-[48px]"
-                >
+                <a href="mailto:admissions@miles.edu" className="hover:text-secondary transition-colors font-bold text-sm sm:text-base touch-target flex items-center justify-center min-h-[48px]">
                   admissions@miles.edu
                 </a>
               </div>
