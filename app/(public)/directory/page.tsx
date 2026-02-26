@@ -5,12 +5,12 @@ import { PageHeader } from "@/components/page-header"
 import { Card } from "@/components/ui/card"
 import { Input } from "@/components/ui/input"
 import { Icons } from "@/components/icons"
-import { directoryEntries } from "@/lib/data/directory"
+import { directory } from "@/lib/data/directory"
 
 export default function DirectoryPage() {
   const [search, setSearch] = useState("")
 
-  const filtered = directoryEntries.filter((d) =>
+  const filtered = directory.filter((d) =>
     d.name.toLowerCase().includes(search.toLowerCase()) ||
     d.department.toLowerCase().includes(search.toLowerCase()) ||
     d.title.toLowerCase().includes(search.toLowerCase())
