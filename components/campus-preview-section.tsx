@@ -39,7 +39,7 @@ export function CampusPreviewSection() {
     <section className="py-24 lg:py-32 bg-background relative overflow-hidden">
       <div className="absolute top-0 left-1/3 w-[400px] h-[400px] bg-[#C9A227]/5 rounded-full blur-[100px]" />
 
-      <div className="container mx-auto px-6 lg:px-12 relative z-10">
+      <div className="container mx-auto px-4 sm:px-6 lg:px-12 relative z-10">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -61,7 +61,7 @@ export function CampusPreviewSection() {
           </p>
         </motion.div>
 
-        <div className="grid md:grid-cols-2 gap-6 max-w-5xl mx-auto">
+        <div className="grid sm:grid-cols-2 gap-4 sm:gap-6 max-w-5xl mx-auto">
           {campusCards.map((card, i) => (
             <motion.div
               key={card.title}
@@ -104,7 +104,7 @@ export function CampusPreviewSection() {
           transition={{ duration: 0.6, delay: 0.3 }}
           className="mt-16 max-w-4xl mx-auto"
         >
-          <div className="bg-gradient-to-r from-[#4B2E83] to-[#2d1b4e] rounded-2xl p-8 lg:p-12 relative overflow-hidden">
+          <div className="bg-gradient-to-r from-[#4B2E83] to-[#2d1b4e] rounded-2xl p-6 sm:p-8 lg:p-12 relative overflow-hidden">
             <div className="absolute top-0 right-0 w-[300px] h-[300px] bg-[#C9A227]/10 rounded-full blur-[80px]" />
             <div className="relative z-10 flex flex-col md:flex-row items-center gap-6">
               <div className="w-16 h-16 rounded-2xl bg-[#C9A227]/20 flex items-center justify-center flex-shrink-0">

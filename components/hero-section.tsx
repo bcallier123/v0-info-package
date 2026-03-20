@@ -43,20 +43,20 @@ export function HeroSection() {
         <div className="absolute inset-0 bg-gradient-to-t from-[#0a0415] via-transparent to-[#4B2E83]/30" />
       </div>
 
-      {/* Animated ambient particles */}
-      <div className="absolute inset-0 overflow-hidden pointer-events-none">
+      {/* Animated ambient particles - hidden on mobile to prevent overflow */}
+      <div className="absolute inset-0 overflow-hidden pointer-events-none hidden sm:block">
         <motion.div
-          className="absolute top-[10%] right-[15%] w-[500px] h-[500px] rounded-full bg-[#C9A227]/10 blur-[120px]"
+          className="absolute top-[10%] right-[15%] w-[300px] lg:w-[500px] h-[300px] lg:h-[500px] rounded-full bg-[#C9A227]/10 blur-[120px]"
           animate={{ scale: [1, 1.3, 1], opacity: [0.3, 0.6, 0.3] }}
           transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
         />
         <motion.div
-          className="absolute bottom-[20%] left-[10%] w-[600px] h-[600px] rounded-full bg-[#4B2E83]/20 blur-[150px]"
+          className="absolute bottom-[20%] left-[10%] w-[300px] lg:w-[600px] h-[300px] lg:h-[600px] rounded-full bg-[#4B2E83]/20 blur-[150px]"
           animate={{ scale: [1.2, 1, 1.2], opacity: [0.2, 0.5, 0.2] }}
           transition={{ duration: 8, repeat: Infinity, ease: "easeInOut" }}
         />
         <motion.div
-          className="absolute top-[40%] left-[50%] w-[300px] h-[300px] rounded-full bg-[#C9A227]/5 blur-[80px]"
+          className="absolute top-[40%] left-[50%] w-[200px] lg:w-[300px] h-[200px] lg:h-[300px] rounded-full bg-[#C9A227]/5 blur-[80px]"
           animate={{ x: [-50, 50, -50], y: [-30, 30, -30] }}
           transition={{ duration: 10, repeat: Infinity, ease: "easeInOut" }}
         />
@@ -77,7 +77,7 @@ export function HeroSection() {
 
       {/* Main content */}
       <div className="relative z-10 min-h-[100svh] flex items-center">
-        <div className="container mx-auto px-6 lg:px-12 py-24">
+        <div className="container mx-auto px-4 sm:px-6 lg:px-12 py-20 sm:py-24">
           <div className="grid lg:grid-cols-12 gap-8 lg:gap-16 items-center">
             {/* Left: Text content */}
             <div className="lg:col-span-7">
@@ -105,14 +105,14 @@ export function HeroSection() {
                   Miles College Journey Experience
                 </p>
                 <h1 className="font-black leading-[0.9] tracking-tight">
-                  <span className="block text-white text-4xl md:text-5xl lg:text-7xl mb-2">
+                  <span className="block text-white text-3xl sm:text-4xl md:text-5xl lg:text-7xl mb-2">
                     STEP INTO
                   </span>
-                  <span className="block text-white text-4xl md:text-5xl lg:text-7xl mb-2">
+                  <span className="block text-white text-3xl sm:text-4xl md:text-5xl lg:text-7xl mb-2">
                     YOUR MILES
                   </span>
                   <span className="block relative">
-                    <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#C9A227] via-yellow-300 to-[#C9A227] text-4xl md:text-5xl lg:text-7xl">
+                    <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#C9A227] via-yellow-300 to-[#C9A227] text-3xl sm:text-4xl md:text-5xl lg:text-7xl">
                       JOURNEY
                     </span>
                     <motion.span
@@ -169,11 +169,11 @@ export function HeroSection() {
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.8, delay: 0.6 }}
-                className="flex flex-col sm:flex-row gap-4"
+                className="flex flex-col sm:flex-row gap-3 sm:gap-4"
               >
                 <Button
                   size="lg"
-                  className="group text-lg px-10 py-7 font-black bg-[#C9A227] hover:bg-yellow-400 text-[#1a0a2e] shadow-xl hover:shadow-2xl hover:shadow-[#C9A227]/20 transition-all duration-300"
+                  className="group text-base sm:text-lg px-6 sm:px-10 py-5 sm:py-7 font-black bg-[#C9A227] hover:bg-yellow-400 text-[#1a0a2e] shadow-xl hover:shadow-2xl hover:shadow-[#C9A227]/20 transition-all duration-300"
                   asChild
                 >
                   <Link href="/journey/onboarding">
@@ -183,22 +183,24 @@ export function HeroSection() {
                     </span>
                   </Link>
                 </Button>
-                <Button
-                  size="lg"
-                  variant="outline"
-                  className="text-lg px-10 py-7 font-bold border-white/30 text-white hover:bg-white/10 hover:border-white/50 backdrop-blur-sm"
-                  asChild
-                >
-                  <Link href="/journey/explore">Explore Miles</Link>
-                </Button>
-                <Button
-                  size="lg"
-                  variant="outline"
-                  className="text-lg px-10 py-7 font-bold border-[#C9A227]/30 text-[#C9A227] hover:bg-[#C9A227]/10 hover:border-[#C9A227]/50"
-                  asChild
-                >
-                  <Link href="/journey/careers">See Your Future</Link>
-                </Button>
+                <div className="flex gap-3 sm:gap-4">
+                  <Button
+                    size="lg"
+                    variant="outline"
+                    className="flex-1 sm:flex-initial text-sm sm:text-lg px-4 sm:px-10 py-5 sm:py-7 font-bold border-white/30 text-white hover:bg-white/10 hover:border-white/50 backdrop-blur-sm"
+                    asChild
+                  >
+                    <Link href="/journey/explore">Explore Miles</Link>
+                  </Button>
+                  <Button
+                    size="lg"
+                    variant="outline"
+                    className="flex-1 sm:flex-initial text-sm sm:text-lg px-4 sm:px-10 py-5 sm:py-7 font-bold border-[#C9A227]/30 text-[#C9A227] hover:bg-[#C9A227]/10 hover:border-[#C9A227]/50"
+                    asChild
+                  >
+                    <Link href="/journey/careers">See Your Future</Link>
+                  </Button>
+                </div>
               </motion.div>
             </div>
 

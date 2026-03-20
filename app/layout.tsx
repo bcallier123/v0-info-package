@@ -19,6 +19,7 @@ const dmSans = DM_Sans({
 })
 
 export const metadata: Metadata = {
+  metadataBase: new URL("https://www.miles.edu"),
   title: "Miles College Journey Experience - Your Path From Discovery to Career",
   description:
     "Step into your Miles College journey. An AI-powered digital campus experience guiding students from discovery to career success. Birmingham's Premier HBCU since 1898.",
