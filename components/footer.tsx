@@ -3,15 +3,19 @@ import { Badge } from "@/components/ui/badge"
 import { Icons } from "@/components/icons"
 
 const footerLinks = {
+  journey: [
+    { label: "Start Your Journey", href: "/journey/onboarding" },
+    { label: "Journey Dashboard", href: "/journey/dashboard" },
+    { label: "Explore Campus", href: "/journey/explore" },
+    { label: "Career Pathways", href: "/journey/careers" },
+    { label: "Student Success", href: "/journey/success" },
+    { label: "Alumni Network", href: "/journey/alumni" },
+  ],
   admissions: [
     { label: "Apply Now", href: "/apply" },
     { label: "Admissions Overview", href: "/admissions" },
     { label: "Deadlines", href: "/deadlines" },
     { label: "Visit Campus", href: "/visit" },
-  ],
-  academics: [
-    { label: "Programs", href: "/programs" },
-    { label: "Explore Miles", href: "/explore" },
   ],
   financials: [
     { label: "Tuition & Costs", href: "/costs" },
@@ -21,28 +25,39 @@ const footerLinks = {
   campus: [
     { label: "Campus Life", href: "/campus-life" },
     { label: "Housing & Dining", href: "/housing-dining" },
+    { label: "Programs", href: "/programs" },
     { label: "FAQ", href: "/faq" },
-    { label: "Directory", href: "/directory" },
+    { label: "Ask Miles AI", href: "/chat" },
   ],
 }
 
 export function Footer() {
   return (
-    <footer className="bg-gradient-to-br from-[#1a0a2e] via-[#2d1b4e] to-[#1a0a2e] text-white relative overflow-hidden">
-      {/* Decorative */}
-      <div className="absolute top-0 left-1/4 w-[400px] h-[400px] bg-secondary/5 rounded-full blur-[100px] hidden sm:block" />
-      <div className="absolute bottom-0 right-1/4 w-[300px] h-[300px] bg-primary/5 rounded-full blur-[80px] hidden sm:block" />
-      <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-transparent via-secondary to-transparent" />
+    <footer className="bg-gradient-to-br from-[#0a0415] via-[#1a0a2e] to-[#0a0415] text-white relative overflow-hidden">
+      <div className="absolute top-0 left-1/4 w-[400px] h-[400px] bg-[#C9A227]/5 rounded-full blur-[100px] hidden sm:block" />
+      <div className="absolute bottom-0 right-1/4 w-[300px] h-[300px] bg-[#4B2E83]/5 rounded-full blur-[80px] hidden sm:block" />
+      <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-[#C9A227]/30 to-transparent" />
 
-      <div className="container mx-auto px-4 relative z-10 py-12 sm:py-20">
-        {/* Link columns */}
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-8 mb-12">
+      <div className="container mx-auto px-6 lg:px-12 relative z-10 py-16 sm:py-20">
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-8 mb-16">
           <div>
-            <h4 className="text-xs font-bold uppercase tracking-widest text-secondary mb-4">Admissions</h4>
+            <h4 className="text-xs font-bold uppercase tracking-widest text-[#C9A227] mb-4">Journey</h4>
+            <ul className="flex flex-col gap-2">
+              {footerLinks.journey.map((link) => (
+                <li key={link.href}>
+                  <Link href={link.href} className="text-sm text-white/50 hover:text-[#C9A227] transition-colors font-medium">
+                    {link.label}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </div>
+          <div>
+            <h4 className="text-xs font-bold uppercase tracking-widest text-[#C9A227] mb-4">Admissions</h4>
             <ul className="flex flex-col gap-2">
               {footerLinks.admissions.map((link) => (
                 <li key={link.href}>
-                  <Link href={link.href} className="text-sm text-white/70 hover:text-secondary transition-colors font-medium">
+                  <Link href={link.href} className="text-sm text-white/50 hover:text-[#C9A227] transition-colors font-medium">
                     {link.label}
                   </Link>
                 </li>
@@ -50,23 +65,11 @@ export function Footer() {
             </ul>
           </div>
           <div>
-            <h4 className="text-xs font-bold uppercase tracking-widest text-secondary mb-4">Academics</h4>
-            <ul className="flex flex-col gap-2">
-              {footerLinks.academics.map((link) => (
-                <li key={link.href}>
-                  <Link href={link.href} className="text-sm text-white/70 hover:text-secondary transition-colors font-medium">
-                    {link.label}
-                  </Link>
-                </li>
-              ))}
-            </ul>
-          </div>
-          <div>
-            <h4 className="text-xs font-bold uppercase tracking-widest text-secondary mb-4">Financials</h4>
+            <h4 className="text-xs font-bold uppercase tracking-widest text-[#C9A227] mb-4">Financials</h4>
             <ul className="flex flex-col gap-2">
               {footerLinks.financials.map((link) => (
                 <li key={link.href}>
-                  <Link href={link.href} className="text-sm text-white/70 hover:text-secondary transition-colors font-medium">
+                  <Link href={link.href} className="text-sm text-white/50 hover:text-[#C9A227] transition-colors font-medium">
                     {link.label}
                   </Link>
                 </li>
@@ -74,11 +77,11 @@ export function Footer() {
             </ul>
           </div>
           <div>
-            <h4 className="text-xs font-bold uppercase tracking-widest text-secondary mb-4">Campus</h4>
+            <h4 className="text-xs font-bold uppercase tracking-widest text-[#C9A227] mb-4">Campus</h4>
             <ul className="flex flex-col gap-2">
               {footerLinks.campus.map((link) => (
                 <li key={link.href}>
-                  <Link href={link.href} className="text-sm text-white/70 hover:text-secondary transition-colors font-medium">
+                  <Link href={link.href} className="text-sm text-white/50 hover:text-[#C9A227] transition-colors font-medium">
                     {link.label}
                   </Link>
                 </li>
@@ -87,60 +90,54 @@ export function Footer() {
           </div>
         </div>
 
-        {/* Center section */}
-        <div className="text-center space-y-6 sm:space-y-10">
+        <div className="text-center space-y-8">
           <div>
-            <h3 className="text-2xl sm:text-4xl md:text-5xl font-black mb-2 sm:mb-4 uppercase tracking-wide">
+            <h3 className="text-3xl sm:text-4xl md:text-5xl font-black mb-3 uppercase tracking-wide">
               Miles College
             </h3>
-            <p className="text-white/80 text-base sm:text-xl font-semibold">Where Excellence Meets Tradition</p>
+            <p className="text-white/50 text-base sm:text-lg font-medium">
+              Your Journey From Discovery to Career Success
+            </p>
           </div>
 
-          <div className="flex flex-wrap justify-center gap-2 sm:gap-4">
-            <Badge className="bg-white/10 text-white border border-white/20 font-black text-xs sm:text-sm px-3 sm:px-6 py-2 sm:py-3 uppercase tracking-wide">
+          <div className="flex flex-wrap justify-center gap-3">
+            <Badge className="bg-white/5 text-white/60 border border-white/10 font-bold text-xs px-4 py-2 uppercase tracking-wide">
+              HBCU Since 1898
+            </Badge>
+            <Badge className="bg-white/5 text-white/60 border border-white/10 font-bold text-xs px-4 py-2 uppercase tracking-wide">
               NCAA Division II
             </Badge>
-            <Badge className="bg-white/10 text-white border border-white/20 font-black text-xs sm:text-sm px-3 sm:px-6 py-2 sm:py-3 uppercase tracking-wide">
-              SIAC Conference
-            </Badge>
-            <Badge className="bg-white/10 text-white border border-white/20 font-black text-xs sm:text-sm px-3 sm:px-6 py-2 sm:py-3 uppercase tracking-wide">
-              SACS Accredited
+            <Badge className="bg-white/5 text-white/60 border border-white/10 font-bold text-xs px-4 py-2 uppercase tracking-wide">
+              SACSCOC Accredited
             </Badge>
           </div>
 
-          <div className="py-6 sm:py-10 border-y border-white/20">
-            <div className="max-w-2xl mx-auto">
-              <p className="text-xs sm:text-sm font-black text-secondary mb-3 sm:mb-4 uppercase tracking-widest">
-                Questions? Contact Admissions
-              </p>
-              <div className="flex flex-col sm:flex-row sm:flex-wrap justify-center items-center gap-3 sm:gap-6 text-base sm:text-lg">
-                <div className="flex items-center gap-2 sm:gap-3">
-                  <div className="w-8 h-8 sm:w-10 sm:h-10 bg-secondary/20 flex items-center justify-center">
-                    <Icons.phone className="w-4 h-4 sm:w-5 sm:h-5 text-secondary" />
-                  </div>
-                  <span className="font-black text-sm sm:text-base">Admissions Office</span>
-                </div>
-                <a href="tel:2059291657" className="hover:text-secondary transition-colors font-black text-lg sm:text-xl touch-target flex items-center justify-center min-h-[48px]">
-                  (205) 929-1657
-                </a>
-                <span className="text-white/40 hidden md:inline">|</span>
-                <a href="mailto:admissions@miles.edu" className="hover:text-secondary transition-colors font-bold text-sm sm:text-base touch-target flex items-center justify-center min-h-[48px]">
-                  admissions@miles.edu
-                </a>
-              </div>
+          <div className="py-8 border-y border-white/10">
+            <p className="text-xs font-bold text-[#C9A227] mb-3 uppercase tracking-widest">
+              Questions? We are here for you.
+            </p>
+            <div className="flex flex-col sm:flex-row justify-center items-center gap-4 text-sm">
+              <a href="tel:2059291657" className="hover:text-[#C9A227] transition-colors font-bold text-lg flex items-center gap-2">
+                <Icons.phone className="w-4 h-4 text-[#C9A227]" />
+                (205) 929-1657
+              </a>
+              <span className="text-white/20 hidden sm:inline">|</span>
+              <a href="mailto:admissions@miles.edu" className="hover:text-[#C9A227] transition-colors font-medium">
+                admissions@miles.edu
+              </a>
             </div>
           </div>
 
-          <div className="text-xs sm:text-sm text-white/60 max-w-4xl mx-auto leading-relaxed px-2">
-            <p className="mb-4 sm:mb-6">
+          <div className="text-xs text-white/30 max-w-3xl mx-auto leading-relaxed">
+            <p className="mb-4">
               Miles College is accredited by the Southern Association of Colleges and Schools Commission on Colleges
               (SACSCOC) to award baccalaureate degrees.
             </p>
           </div>
 
-          <div className="pt-4 sm:pt-8 border-t border-white/20">
-            <p className="text-xs sm:text-sm text-white/50 font-semibold">
-              {new Date().getFullYear()} Miles College. All rights reserved.
+          <div className="pt-4 border-t border-white/10">
+            <p className="text-xs text-white/30 font-medium">
+              {new Date().getFullYear()} Miles College Journey Experience Platform. All rights reserved.
               <span className="block sm:inline sm:ml-1">Fairfield, Alabama</span>
             </p>
           </div>

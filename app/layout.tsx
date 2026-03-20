@@ -19,9 +19,9 @@ const dmSans = DM_Sans({
 })
 
 export const metadata: Metadata = {
-  title: "Miles College - Where Excellence Meets Tradition",
+  title: "Miles College Journey Experience - Your Path From Discovery to Career",
   description:
-    "Discover Miles College, Birmingham's Premier HBCU. 97% of students receive scholarships, 30+ majors, NCAA Division II athletics, and a vibrant campus community. Founded 1898.",
+    "Step into your Miles College journey. An AI-powered digital campus experience guiding students from discovery to career success. Birmingham's Premier HBCU since 1898.",
   keywords: [
     "Miles College",
     "HBCU",
