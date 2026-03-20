@@ -91,7 +91,7 @@ export function StatsSection() {
                   >
                     <IconComponent className={`w-8 lg:w-10 h-8 lg:h-10 ${stat.color}`} />
                   </div>
-                  <div className="text-4xl md:text-5xl lg:text-7xl font-black mb-4 text-white tracking-tight">
+                  <div className="text-3xl sm:text-4xl md:text-5xl lg:text-7xl font-black mb-4 text-white tracking-tight">
                     {stat.value}
                   </div>
                   <div className="text-xs lg:text-sm font-bold text-white/70 uppercase tracking-wider">

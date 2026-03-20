@@ -61,7 +61,7 @@ export function JourneyPreviewSection() {
       {/* Top divider */}
       <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-[#C9A227]/30 to-transparent" />
 
-      <div className="container mx-auto px-6 lg:px-12 relative z-10">
+      <div className="container mx-auto px-4 sm:px-6 lg:px-12 relative z-10">
         {/* Header */}
         <motion.div
           initial={{ opacity: 0, y: 30 }}
@@ -87,28 +87,54 @@ export function JourneyPreviewSection() {
 
         {/* Journey Steps */}
         <div className="max-w-4xl mx-auto relative">
-          {/* Central connecting line */}
-          <div className="absolute left-6 md:left-1/2 top-0 bottom-0 w-px bg-gradient-to-b from-[#C9A227]/40 via-[#4B2E83]/30 to-transparent hidden md:block" />
-          <div className="absolute left-6 top-0 bottom-0 w-px bg-gradient-to-b from-[#C9A227]/40 via-[#4B2E83]/30 to-transparent md:hidden" />
+          {/* Central connecting line - desktop */}
+          <div className="absolute left-1/2 top-0 bottom-0 w-px bg-gradient-to-b from-[#C9A227]/40 via-[#4B2E83]/30 to-transparent hidden md:block" />
+          {/* Left connecting line - mobile */}
+          <div className="absolute left-5 top-0 bottom-0 w-px bg-gradient-to-b from-[#C9A227]/40 via-[#4B2E83]/30 to-transparent md:hidden" />
 
-          <div className="flex flex-col gap-8">
+          <div className="flex flex-col gap-6 md:gap-8">
             {journeySteps.map((step, i) => {
               const StepIcon = step.icon
               const isLeft = i % 2 === 0
               return (
                 <motion.div
                   key={step.number}
-                  initial={{ opacity: 0, x: isLeft ? -30 : 30 }}
-                  whileInView={{ opacity: 1, x: 0 }}
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
                   transition={{ duration: 0.5, delay: i * 0.1 }}
-                  className={`relative flex items-start gap-6 md:gap-0 ${
+                  className={`relative flex items-start ${
                     isLeft ? "md:flex-row" : "md:flex-row-reverse"
                   }`}
                 >
-                  {/* Step content */}
-                  <div className={`flex-1 md:w-[calc(50%-2rem)] ${isLeft ? "md:pr-12 md:text-right" : "md:pl-12"}`}>
-                    <div className={`bg-white/5 backdrop-blur-sm border border-white/10 rounded-xl p-6 hover:border-[#C9A227]/30 transition-all duration-300 group`}>
+                  {/* Mobile: node + content in a row */}
+                  <div className="flex items-start gap-4 md:hidden w-full">
+                    <div className="relative z-10 flex-shrink-0">
+                      <motion.div
+                        className={`w-10 h-10 rounded-lg bg-gradient-to-br ${step.color} flex items-center justify-center shadow-lg`}
+                        whileInView={{ scale: [0.8, 1.1, 1] }}
+                        viewport={{ once: true }}
+                        transition={{ duration: 0.5, delay: i * 0.1 + 0.2 }}
+                      >
+                        <StepIcon className="w-4 h-4 text-white" />
+                      </motion.div>
+                    </div>
+                    <div className="flex-1 min-w-0">
+                      <div className="bg-white/5 backdrop-blur-sm border border-white/10 rounded-xl p-4 hover:border-[#C9A227]/30 transition-all duration-300 group">
+                        <span className="text-[10px] font-bold text-[#C9A227]/60 uppercase tracking-widest">
+                          Step {step.number}
+                        </span>
+                        <h3 className="text-base font-black text-white mb-1 group-hover:text-[#C9A227] transition-colors">
+                          {step.title}
+                        </h3>
+                        <p className="text-xs text-white/50 leading-relaxed">{step.description}</p>
+                      </div>
+                    </div>
+                  </div>
+
+                  {/* Desktop: alternating layout */}
+                  <div className={`hidden md:block flex-1 md:w-[calc(50%-2rem)] ${isLeft ? "md:pr-12 md:text-right" : "md:pl-12"}`}>
+                    <div className="bg-white/5 backdrop-blur-sm border border-white/10 rounded-xl p-6 hover:border-[#C9A227]/30 transition-all duration-300 group">
                       <div className={`flex items-center gap-3 mb-3 ${isLeft ? "md:justify-end" : ""}`}>
                         <span className="text-xs font-bold text-[#C9A227]/60 uppercase tracking-widest">
                           Step {step.number}
@@ -121,8 +147,8 @@ export function JourneyPreviewSection() {
                     </div>
                   </div>
 
-                  {/* Center node */}
-                  <div className="absolute left-0 md:left-1/2 md:-translate-x-1/2 z-10">
+                  {/* Center node - desktop */}
+                  <div className="absolute left-1/2 -translate-x-1/2 z-10 hidden md:block">
                     <motion.div
                       className={`w-12 h-12 rounded-xl bg-gradient-to-br ${step.color} flex items-center justify-center shadow-lg`}
                       whileInView={{ scale: [0.8, 1.1, 1] }}
@@ -133,7 +159,7 @@ export function JourneyPreviewSection() {
                     </motion.div>
                   </div>
 
-                  {/* Empty space for opposite side */}
+                  {/* Empty space for opposite side - desktop */}
                   <div className="hidden md:block flex-1 md:w-[calc(50%-2rem)]" />
                 </motion.div>
               )
