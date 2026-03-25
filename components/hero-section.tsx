@@ -1,359 +1,396 @@
 "use client"
 
-import { useEffect, useState } from "react"
-import { motion, AnimatePresence } from "framer-motion"
+import { useEffect, useState, useRef } from "react"
+import { motion, useScroll, useTransform, AnimatePresence } from "framer-motion"
 import { Button } from "@/components/ui/button"
 import { Icons } from "@/components/icons"
 import Image from "next/image"
 import Link from "next/link"
 
-const journeyStages = [
-  "Discovery",
-  "Application",
-  "Acceptance",
-  "Enrollment",
-  "Success",
-  "Career",
+const words = ["FUTURE", "LEGACY", "JOURNEY", "STORY", "DREAMS"]
+
+const floatingElements = [
+  { text: "Since 1898", delay: 0 },
+  { text: "Birmingham, AL", delay: 0.2 },
+  { text: "HBCU Excellence", delay: 0.4 },
+  { text: "Golden Bears", delay: 0.6 },
 ]
 
 export function HeroSection() {
-  const [activeWord, setActiveWord] = useState(0)
+  const [currentWord, setCurrentWord] = useState(0)
+  const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 })
+  const containerRef = useRef<HTMLDivElement>(null)
+  const { scrollY } = useScroll()
+  
+  const backgroundY = useTransform(scrollY, [0, 500], [0, 150])
+  const textY = useTransform(scrollY, [0, 500], [0, -50])
+  const opacity = useTransform(scrollY, [0, 400], [1, 0])
 
   useEffect(() => {
     const interval = setInterval(() => {
-      setActiveWord((prev) => (prev + 1) % journeyStages.length)
-    }, 2500)
+      setCurrentWord((prev) => (prev + 1) % words.length)
+    }, 2000)
     return () => clearInterval(interval)
   }, [])
 
+  useEffect(() => {
+    const handleMouseMove = (e: MouseEvent) => {
+      if (containerRef.current) {
+        const rect = containerRef.current.getBoundingClientRect()
+        setMousePosition({
+          x: (e.clientX - rect.left - rect.width / 2) / 50,
+          y: (e.clientY - rect.top - rect.height / 2) / 50,
+        })
+      }
+    }
+    window.addEventListener("mousemove", handleMouseMove)
+    return () => window.removeEventListener("mousemove", handleMouseMove)
+  }, [])
+
   return (
-    <section className="relative min-h-[100svh] overflow-hidden">
-      {/* Background Image */}
-      <div className="absolute inset-0">
-        <Image
-          src="/images/img-0036.jpeg"
-          alt="Miles College campus with students"
-          fill
-          className="object-cover object-center"
-          priority
-          sizes="100vw"
+    <section 
+      ref={containerRef}
+      className="relative min-h-[100svh] overflow-hidden bg-[#0a0415]"
+    >
+      {/* Layered Background System */}
+      <motion.div 
+        className="absolute inset-0"
+        style={{ y: backgroundY }}
+      >
+        {/* Base gradient */}
+        <div className="absolute inset-0 bg-gradient-to-br from-[#1a0a2e] via-[#0d0620] to-[#0a0415]" />
+        
+        {/* Campus image with parallax */}
+        <motion.div 
+          className="absolute inset-0"
+          style={{
+            x: mousePosition.x * -2,
+            y: mousePosition.y * -2,
+          }}
+        >
+          <Image
+            src="/images/img-0036.jpeg"
+            alt="Miles College campus"
+            fill
+            className="object-cover object-center opacity-30 scale-110"
+            priority
+            sizes="100vw"
+          />
+        </motion.div>
+        
+        {/* Gradient overlays for depth */}
+        <div className="absolute inset-0 bg-gradient-to-t from-[#0a0415] via-transparent to-[#0a0415]/50" />
+        <div className="absolute inset-0 bg-gradient-to-r from-[#0a0415]/80 via-transparent to-[#0a0415]/80" />
+      </motion.div>
+
+      {/* Animated Grid Pattern */}
+      <div className="absolute inset-0 pointer-events-none opacity-20">
+        <div 
+          className="absolute inset-0"
+          style={{
+            backgroundImage: `
+              linear-gradient(rgba(201, 162, 39, 0.1) 1px, transparent 1px),
+              linear-gradient(90deg, rgba(201, 162, 39, 0.1) 1px, transparent 1px)
+            `,
+            backgroundSize: "60px 60px",
+          }}
         />
-        {/* Layered gradient overlays for depth */}
-        <div className="absolute inset-0 bg-gradient-to-br from-[#1a0a2e]/95 via-[#4B2E83]/70 to-[#1a0a2e]/90" />
-        <div className="absolute inset-0 bg-gradient-to-t from-[#0a0415] via-transparent to-[#4B2E83]/30" />
       </div>
 
-      {/* Animated ambient particles - hidden on mobile to prevent overflow */}
-      <div className="absolute inset-0 overflow-hidden pointer-events-none hidden sm:block">
+      {/* Floating ambient orbs */}
+      <div className="absolute inset-0 overflow-hidden pointer-events-none">
         <motion.div
-          className="absolute top-[10%] right-[15%] w-[300px] lg:w-[500px] h-[300px] lg:h-[500px] rounded-full bg-[#C9A227]/10 blur-[120px]"
-          animate={{ scale: [1, 1.3, 1], opacity: [0.3, 0.6, 0.3] }}
-          transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
-        />
-        <motion.div
-          className="absolute bottom-[20%] left-[10%] w-[300px] lg:w-[600px] h-[300px] lg:h-[600px] rounded-full bg-[#4B2E83]/20 blur-[150px]"
-          animate={{ scale: [1.2, 1, 1.2], opacity: [0.2, 0.5, 0.2] }}
+          className="absolute top-[20%] right-[10%] w-[400px] h-[400px] rounded-full"
+          style={{
+            background: "radial-gradient(circle, rgba(201, 162, 39, 0.15) 0%, transparent 70%)",
+            x: mousePosition.x * 3,
+            y: mousePosition.y * 3,
+          }}
+          animate={{ 
+            scale: [1, 1.2, 1],
+          }}
           transition={{ duration: 8, repeat: Infinity, ease: "easeInOut" }}
         />
         <motion.div
-          className="absolute top-[40%] left-[50%] w-[200px] lg:w-[300px] h-[200px] lg:h-[300px] rounded-full bg-[#C9A227]/5 blur-[80px]"
-          animate={{ x: [-50, 50, -50], y: [-30, 30, -30] }}
+          className="absolute bottom-[10%] left-[5%] w-[500px] h-[500px] rounded-full"
+          style={{
+            background: "radial-gradient(circle, rgba(75, 46, 131, 0.2) 0%, transparent 70%)",
+            x: mousePosition.x * -2,
+            y: mousePosition.y * -2,
+          }}
+          animate={{ 
+            scale: [1.2, 1, 1.2],
+          }}
           transition={{ duration: 10, repeat: Infinity, ease: "easeInOut" }}
         />
-      </div>
-
-      {/* Glowing journey path line */}
-      <div className="absolute left-1/2 top-0 bottom-0 w-px pointer-events-none hidden lg:block">
         <motion.div
-          className="absolute top-0 left-0 w-full bg-gradient-to-b from-transparent via-[#C9A227]/40 to-transparent"
-          style={{ height: "100%" }}
-          animate={{ opacity: [0.2, 0.6, 0.2] }}
-          transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
+          className="absolute top-[50%] left-[40%] w-[300px] h-[300px] rounded-full"
+          style={{
+            background: "radial-gradient(circle, rgba(201, 162, 39, 0.08) 0%, transparent 70%)",
+          }}
+          animate={{ 
+            x: [-30, 30, -30],
+            y: [-20, 20, -20],
+          }}
+          transition={{ duration: 12, repeat: Infinity, ease: "easeInOut" }}
         />
       </div>
 
-      {/* Top accent line */}
-      <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-transparent via-[#C9A227] to-transparent z-20" />
+      {/* Floating context pills */}
+      <motion.div 
+        className="absolute inset-0 pointer-events-none hidden lg:block"
+        style={{ opacity }}
+      >
+        {floatingElements.map((element, i) => (
+          <motion.div
+            key={element.text}
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 1.5 + element.delay, duration: 0.8 }}
+            className={`absolute text-xs font-medium tracking-widest uppercase px-4 py-2 rounded-full backdrop-blur-sm border ${
+              i % 2 === 0 
+                ? "bg-[#C9A227]/10 border-[#C9A227]/20 text-[#C9A227]" 
+                : "bg-white/5 border-white/10 text-white/60"
+            }`}
+            style={{
+              top: `${20 + i * 18}%`,
+              right: i % 2 === 0 ? "8%" : "12%",
+            }}
+          >
+            {element.text}
+          </motion.div>
+        ))}
+      </motion.div>
 
-      {/* Main content */}
-      <div className="relative z-10 min-h-[100svh] flex items-center">
-        <div className="container mx-auto px-4 sm:px-6 lg:px-12 py-20 sm:py-24">
-          <div className="grid lg:grid-cols-12 gap-8 lg:gap-16 items-center">
-            {/* Left: Text content */}
-            <div className="lg:col-span-7">
-              <motion.div
-                initial={{ opacity: 0, y: 30 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.8 }}
-                className="flex flex-wrap gap-3 mb-8"
-              >
-                <span className="px-4 py-2 text-xs font-bold bg-[#C9A227] text-[#1a0a2e] uppercase tracking-widest rounded-full">
-                  AI-Powered Journey
-                </span>
-                <span className="px-4 py-2 text-xs font-bold bg-white/10 text-white/90 border border-white/20 uppercase tracking-widest rounded-full backdrop-blur-sm">
-                  HBCU Since 1898
-                </span>
-              </motion.div>
+      {/* Main Content */}
+      <motion.div 
+        className="relative z-10 min-h-[100svh] flex flex-col justify-center"
+        style={{ y: textY, opacity }}
+      >
+        <div className="container mx-auto px-4 sm:px-6 lg:px-12">
+          <div className="max-w-6xl">
+            {/* Top accent */}
+            <motion.div
+              initial={{ opacity: 0, x: -30 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.8, delay: 0.2 }}
+              className="flex items-center gap-4 mb-8"
+            >
+              <div className="w-16 sm:w-24 h-px bg-gradient-to-r from-[#C9A227] to-transparent" />
+              <span className="text-[#C9A227] text-xs sm:text-sm font-bold tracking-[0.3em] uppercase">
+                Miles College
+              </span>
+            </motion.div>
 
+            {/* Giant Typography Block */}
+            <div className="relative mb-8 sm:mb-12">
+              {/* "BUILD YOUR" - static text */}
               <motion.div
-                initial={{ opacity: 0, y: 40 }}
+                initial={{ opacity: 0, y: 50 }}
                 animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.8, delay: 0.2 }}
-                className="mb-6"
+                transition={{ duration: 1, delay: 0.4 }}
               >
-                <p className="text-[#C9A227] font-bold text-sm md:text-base tracking-[0.3em] uppercase mb-4">
-                  Miles College Journey Experience
-                </p>
-                <h1 className="font-black leading-[0.9] tracking-tight">
-                  <span className="block text-white text-3xl sm:text-4xl md:text-5xl lg:text-7xl mb-2">
-                    STEP INTO
-                  </span>
-                  <span className="block text-white text-3xl sm:text-4xl md:text-5xl lg:text-7xl mb-2">
-                    YOUR MILES
-                  </span>
-                  <span className="block relative">
-                    <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#C9A227] via-yellow-300 to-[#C9A227] text-3xl sm:text-4xl md:text-5xl lg:text-7xl">
-                      JOURNEY
-                    </span>
-                    <motion.span
-                      className="absolute -bottom-2 left-0 h-1.5 bg-gradient-to-r from-[#C9A227] via-yellow-400 to-[#C9A227] rounded-full"
-                      initial={{ width: 0 }}
-                      animate={{ width: "100%" }}
-                      transition={{ duration: 1.2, delay: 0.8 }}
-                    />
+                <h1 className="font-black tracking-tighter leading-[0.85]">
+                  <span className="block text-white/90 text-[12vw] sm:text-[10vw] md:text-[8vw] lg:text-[120px]">
+                    BUILD YOUR
                   </span>
                 </h1>
               </motion.div>
 
-              <motion.p
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.8, delay: 0.4 }}
-                className="text-lg md:text-xl text-white/80 leading-relaxed max-w-xl mb-8"
-              >
-                From your first spark of interest to a thriving career, we guide you
-                through every milestone. Your personalized, AI-powered path to{" "}
-                <span className="text-[#C9A227] font-semibold">becoming a Golden Bear.</span>
-              </motion.p>
-
-              {/* Animated journey stage indicator */}
+              {/* Rotating Word - the hero element */}
               <motion.div
-                initial={{ opacity: 0, y: 20 }}
+                initial={{ opacity: 0, y: 50 }}
                 animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.8, delay: 0.5 }}
-                className="mb-8"
+                transition={{ duration: 1, delay: 0.6 }}
+                className="relative h-[14vw] sm:h-[12vw] md:h-[10vw] lg:h-[140px] overflow-hidden"
               >
-                <p className="text-white/50 text-xs uppercase tracking-widest mb-3">
-                  Your Journey Stage
-                </p>
-                <div className="flex flex-wrap gap-2">
-                  {journeyStages.map((stage, i) => (
-                    <motion.span
-                      key={stage}
-                      className={`px-3 py-1.5 text-xs font-bold rounded-full transition-all duration-500 ${
-                        i === activeWord
-                          ? "bg-[#C9A227] text-[#1a0a2e] shadow-lg shadow-[#C9A227]/30"
-                          : "bg-white/5 text-white/40 border border-white/10"
-                      }`}
-                      animate={i === activeWord ? { scale: [1, 1.05, 1] } : {}}
-                      transition={{ duration: 0.6 }}
-                    >
-                      {stage}
-                    </motion.span>
-                  ))}
-                </div>
-              </motion.div>
-
-              {/* CTA Buttons */}
-              <motion.div
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.8, delay: 0.6 }}
-                className="flex flex-col sm:flex-row gap-3 sm:gap-4"
-              >
-                <Button
-                  size="lg"
-                  className="group text-base sm:text-lg px-6 sm:px-10 py-5 sm:py-7 font-black bg-[#C9A227] hover:bg-yellow-400 text-[#1a0a2e] shadow-xl hover:shadow-2xl hover:shadow-[#C9A227]/20 transition-all duration-300"
-                  asChild
-                >
-                  <Link href="/journey/onboarding">
-                    <span className="flex items-center gap-3">
-                      Start Your Journey
-                      <Icons.arrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
-                    </span>
-                  </Link>
-                </Button>
-                <div className="flex gap-3 sm:gap-4">
-                  <Button
-                    size="lg"
-                    variant="outline"
-                    className="flex-1 sm:flex-initial text-sm sm:text-lg px-4 sm:px-10 py-5 sm:py-7 font-bold border-white/30 text-white hover:bg-white/10 hover:border-white/50 backdrop-blur-sm"
-                    asChild
+                <AnimatePresence mode="wait">
+                  <motion.span
+                    key={currentWord}
+                    initial={{ y: 100, opacity: 0, rotateX: -45 }}
+                    animate={{ y: 0, opacity: 1, rotateX: 0 }}
+                    exit={{ y: -100, opacity: 0, rotateX: 45 }}
+                    transition={{ 
+                      duration: 0.6, 
+                      ease: [0.22, 1, 0.36, 1]
+                    }}
+                    className="absolute inset-0 font-black tracking-tighter text-[14vw] sm:text-[12vw] md:text-[10vw] lg:text-[140px] leading-none"
+                    style={{
+                      background: "linear-gradient(135deg, #C9A227 0%, #FFD700 50%, #C9A227 100%)",
+                      backgroundSize: "200% auto",
+                      WebkitBackgroundClip: "text",
+                      WebkitTextFillColor: "transparent",
+                      backgroundClip: "text",
+                    }}
                   >
-                    <Link href="/journey/explore">Explore Miles</Link>
-                  </Button>
-                  <Button
-                    size="lg"
-                    variant="outline"
-                    className="flex-1 sm:flex-initial text-sm sm:text-lg px-4 sm:px-10 py-5 sm:py-7 font-bold border-[#C9A227]/30 text-[#C9A227] hover:bg-[#C9A227]/10 hover:border-[#C9A227]/50"
-                    asChild
-                  >
-                    <Link href="/journey/careers">See Your Future</Link>
-                  </Button>
-                </div>
+                    {words[currentWord]}
+                  </motion.span>
+                </AnimatePresence>
               </motion.div>
             </div>
 
-            {/* Right: Journey preview card */}
+            {/* Subtext */}
             <motion.div
-              initial={{ opacity: 0, x: 60 }}
-              animate={{ opacity: 1, x: 0 }}
-              transition={{ duration: 1, delay: 0.6 }}
-              className="lg:col-span-5 hidden lg:block"
+              initial={{ opacity: 0, y: 30 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: 0.8 }}
+              className="max-w-xl mb-10 sm:mb-12"
             >
-              <div className="relative">
-                <motion.div
-                  className="absolute -inset-4 bg-gradient-to-br from-[#C9A227]/30 via-[#4B2E83]/20 to-[#C9A227]/10 rounded-2xl blur-2xl"
-                  animate={{ opacity: [0.4, 0.7, 0.4] }}
-                  transition={{ duration: 4, repeat: Infinity }}
-                />
-                <div className="relative bg-white/5 backdrop-blur-xl border border-white/10 rounded-2xl p-8 overflow-hidden">
-                  {/* Glass card header */}
-                  <div className="flex items-center gap-3 mb-6">
-                    <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-[#C9A227] to-yellow-500 flex items-center justify-center">
-                      <Icons.sparkles className="w-6 h-6 text-[#1a0a2e]" />
-                    </div>
-                    <div>
-                      <p className="text-white font-bold text-sm">Your Journey Preview</p>
-                      <p className="text-white/50 text-xs">Personalized for you</p>
-                    </div>
-                  </div>
+              <p className="text-base sm:text-lg md:text-xl text-white/60 leading-relaxed">
+                Step into an AI-powered journey from discovery to career. 
+                <span className="text-white/90 font-medium"> Where tradition meets innovation</span>, 
+                and every Golden Bear finds their path to greatness.
+              </p>
+            </motion.div>
 
-                  {/* Mini journey roadmap */}
-                  <div className="flex flex-col gap-1">
-                    {[
-                      { label: "Discover Miles", status: "complete", icon: Icons.search },
-                      { label: "Submit Application", status: "active", icon: Icons.fileText },
-                      { label: "Financial Aid", status: "locked", icon: Icons.dollarSign },
-                      { label: "Get Accepted", status: "locked", icon: Icons.award },
-                      { label: "Orientation", status: "locked", icon: Icons.users },
-                      { label: "Begin Classes", status: "locked", icon: Icons.bookOpen },
-                      { label: "Career Launch", status: "locked", icon: Icons.briefcase },
-                    ].map((step, i) => {
-                      const StepIcon = step.icon
-                      return (
-                        <motion.div
-                          key={step.label}
-                          initial={{ opacity: 0, x: 20 }}
-                          animate={{ opacity: 1, x: 0 }}
-                          transition={{ delay: 0.8 + i * 0.1 }}
-                          className="flex items-center gap-3 py-2.5"
-                        >
-                          <div className="relative flex flex-col items-center">
-                            <div
-                              className={`w-8 h-8 rounded-lg flex items-center justify-center transition-all ${
-                                step.status === "complete"
-                                  ? "bg-green-500/20 border border-green-500/40"
-                                  : step.status === "active"
-                                    ? "bg-[#C9A227]/20 border-2 border-[#C9A227] shadow-lg shadow-[#C9A227]/20"
-                                    : "bg-white/5 border border-white/10"
-                              }`}
-                            >
-                              {step.status === "complete" ? (
-                                <Icons.check className="w-4 h-4 text-green-400" />
-                              ) : (
-                                <StepIcon
-                                  className={`w-4 h-4 ${
-                                    step.status === "active" ? "text-[#C9A227]" : "text-white/30"
-                                  }`}
-                                />
-                              )}
-                            </div>
-                            {i < 6 && (
-                              <div
-                                className={`w-px h-4 ${
-                                  step.status === "complete"
-                                    ? "bg-green-500/40"
-                                    : step.status === "active"
-                                      ? "bg-[#C9A227]/30"
-                                      : "bg-white/10"
-                                }`}
-                              />
-                            )}
-                          </div>
-                          <span
-                            className={`text-sm font-medium ${
-                              step.status === "complete"
-                                ? "text-green-400"
-                                : step.status === "active"
-                                  ? "text-[#C9A227] font-bold"
-                                  : "text-white/30"
-                            }`}
-                          >
-                            {step.label}
-                          </span>
-                          {step.status === "active" && (
-                            <motion.span
-                              className="ml-auto text-xs font-bold text-[#C9A227] bg-[#C9A227]/10 px-2 py-0.5 rounded-full"
-                              animate={{ opacity: [0.5, 1, 0.5] }}
-                              transition={{ duration: 2, repeat: Infinity }}
-                            >
-                              Current
-                            </motion.span>
-                          )}
-                          {step.status === "complete" && (
-                            <span className="ml-auto text-xs text-green-400/60">Done</span>
-                          )}
-                        </motion.div>
-                      )
-                    })}
-                  </div>
+            {/* Interactive Journey Indicator */}
+            <motion.div
+              initial={{ opacity: 0, y: 30 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: 1 }}
+              className="mb-10 sm:mb-12"
+            >
+              <div className="flex flex-wrap items-center gap-2 sm:gap-3">
+                {["Discover", "Apply", "Enroll", "Succeed", "Launch"].map((stage, i) => (
+                  <motion.div
+                    key={stage}
+                    className="flex items-center gap-2 sm:gap-3"
+                    whileHover={{ scale: 1.05 }}
+                  >
+                    <span className={`text-xs sm:text-sm font-semibold transition-colors ${
+                      i === 0 ? "text-[#C9A227]" : "text-white/40"
+                    }`}>
+                      {stage}
+                    </span>
+                    {i < 4 && (
+                      <div className={`w-6 sm:w-8 h-px ${
+                        i === 0 ? "bg-[#C9A227]" : "bg-white/20"
+                      }`} />
+                    )}
+                  </motion.div>
+                ))}
+              </div>
+            </motion.div>
 
-                  {/* Progress bar */}
-                  <div className="mt-6 pt-4 border-t border-white/10">
-                    <div className="flex items-center justify-between mb-2">
-                      <span className="text-xs text-white/50">Journey Progress</span>
-                      <span className="text-xs font-bold text-[#C9A227]">14%</span>
+            {/* CTA Section */}
+            <motion.div
+              initial={{ opacity: 0, y: 30 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: 1.2 }}
+              className="flex flex-col sm:flex-row gap-4"
+            >
+              <Button
+                size="lg"
+                className="group relative overflow-hidden text-base sm:text-lg px-8 sm:px-12 py-6 sm:py-8 font-black bg-[#C9A227] hover:bg-[#d4af37] text-[#0a0415] border-0 rounded-full transition-all duration-500"
+                asChild
+              >
+                <Link href="/journey/onboarding">
+                  <span className="relative z-10 flex items-center gap-3">
+                    Begin Your Journey
+                    <motion.span
+                      animate={{ x: [0, 5, 0] }}
+                      transition={{ duration: 1.5, repeat: Infinity }}
+                    >
+                      <Icons.arrowRight className="w-5 h-5" />
+                    </motion.span>
+                  </span>
+                </Link>
+              </Button>
+              
+              <Button
+                size="lg"
+                variant="outline"
+                className="group text-base sm:text-lg px-8 sm:px-12 py-6 sm:py-8 font-bold bg-transparent border-2 border-white/20 text-white hover:bg-white/5 hover:border-white/40 rounded-full backdrop-blur-sm transition-all duration-300"
+                asChild
+              >
+                <Link href="/journey/explore">
+                  <span className="flex items-center gap-3">
+                    <Icons.play className="w-4 h-4" />
+                    Explore Campus
+                  </span>
+                </Link>
+              </Button>
+            </motion.div>
+
+            {/* Stats row */}
+            <motion.div
+              initial={{ opacity: 0, y: 30 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: 1.4 }}
+              className="mt-16 sm:mt-20 pt-8 border-t border-white/10"
+            >
+              <div className="grid grid-cols-2 sm:grid-cols-4 gap-6 sm:gap-8">
+                {[
+                  { value: "97%", label: "Receive Aid" },
+                  { value: "30+", label: "Majors" },
+                  { value: "126", label: "Years of Excellence" },
+                  { value: "#1", label: "HBCU Experience" },
+                ].map((stat, i) => (
+                  <motion.div
+                    key={stat.label}
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ delay: 1.6 + i * 0.1 }}
+                    className="text-center sm:text-left"
+                  >
+                    <div className="text-2xl sm:text-3xl md:text-4xl font-black text-white mb-1">
+                      {stat.value}
                     </div>
-                    <div className="h-2 bg-white/5 rounded-full overflow-hidden">
-                      <motion.div
-                        className="h-full bg-gradient-to-r from-[#C9A227] to-yellow-400 rounded-full"
-                        initial={{ width: 0 }}
-                        animate={{ width: "14%" }}
-                        transition={{ duration: 1.5, delay: 1.2 }}
-                      />
+                    <div className="text-xs sm:text-sm text-white/40 uppercase tracking-wider">
+                      {stat.label}
                     </div>
-                  </div>
-                </div>
+                  </motion.div>
+                ))}
               </div>
             </motion.div>
           </div>
         </div>
-      </div>
+      </motion.div>
 
-      {/* Bottom gradient fade */}
-      <div className="absolute bottom-0 left-0 right-0 h-40 bg-gradient-to-t from-background via-background/80 to-transparent z-10" />
+      {/* Side decorative elements */}
+      <div className="absolute right-0 top-0 bottom-0 w-px bg-gradient-to-b from-transparent via-[#C9A227]/20 to-transparent hidden lg:block" />
+      <div className="absolute left-0 top-0 bottom-0 w-px bg-gradient-to-b from-transparent via-white/5 to-transparent hidden lg:block" />
+
+      {/* Bottom gradient */}
+      <div className="absolute bottom-0 left-0 right-0 h-32 sm:h-48 bg-gradient-to-t from-background to-transparent z-20 pointer-events-none" />
 
       {/* Scroll indicator */}
       <motion.div
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
-        transition={{ delay: 1.5 }}
-        className="absolute bottom-10 left-1/2 -translate-x-1/2 z-20"
+        transition={{ delay: 2 }}
+        className="absolute bottom-8 sm:bottom-12 left-1/2 -translate-x-1/2 z-30"
       >
         <a
           href="#why-miles"
-          className="flex flex-col items-center gap-2 text-white/40 hover:text-[#C9A227] transition-colors"
+          className="flex flex-col items-center gap-3 text-white/30 hover:text-[#C9A227] transition-colors group"
         >
-          <span className="text-[10px] font-bold uppercase tracking-[0.3em]">Explore Your Path</span>
+          <span className="text-[10px] font-bold uppercase tracking-[0.3em]">
+            Scroll to Explore
+          </span>
           <motion.div
-            animate={{ y: [0, 6, 0] }}
-            transition={{ duration: 1.5, repeat: Infinity }}
+            animate={{ y: [0, 8, 0] }}
+            transition={{ duration: 1.5, repeat: Infinity, ease: "easeInOut" }}
+            className="w-6 h-10 rounded-full border-2 border-current flex items-start justify-center p-2"
           >
-            <Icons.chevronDown className="w-5 h-5" />
+            <motion.div
+              animate={{ opacity: [0.3, 1, 0.3], y: [0, 8, 0] }}
+              transition={{ duration: 1.5, repeat: Infinity, ease: "easeInOut" }}
+              className="w-1 h-2 bg-current rounded-full"
+            />
           </motion.div>
         </a>
       </motion.div>
+
+      {/* Corner accent */}
+      <div className="absolute top-0 left-0 w-32 h-32 pointer-events-none">
+        <div className="absolute top-0 left-0 w-full h-px bg-gradient-to-r from-[#C9A227] to-transparent" />
+        <div className="absolute top-0 left-0 h-full w-px bg-gradient-to-b from-[#C9A227] to-transparent" />
+      </div>
+      <div className="absolute top-0 right-0 w-32 h-32 pointer-events-none">
+        <div className="absolute top-0 right-0 w-full h-px bg-gradient-to-l from-[#C9A227] to-transparent" />
+        <div className="absolute top-0 right-0 h-full w-px bg-gradient-to-b from-[#C9A227] to-transparent" />
+      </div>
     </section>
   )
 }
