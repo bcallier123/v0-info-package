@@ -361,9 +361,11 @@ export function HeroSection() {
         transition={{ delay: 2 }}
         className="absolute bottom-8 sm:bottom-12 left-1/2 -translate-x-1/2 z-30"
       >
-        <a
-          href="#why-miles"
-          className="flex flex-col items-center gap-3 text-white/30 hover:text-[#C9A227] transition-colors group"
+        <button
+          onClick={() => {
+            document.getElementById("stats")?.scrollIntoView({ behavior: "smooth" })
+          }}
+          className="flex flex-col items-center gap-3 text-white/30 hover:text-[#C9A227] transition-colors group cursor-pointer"
         >
           <span className="text-[10px] font-bold uppercase tracking-[0.3em]">
             Scroll to Explore
@@ -379,7 +381,7 @@ export function HeroSection() {
               className="w-1 h-2 bg-current rounded-full"
             />
           </motion.div>
-        </a>
+        </button>
       </motion.div>
 
       {/* Corner accent */}
