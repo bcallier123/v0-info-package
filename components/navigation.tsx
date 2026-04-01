@@ -91,9 +91,12 @@ export function Navigation() {
                 alt="Miles College"
                 width={180}
                 height={54}
-                className="h-10 sm:h-11 md:h-12 w-auto"
+                className="hidden sm:block h-10 sm:h-11 md:h-12 w-auto"
                 priority
               />
+              <span className="sm:hidden text-sm font-black tracking-tight text-white">
+                MILES<span className="text-[#C9A227]">.</span>
+              </span>
             </Link>
           </div>
 
