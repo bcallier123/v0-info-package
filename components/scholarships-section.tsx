@@ -9,36 +9,36 @@ export function ScholarshipsSection() {
       name: "Presidential Scholarship",
       amount: "Full Ride",
       amountDetail: "Tuition + Room/Board + Books",
-      requirements: "GPA: 3.7+ • ACT: 24+ • SAT: 1190+",
+      requirements: "GPA: 3.7+ | ACT: 24+ | SAT: 1190+",
       eligibility: "High School Graduates Only",
       description:
-        "A prestigious and highly competitive award recognizing academic excellence and leadership. Limited scholarships available based on comprehensive review of GPA, academic performance, leadership qualities, and overall achievements.",
-      renewal: "15 credit hours/semester • 3.5 GPA • 20 tutoring hours/semester",
+        "The most prestigious award at Miles College. This highly competitive scholarship is awarded on a first come, first served basis after admission. Test score submission is required for eligibility.",
+      renewal: "15 credit hours/semester | 3.2 cumulative GPA",
       color: "bg-secondary text-secondary-foreground",
       highlight: true,
     },
     {
       icon: Icons.graduationCap,
-      name: "Dean's Scholarship",
+      name: "Dean Scholarship",
       amount: "$20,000",
-      amountDetail: "$5,000/year • $2,500/semester",
-      requirements: "GPA: 3.2+ • ACT: 20+ • SAT: 1050+",
-      renewal: "15 credit hours/semester • 3.3 GPA • 10 tutoring hours/semester",
+      amountDetail: "$5,000/year | $2,500/semester",
+      requirements: "GPA: 3.2+ | ACT: 20+ | SAT: 1050+",
+      renewal: "15 credit hours/semester | 3.1 cumulative GPA",
       color: "bg-primary text-primary-foreground",
     },
     {
       icon: Icons.users,
       name: "Bridge Scholarship",
       amount: "$10,000",
-      amountDetail: "$2,500/year • $1,250/semester",
-      requirements: "GPA: 2.75+ • Test Score Required (No Minimum)",
-      renewal: "15 credit hours/semester • 2.5 GPA",
+      amountDetail: "$2,500/year | $1,250/semester",
+      requirements: "GPA: 2.75+ | Test Score Required (No Minimum)",
+      renewal: "15 credit hours/semester | No minimum GPA requirement",
       color: "bg-accent text-accent-foreground",
     },
   ]
 
   return (
-    <section className="py-24 bg-gradient-to-b from-white via-gray-50 to-white relative overflow-hidden">
+    <section className="py-24 bg-gradient-to-b from-background via-muted/30 to-background relative overflow-hidden">
       <div className="absolute inset-0 opacity-[0.03]">
         <div className="absolute top-20 left-10 w-96 h-96 bg-primary rounded-full blur-3xl" />
         <div className="absolute bottom-20 right-10 w-96 h-96 bg-secondary rounded-full blur-3xl" />
@@ -54,8 +54,8 @@ export function ScholarshipsSection() {
               Scholarship Opportunities
             </span>
           </h2>
-          <p className="text-xl md:text-2xl text-gray-600 max-w-3xl mx-auto text-balance leading-relaxed font-medium mb-6">
-            Over $2.5 million in scholarships awarded annually to deserving students
+          <p className="text-xl md:text-2xl text-muted-foreground max-w-3xl mx-auto text-balance leading-relaxed font-medium mb-6">
+            Institutional scholarships awarded on a first come, first served basis after admission
           </p>
           <div className="flex items-center justify-center gap-2">
             <div className="w-16 h-1 bg-primary rounded-full" />
@@ -72,7 +72,7 @@ export function ScholarshipsSection() {
                 scholarship.highlight
                   ? "ring-2 ring-secondary shadow-xl md:scale-[1.05] border-2 border-secondary/20"
                   : "hover:ring-2 hover:ring-primary/30 border-2 border-transparent"
-              } bg-white`}
+              } bg-card`}
             >
               <CardHeader className={`${scholarship.color} rounded-t-lg relative overflow-hidden p-8`}>
                 <div className="absolute inset-0 bg-gradient-to-br from-white/10 to-transparent" />
@@ -92,39 +92,81 @@ export function ScholarshipsSection() {
                 )}
               </CardHeader>
               <CardContent className="pt-8 space-y-6 p-8">
-                <div className="text-center py-6 bg-gradient-to-br from-gray-50 to-gray-100 rounded-xl shadow-inner">
+                <div className="text-center py-6 bg-muted/50 rounded-xl shadow-inner">
                   <div className="text-5xl font-black mb-2 bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent">
                     {scholarship.amount}
                   </div>
                   {scholarship.amountDetail && (
-                    <div className="text-sm font-bold text-gray-600">{scholarship.amountDetail}</div>
+                    <div className="text-sm font-bold text-muted-foreground">{scholarship.amountDetail}</div>
                   )}
                 </div>
 
-                <div className="bg-gray-50 rounded-xl p-6 border-l-4 border-primary">
+                <div className="bg-muted/30 rounded-xl p-6 border-l-4 border-primary">
                   <div className="text-xs font-bold uppercase tracking-wider mb-3 text-primary">Requirements</div>
-                  <CardDescription className="text-sm font-semibold leading-relaxed text-gray-700">
+                  <CardDescription className="text-sm font-semibold leading-relaxed">
                     {scholarship.requirements}
                   </CardDescription>
                 </div>
 
                 {scholarship.description && (
-                  <p className="text-sm text-gray-600 leading-relaxed pt-6 border-t-2 border-gray-100">
+                  <p className="text-sm text-muted-foreground leading-relaxed pt-6 border-t-2 border-border">
                     {scholarship.description}
                   </p>
                 )}
 
                 {scholarship.renewal && (
-                  <div className="pt-6 border-t-2 border-gray-100">
+                  <div className="pt-6 border-t-2 border-border">
                     <div className="text-xs font-bold uppercase tracking-wider mb-3 text-secondary">
                       Renewal Requirements
                     </div>
-                    <p className="text-sm font-medium text-gray-600 leading-relaxed">{scholarship.renewal}</p>
+                    <p className="text-sm font-medium text-muted-foreground leading-relaxed">{scholarship.renewal}</p>
                   </div>
                 )}
               </CardContent>
             </Card>
           ))}
+        </div>
+
+        <div className="max-w-4xl mx-auto mb-12">
+          <Card className="bg-muted/30 border-2 border-border p-8">
+            <h3 className="text-xl font-black mb-4 text-foreground">Scholarship Eligibility Requirements</h3>
+            <div className="grid md:grid-cols-2 gap-8">
+              <div>
+                <h4 className="font-bold text-primary mb-3">Incoming Freshmen</h4>
+                <ul className="space-y-2 text-sm text-muted-foreground">
+                  <li className="flex items-start gap-2">
+                    <div className="w-1.5 h-1.5 rounded-full bg-primary mt-2 flex-shrink-0" />
+                    <span>Complete Miles College application with required transcripts</span>
+                  </li>
+                  <li className="flex items-start gap-2">
+                    <div className="w-1.5 h-1.5 rounded-full bg-primary mt-2 flex-shrink-0" />
+                    <span>Submit SAT/ACT test scores (electing not to send scores disqualifies eligibility)</span>
+                  </li>
+                  <li className="flex items-start gap-2">
+                    <div className="w-1.5 h-1.5 rounded-full bg-primary mt-2 flex-shrink-0" />
+                    <span>Complete and submit your FAFSA</span>
+                  </li>
+                </ul>
+              </div>
+              <div>
+                <h4 className="font-bold text-primary mb-3">Transfer Students</h4>
+                <ul className="space-y-2 text-sm text-muted-foreground">
+                  <li className="flex items-start gap-2">
+                    <div className="w-1.5 h-1.5 rounded-full bg-secondary mt-2 flex-shrink-0" />
+                    <span>Submit college application with required transcripts</span>
+                  </li>
+                  <li className="flex items-start gap-2">
+                    <div className="w-1.5 h-1.5 rounded-full bg-secondary mt-2 flex-shrink-0" />
+                    <span>Attended only 1 college prior to enrolling at Miles</span>
+                  </li>
+                  <li className="flex items-start gap-2">
+                    <div className="w-1.5 h-1.5 rounded-full bg-secondary mt-2 flex-shrink-0" />
+                    <span>Graduated from a 2-year community or junior college</span>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </Card>
         </div>
 
         <div className="max-w-5xl mx-auto">
@@ -147,8 +189,8 @@ export function ScholarshipsSection() {
             </CardHeader>
 
             <CardContent className="space-y-8 relative z-10 pb-12">
-              <div className="bg-white text-gray-900 rounded-2xl p-8 text-center shadow-2xl max-w-md mx-auto">
-                <div className="font-bold text-lg mb-3 uppercase tracking-wide text-gray-600">
+              <div className="bg-white text-foreground rounded-2xl p-8 text-center shadow-2xl max-w-md mx-auto">
+                <div className="font-bold text-lg mb-3 uppercase tracking-wide text-muted-foreground">
                   Miles College FAFSA Code
                 </div>
                 <div className="text-6xl font-black tracking-wider text-primary">001028</div>
@@ -156,16 +198,19 @@ export function ScholarshipsSection() {
 
               <div className="grid sm:grid-cols-3 gap-6 pt-6 max-w-4xl mx-auto">
                 <div className="text-center bg-white/15 backdrop-blur-sm rounded-xl p-6 shadow-lg border border-white/20">
-                  <div className="font-bold mb-3 text-sm uppercase tracking-wide">Academic Merit</div>
-                  <div className="text-4xl font-black text-white">Up to $8,000</div>
+                  <div className="font-bold mb-3 text-sm uppercase tracking-wide">Presidential</div>
+                  <div className="text-3xl font-black text-white">Full Ride</div>
+                  <div className="text-xs mt-1 text-white/80">Tuition + Room/Board + Books</div>
                 </div>
                 <div className="text-center bg-white/15 backdrop-blur-sm rounded-xl p-6 shadow-lg border border-white/20">
-                  <div className="font-bold mb-3 text-sm uppercase tracking-wide">Athletic</div>
-                  <div className="text-4xl font-black text-white">Varies</div>
+                  <div className="font-bold mb-3 text-sm uppercase tracking-wide">Dean</div>
+                  <div className="text-3xl font-black text-white">$20,000</div>
+                  <div className="text-xs mt-1 text-white/80">$5,000/year</div>
                 </div>
                 <div className="text-center bg-white/15 backdrop-blur-sm rounded-xl p-6 shadow-lg border border-white/20">
-                  <div className="font-bold mb-3 text-sm uppercase tracking-wide">Need-Based</div>
-                  <div className="text-4xl font-black text-white">Up to Full</div>
+                  <div className="font-bold mb-3 text-sm uppercase tracking-wide">Bridge</div>
+                  <div className="text-3xl font-black text-white">$10,000</div>
+                  <div className="text-xs mt-1 text-white/80">$2,500/year</div>
                 </div>
               </div>
             </CardContent>
