@@ -11,32 +11,50 @@ import { Icons } from "@/components/icons"
 import { useAuth } from "@/lib/auth-context"
 import Image from "next/image"
 
-export default function LoginPage() {
+export default function SignUpPage() {
+  const [firstName, setFirstName] = useState("")
+  const [lastName, setLastName] = useState("")
   const [email, setEmail] = useState("")
   const [password, setPassword] = useState("")
+  const [confirmPassword, setConfirmPassword] = useState("")
   const [showPassword, setShowPassword] = useState(false)
   const [error, setError] = useState("")
   const [isSubmitting, setIsSubmitting] = useState(false)
   const router = useRouter()
-  const { signIn, user } = useAuth()
+  const { signUp, user } = useAuth()
 
-  // If already logged in, redirect
   if (user) {
     router.push(user.onboardingCompleted ? "/journey/dashboard" : "/journey/onboarding")
     return null
   }
 
-  const handleLogin = async (e: React.FormEvent) => {
+  const handleSignUp = async (e: React.FormEvent) => {
     e.preventDefault()
     setError("")
+
+    if (password.length < 6) {
+      setError("Password must be at least 6 characters.")
+      return
+    }
+
+    if (password !== confirmPassword) {
+      setError("Passwords do not match.")
+      return
+    }
+
     setIsSubmitting(true)
 
-    const result = await signIn(email, password)
+    const result = await signUp({
+      email,
+      password,
+      firstName,
+      lastName,
+    })
 
     if (result.success) {
-      router.push("/journey/dashboard")
+      router.push("/journey/onboarding")
     } else {
-      setError(result.error || "Login failed. Please try again.")
+      setError(result.error || "Sign up failed. Please try again.")
     }
     setIsSubmitting(false)
   }
@@ -57,18 +75,45 @@ export default function LoginPage() {
               className="h-14 w-auto mx-auto mb-4"
             />
           </Link>
-          <h1 className="text-3xl font-black text-primary-foreground">Student Portal</h1>
-          <p className="text-primary-foreground/60 mt-1">Sign in to access your journey dashboard</p>
+          <h1 className="text-3xl font-black text-primary-foreground">Create Account</h1>
+          <p className="text-primary-foreground/60 mt-1">Start your Miles College journey today</p>
         </div>
 
         <Card className="p-6 md:p-8 bg-card/95 backdrop-blur-xl border-border">
-          <form onSubmit={handleLogin} className="flex flex-col gap-4">
+          <form onSubmit={handleSignUp} className="flex flex-col gap-4">
             {error && (
               <div className="flex items-center gap-2 p-3 rounded-lg bg-destructive/10 border border-destructive/30 text-destructive text-sm">
                 <Icons.alertCircle className="w-4 h-4 flex-shrink-0" />
                 {error}
               </div>
             )}
+
+            <div className="grid grid-cols-2 gap-3">
+              <div>
+                <Label htmlFor="firstName" className="text-foreground font-bold text-sm mb-1.5 block">First Name</Label>
+                <Input
+                  id="firstName"
+                  type="text"
+                  value={firstName}
+                  onChange={(e) => setFirstName(e.target.value)}
+                  placeholder="Jordan"
+                  required
+                  autoComplete="given-name"
+                />
+              </div>
+              <div>
+                <Label htmlFor="lastName" className="text-foreground font-bold text-sm mb-1.5 block">Last Name</Label>
+                <Input
+                  id="lastName"
+                  type="text"
+                  value={lastName}
+                  onChange={(e) => setLastName(e.target.value)}
+                  placeholder="Williams"
+                  required
+                  autoComplete="family-name"
+                />
+              </div>
+            </div>
 
             <div>
               <Label htmlFor="email" className="text-foreground font-bold text-sm mb-1.5 block">Email Address</Label>
@@ -90,9 +135,9 @@ export default function LoginPage() {
                   type={showPassword ? "text" : "password"}
                   value={password}
                   onChange={(e) => setPassword(e.target.value)}
-                  placeholder="Enter your password"
+                  placeholder="At least 6 characters"
                   required
-                  autoComplete="current-password"
+                  autoComplete="new-password"
                   className="pr-10"
                 />
                 <button
@@ -109,30 +154,40 @@ export default function LoginPage() {
                 </button>
               </div>
             </div>
+            <div>
+              <Label htmlFor="confirmPassword" className="text-foreground font-bold text-sm mb-1.5 block">Confirm Password</Label>
+              <Input
+                id="confirmPassword"
+                type="password"
+                value={confirmPassword}
+                onChange={(e) => setConfirmPassword(e.target.value)}
+                placeholder="Confirm your password"
+                required
+                autoComplete="new-password"
+              />
+            </div>
+
             <Button
               type="submit"
               disabled={isSubmitting}
               className="w-full bg-secondary text-secondary-foreground font-bold hover:bg-yellow-400 mt-2"
             >
-              {isSubmitting ? "Signing In..." : "Sign In"}
+              {isSubmitting ? "Creating Account..." : "Create Account"}
               {!isSubmitting && <Icons.arrowRight className="w-4 h-4 ml-2" />}
             </Button>
           </form>
 
           <div className="mt-6 pt-4 border-t border-border">
             <p className="text-sm text-muted-foreground text-center">
-              {"Don't have an account?"}{" "}
-              <Link href="/signup" className="text-secondary font-bold hover:underline">
-                Create one here
+              Already have an account?{" "}
+              <Link href="/login" className="text-secondary font-bold hover:underline">
+                Sign in
               </Link>
             </p>
           </div>
         </Card>
 
-        <div className="text-center mt-6 flex flex-col gap-2">
-          <Link href="/apply" className="text-secondary hover:underline text-sm font-bold">
-            New Student? Apply Now
-          </Link>
+        <div className="text-center mt-6">
           <Link href="/" className="text-primary-foreground/60 hover:text-secondary text-sm transition-colors">
             Back to Home
           </Link>

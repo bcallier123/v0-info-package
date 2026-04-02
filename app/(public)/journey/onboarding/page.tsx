@@ -5,6 +5,7 @@ import { motion, AnimatePresence } from "framer-motion"
 import { Button } from "@/components/ui/button"
 import { Card } from "@/components/ui/card"
 import { Icons } from "@/components/icons"
+import { useAuth } from "@/lib/auth-context"
 import Link from "next/link"
 
 const steps = [
@@ -94,6 +95,7 @@ export default function OnboardingPage() {
   const [currentStep, setCurrentStep] = useState(0)
   const [answers, setAnswers] = useState<Answers>({})
   const [completed, setCompleted] = useState(false)
+  const { user, completeOnboarding } = useAuth()
 
   const step = steps[currentStep]
   const isMulti = (step as { multiSelect?: boolean }).multiSelect
@@ -127,6 +129,10 @@ export default function OnboardingPage() {
     if (currentStep < steps.length - 1) {
       setCurrentStep(currentStep + 1)
     } else {
+      // Save onboarding answers to user profile
+      if (user) {
+        completeOnboarding(answers)
+      }
       setCompleted(true)
     }
   }
@@ -185,7 +191,7 @@ export default function OnboardingPage() {
             transition={{ delay: 0.5 }}
             className="text-3xl md:text-5xl font-black text-white mb-4"
           >
-            WELCOME TO THE{" "}
+            {user ? `WELCOME, ${user.firstName.toUpperCase()}` : "WELCOME"} TO THE{" "}
             <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#C9A227] to-yellow-400">
               MILES FAMILY
             </span>

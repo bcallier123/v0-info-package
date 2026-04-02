@@ -1,6 +1,7 @@
 import type React from "react"
 import type { Metadata, Viewport } from "next"
 import { Montserrat, DM_Sans } from "next/font/google"
+import { AuthProvider } from "@/lib/auth-context"
 import "./globals.css"
 
 
@@ -109,7 +110,9 @@ export default function RootLayout({
         <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
       </head>
       <body className={`${montserrat.variable} ${dmSans.variable} font-sans antialiased min-h-screen`}>
-        {children}
+        <AuthProvider>
+          {children}
+        </AuthProvider>
       </body>
     </html>
   )
