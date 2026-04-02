@@ -9,30 +9,45 @@ export function CostsSection() {
       cost: "$14,064",
       description: "Live independently while attending classes",
       features: [
-        "Tuition (12-18 hours)",
-        "Comprehensive Fee",
-        "Books & Materials",
-        "Technology Fee",
-        "Health Insurance",
+        "Tuition (12-18 hours): $11,764",
+        "Comprehensive Fee: $1,500",
+        "Books & Materials: $400",
+        "Technology Fee: $260",
+        "Health Insurance: $140",
       ],
     },
     {
       name: "Murchison Hall",
       cost: "$21,880",
       description: "Traditional residence hall experience",
-      features: ["All Off-Campus items", "Dorm Usage Fee", "Meal Plan", "Traditional housing"],
+      features: [
+        "All base costs included",
+        "Residence Fee: $3,500/year",
+        "Meal Plan: $4,066/year",
+        "Dorm Usage Fee: $250/year",
+      ],
     },
     {
-      name: "Bass Hall / Stewart Reddick",
+      name: "Bass Hall / Stewart-Reddick",
       cost: "$22,980",
       description: "Modern amenities and community living",
-      features: ["All Off-Campus items", "Dorm Usage Fee", "Meal Plan", "Modern facilities"],
+      features: [
+        "All base costs included",
+        "Residence Fee: $4,600/year",
+        "Meal Plan: $4,066/year",
+        "Dorm Usage Fee: $250/year",
+      ],
     },
     {
       name: "Snorton Hall",
       cost: "$23,180",
       description: "Premium housing with enhanced facilities",
-      features: ["All Off-Campus items", "Dorm Usage Fee", "Meal Plan", "Premium amenities"],
+      features: [
+        "All base costs included",
+        "Residence Fee: $4,800/year",
+        "Meal Plan: $4,066/year",
+        "Dorm Usage Fee: $250/year",
+      ],
     },
   ]
 
@@ -49,7 +64,7 @@ export function CostsSection() {
           <div className="inline-flex items-center gap-2 bg-secondary/10 px-6 py-3 rounded-full mb-6 border border-secondary/20">
             <Icons.dollarSign className="w-5 h-5 text-secondary" />
             <Badge variant="secondary" className="text-sm font-bold">
-              Affordable Education
+              2025-2026 School Year
             </Badge>
           </div>
           <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-4 text-balance bg-gradient-to-br from-primary via-primary to-primary/70 bg-clip-text text-transparent">
@@ -68,20 +83,18 @@ export function CostsSection() {
               </div>
               <CardTitle className="text-4xl md:text-5xl font-black mb-2">$11,764</CardTitle>
               <CardDescription className="text-primary-foreground/90 text-base md:text-lg font-semibold">
-                Full-Time Tuition per Academic Year
+                Full-Time Tuition per Academic Year (2025-2026)
               </CardDescription>
             </CardHeader>
             <CardContent className="text-center pt-0">
               <div className="inline-flex items-center gap-2 bg-white/10 backdrop-blur-sm px-4 py-2 rounded-lg">
                 <p className="text-sm md:text-base text-primary-foreground/95 font-medium">
-                  12-18 credit hours • Additional credit hours: $490 each
+                  12-18 credit hours | Additional hours: $490 each
                 </p>
               </div>
             </CardContent>
           </Card>
         </div>
-
-        {/* Alabama Student Grant Program section removed - moved to separate Financial Aid section */}
 
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mb-16">
           {housingOptions.map((option, index) => (
@@ -121,55 +134,63 @@ export function CostsSection() {
                 <Icons.book className="w-6 h-6 text-primary" />
               </div>
               <div>
-                <CardTitle className="text-2xl md:text-3xl">What's Included</CardTitle>
-                <p className="text-sm text-muted-foreground mt-1">Comprehensive breakdown of all costs</p>
+                <CardTitle className="text-2xl md:text-3xl">Mandatory Fees Breakdown</CardTitle>
+                <p className="text-sm text-muted-foreground mt-1">All fees per semester unless noted</p>
               </div>
             </div>
           </CardHeader>
           <CardContent className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8 text-sm md:text-base">
-            <div className="p-5 rounded-xl bg-white/50 border border-primary/10">
-              <div className="font-bold mb-3 text-primary text-lg">Base Costs (All Plans):</div>
+            <div className="p-5 rounded-xl bg-card border border-primary/10">
+              <div className="font-bold mb-3 text-primary text-lg">Base Costs (All Students):</div>
               <ul className="space-y-2 text-muted-foreground">
                 <li className="flex justify-between">
-                  <span>• Tuition:</span>
-                  <span className="font-semibold">$11,764</span>
+                  <span>Tuition (12-18 hrs):</span>
+                  <span className="font-semibold text-foreground">$5,882/sem</span>
                 </li>
                 <li className="flex justify-between">
-                  <span>• Comprehensive Fee:</span>
-                  <span className="font-semibold">$1,500</span>
+                  <span>Comprehensive Fee:</span>
+                  <span className="font-semibold text-foreground">$750/sem</span>
                 </li>
                 <li className="flex justify-between">
-                  <span>• Books & Materials:</span>
-                  <span className="font-semibold">$400</span>
+                  <span>Book Fee:</span>
+                  <span className="font-semibold text-foreground">$200/sem</span>
                 </li>
                 <li className="flex justify-between">
-                  <span>• Technology Fee:</span>
-                  <span className="font-semibold">$260</span>
+                  <span>Technology Fee:</span>
+                  <span className="font-semibold text-foreground">$130/sem</span>
                 </li>
                 <li className="flex justify-between">
-                  <span>• Health Insurance:</span>
-                  <span className="font-semibold">$140</span>
+                  <span>Health Insurance:</span>
+                  <span className="font-semibold text-foreground">$70/sem</span>
                 </li>
               </ul>
             </div>
-            <div className="p-5 rounded-xl bg-white/50 border border-secondary/10">
+            <div className="p-5 rounded-xl bg-card border border-secondary/10">
               <div className="font-bold mb-3 text-secondary text-lg">Additional Fees:</div>
               <ul className="space-y-2 text-muted-foreground">
                 <li className="flex justify-between">
-                  <span>• Science Lab Fee:</span>
-                  <span className="font-semibold">$60/class</span>
+                  <span>Science Lab Fee:</span>
+                  <span className="font-semibold text-foreground">$60/class</span>
                 </li>
                 <li className="flex justify-between">
-                  <span>• Music Lab Fee:</span>
-                  <span className="font-semibold">$100/class</span>
+                  <span>Music Lab Fee:</span>
+                  <span className="font-semibold text-foreground">$100/class</span>
                 </li>
                 <li className="flex justify-between">
-                  <span>• Online Course Fee:</span>
-                  <span className="font-semibold">$120/class</span>
+                  <span>Online Course Fee:</span>
+                  <span className="font-semibold text-foreground">$60/class</span>
                 </li>
                 <li className="flex justify-between">
-                  <span>• Late Registration:</span>
-                  <span className="font-semibold">$200</span>
+                  <span>Late Registration:</span>
+                  <span className="font-semibold text-foreground">$100/sem</span>
+                </li>
+                <li className="flex justify-between">
+                  <span>Dorm Usage Fee:</span>
+                  <span className="font-semibold text-foreground">$125/sem</span>
+                </li>
+                <li className="flex justify-between">
+                  <span>Audit Fee:</span>
+                  <span className="font-semibold text-foreground">$470/sem</span>
                 </li>
               </ul>
             </div>

@@ -13,7 +13,7 @@ export default function FinancialAidPage() {
     <main>
       <PageHeader
         title="Financial Aid"
-        subtitle="97% of Miles College students receive financial assistance. We are here to help you afford your education."
+        subtitle="97% of Miles College students receive financial assistance. You may be eligible for grants, work-study, loans, and scholarships."
         breadcrumbs={[{ label: "Financial Aid" }]}
       />
       <section className="py-12 lg:py-20 bg-background">
@@ -52,8 +52,22 @@ export default function FinancialAidPage() {
             </Card>
           )}
 
+          <Card className="p-6 md:p-8 mb-10 border-primary/20 bg-primary/5">
+            <div className="flex items-start gap-4 mb-4">
+              <div className="w-14 h-14 bg-primary flex items-center justify-center flex-shrink-0">
+                <Icons.info className="w-7 h-7 text-primary-foreground" />
+              </div>
+              <div>
+                <h2 className="text-2xl font-black text-foreground mb-2">{"What Is \"Financial Need\"?"}</h2>
+                <p className="text-muted-foreground leading-relaxed">
+                  Financial need is the gap between the cost of the college you want to attend and your family&apos;s financial situation. After you submit your FAFSA, the government calculates your Expected Family Contribution (EFC) based on your family&apos;s income, number of children in the family, and other factors. Grants and other types of aid are awarded based on the gap between your EFC and the cost of attendance at Miles College.
+                </p>
+              </div>
+            </div>
+          </Card>
+
           <h2 className="text-2xl font-black text-foreground mb-6">Types of Financial Aid</h2>
-          <div className="grid md:grid-cols-2 gap-6">
+          <div className="grid md:grid-cols-2 gap-6 mb-10">
             {otherArticles.map((article) => (
               <Card key={article.id} className="p-6 bg-card border-border">
                 <h3 className="text-lg font-black mb-2 text-foreground">{article.title}</h3>
@@ -61,6 +75,18 @@ export default function FinancialAidPage() {
               </Card>
             ))}
           </div>
+
+          <Card className="p-6 md:p-8 bg-muted/30 border-border">
+            <h2 className="text-2xl font-black text-foreground mb-4">Student Freedom Initiative</h2>
+            <p className="text-muted-foreground leading-relaxed mb-4">
+              Miles College participates in the Student Freedom Initiative, which provides an income-contingent alternative to Parent PLUS and private student loans for juniors and seniors majoring in STEM fields. Learn more about how this program can reduce your student debt burden.
+            </p>
+            <Button variant="outline" className="font-bold" asChild>
+              <a href="https://studentfreedominitiative.org" target="_blank" rel="noopener noreferrer">
+                Learn About the Student Freedom Initiative <Icons.externalLink className="w-4 h-4 ml-2" />
+              </a>
+            </Button>
+          </Card>
         </div>
       </section>
     </main>
