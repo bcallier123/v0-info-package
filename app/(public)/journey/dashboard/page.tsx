@@ -1,186 +1,122 @@
 "use client"
 
-import { useState } from "react"
+import { useState, useMemo } from "react"
 import { motion, AnimatePresence } from "framer-motion"
 import { Card } from "@/components/ui/card"
 import { Button } from "@/components/ui/button"
 import { Badge } from "@/components/ui/badge"
-import { Progress } from "@/components/ui/progress"
 import { Icons } from "@/components/icons"
+import { useAuth } from "@/lib/auth-context"
 import Link from "next/link"
+import { useRouter } from "next/navigation"
 
 type StageStatus = "completed" | "in-progress" | "available" | "locked"
 
-interface JourneyStage {
+interface JourneyStageDefinition {
   id: string
   title: string
   description: string
-  status: StageStatus
   icon: React.ComponentType<React.SVGProps<SVGSVGElement>>
-  tasks: { label: string; done: boolean }[]
+  tasks: string[]
   detailHref: string
 }
 
-const journeyStages: JourneyStage[] = [
+const stageDefinitions: JourneyStageDefinition[] = [
   {
     id: "discover",
     title: "Discover Miles",
     description: "Explore programs, campus life, and what makes Miles College your home.",
-    status: "completed",
     icon: Icons.search,
-    tasks: [
-      { label: "Explore academic programs", done: true },
-      { label: "Learn about campus life", done: true },
-      { label: "Complete onboarding questionnaire", done: true },
-    ],
+    tasks: ["Explore academic programs", "Learn about campus life", "Complete onboarding questionnaire"],
     detailHref: "/journey/explore",
   },
   {
     id: "apply",
     title: "Submit Application",
     description: "Complete your free application and start your official journey.",
-    status: "in-progress",
     icon: Icons.fileText,
-    tasks: [
-      { label: "Start online application", done: true },
-      { label: "Complete personal information", done: true },
-      { label: "Submit application", done: false },
-    ],
+    tasks: ["Start online application", "Complete personal information", "Submit application"],
     detailHref: "/journey/steps/application",
   },
   {
     id: "documents",
     title: "Submit Documents",
     description: "Send your transcripts, test scores, and supporting materials.",
-    status: "available",
     icon: Icons.fileText,
-    tasks: [
-      { label: "Request high school transcript", done: false },
-      { label: "Submit ACT/SAT scores", done: false },
-      { label: "Submit recommendation letters", done: false },
-    ],
+    tasks: ["Request high school transcript", "Submit ACT/SAT scores", "Submit recommendation letters"],
     detailHref: "/journey/steps/documents",
   },
   {
     id: "financial-aid",
     title: "Financial Aid",
     description: "Complete FAFSA and explore scholarships to fund your education.",
-    status: "available",
     icon: Icons.dollarSign,
-    tasks: [
-      { label: "Complete FAFSA application", done: false },
-      { label: "Apply for Miles scholarships", done: false },
-      { label: "Review financial aid offer", done: false },
-    ],
+    tasks: ["Complete FAFSA application", "Apply for Miles scholarships", "Review financial aid offer"],
     detailHref: "/journey/steps/financial-aid",
   },
   {
     id: "acceptance",
     title: "Get Accepted",
     description: "Receive and accept your admission to Miles College.",
-    status: "locked",
     icon: Icons.award,
-    tasks: [
-      { label: "Receive admissions decision", done: false },
-      { label: "Accept your offer", done: false },
-      { label: "Pay enrollment deposit", done: false },
-    ],
+    tasks: ["Receive admissions decision", "Accept your offer", "Pay enrollment deposit"],
     detailHref: "/journey/celebration",
   },
   {
     id: "orientation",
     title: "Orientation",
     description: "Register for orientation and prepare for your first day.",
-    status: "locked",
     icon: Icons.users,
-    tasks: [
-      { label: "Register for orientation", done: false },
-      { label: "Complete health forms", done: false },
-      { label: "Attend orientation session", done: false },
-    ],
+    tasks: ["Register for orientation", "Complete health forms", "Attend orientation session"],
     detailHref: "/journey/steps/orientation",
   },
   {
     id: "enrollment",
     title: "Enroll in Classes",
     description: "Select your courses and register for your first semester.",
-    status: "locked",
     icon: Icons.bookOpen,
-    tasks: [
-      { label: "Meet with academic advisor", done: false },
-      { label: "Register for classes", done: false },
-      { label: "Purchase textbooks", done: false },
-    ],
+    tasks: ["Meet with academic advisor", "Register for classes", "Purchase textbooks"],
     detailHref: "/journey/steps/enrollment",
   },
   {
     id: "first-semester",
     title: "First Semester",
     description: "Start your academic journey and thrive at Miles College.",
-    status: "locked",
     icon: Icons.graduationCap,
-    tasks: [
-      { label: "Attend first day of classes", done: false },
-      { label: "Join student organizations", done: false },
-      { label: "Connect with a mentor", done: false },
-    ],
+    tasks: ["Attend first day of classes", "Join student organizations", "Connect with a mentor"],
     detailHref: "/journey/success",
   },
   {
     id: "career-prep",
     title: "Career Preparation",
     description: "Build skills, gain experience, and prepare for your profession.",
-    status: "locked",
     icon: Icons.briefcase,
-    tasks: [
-      { label: "Complete career assessment", done: false },
-      { label: "Secure internship", done: false },
-      { label: "Build professional network", done: false },
-    ],
+    tasks: ["Complete career assessment", "Secure internship", "Build professional network"],
     detailHref: "/journey/careers",
   },
   {
     id: "graduation",
     title: "Graduation",
     description: "Complete your degree and celebrate your achievement.",
-    status: "locked",
     icon: Icons.graduationCap,
-    tasks: [
-      { label: "Complete degree requirements", done: false },
-      { label: "Apply for graduation", done: false },
-      { label: "Walk the stage", done: false },
-    ],
+    tasks: ["Complete degree requirements", "Apply for graduation", "Walk the stage"],
     detailHref: "/journey/alumni",
   },
   {
     id: "alumni",
     title: "Alumni Network",
     description: "Join the global Miles College alumni community.",
-    status: "locked",
     icon: Icons.globe,
-    tasks: [
-      { label: "Join alumni association", done: false },
-      { label: "Attend alumni events", done: false },
-      { label: "Give back as a mentor", done: false },
-    ],
+    tasks: ["Join alumni association", "Attend alumni events", "Give back as a mentor"],
     detailHref: "/journey/alumni",
   },
 ]
 
 const notifications = [
-  { id: 1, type: "action", message: "Your application is 67% complete. Finish it now!", time: "2 hours ago" },
+  { id: 1, type: "action", message: "Your application is waiting. Complete it to move forward!", time: "2 hours ago" },
   { id: 2, type: "deadline", message: "Priority deadline: March 15, 2026", time: "3 days away" },
   { id: 3, type: "tip", message: "Submit your FAFSA early for the best aid package.", time: "Recommendation" },
 ]
-
-const mockStudent = {
-  name: "Jordan",
-  stage: "Application",
-  overallProgress: 28,
-  nextDeadline: "March 15, 2026",
-  nextAction: "Complete your application",
-  messages: 3,
-}
 
 const statusConfig: Record<StageStatus, { color: string; bgColor: string; label: string }> = {
   completed: { color: "text-emerald-400", bgColor: "bg-emerald-500/20 border-emerald-500/40", label: "Complete" },
@@ -191,7 +127,89 @@ const statusConfig: Record<StageStatus, { color: string; bgColor: string; label:
 
 export default function JourneyDashboard() {
   const [selectedStage, setSelectedStage] = useState<string | null>(null)
-  const activeStage = journeyStages.find((s) => s.id === selectedStage)
+  const { user, toggleTask } = useAuth()
+  const router = useRouter()
+
+  // Compute stage statuses from user progress
+  const stages = useMemo(() => {
+    return stageDefinitions.map((def, index) => {
+      const stageProgress = user?.journeyProgress[def.id] || {}
+      const tasks = def.tasks.map((label) => ({
+        label,
+        done: stageProgress[label] || false,
+      }))
+
+      const allDone = tasks.length > 0 && tasks.every((t) => t.done)
+      const someDone = tasks.some((t) => t.done)
+
+      // Determine status based on progress
+      let status: StageStatus = "locked"
+      if (allDone) {
+        status = "completed"
+      } else if (someDone) {
+        status = "in-progress"
+      } else if (index === 0) {
+        // First stage is always available
+        status = "available"
+      } else {
+        // Check if previous stage is completed or in progress
+        const prevDef = stageDefinitions[index - 1]
+        const prevProgress = user?.journeyProgress[prevDef.id] || {}
+        const prevTasks = prevDef.tasks.map((l) => prevProgress[l] || false)
+        const prevAllDone = prevTasks.length > 0 && prevTasks.every((t) => t)
+        const prevSomeDone = prevTasks.some((t) => t)
+
+        if (prevAllDone) {
+          status = "available"
+        } else if (prevSomeDone) {
+          // If previous stage is in progress, this one becomes available too
+          status = "available"
+        }
+      }
+
+      return { ...def, tasks, status }
+    })
+  }, [user?.journeyProgress])
+
+  // Calculate overall progress
+  const totalTasks = stages.reduce((sum, s) => sum + s.tasks.length, 0)
+  const completedTasks = stages.reduce((sum, s) => sum + s.tasks.filter((t) => t.done).length, 0)
+  const overallProgress = totalTasks > 0 ? Math.round((completedTasks / totalTasks) * 100) : 0
+
+  // Determine current stage
+  const currentStage = stages.find((s) => s.status === "in-progress") || stages.find((s) => s.status === "available") || stages[0]
+
+  // Get next deadline based on current stage
+  const getNextAction = () => {
+    if (!currentStage) return "Start your journey"
+    const nextTask = currentStage.tasks.find((t) => !t.done)
+    return nextTask ? nextTask.label : "Continue to the next stage"
+  }
+
+  const studentName = user?.firstName || "Student"
+  const activeStage = stages.find((s) => s.id === selectedStage)
+
+  if (!user) {
+    return (
+      <main className="min-h-screen bg-gradient-to-br from-[#0a0415] via-[#1a0a2e] to-[#0a0415] flex items-center justify-center">
+        <Card className="p-8 bg-white/5 border-white/10 text-center max-w-md mx-4">
+          <div className="w-16 h-16 rounded-2xl bg-[#C9A227]/20 flex items-center justify-center mx-auto mb-6">
+            <Icons.user className="w-8 h-8 text-[#C9A227]" />
+          </div>
+          <h2 className="text-2xl font-black text-white mb-2">Sign In Required</h2>
+          <p className="text-white/60 mb-6">Create an account or sign in to track your journey progress and access your personalized dashboard.</p>
+          <div className="flex flex-col gap-3">
+            <Button className="bg-[#C9A227] text-[#1a0a2e] font-bold hover:bg-yellow-400" asChild>
+              <Link href="/signup">Create Account</Link>
+            </Button>
+            <Button variant="outline" className="border-white/20 text-white hover:bg-white/10" asChild>
+              <Link href="/login">Sign In</Link>
+            </Button>
+          </div>
+        </Card>
+      </main>
+    )
+  }
 
   return (
     <main className="min-h-screen bg-gradient-to-br from-[#0a0415] via-[#1a0a2e] to-[#0a0415]">
@@ -210,7 +228,7 @@ export default function JourneyDashboard() {
                 animate={{ opacity: 1 }}
                 className="text-[#C9A227] font-bold text-sm uppercase tracking-widest mb-1"
               >
-                Welcome back, {mockStudent.name}
+                Welcome back, {studentName}
               </motion.p>
               <motion.h1
                 initial={{ opacity: 0, y: 10 }}
@@ -226,10 +244,7 @@ export default function JourneyDashboard() {
             </div>
             <div className="flex items-center gap-3">
               <Badge className="bg-[#C9A227]/20 text-[#C9A227] border border-[#C9A227]/30 font-bold px-3 py-1.5">
-                {mockStudent.messages} Messages
-              </Badge>
-              <Badge className="bg-white/10 text-white/70 border-white/20 font-medium">
-                Demo Mode
+                {overallProgress}% Complete
               </Badge>
             </div>
           </div>
@@ -240,10 +255,10 @@ export default function JourneyDashboard() {
         {/* Overview Cards */}
         <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 mb-8">
           {[
-            { label: "Overall Progress", value: `${mockStudent.overallProgress}%`, icon: Icons.trendingUp, accent: true },
-            { label: "Current Stage", value: mockStudent.stage, icon: Icons.fileText, accent: false },
-            { label: "Next Deadline", value: mockStudent.nextDeadline, icon: Icons.calendar, accent: false },
-            { label: "Next Action", value: mockStudent.nextAction, icon: Icons.arrowRight, accent: false },
+            { label: "Overall Progress", value: `${overallProgress}%`, icon: Icons.trendingUp, accent: true },
+            { label: "Current Stage", value: currentStage?.title || "Getting Started", icon: Icons.fileText, accent: false },
+            { label: "Next Deadline", value: "March 15, 2026", icon: Icons.calendar, accent: false },
+            { label: "Next Action", value: getNextAction(), icon: Icons.arrowRight, accent: false },
           ].map((item, i) => {
             const ItemIcon = item.icon
             return (
@@ -281,17 +296,17 @@ export default function JourneyDashboard() {
           <Card className="p-5 bg-white/5 border-white/10">
             <div className="flex items-center justify-between mb-3">
               <h2 className="text-sm font-bold text-white uppercase tracking-wider">Journey Progress</h2>
-              <span className="text-[#C9A227] font-black text-lg">{mockStudent.overallProgress}%</span>
+              <span className="text-[#C9A227] font-black text-lg">{overallProgress}%</span>
             </div>
             <div className="h-3 bg-white/5 rounded-full overflow-hidden">
               <motion.div
                 className="h-full bg-gradient-to-r from-[#C9A227] to-yellow-400 rounded-full"
                 initial={{ width: 0 }}
-                animate={{ width: `${mockStudent.overallProgress}%` }}
+                animate={{ width: `${overallProgress}%` }}
                 transition={{ duration: 1, delay: 0.5 }}
               />
             </div>
-            <p className="text-xs text-white/40 mt-2">You are making real progress. Keep it up!</p>
+            <p className="text-xs text-white/40 mt-2">{completedTasks} of {totalTasks} tasks completed. Keep it up!</p>
           </Card>
         </motion.div>
 
@@ -307,7 +322,7 @@ export default function JourneyDashboard() {
               {/* Connecting line */}
               <div className="absolute left-6 top-6 bottom-6 w-px bg-gradient-to-b from-emerald-500/30 via-[#C9A227]/30 to-white/10" />
 
-              {journeyStages.map((stage, i) => {
+              {stages.map((stage, i) => {
                 const StageIcon = stage.icon
                 const config = statusConfig[stage.status]
                 const isActive = selectedStage === stage.id
@@ -373,7 +388,7 @@ export default function JourneyDashboard() {
                       )}
                     </button>
 
-                    {/* Expanded detail */}
+                    {/* Expanded detail with interactive tasks */}
                     <AnimatePresence>
                       {isActive && activeStage && (
                         <motion.div
@@ -384,16 +399,26 @@ export default function JourneyDashboard() {
                           className="overflow-hidden ml-16"
                         >
                           <div className="p-4 mt-1 bg-white/5 rounded-xl border border-white/10">
-                            <h4 className="text-xs font-bold text-white/50 uppercase tracking-wider mb-3">Tasks</h4>
+                            <h4 className="text-xs font-bold text-white/50 uppercase tracking-wider mb-3">
+                              Tasks - Click to mark complete
+                            </h4>
                             <ul className="flex flex-col gap-2 mb-4">
                               {activeStage.tasks.map((task, ti) => (
-                                <li key={ti} className="flex items-center gap-2">
-                                  <div className={`w-4 h-4 rounded-full flex items-center justify-center ${task.done ? "bg-emerald-500/20" : "bg-white/5 border border-white/20"}`}>
-                                    {task.done && <Icons.check className="w-2.5 h-2.5 text-emerald-400" />}
-                                  </div>
-                                  <span className={`text-sm ${task.done ? "text-white/40 line-through" : "text-white/70"}`}>
-                                    {task.label}
-                                  </span>
+                                <li key={ti}>
+                                  <button
+                                    onClick={(e) => {
+                                      e.stopPropagation()
+                                      toggleTask(activeStage.id, task.label)
+                                    }}
+                                    className="flex items-center gap-2 w-full text-left hover:bg-white/5 rounded-lg p-1.5 -m-1.5 transition-colors"
+                                  >
+                                    <div className={`w-4 h-4 rounded-full flex items-center justify-center transition-all ${task.done ? "bg-emerald-500/20" : "bg-white/5 border border-white/20"}`}>
+                                      {task.done && <Icons.check className="w-2.5 h-2.5 text-emerald-400" />}
+                                    </div>
+                                    <span className={`text-sm ${task.done ? "text-white/40 line-through" : "text-white/70"}`}>
+                                      {task.label}
+                                    </span>
+                                  </button>
                                 </li>
                               ))}
                             </ul>
@@ -482,15 +507,43 @@ export default function JourneyDashboard() {
                 </div>
               </div>
               <p className="text-white/70 text-sm leading-relaxed mb-4">
-                You are making great progress on your application! Consider submitting your FAFSA this week to maximize your financial aid eligibility.
+                {overallProgress < 10
+                  ? "Start by exploring the campus and completing your onboarding questionnaire to personalize your journey."
+                  : overallProgress < 30
+                    ? "Great start! Focus on completing your application next to move forward in your journey."
+                    : "You are making great progress! Consider submitting your FAFSA this week to maximize your financial aid eligibility."}
               </p>
               <Button
                 size="sm"
                 className="w-full bg-[#C9A227] text-[#1a0a2e] font-bold hover:bg-yellow-400"
                 asChild
               >
-                <Link href="/journey/steps/financial-aid">
-                  Start FAFSA
+                <Link href={currentStage?.detailHref || "/journey/onboarding"}>
+                  {overallProgress < 10 ? "Start Onboarding" : "Continue Journey"}
+                  <Icons.arrowRight className="w-3 h-3 ml-2" />
+                </Link>
+              </Button>
+            </Card>
+
+            {/* Enrollment Checklist Link */}
+            <Card className="p-5 bg-white/5 border-white/10">
+              <div className="flex items-center gap-3 mb-3">
+                <div className="w-10 h-10 rounded-xl bg-emerald-500/20 flex items-center justify-center">
+                  <Icons.check className="w-5 h-5 text-emerald-400" />
+                </div>
+                <div>
+                  <p className="text-white font-bold text-sm">Enrollment Checklist</p>
+                  <p className="text-white/40 text-xs">Track admissions steps</p>
+                </div>
+              </div>
+              <Button
+                size="sm"
+                variant="outline"
+                className="w-full border-white/20 text-white hover:bg-white/10 font-bold"
+                asChild
+              >
+                <Link href="/portal">
+                  View Checklist
                   <Icons.arrowRight className="w-3 h-3 ml-2" />
                 </Link>
               </Button>
