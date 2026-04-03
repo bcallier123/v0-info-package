@@ -8,7 +8,7 @@ import { Progress } from "@/components/ui/progress"
 import { Icons } from "@/components/icons"
 import { useAuth } from "@/lib/auth-context"
 
-const checklistItems = [
+const onCampusChecklist = [
   "Submit Application",
   "Send High School Transcript",
   "Submit ACT/SAT Scores",
@@ -19,15 +19,37 @@ const checklistItems = [
   "Attend Orientation",
 ]
 
-const quickActions = [
+const onlineChecklist = [
+  "Submit Application",
+  "Send Official Transcript",
+  "Submit Transfer Credits (if applicable)",
+  "Complete FAFSA",
+  "Apply for Scholarships",
+  "Accept Admissions Offer",
+  "Set Up Student Portal and LMS Access",
+  "Complete Virtual Orientation Module",
+]
+
+const onCampusQuickActions = [
   { label: "FAFSA", href: "/financial-aid", icon: Icons.dollarSign },
   { label: "Scholarships", href: "/journey/steps/financial-aid", icon: Icons.award },
   { label: "Housing", href: "/housing-dining", icon: Icons.home },
   { label: "AI Advisor", href: "/chat", icon: Icons.sparkles },
 ]
 
+const onlineQuickActions = [
+  { label: "FAFSA", href: "/financial-aid", icon: Icons.dollarSign },
+  { label: "Scholarships", href: "/journey/steps/financial-aid", icon: Icons.award },
+  { label: "Online Programs", href: "/academics", icon: Icons.bookOpen },
+  { label: "AI Advisor", href: "/chat", icon: Icons.sparkles },
+]
+
 export default function PortalPage() {
   const { user, toggleChecklist } = useAuth()
+
+  const isOnlineStudent = user?.studentType === "online" || user?.housing === "online"
+  const checklistItems = isOnlineStudent ? onlineChecklist : onCampusChecklist
+  const quickActions = isOnlineStudent ? onlineQuickActions : onCampusQuickActions
 
   const completedCount = checklistItems.filter((item) => user?.checklistProgress[item]).length
   const progressPercent = Math.round((completedCount / checklistItems.length) * 100)
@@ -69,9 +91,16 @@ export default function PortalPage() {
               <h1 className="text-3xl md:text-4xl font-black">Enrollment Checklist</h1>
               <p className="text-primary-foreground/60 mt-1">Track your admissions progress</p>
             </div>
-            <Badge className="bg-secondary/20 text-secondary border-secondary/30 font-bold">
-              {progressPercent}% Complete
-            </Badge>
+            <div className="flex items-center gap-2">
+              {isOnlineStudent && (
+                <Badge className="bg-blue-500/20 text-blue-400 border-blue-500/30 font-bold">
+                  Online Student
+                </Badge>
+              )}
+              <Badge className="bg-secondary/20 text-secondary border-secondary/30 font-bold">
+                {progressPercent}% Complete
+              </Badge>
+            </div>
           </div>
         </div>
       </section>

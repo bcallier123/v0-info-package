@@ -21,7 +21,8 @@ interface JourneyStageDefinition {
   detailHref: string
 }
 
-const stageDefinitions: JourneyStageDefinition[] = [
+// On-campus / default stage definitions
+const onCampusStages: JourneyStageDefinition[] = [
   {
     id: "discover",
     title: "Discover Miles",
@@ -112,6 +113,98 @@ const stageDefinitions: JourneyStageDefinition[] = [
   },
 ]
 
+// Online student stage definitions -- tailored for 100% virtual learners
+const onlineStages: JourneyStageDefinition[] = [
+  {
+    id: "discover",
+    title: "Discover Miles Online",
+    description: "Explore online programs and learn how Miles College delivers a world-class virtual experience.",
+    icon: Icons.search,
+    tasks: ["Explore online degree programs", "Review virtual learning tools and LMS", "Complete onboarding questionnaire"],
+    detailHref: "/journey/explore",
+  },
+  {
+    id: "apply",
+    title: "Submit Application",
+    description: "Complete your free online application and start your official journey.",
+    icon: Icons.fileText,
+    tasks: ["Start online application", "Complete personal information", "Submit application"],
+    detailHref: "/journey/steps/application",
+  },
+  {
+    id: "documents",
+    title: "Submit Documents",
+    description: "Upload your transcripts and supporting materials digitally.",
+    icon: Icons.fileText,
+    tasks: ["Request official transcript", "Submit any transfer credits", "Upload supporting documents"],
+    detailHref: "/journey/steps/documents",
+  },
+  {
+    id: "financial-aid",
+    title: "Financial Aid",
+    description: "Complete FAFSA and explore scholarships available to online students.",
+    icon: Icons.dollarSign,
+    tasks: ["Complete FAFSA application", "Apply for Miles scholarships", "Review financial aid offer"],
+    detailHref: "/journey/steps/financial-aid",
+  },
+  {
+    id: "acceptance",
+    title: "Get Accepted",
+    description: "Receive and accept your admission to Miles College Online.",
+    icon: Icons.award,
+    tasks: ["Receive admissions decision", "Accept your offer", "Pay enrollment deposit"],
+    detailHref: "/journey/celebration",
+  },
+  {
+    id: "online-setup",
+    title: "Online Student Setup",
+    description: "Set up your virtual learning environment and get oriented to online tools.",
+    icon: Icons.globe,
+    tasks: ["Set up student email and portal access", "Complete virtual orientation module", "Install required software and LMS apps"],
+    detailHref: "/journey/steps/orientation",
+  },
+  {
+    id: "enrollment",
+    title: "Enroll in Classes",
+    description: "Select your online courses and register for your first semester.",
+    icon: Icons.bookOpen,
+    tasks: ["Meet with academic advisor (virtual)", "Register for online classes", "Access digital textbooks and materials"],
+    detailHref: "/journey/steps/enrollment",
+  },
+  {
+    id: "first-semester",
+    title: "First Semester Online",
+    description: "Begin your virtual academic journey and connect with the Miles community.",
+    icon: Icons.graduationCap,
+    tasks: ["Attend first virtual class session", "Join online student communities and groups", "Connect with your online success advisor"],
+    detailHref: "/journey/success",
+  },
+  {
+    id: "career-prep",
+    title: "Career Preparation",
+    description: "Build skills, gain virtual experience, and prepare for your profession.",
+    icon: Icons.briefcase,
+    tasks: ["Complete career assessment", "Pursue remote internship or project", "Build professional network online"],
+    detailHref: "/journey/careers",
+  },
+  {
+    id: "graduation",
+    title: "Graduation",
+    description: "Complete your degree and celebrate your achievement.",
+    icon: Icons.graduationCap,
+    tasks: ["Complete degree requirements", "Apply for graduation", "Attend commencement (in-person or virtual)"],
+    detailHref: "/journey/alumni",
+  },
+  {
+    id: "alumni",
+    title: "Alumni Network",
+    description: "Join the global Miles College alumni community.",
+    icon: Icons.globe,
+    tasks: ["Join alumni association", "Attend alumni events (virtual and in-person)", "Give back as a mentor"],
+    detailHref: "/journey/alumni",
+  },
+]
+
 const notifications = [
   { id: 1, type: "action", message: "Your application is waiting. Complete it to move forward!", time: "2 hours ago" },
   { id: 2, type: "deadline", message: "Priority deadline: March 15, 2026", time: "3 days away" },
@@ -129,6 +222,10 @@ export default function JourneyDashboard() {
   const [selectedStage, setSelectedStage] = useState<string | null>(null)
   const { user, toggleTask } = useAuth()
   const router = useRouter()
+
+  // Determine which stage set to use based on student type or housing preference
+  const isOnlineStudent = user?.studentType === "online" || user?.housing === "online"
+  const stageDefinitions = isOnlineStudent ? onlineStages : onCampusStages
 
   // Compute stage statuses from user progress
   const stages = useMemo(() => {
@@ -169,7 +266,7 @@ export default function JourneyDashboard() {
 
       return { ...def, tasks, status }
     })
-  }, [user?.journeyProgress])
+  }, [user?.journeyProgress, stageDefinitions])
 
   // Calculate overall progress
   const totalTasks = stages.reduce((sum, s) => sum + s.tasks.length, 0)
@@ -243,6 +340,11 @@ export default function JourneyDashboard() {
               </motion.h1>
             </div>
             <div className="flex items-center gap-3">
+              {isOnlineStudent && (
+                <Badge className="bg-blue-500/20 text-blue-400 border border-blue-500/30 font-bold px-3 py-1.5">
+                  Online Student
+                </Badge>
+              )}
               <Badge className="bg-[#C9A227]/20 text-[#C9A227] border border-[#C9A227]/30 font-bold px-3 py-1.5">
                 {overallProgress}% Complete
               </Badge>
@@ -507,11 +609,17 @@ export default function JourneyDashboard() {
                 </div>
               </div>
               <p className="text-white/70 text-sm leading-relaxed mb-4">
-                {overallProgress < 10
-                  ? "Start by exploring the campus and completing your onboarding questionnaire to personalize your journey."
-                  : overallProgress < 30
-                    ? "Great start! Focus on completing your application next to move forward in your journey."
-                    : "You are making great progress! Consider submitting your FAFSA this week to maximize your financial aid eligibility."}
+                {isOnlineStudent
+                  ? overallProgress < 10
+                    ? "Start by exploring our online programs and completing your onboarding to personalize your virtual learning journey."
+                    : overallProgress < 30
+                      ? "Great start! Focus on completing your application. As an online student, the entire process can be done from home."
+                      : "You are making great progress! Make sure to set up your virtual learning tools and connect with your online success advisor."
+                  : overallProgress < 10
+                    ? "Start by exploring the campus and completing your onboarding questionnaire to personalize your journey."
+                    : overallProgress < 30
+                      ? "Great start! Focus on completing your application next to move forward in your journey."
+                      : "You are making great progress! Consider submitting your FAFSA this week to maximize your financial aid eligibility."}
               </p>
               <Button
                 size="sm"

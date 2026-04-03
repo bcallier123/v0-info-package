@@ -19,6 +19,7 @@ const steps = [
       { value: "adult", label: "Adult Learner", description: "Returning to education or starting fresh" },
       { value: "dual", label: "Dual Enrollment", description: "Earning college credits while in high school" },
       { value: "international", label: "International Student", description: "Studying from outside the U.S." },
+      { value: "online", label: "Online Student", description: "Completing your degree 100% online" },
     ],
   },
   {
@@ -54,6 +55,7 @@ const steps = [
     options: [
       { value: "on-campus", label: "On Campus", description: "Full residential experience in our halls" },
       { value: "off-campus", label: "Off Campus / Commuter", description: "Living at home or nearby" },
+      { value: "online", label: "Online (100% Virtual)", description: "Studying remotely -- no campus housing needed" },
       { value: "not-sure", label: "Not Sure Yet", description: "I'd like to learn more about options" },
     ],
   },
@@ -150,6 +152,7 @@ export default function OnboardingPage() {
       adult: "It takes courage to pursue your education. Miles College is proud to walk this journey with you.",
       dual: "Getting a head start shows incredible ambition. Miles College is the perfect place to begin.",
       international: "Welcome from across the globe! Miles College is thrilled to have you join our diverse community.",
+      online: "Welcome to Miles College Online! You will receive the same world-class education and Golden Bear experience from wherever you are.",
     }
     return messages[studentType] || "Welcome to Miles College! Your journey begins now."
   }
