@@ -35,8 +35,8 @@ export function StatsSection() {
 
   const highlights = [
     { icon: Icons.mapPin, text: "6 min from downtown Birmingham" },
-    { icon: Icons.globe, text: "Online programs available" },
-    { icon: Icons.users, text: "1,500+ students" },
+    { icon: Icons.laptop, text: "9 programs available 100% online" },
+    { icon: Icons.users, text: "1,500+ students on campus & online" },
   ]
 
   return (

@@ -32,6 +32,11 @@ const reasons = [
     description: "Join a tight-knit family where every student is valued, celebrated, and empowered to lead.",
   },
   {
+    icon: Icons.laptop,
+    title: "100% Online Option",
+    description: "Earn your degree from anywhere with the same Miles quality, faculty, and support -- fully online.",
+  },
+  {
     icon: Icons.trophy,
     title: "Championship Tradition",
     description: "NCAA Division II athletics, the legendary Purple Marching Machine, and 125+ years of excellence.",

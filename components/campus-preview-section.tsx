@@ -27,6 +27,12 @@ const campusCards = [
     href: "/programs",
   },
   {
+    title: "Online Learning",
+    description: "Earn your degree 100% online with the same faculty, support, and Golden Bear community.",
+    image: "/images/online-learning-hero.jpg",
+    href: "/online",
+  },
+  {
     title: "Graduation & Beyond",
     description: "Career placement, alumni networks, and lifelong connections.",
     image: "/images/graduation-ceremony.jpg",

@@ -45,6 +45,7 @@ const admissionsLinks = [
 
 const academicsLinks = [
   { title: "Programs", href: "/programs", description: "30+ degree programs" },
+  { title: "Online Learning", href: "/online", description: "Earn your degree 100% online" },
   { title: "Explore Miles", href: "/explore", description: "Why choose Miles College?" },
 ]
 
@@ -168,9 +169,28 @@ export function Navigation() {
                 </NavigationMenuItem>
 
                 <NavigationMenuItem>
-                  <Link href="/programs" className="text-sm font-semibold text-white/90 hover:text-[#C9A227] transition-colors px-3 py-2">
+                  <NavigationMenuTrigger className="bg-transparent text-sm font-semibold text-white/90 hover:text-[#C9A227] data-[state=open]:text-[#C9A227]">
                     Academics
-                  </Link>
+                  </NavigationMenuTrigger>
+                  <NavigationMenuContent>
+                    <ul className="grid w-[400px] gap-3 p-4">
+                      {academicsLinks.map((link) => (
+                        <li key={link.href}>
+                          <NavigationMenuLink asChild>
+                            <Link
+                              href={link.href}
+                              className="block select-none rounded-lg p-3 leading-none no-underline outline-none transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground"
+                            >
+                              <div className="text-sm font-semibold leading-none">{link.title}</div>
+                              <p className="line-clamp-2 text-sm leading-snug text-muted-foreground mt-1">
+                                {link.description}
+                              </p>
+                            </Link>
+                          </NavigationMenuLink>
+                        </li>
+                      ))}
+                    </ul>
+                  </NavigationMenuContent>
                 </NavigationMenuItem>
 
                 <NavigationMenuItem>

@@ -9,6 +9,8 @@ export interface Program {
   careerOutcomes: string[]
   highlights: string[]
   category: "business" | "education" | "humanities" | "sciences" | "social-sciences"
+  onlineAvailable?: boolean
+  format?: "on-campus" | "online" | "hybrid"
 }
 
 export interface Scholarship {
@@ -97,7 +99,7 @@ export interface CampusLifeItem {
 
 export interface StudentPathway {
   id: string
-  type: "freshman" | "transfer" | "international" | "returning" | "graduate"
+  type: "freshman" | "transfer" | "international" | "returning" | "graduate" | "online"
   label: string
   description: string
   steps: PathwayStep[]

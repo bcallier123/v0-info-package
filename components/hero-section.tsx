@@ -110,7 +110,7 @@ export function HeroSection() {
       >
         {[
           { text: "Since 1898", delay: 0 },
-          { text: "Birmingham, AL", delay: 0.2 },
+          { text: "On Campus & Online", delay: 0.2 },
           { text: "HBCU Excellence", delay: 0.4 },
           { text: "Golden Bears", delay: 0.6 },
         ].map((element, i) => (
@@ -272,7 +272,7 @@ export function HeroSection() {
               <Link href="/journey/explore">
                 <span className="flex items-center gap-2 sm:gap-3">
                   <Icons.play className="w-3.5 h-3.5 sm:w-4 sm:h-4" />
-                  Explore Campus
+                  Explore Miles
                 </span>
               </Link>
             </Button>
