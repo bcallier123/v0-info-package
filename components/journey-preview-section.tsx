@@ -8,44 +8,44 @@ import Link from "next/link"
 const journeySteps = [
   {
     number: "01",
-    title: "Discover Miles",
-    description: "Explore programs, campus life, and what makes Miles unique.",
+    title: "Explore Online Programs",
+    description: "Browse 30+ accredited programs and find the right fit for your goals.",
     icon: Icons.search,
     color: "from-[#4B2E83] to-purple-600",
   },
   {
     number: "02",
-    title: "Apply & Get Admitted",
-    description: "Complete your free application and submit documents.",
+    title: "Apply Online",
+    description: "Complete your free application and submit transcripts -- all digital.",
     icon: Icons.fileText,
     color: "from-[#C9A227] to-yellow-500",
   },
   {
     number: "03",
-    title: "Secure Your Future",
-    description: "Complete FAFSA, apply for scholarships, accept your offer.",
+    title: "Secure Financial Aid",
+    description: "File FAFSA, apply for scholarships. Online students qualify for the same aid.",
     icon: Icons.dollarSign,
     color: "from-emerald-600 to-green-500",
   },
   {
     number: "04",
-    title: "Begin Your Legacy",
-    description: "Attend orientation, register for classes, join the family.",
-    icon: Icons.graduationCap,
+    title: "Set Up Your LMS",
+    description: "Activate Canvas, complete virtual orientation, and meet your advisor.",
+    icon: Icons.monitor,
     color: "from-[#4B2E83] to-purple-600",
   },
   {
     number: "05",
-    title: "Thrive & Succeed",
-    description: "Access advising, mentorship, and career prep resources.",
+    title: "Learn & Succeed",
+    description: "Attend lectures, collaborate with peers, and access 24/7 support.",
     icon: Icons.trendingUp,
     color: "from-[#C9A227] to-yellow-500",
   },
   {
     number: "06",
-    title: "Launch Your Career",
-    description: "Graduate, join the alumni network, and build your career.",
-    icon: Icons.briefcase,
+    title: "Graduate & Launch",
+    description: "Earn your degree and launch your career with our alumni network.",
+    icon: Icons.graduationCap,
     color: "from-[#4B2E83] to-purple-600",
   },
 ]
@@ -69,16 +69,16 @@ export function JourneyPreviewSection() {
           className="text-center mb-10 sm:mb-16"
         >
           <p className="text-[#C9A227] font-black uppercase tracking-[0.2em] sm:tracking-[0.3em] text-[10px] sm:text-sm mb-3 sm:mb-4">
-            Your Personalized Path
+            Your Online Path
           </p>
           <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-6xl font-black tracking-tight text-white mb-3 sm:mb-4">
-            THE MILES{" "}
+            FROM APPLICATION TO{" "}
             <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#C9A227] to-yellow-400">
-              JOURNEY
+              GRADUATION
             </span>
           </h2>
           <p className="text-white/60 text-sm sm:text-lg max-w-2xl mx-auto leading-relaxed">
-            Every step is guided. Every milestone is celebrated.
+            Every step is guided. Your entire journey happens online.
           </p>
         </motion.div>
 

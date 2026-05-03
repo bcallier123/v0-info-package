@@ -33,12 +33,12 @@ export default function ProgramsPage() {
   return (
     <main>
       <PageHeader
-        title="Academic Programs"
-        subtitle="Over 30 degree programs designed to prepare you for career success and lifelong learning."
-        breadcrumbs={[{ label: "Programs" }]}
+        title="Online Programs"
+        subtitle="Over 30 accredited degree programs available 100% online. Flexible scheduling, expert faculty, and the same HBCU quality."
+        breadcrumbs={[{ label: "Online Programs" }]}
       />
 
-      {/* Online Programs Banner */}
+      {/* Online Info Banner */}
       <div className="bg-secondary/10 border-b border-secondary/20">
         <div className="container mx-auto px-4 py-4">
           <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3">
@@ -48,10 +48,10 @@ export default function ProgramsPage() {
               </div>
               <div>
                 <p className="text-sm font-bold text-foreground">
-                  {onlineCount} programs available 100% online
+                  All programs below are available 100% online
                 </p>
                 <p className="text-xs text-muted-foreground">
-                  Same accredited curriculum, flexible scheduling
+                  Same accredited curriculum, learn from anywhere
                 </p>
               </div>
             </div>
@@ -59,7 +59,7 @@ export default function ProgramsPage() {
               href="/online"
               className="text-sm font-bold text-primary hover:text-primary/80 transition-colors flex items-center gap-1"
             >
-              Learn about online learning <Icons.arrowRight className="w-3 h-3" />
+              How online learning works <Icons.arrowRight className="w-3 h-3" />
             </Link>
           </div>
         </div>
@@ -84,7 +84,7 @@ export default function ProgramsPage() {
                 </button>
               ))}
             </div>
-            {/* Online toggle */}
+            {/* Online-only toggle */}
             <div className="flex items-center gap-3">
               <button
                 onClick={() => setOnlineOnly(!onlineOnly)}
@@ -95,7 +95,7 @@ export default function ProgramsPage() {
                 }`}
               >
                 <Icons.wifi className="w-4 h-4" />
-                Available Online
+                Online-Ready Only
                 {onlineOnly && (
                   <span className="ml-1 text-xs opacity-80">({filtered.length})</span>
                 )}

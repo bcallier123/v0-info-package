@@ -8,9 +8,9 @@ import Link from "next/link"
 import Image from "next/image"
 
 export const metadata = {
-  title: "Online Learning | Miles College",
+  title: "How Online Learning Works | Miles College Online",
   description:
-    "Earn your Miles College degree 100% online. Flexible scheduling, dedicated support, and the same accredited education -- from anywhere.",
+    "Discover how Miles College Online delivers accredited degrees with interactive LMS, live lectures, and full student support -- all 100% online.",
 }
 
 const howItWorks = [
@@ -112,9 +112,9 @@ export default function OnlineLearningPage() {
   return (
     <main>
       <PageHeader
-        title="Online Learning"
-        subtitle="Earn your Miles College degree from anywhere. The same accredited education, expert faculty, and Golden Bear community -- delivered on your schedule."
-        breadcrumbs={[{ label: "Online Learning" }]}
+        title="How Online Learning Works"
+        subtitle="Everything you need to know about earning your Miles College degree online -- from technology and tools to support and student life."
+        breadcrumbs={[{ label: "How Online Works" }]}
       />
 
       {/* Hero Image Section */}
@@ -187,7 +187,7 @@ export default function OnlineLearningPage() {
               Available Online Programs
             </h2>
             <p className="mt-4 text-muted-foreground max-w-2xl mx-auto leading-relaxed">
-              Choose from {onlinePrograms.length} accredited degree programs -- all available 100% online with the same curriculum and faculty as our on-campus offerings.
+              Choose from {onlinePrograms.length} accredited degree programs -- all delivered 100% online with expert faculty and flexible scheduling.
             </p>
           </div>
           <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
@@ -231,7 +231,7 @@ export default function OnlineLearningPage() {
               Full Support, Fully Virtual
             </h2>
             <p className="mt-4 text-muted-foreground max-w-2xl mx-auto leading-relaxed">
-              Online students receive the same dedicated support services as on-campus students -- just delivered digitally.
+              Every online student receives full access to dedicated support services designed for the virtual learning experience.
             </p>
           </div>
           <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">

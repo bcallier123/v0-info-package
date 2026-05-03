@@ -5,44 +5,43 @@ import { Button } from "@/components/ui/button"
 import { Icons } from "@/components/icons"
 
 const values = [
-  { title: "Faith", description: "Rooted in the Christian Methodist Episcopal tradition, Miles College nurtures spiritual growth alongside academic excellence.", icon: Icons.heart },
-  { title: "Excellence", description: "We hold ourselves and our students to the highest standards of academic and personal achievement.", icon: Icons.award },
-  { title: "Community", description: "A tight-knit campus community where every student is known, valued, and supported.", icon: Icons.users },
-  { title: "Service", description: "We prepare leaders who serve their communities and make a positive impact on the world.", icon: Icons.globe },
+  { title: "Flexibility", description: "100% online coursework with asynchronous options so you can learn on your own schedule -- mornings, evenings, or weekends.", icon: Icons.clock },
+  { title: "Excellence", description: "The same SACSCOC-accredited curriculum, expert faculty, and academic rigor as our traditional programs.", icon: Icons.award },
+  { title: "Community", description: "A connected virtual community where online students are known, valued, and supported by faculty and peers.", icon: Icons.users },
+  { title: "Access", description: "24/7 access to your LMS, digital library, tutoring, advising, and career services -- from anywhere.", icon: Icons.laptop },
 ]
 
 const facts = [
-  "Founded in 1898 by the Colored Methodist Episcopal Church",
-  "Located in Fairfield, Alabama, just 6 minutes from downtown Birmingham",
+  "Founded in 1898 -- now delivering HBCU excellence online",
   "Accredited by SACSCOC since 1969",
-  "Home of the Golden Bears and the Purple Marching Machine",
+  "30+ degree programs available 100% online",
   "17:1 student-to-faculty ratio for personalized attention",
   "97% of students receive some form of financial aid",
-  "Over 30 degree programs across 4 academic divisions",
-  "NCAA Division II athletics in the SIAC Conference",
+  "Flexible scheduling for working professionals and parents",
+  "Same faculty teach online and on-campus courses",
+  "Virtual student organizations, events, and career services",
 ]
 
 export default function ExplorePage() {
   return (
     <main>
       <PageHeader
-        title="Explore Miles College"
-        subtitle="Discover why Miles College has been shaping leaders and changing lives for over 125 years."
+        title="Why Miles College Online"
+        subtitle="Discover why Miles College Online is the right choice for your accredited degree -- with the flexibility, support, and HBCU tradition you deserve."
         breadcrumbs={[{ label: "Explore" }]}
       />
       <section className="py-12 lg:py-20 bg-background">
         <div className="container mx-auto px-4 max-w-4xl">
           <Card className="p-6 md:p-8 mb-12 bg-card border-border">
-            <h2 className="text-2xl font-black mb-4 text-foreground">Why Miles College?</h2>
+            <h2 className="text-2xl font-black mb-4 text-foreground">Why Miles College Online?</h2>
             <p className="text-muted-foreground leading-relaxed text-lg mb-4">
-              Miles College is Birmingham&apos;s only four-year HBCU, offering a transformative educational experience
-              that combines academic rigor with personal attention. Our intimate campus community ensures that every
-              student receives the mentorship, resources, and support they need to succeed.
+              Miles College Online brings the full power of Birmingham&apos;s premier HBCU to your laptop. Our fully online
+              programs combine the same accredited curriculum and expert faculty with the flexibility that working
+              professionals, parents, and lifelong learners need to succeed.
             </p>
             <p className="text-muted-foreground leading-relaxed">
-              With over 30 degree programs, championship athletics, a world-renowned marching band, and a legacy
-              of producing leaders in business, law, medicine, education, and public service, Miles College is where
-              your legacy begins.
+              With over 30 degree programs available 100% online, dedicated virtual support services, and a thriving
+              online student community, Miles College Online is where your next chapter begins -- on your terms.
             </p>
           </Card>
 
@@ -79,14 +78,14 @@ export default function ExplorePage() {
           </Card>
 
           <Card className="p-6 md:p-8 bg-secondary text-primary border-0">
-            <h3 className="text-xl font-black mb-2">Ready to Experience Miles College?</h3>
-            <p className="text-primary/80 mb-4">Visit our campus and see why students choose to become Golden Bears.</p>
+            <h3 className="text-xl font-black mb-2">Ready to Start Your Online Degree?</h3>
+            <p className="text-primary/80 mb-4">Apply today and join the Miles College online learning community.</p>
             <div className="flex flex-col sm:flex-row gap-3">
               <Button className="bg-primary text-primary-foreground font-bold hover:bg-primary/90" asChild>
-                <Link href="/visit">Schedule a Visit <Icons.arrowRight className="w-4 h-4 ml-2" /></Link>
+                <Link href="/apply">Apply Now <Icons.arrowRight className="w-4 h-4 ml-2" /></Link>
               </Button>
               <Button variant="outline" className="font-bold border-primary text-primary hover:bg-primary/10" asChild>
-                <Link href="/programs">View Programs</Link>
+                <Link href="/programs">Explore Online Programs</Link>
               </Button>
             </div>
           </Card>

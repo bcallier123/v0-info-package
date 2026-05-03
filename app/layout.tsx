@@ -21,18 +21,18 @@ const dmSans = DM_Sans({
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://www.miles.edu"),
-  title: "Miles College Journey Experience - Your Path From Discovery to Career",
+  title: "Miles College Online - Earn Your Accredited Degree 100% Online",
   description:
-    "Step into your Miles College journey. An AI-powered digital campus experience guiding students from discovery to career success. Birmingham's Premier HBCU since 1898.",
+    "Earn your accredited degree from Miles College 100% online. Flexible scheduling, dedicated support, and HBCU excellence -- from anywhere. 30+ programs, 97% receive financial aid.",
   keywords: [
     "Miles College",
-    "HBCU",
-    "Birmingham Alabama",
-    "College Scholarships",
-    "NCAA Division II",
-    "Purple Marching Machine",
-    "Golden Bears",
-    "Christian Methodist Episcopal",
+    "Online Degree",
+    "Online Learning",
+    "HBCU Online",
+    "Online College",
+    "Flexible Degree Programs",
+    "Accredited Online University",
+    "Distance Learning",
   ],
   authors: [{ name: "Miles College" }],
   creator: "Miles College",
@@ -42,9 +42,9 @@ export const metadata: Metadata = {
     locale: "en_US",
     url: "https://www.miles.edu",
     siteName: "Miles College",
-    title: "Miles College - Where Excellence Meets Tradition",
+    title: "Miles College Online - Accredited Degrees, 100% Online",
     description:
-      "Discover Miles College, Birmingham's Premier HBCU. 97% of students receive scholarships, 30+ majors, NCAA Division II athletics. Apply today!",
+      "Earn your degree from Miles College 100% online. HBCU excellence with flexible scheduling, 30+ programs, and 97% financial aid rate. Apply today!",
     images: [
       {
         url: "/images/campus-hero.jpeg",
@@ -56,8 +56,8 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Miles College - Where Excellence Meets Tradition",
-    description: "Birmingham's Premier HBCU. 97% scholarships, 30+ majors, NCAA Division II athletics. Apply today!",
+    title: "Miles College Online - Accredited Degrees, 100% Online",
+    description: "HBCU excellence, 100% online. 30+ programs, flexible scheduling, 97% financial aid rate. Apply today!",
     images: ["/images/campus-hero.jpeg"],
     creator: "@milescollege",
   },

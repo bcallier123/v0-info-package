@@ -5,8 +5,7 @@ import { Icons } from "@/components/icons"
 const footerLinks = {
   journey: [
     { label: "Start Your Journey", href: "/journey/onboarding" },
-    { label: "Journey Dashboard", href: "/journey/dashboard" },
-    { label: "Explore Campus", href: "/journey/explore" },
+    { label: "My Dashboard", href: "/journey/dashboard" },
     { label: "Career Pathways", href: "/journey/careers" },
     { label: "Student Success", href: "/journey/success" },
     { label: "Alumni Network", href: "/journey/alumni" },
@@ -15,18 +14,18 @@ const footerLinks = {
     { label: "Apply Now", href: "/apply" },
     { label: "Admissions Overview", href: "/admissions" },
     { label: "Deadlines", href: "/deadlines" },
-    { label: "Visit Campus", href: "/visit" },
+    { label: "Virtual Info Session", href: "/visit" },
   ],
   financials: [
     { label: "Tuition & Costs", href: "/costs" },
     { label: "Financial Aid", href: "/financial-aid" },
     { label: "Scholarships", href: "/scholarships" },
   ],
-  campus: [
-    { label: "Campus Life", href: "/campus-life" },
-    { label: "Housing & Dining", href: "/housing-dining" },
-    { label: "Programs", href: "/programs" },
-    { label: "Online Learning", href: "/online" },
+  resources: [
+    { label: "Online Programs", href: "/programs" },
+    { label: "How Online Works", href: "/online" },
+    { label: "Virtual Student Life", href: "/campus-life" },
+    { label: "Student Resources", href: "/housing-dining" },
     { label: "FAQ", href: "/faq" },
     { label: "Ask Miles AI", href: "/chat" },
   ],
@@ -95,10 +94,10 @@ export function Footer() {
           </div>
           <div>
             <h4 className="text-[10px] sm:text-xs font-bold uppercase tracking-[0.15em] sm:tracking-widest text-[#C9A227] mb-3 sm:mb-4">
-              Campus
+              Resources
             </h4>
             <ul className="flex flex-col gap-1.5 sm:gap-2">
-              {footerLinks.campus.map((link) => (
+              {footerLinks.resources.map((link) => (
                 <li key={link.href}>
                   <Link
                     href={link.href}
@@ -115,14 +114,14 @@ export function Footer() {
         {/* Bottom section */}
         <div className="text-center">
           <h3 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-black mb-2 sm:mb-3 uppercase tracking-wide">
-            Miles College
+            Miles College Online
           </h3>
           <p className="text-white/50 text-xs sm:text-base lg:text-lg font-medium mb-5 sm:mb-8">
-            Your Journey From Discovery to Career Success
+            Your Accredited Degree, 100% Online
           </p>
 
           <div className="flex flex-wrap justify-center gap-2 sm:gap-3 mb-6 sm:mb-8">
-            {["HBCU Since 1898", "NCAA Division II", "SACSCOC Accredited"].map((badge) => (
+            {["100% Online", "HBCU Since 1898", "SACSCOC Accredited"].map((badge) => (
               <Badge
                 key={badge}
                 className="bg-white/5 text-white/60 border border-white/10 font-bold text-[10px] sm:text-xs px-3 sm:px-4 py-1.5 sm:py-2 uppercase tracking-wide"

@@ -27,8 +27,7 @@ import { useAuth } from "@/lib/auth-context"
 
 const journeyLinks = [
   { title: "Start Your Journey", href: "/journey/onboarding", description: "Personalized onboarding experience" },
-  { title: "My Dashboard", href: "/journey/dashboard", description: "Your journey command center" },
-  { title: "Explore Campus", href: "/journey/explore", description: "Digital campus exploration" },
+  { title: "My Dashboard", href: "/journey/dashboard", description: "Your learning command center" },
   { title: "Career Pathways", href: "/journey/careers", description: "Major-to-career visualization" },
   { title: "Student Success", href: "/journey/success", description: "Academic command center" },
   { title: "Alumni Network", href: "/journey/alumni", description: "Post-graduation journey" },
@@ -38,27 +37,27 @@ const admissionsLinks = [
   { title: "Apply Now", href: "/apply", description: "Start your free application" },
   { title: "Admissions Overview", href: "/admissions", description: "Requirements & process" },
   { title: "Deadlines", href: "/deadlines", description: "Important dates by student type" },
-  { title: "Tuition & Costs", href: "/costs", description: "Affordable education investment" },
+  { title: "Tuition & Costs", href: "/costs", description: "Affordable online education" },
   { title: "Financial Aid", href: "/financial-aid", description: "Scholarships, grants & aid" },
-  { title: "Visit Campus", href: "/visit", description: "Schedule a tour" },
+  { title: "Virtual Info Session", href: "/visit", description: "Attend a live info session" },
 ]
 
 const academicsLinks = [
-  { title: "Programs", href: "/programs", description: "30+ degree programs" },
-  { title: "Online Learning", href: "/online", description: "Earn your degree 100% online" },
-  { title: "Explore Miles", href: "/explore", description: "Why choose Miles College?" },
+  { title: "Online Programs", href: "/programs", description: "30+ degree programs online" },
+  { title: "How Online Works", href: "/online", description: "LMS, lectures & support" },
+  { title: "Why Miles Online", href: "/explore", description: "What sets us apart" },
 ]
 
-const campusLinks = [
-  { title: "Campus Life", href: "/campus-life", description: "Student organizations & activities" },
-  { title: "Housing & Dining", href: "/housing-dining", description: "Residence halls & meal plans" },
+const studentLinks = [
+  { title: "Virtual Student Life", href: "/campus-life", description: "Online community & events" },
+  { title: "Student Resources", href: "/housing-dining", description: "Tech support, tutoring & more" },
 ]
 
 const allMobileLinks = [
   { section: "Journey", links: journeyLinks },
   { section: "Admissions", links: admissionsLinks },
   { section: "Academics", links: academicsLinks },
-  { section: "Campus", links: campusLinks },
+  { section: "Student Life", links: studentLinks },
 ]
 
 export function Navigation() {
@@ -194,9 +193,28 @@ export function Navigation() {
                 </NavigationMenuItem>
 
                 <NavigationMenuItem>
-                  <Link href="/campus-life" className="text-sm font-semibold text-white/90 hover:text-[#C9A227] transition-colors px-3 py-2">
-                    Campus
-                  </Link>
+                  <NavigationMenuTrigger className="bg-transparent text-sm font-semibold text-white/90 hover:text-[#C9A227] data-[state=open]:text-[#C9A227]">
+                    Student Life
+                  </NavigationMenuTrigger>
+                  <NavigationMenuContent>
+                    <ul className="grid w-[400px] gap-3 p-4">
+                      {studentLinks.map((link) => (
+                        <li key={link.href}>
+                          <NavigationMenuLink asChild>
+                            <Link
+                              href={link.href}
+                              className="block select-none rounded-lg p-3 leading-none no-underline outline-none transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground"
+                            >
+                              <div className="text-sm font-semibold leading-none">{link.title}</div>
+                              <p className="line-clamp-2 text-sm leading-snug text-muted-foreground mt-1">
+                                {link.description}
+                              </p>
+                            </Link>
+                          </NavigationMenuLink>
+                        </li>
+                      ))}
+                    </ul>
+                  </NavigationMenuContent>
                 </NavigationMenuItem>
 
                 <NavigationMenuItem>
