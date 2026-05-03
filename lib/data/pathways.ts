@@ -58,4 +58,20 @@ export const pathways: StudentPathway[] = [
       { order: 5, title: "Register for Classes", description: "Register for courses through the MyExperience student portal." },
     ],
   },
+  {
+    id: "p5",
+    type: "online",
+    label: "Online Student",
+    description: "Pursuing your degree 100% online from anywhere in the world.",
+    steps: [
+      { order: 1, title: "Submit Online Application", description: "Complete your free application at myexperience.miles.edu and select 'Online' as your learning format.", link: "/apply" },
+      { order: 2, title: "Send Official Transcripts", description: "Request official transcripts from your high school or previously attended institutions.", link: "/admissions" },
+      { order: 3, title: "Submit Transfer Credits", description: "If applicable, send transcripts from all previously attended colleges for credit evaluation." },
+      { order: 4, title: "File the FAFSA", description: "Complete your FAFSA at studentaid.gov using school code 001028. Online students qualify for the same aid.", link: "/financial-aid" },
+      { order: 5, title: "Apply for Scholarships", description: "Browse and apply for institutional and external scholarships available to online learners.", link: "/scholarships" },
+      { order: 6, title: "Accept Your Offer", description: "Review and accept your admissions offer and financial aid package." },
+      { order: 7, title: "Set Up LMS & Portal Access", description: "Activate your Miles student portal and Canvas LMS account. Complete the technology readiness check.", link: "/portal" },
+      { order: 8, title: "Complete Virtual Orientation", description: "Attend the required online orientation module to meet your advisor and learn platform tools.", link: "/online" },
+    ],
+  },
 ]

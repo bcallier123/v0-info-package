@@ -26,6 +26,7 @@ const footerLinks = {
     { label: "Campus Life", href: "/campus-life" },
     { label: "Housing & Dining", href: "/housing-dining" },
     { label: "Programs", href: "/programs" },
+    { label: "Online Learning", href: "/online" },
     { label: "FAQ", href: "/faq" },
     { label: "Ask Miles AI", href: "/chat" },
   ],

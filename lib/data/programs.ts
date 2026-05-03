@@ -20,6 +20,8 @@ export const programs: Program[] = [
     careerOutcomes: ["Business Manager", "Marketing Director", "Financial Analyst", "Entrepreneur", "Consultant"],
     highlights: ["ACBSP accredited", "Internship partnerships", "Business plan competitions"],
     category: "business",
+    onlineAvailable: true,
+    format: "hybrid",
   },
   {
     slug: "computer-science",
@@ -30,6 +32,8 @@ export const programs: Program[] = [
     careerOutcomes: ["Software Engineer", "Data Scientist", "Cybersecurity Analyst", "Systems Architect", "AI Engineer"],
     highlights: ["Coding bootcamp partnerships", "Hackathon participation", "Industry mentorship program"],
     category: "sciences",
+    onlineAvailable: true,
+    format: "hybrid",
   },
   {
     slug: "criminal-justice",
@@ -40,6 +44,8 @@ export const programs: Program[] = [
     careerOutcomes: ["Law Enforcement Officer", "Probation Officer", "Legal Analyst", "FBI Agent", "Attorney"],
     highlights: ["Mock trial team", "Law school preparation", "Internships with local agencies"],
     category: "social-sciences",
+    onlineAvailable: true,
+    format: "hybrid",
   },
   {
     slug: "education",
@@ -50,6 +56,8 @@ export const programs: Program[] = [
     careerOutcomes: ["K-12 Teacher", "School Counselor", "Curriculum Developer", "Educational Administrator", "Tutor"],
     highlights: ["NCATE accredited", "Student teaching placements", "Small class sizes"],
     category: "education",
+    onlineAvailable: true,
+    format: "hybrid",
   },
   {
     slug: "english",
@@ -60,6 +68,8 @@ export const programs: Program[] = [
     careerOutcomes: ["Writer", "Editor", "Public Relations Specialist", "Teacher", "Content Strategist"],
     highlights: ["Literary magazine", "Writing workshops", "Guest author series"],
     category: "humanities",
+    onlineAvailable: true,
+    format: "hybrid",
   },
   {
     slug: "mathematics",
@@ -80,6 +90,8 @@ export const programs: Program[] = [
     careerOutcomes: ["Licensed Social Worker", "Case Manager", "Community Organizer", "Therapist", "Policy Advocate"],
     highlights: ["CSWE accredited", "400+ field hours", "Community partnership projects"],
     category: "social-sciences",
+    onlineAvailable: true,
+    format: "hybrid",
   },
   {
     slug: "communications",
@@ -90,6 +102,8 @@ export const programs: Program[] = [
     careerOutcomes: ["Journalist", "PR Specialist", "Media Producer", "Social Media Manager", "Broadcasting Professional"],
     highlights: ["Campus radio station", "TV production studio", "Media internships"],
     category: "humanities",
+    onlineAvailable: true,
+    format: "hybrid",
   },
   {
     slug: "political-science",
@@ -100,6 +114,8 @@ export const programs: Program[] = [
     careerOutcomes: ["Political Analyst", "Government Official", "Lobbyist", "Attorney", "Diplomat"],
     highlights: ["Model UN participation", "Washington D.C. trips", "Campaign internships"],
     category: "social-sciences",
+    onlineAvailable: true,
+    format: "hybrid",
   },
   {
     slug: "accounting",
@@ -110,6 +126,8 @@ export const programs: Program[] = [
     careerOutcomes: ["CPA", "Auditor", "Tax Consultant", "Financial Controller", "Forensic Accountant"],
     highlights: ["CPA exam preparation", "Big 4 recruiting", "Accounting society"],
     category: "business",
+    onlineAvailable: true,
+    format: "hybrid",
   },
   {
     slug: "chemistry",
@@ -129,4 +147,8 @@ export function getProgramBySlug(slug: string): Program | undefined {
 
 export function getProgramsByCategory(category: Program["category"]): Program[] {
   return programs.filter((p) => p.category === category)
+}
+
+export function getOnlinePrograms(): Program[] {
+  return programs.filter((p) => p.onlineAvailable)
 }

@@ -1,16 +1,18 @@
 import { PageHeader } from "@/components/page-header"
 import { Card } from "@/components/ui/card"
+import { Badge } from "@/components/ui/badge"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
 import { Icons } from "@/components/icons"
+import Link from "next/link"
 
 export default function VisitPage() {
   return (
     <main>
       <PageHeader
-        title="Visit Campus"
-        subtitle="Experience Miles College in person. Schedule a campus tour and see what it means to be a Golden Bear."
+        title="Visit Miles"
+        subtitle="Experience Miles College in person or virtually. Schedule a campus tour or explore our online info sessions."
         breadcrumbs={[{ label: "Visit" }]}
       />
       <section className="py-12 lg:py-20 bg-background">
@@ -84,6 +86,73 @@ export default function VisitPage() {
                 </ul>
               </Card>
             </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Virtual Visit Section */}
+      <section className="py-12 lg:py-20 bg-muted">
+        <div className="container mx-auto px-4 max-w-4xl">
+          <div className="text-center mb-10">
+            <Badge className="bg-primary/10 text-primary border-primary/30 font-bold text-xs uppercase mb-4">
+              Virtual Option
+            </Badge>
+            <h2 className="text-2xl md:text-3xl font-black text-foreground text-balance">
+              Can&apos;t Visit in Person?
+            </h2>
+            <p className="mt-3 text-muted-foreground max-w-xl mx-auto leading-relaxed">
+              Explore Miles College from anywhere. Our virtual options give you the full campus experience -- no travel required.
+            </p>
+          </div>
+
+          <div className="grid sm:grid-cols-3 gap-6">
+            <Card className="p-6 bg-card border-border text-center">
+              <div className="w-12 h-12 bg-primary/10 flex items-center justify-center mx-auto mb-4 rounded-lg">
+                <Icons.video className="w-6 h-6 text-primary" />
+              </div>
+              <h3 className="font-black text-foreground text-sm mb-2">Virtual Campus Tour</h3>
+              <p className="text-sm text-muted-foreground leading-relaxed mb-4">
+                Take a guided video tour of our campus, residence halls, classrooms, and student spaces.
+              </p>
+              <Button variant="outline" size="sm" className="font-bold">
+                Watch Tour
+              </Button>
+            </Card>
+
+            <Card className="p-6 bg-card border-border text-center">
+              <div className="w-12 h-12 bg-secondary/10 flex items-center justify-center mx-auto mb-4 rounded-lg">
+                <Icons.monitor className="w-6 h-6 text-secondary" />
+              </div>
+              <h3 className="font-black text-foreground text-sm mb-2">Online Info Session</h3>
+              <p className="text-sm text-muted-foreground leading-relaxed mb-4">
+                Join a live session with admissions counselors to learn about programs, aid, and student life.
+              </p>
+              <Button variant="outline" size="sm" className="font-bold">
+                Register
+              </Button>
+            </Card>
+
+            <Card className="p-6 bg-card border-border text-center">
+              <div className="w-12 h-12 bg-primary/10 flex items-center justify-center mx-auto mb-4 rounded-lg">
+                <Icons.headphones className="w-6 h-6 text-primary" />
+              </div>
+              <h3 className="font-black text-foreground text-sm mb-2">Chat with an Advisor</h3>
+              <p className="text-sm text-muted-foreground leading-relaxed mb-4">
+                Have questions about online programs? Connect one-on-one with an online admissions advisor.
+              </p>
+              <Button variant="outline" size="sm" className="font-bold" asChild>
+                <Link href="/chat">Start Chat</Link>
+              </Button>
+            </Card>
+          </div>
+
+          <div className="mt-8 text-center">
+            <p className="text-sm text-muted-foreground">
+              Interested in our fully online programs?{" "}
+              <Link href="/online" className="text-primary font-bold hover:text-primary/80 transition-colors">
+                Learn more about online learning at Miles
+              </Link>
+            </p>
           </div>
         </div>
       </section>
