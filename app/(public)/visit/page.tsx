@@ -7,19 +7,29 @@ import { Label } from "@/components/ui/label"
 import { Icons } from "@/components/icons"
 import Link from "next/link"
 
-export default function VisitPage() {
+const infoSessionTopics = [
+  "Overview of online degree programs",
+  "How the Canvas LMS works",
+  "Financial aid for online students",
+  "Meet current online students and faculty",
+  "Live Q&A with admissions counselors",
+]
+
+export default function VirtualInfoPage() {
   return (
     <main>
       <PageHeader
-        title="Visit Miles"
-        subtitle="Experience Miles College in person or virtually. Schedule a campus tour or explore our online info sessions."
-        breadcrumbs={[{ label: "Visit" }]}
+        title="Virtual Info Sessions"
+        subtitle="Learn everything about Miles College Online from the comfort of your home. Register for a live info session or request a one-on-one consultation."
+        breadcrumbs={[{ label: "Info Sessions" }]}
       />
+
       <section className="py-12 lg:py-20 bg-background">
         <div className="container mx-auto px-4 max-w-4xl">
           <div className="grid md:grid-cols-2 gap-8">
+            {/* Registration Form */}
             <Card className="p-6 md:p-8 bg-card border-border">
-              <h2 className="text-xl font-black mb-6 text-foreground">Schedule Your Visit</h2>
+              <h2 className="text-xl font-black mb-6 text-foreground">Register for a Virtual Info Session</h2>
               <form className="flex flex-col gap-4">
                 <div className="grid grid-cols-2 gap-4">
                   <div>
@@ -40,44 +50,43 @@ export default function VisitPage() {
                   <Input id="phone" type="tel" placeholder="(205) 555-0123" />
                 </div>
                 <div>
-                  <Label htmlFor="date" className="text-foreground font-bold text-sm mb-1.5 block">Preferred Visit Date</Label>
-                  <Input id="date" type="date" />
+                  <Label htmlFor="interest" className="text-foreground font-bold text-sm mb-1.5 block">Program of Interest</Label>
+                  <Input id="interest" placeholder="e.g. Business Administration" />
                 </div>
                 <Button className="bg-secondary text-primary font-bold hover:bg-yellow-400 mt-2">
-                  Request Tour <Icons.arrowRight className="w-4 h-4 ml-2" />
+                  Register for Info Session <Icons.arrowRight className="w-4 h-4 ml-2" />
                 </Button>
-                <p className="text-xs text-muted-foreground">Tours available Monday-Friday, 9 AM - 4 PM. We will confirm your visit via email.</p>
+                <p className="text-xs text-muted-foreground">Virtual info sessions are held weekly via Zoom. You will receive a link via email after registration.</p>
               </form>
             </Card>
 
+            {/* Info + What to Expect */}
             <div className="flex flex-col gap-6">
               <Card className="p-6 bg-card border-border">
-                <h3 className="text-lg font-black mb-4 text-foreground">Campus Location</h3>
-                <div className="aspect-video bg-muted mb-4 flex items-center justify-center">
-                  <div className="text-center">
-                    <Icons.mapPin className="w-8 h-8 text-muted-foreground mx-auto mb-2" />
-                    <p className="text-sm text-muted-foreground font-semibold">Interactive Map</p>
-                    <p className="text-xs text-muted-foreground">Coming soon</p>
-                  </div>
-                </div>
-                <div className="flex flex-col gap-2 text-sm text-muted-foreground">
-                  <p className="font-bold text-foreground">Miles College</p>
-                  <p>5500 Myron Massey Blvd</p>
-                  <p>Fairfield, AL 35064</p>
-                  <p className="text-secondary font-bold">6 minutes from downtown Birmingham</p>
+                <h3 className="text-lg font-black mb-4 text-foreground">Upcoming Sessions</h3>
+                <div className="flex flex-col gap-4">
+                  {[
+                    { date: "Every Tuesday", time: "6:00 PM CT", type: "General Info Session" },
+                    { date: "Every Thursday", time: "12:00 PM CT", type: "Lunchtime Q&A" },
+                    { date: "1st Saturday/month", time: "10:00 AM CT", type: "Weekend Deep Dive" },
+                  ].map((session) => (
+                    <div key={session.type} className="flex items-center gap-4 p-3 bg-muted rounded-lg">
+                      <div className="w-12 h-12 bg-secondary/10 flex flex-col items-center justify-center flex-shrink-0 rounded-lg">
+                        <Icons.monitor className="w-5 h-5 text-secondary" />
+                      </div>
+                      <div className="flex-1">
+                        <p className="text-sm font-black text-foreground">{session.type}</p>
+                        <p className="text-xs text-muted-foreground">{session.date} at {session.time}</p>
+                      </div>
+                    </div>
+                  ))}
                 </div>
               </Card>
 
               <Card className="p-6 bg-secondary/10 border-secondary/30">
-                <h3 className="text-lg font-black text-foreground mb-3">What to Expect</h3>
+                <h3 className="text-lg font-black text-foreground mb-3">What You Will Learn</h3>
                 <ul className="flex flex-col gap-2">
-                  {[
-                    "Campus walking tour (45-60 min)",
-                    "Meet with admissions counselor",
-                    "Visit residence halls and dining",
-                    "Explore academic buildings and labs",
-                    "Q&A with current students",
-                  ].map((item) => (
+                  {infoSessionTopics.map((item) => (
                     <li key={item} className="flex items-start gap-2">
                       <Icons.check className="w-4 h-4 text-secondary flex-shrink-0 mt-0.5" />
                       <span className="text-sm text-muted-foreground">{item}</span>
@@ -90,18 +99,18 @@ export default function VisitPage() {
         </div>
       </section>
 
-      {/* Virtual Visit Section */}
+      {/* One-on-One Options */}
       <section className="py-12 lg:py-20 bg-muted">
         <div className="container mx-auto px-4 max-w-4xl">
           <div className="text-center mb-10">
             <Badge className="bg-primary/10 text-primary border-primary/30 font-bold text-xs uppercase mb-4">
-              Virtual Option
+              Personalized Help
             </Badge>
             <h2 className="text-2xl md:text-3xl font-black text-foreground text-balance">
-              Can&apos;t Visit in Person?
+              Prefer a One-on-One Conversation?
             </h2>
             <p className="mt-3 text-muted-foreground max-w-xl mx-auto leading-relaxed">
-              Explore Miles College from anywhere. Our virtual options give you the full campus experience -- no travel required.
+              Connect directly with an online admissions advisor who can answer your specific questions.
             </p>
           </div>
 
@@ -110,49 +119,40 @@ export default function VisitPage() {
               <div className="w-12 h-12 bg-primary/10 flex items-center justify-center mx-auto mb-4 rounded-lg">
                 <Icons.video className="w-6 h-6 text-primary" />
               </div>
-              <h3 className="font-black text-foreground text-sm mb-2">Virtual Campus Tour</h3>
+              <h3 className="font-black text-foreground text-sm mb-2">Video Consultation</h3>
               <p className="text-sm text-muted-foreground leading-relaxed mb-4">
-                Take a guided video tour of our campus, residence halls, classrooms, and student spaces.
+                Schedule a 30-minute video call with an admissions counselor to discuss your goals and options.
               </p>
               <Button variant="outline" size="sm" className="font-bold">
-                Watch Tour
+                Schedule Call
               </Button>
             </Card>
 
             <Card className="p-6 bg-card border-border text-center">
               <div className="w-12 h-12 bg-secondary/10 flex items-center justify-center mx-auto mb-4 rounded-lg">
-                <Icons.monitor className="w-6 h-6 text-secondary" />
+                <Icons.phone className="w-6 h-6 text-secondary" />
               </div>
-              <h3 className="font-black text-foreground text-sm mb-2">Online Info Session</h3>
+              <h3 className="font-black text-foreground text-sm mb-2">Phone Consultation</h3>
               <p className="text-sm text-muted-foreground leading-relaxed mb-4">
-                Join a live session with admissions counselors to learn about programs, aid, and student life.
+                Speak directly with our online admissions team. No appointment necessary during business hours.
               </p>
-              <Button variant="outline" size="sm" className="font-bold">
-                Register
+              <Button variant="outline" size="sm" className="font-bold" asChild>
+                <a href="tel:2059291657">(205) 929-1657</a>
               </Button>
             </Card>
 
             <Card className="p-6 bg-card border-border text-center">
               <div className="w-12 h-12 bg-primary/10 flex items-center justify-center mx-auto mb-4 rounded-lg">
-                <Icons.headphones className="w-6 h-6 text-primary" />
+                <Icons.sparkles className="w-6 h-6 text-primary" />
               </div>
-              <h3 className="font-black text-foreground text-sm mb-2">Chat with an Advisor</h3>
+              <h3 className="font-black text-foreground text-sm mb-2">Chat with Miles AI</h3>
               <p className="text-sm text-muted-foreground leading-relaxed mb-4">
-                Have questions about online programs? Connect one-on-one with an online admissions advisor.
+                Get instant answers about programs, admissions, financial aid, and student life -- 24/7.
               </p>
               <Button variant="outline" size="sm" className="font-bold" asChild>
                 <Link href="/chat">Start Chat</Link>
               </Button>
             </Card>
-          </div>
-
-          <div className="mt-8 text-center">
-            <p className="text-sm text-muted-foreground">
-              Interested in our fully online programs?{" "}
-              <Link href="/online" className="text-primary font-bold hover:text-primary/80 transition-colors">
-                Learn more about online learning at Miles
-              </Link>
-            </p>
           </div>
         </div>
       </section>

@@ -4,16 +4,16 @@ import { Icons } from "@/components/icons"
 export function StatsSection() {
   const stats = [
     {
-      icon: Icons.award,
-      value: "97%",
-      label: "Scholarships Awarded",
+      icon: Icons.laptop,
+      value: "100%",
+      label: "Fully Online",
       color: "text-secondary",
       bgColor: "from-secondary/20 to-secondary/5",
     },
     {
-      icon: Icons.users,
-      value: "17:1",
-      label: "Student-Teacher Ratio",
+      icon: Icons.clock,
+      value: "24/7",
+      label: "LMS Access",
       color: "text-primary",
       bgColor: "from-primary/20 to-primary/5",
     },
@@ -25,18 +25,18 @@ export function StatsSection() {
       bgColor: "from-secondary/20 to-secondary/5",
     },
     {
-      icon: Icons.calendar,
-      value: "1898",
-      label: "Founded",
+      icon: Icons.award,
+      value: "97%",
+      label: "Receive Financial Aid",
       color: "text-primary",
       bgColor: "from-primary/20 to-primary/5",
     },
   ]
 
   const highlights = [
-    { icon: Icons.mapPin, text: "6 min from downtown Birmingham" },
-    { icon: Icons.laptop, text: "9 programs available 100% online" },
-    { icon: Icons.users, text: "1,500+ students on campus & online" },
+    { icon: Icons.wifi, text: "Learn from anywhere with a reliable internet connection" },
+    { icon: Icons.video, text: "Live & recorded lectures on your schedule" },
+    { icon: Icons.headphones, text: "Dedicated online student support & advising" },
   ]
 
   return (
@@ -59,7 +59,7 @@ export function StatsSection() {
             By the Numbers
           </p>
           <h2 className="text-2xl sm:text-4xl md:text-5xl lg:text-7xl font-black text-white mb-4 sm:mb-6 tracking-tight">
-            ACADEMIC <span className="text-secondary">EXCELLENCE</span>
+            ONLINE <span className="text-secondary">EXCELLENCE</span>
           </h2>
           <div className="flex items-center justify-center gap-4 sm:gap-6">
             <div className="h-px w-12 sm:w-20 bg-gradient-to-r from-transparent to-secondary" />

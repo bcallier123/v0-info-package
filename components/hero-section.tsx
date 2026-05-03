@@ -7,7 +7,7 @@ import { Icons } from "@/components/icons"
 import Image from "next/image"
 import Link from "next/link"
 
-const words = ["FUTURE", "LEGACY", "JOURNEY", "STORY", "DREAMS"]
+const words = ["FUTURE", "DEGREE", "JOURNEY", "CAREER", "DREAMS"]
 
 export function HeroSection() {
   const [currentWord, setCurrentWord] = useState(0)
@@ -54,7 +54,7 @@ export function HeroSection() {
         >
           <Image
             src="/images/img-0036.jpeg"
-            alt="Miles College campus"
+            alt="Miles College Online Learning"
             fill
             className="object-cover object-center opacity-30 scale-110"
             priority
@@ -109,10 +109,10 @@ export function HeroSection() {
         style={{ opacity }}
       >
         {[
-          { text: "Since 1898", delay: 0 },
-          { text: "On Campus & Online", delay: 0.2 },
-          { text: "HBCU Excellence", delay: 0.4 },
-          { text: "Golden Bears", delay: 0.6 },
+          { text: "100% Online", delay: 0 },
+          { text: "HBCU Excellence", delay: 0.2 },
+          { text: "Flexible Schedule", delay: 0.4 },
+          { text: "Accredited Degrees", delay: 0.6 },
         ].map((element, i) => (
           <motion.div
             key={element.text}
@@ -149,7 +149,7 @@ export function HeroSection() {
           >
             <div className="w-8 sm:w-16 lg:w-24 h-px bg-gradient-to-r from-[#C9A227] to-transparent" />
             <span className="text-[#C9A227] text-[10px] sm:text-xs lg:text-sm font-bold tracking-[0.2em] sm:tracking-[0.3em] uppercase">
-              Miles College
+              Miles College Online
             </span>
           </motion.div>
 
@@ -203,11 +203,11 @@ export function HeroSection() {
             transition={{ duration: 0.8, delay: 0.8 }}
             className="text-sm sm:text-base lg:text-xl text-white/60 leading-relaxed max-w-md sm:max-w-lg lg:max-w-xl mb-8 sm:mb-10"
           >
-            Step into an AI-powered journey from discovery to career.{" "}
+            Earn your accredited degree 100% online.{" "}
             <span className="text-white/90 font-medium">
-              Where tradition meets innovation
+              HBCU excellence meets flexible learning
             </span>
-            , and every Golden Bear finds their path.
+            -- study anywhere, on your schedule.
           </motion.p>
 
           {/* Journey stages - horizontal scroll on mobile */}
@@ -218,7 +218,7 @@ export function HeroSection() {
             className="mb-8 sm:mb-10 -mx-5 px-5 sm:mx-0 sm:px-0"
           >
             <div className="flex items-center gap-2 sm:gap-3 overflow-x-auto scrollbar-hide pb-2 sm:pb-0 sm:flex-wrap">
-              {["Discover", "Apply", "Enroll", "Succeed", "Launch"].map((stage, i) => (
+              {["Explore", "Apply", "Enroll", "Learn", "Graduate"].map((stage, i) => (
                 <div key={stage} className="flex items-center gap-2 sm:gap-3 flex-shrink-0">
                   <span
                     className={`text-[11px] sm:text-xs lg:text-sm font-semibold whitespace-nowrap ${
@@ -251,9 +251,9 @@ export function HeroSection() {
               className="group text-sm sm:text-base lg:text-lg h-12 sm:h-14 lg:h-16 px-6 sm:px-10 lg:px-12 font-black bg-[#C9A227] hover:bg-[#d4af37] text-[#0a0415] rounded-full transition-all duration-500"
               asChild
             >
-              <Link href="/journey/onboarding">
+              <Link href="/apply">
                 <span className="flex items-center gap-2 sm:gap-3">
-                  Begin Your Journey
+                  Apply Now
                   <motion.span
                     animate={{ x: [0, 4, 0] }}
                     transition={{ duration: 1.5, repeat: Infinity }}
@@ -269,10 +269,10 @@ export function HeroSection() {
               className="text-sm sm:text-base lg:text-lg h-12 sm:h-14 lg:h-16 px-6 sm:px-10 lg:px-12 font-bold bg-transparent border border-white/20 text-white hover:bg-white/5 hover:border-white/40 rounded-full backdrop-blur-sm transition-all duration-300"
               asChild
             >
-              <Link href="/journey/explore">
+              <Link href="/programs">
                 <span className="flex items-center gap-2 sm:gap-3">
-                  <Icons.play className="w-3.5 h-3.5 sm:w-4 sm:h-4" />
-                  Explore Miles
+                  <Icons.laptop className="w-3.5 h-3.5 sm:w-4 sm:h-4" />
+                  Explore Programs
                 </span>
               </Link>
             </Button>
@@ -287,10 +287,10 @@ export function HeroSection() {
           >
             <div className="grid grid-cols-4 gap-3 sm:gap-6 lg:gap-8">
               {[
+                { value: "100%", label: "Online" },
+                { value: "30+", label: "Programs" },
                 { value: "97%", label: "Receive Aid" },
-                { value: "30+", label: "Majors" },
-                { value: "126", label: "Years" },
-                { value: "#1", label: "HBCU" },
+                { value: "24/7", label: "Access" },
               ].map((stat, i) => (
                 <motion.div
                   key={stat.label}

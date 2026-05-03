@@ -9,32 +9,32 @@ import Link from "next/link"
 
 const campusCards = [
   {
-    title: "Student Life",
-    description: "40+ student organizations, Greek life, and vibrant campus culture.",
-    image: "/images/tailgate-students.jpg",
-    href: "/journey/explore",
-  },
-  {
-    title: "Athletics & Spirit",
-    description: "Golden Bears athletics and the legendary Purple Marching Machine.",
-    image: "/images/purple-marching-machine.jpeg",
-    href: "/journey/explore",
-  },
-  {
-    title: "Academic Excellence",
-    description: "30+ degree programs with personalized mentorship.",
-    image: "/images/library-group.jpg",
+    title: "Online Programs",
+    description: "30+ accredited degree programs available 100% online with flexible scheduling.",
+    image: "/images/online-learning-hero.jpg",
     href: "/programs",
   },
   {
-    title: "Online Learning",
-    description: "Earn your degree 100% online with the same faculty, support, and Golden Bear community.",
-    image: "/images/online-learning-hero.jpg",
+    title: "How It Works",
+    description: "Canvas LMS, live lectures, recorded sessions, and collaborative learning tools.",
+    image: "/images/library-group.jpg",
     href: "/online",
   },
   {
-    title: "Graduation & Beyond",
-    description: "Career placement, alumni networks, and lifelong connections.",
+    title: "Virtual Student Life",
+    description: "Study groups, virtual events, online organizations, and a connected community.",
+    image: "/images/tailgate-students.jpg",
+    href: "/campus-life",
+  },
+  {
+    title: "Student Resources",
+    description: "Virtual advising, online tutoring, digital library, and dedicated tech support.",
+    image: "/images/20240203-dscf2616.jpg",
+    href: "/housing-dining",
+  },
+  {
+    title: "Career Outcomes",
+    description: "Virtual career coaching, interview prep, job boards, and alumni networking.",
     image: "/images/graduation-ceremony.jpg",
     href: "/journey/careers",
   },
@@ -55,16 +55,16 @@ export function CampusPreviewSection() {
           className="text-center mb-10 sm:mb-16"
         >
           <p className="text-[#C9A227] font-black uppercase tracking-[0.2em] sm:tracking-[0.3em] text-[10px] sm:text-sm mb-3 sm:mb-4">
-            Digital Campus
+            Online Platform
           </p>
           <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-black tracking-tight text-foreground mb-3 sm:mb-4">
-            EXPERIENCE THE{" "}
+            EVERYTHING YOU{" "}
             <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#C9A227] to-yellow-500">
-              CAMPUS
+              NEED
             </span>
           </h2>
           <p className="text-muted-foreground text-sm sm:text-lg max-w-xl mx-auto">
-            Step into a digital preview of the Golden Bear experience.
+            Your complete online learning experience -- all in one place.
           </p>
         </motion.div>
 
@@ -124,7 +124,7 @@ export function CampusPreviewSection() {
               <div className="flex-1 text-center sm:text-left">
                 <h3 className="text-base sm:text-xl font-black text-white mb-1 sm:mb-2">Ask Miles AI Assistant</h3>
                 <p className="text-white/70 text-xs sm:text-base leading-relaxed">
-                  Your 24/7 personal guide for admissions, financial aid, campus life, and more.
+                  Your 24/7 personal guide for online programs, admissions, financial aid, and student support.
                 </p>
               </div>
               <Button
