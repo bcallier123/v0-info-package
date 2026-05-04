@@ -39,16 +39,16 @@ export default function ProgramsPage() {
       />
 
       {/* Online Info Banner */}
-      <div className="bg-secondary/10 border-b border-secondary/20">
-        <div className="container mx-auto px-4 py-4">
+      <div className="bg-gradient-to-r from-[#C9A227]/10 via-[#C9A227]/5 to-[#C9A227]/10 border-b border-[#C9A227]/15">
+        <div className="container mx-auto px-5 sm:px-6 py-5">
           <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3">
-            <div className="flex items-center gap-3">
-              <div className="w-10 h-10 bg-secondary/20 flex items-center justify-center rounded-lg shrink-0">
-                <Icons.laptop className="w-5 h-5 text-secondary" />
+            <div className="flex items-center gap-4">
+              <div className="w-11 h-11 bg-[#C9A227]/15 flex items-center justify-center rounded-xl shrink-0">
+                <Icons.laptop className="w-5 h-5 text-[#C9A227]" />
               </div>
               <div>
-                <p className="text-sm font-bold text-foreground">
-                  All programs below are available 100% online
+                <p className="text-sm font-black text-foreground">
+                  {onlineCount} programs available 100% online
                 </p>
                 <p className="text-xs text-muted-foreground">
                   Same accredited curriculum, learn from anywhere
@@ -57,7 +57,7 @@ export default function ProgramsPage() {
             </div>
             <Link
               href="/online"
-              className="text-sm font-bold text-primary hover:text-primary/80 transition-colors flex items-center gap-1"
+              className="text-sm font-bold text-[#C9A227] hover:text-[#C9A227]/80 transition-colors flex items-center gap-1"
             >
               How online learning works <Icons.arrowRight className="w-3 h-3" />
             </Link>
@@ -65,19 +65,21 @@ export default function ProgramsPage() {
         </div>
       </div>
 
-      <section className="py-12 lg:py-20 bg-background">
-        <div className="container mx-auto px-4">
+      <section className="py-14 lg:py-20 bg-background relative overflow-hidden">
+        <div className="absolute top-0 right-0 w-[400px] h-[400px] bg-[#C9A227]/3 rounded-full blur-[120px]" />
+        <div className="absolute bottom-0 left-0 w-[300px] h-[300px] bg-[#4B2E83]/3 rounded-full blur-[120px]" />
+        <div className="container mx-auto px-5 sm:px-6 relative z-10">
           {/* Filters */}
-          <div className="flex flex-col gap-4 mb-10">
+          <div className="flex flex-col gap-4 mb-12">
             <div className="flex flex-wrap gap-2">
               {categories.map((cat) => (
                 <button
                   key={cat.value}
                   onClick={() => setFilter(cat.value)}
-                  className={`px-4 py-2 text-sm font-bold uppercase tracking-wide transition-all border ${
+                  className={`px-4 py-2.5 text-xs font-black uppercase tracking-wider transition-all rounded-full border ${
                     filter === cat.value
-                      ? "bg-secondary text-primary border-secondary"
-                      : "bg-card text-foreground border-border hover:border-secondary/40"
+                      ? "bg-[#C9A227] text-[#0a0415] border-[#C9A227] shadow-lg shadow-[#C9A227]/20"
+                      : "bg-card text-foreground border-border hover:border-[#C9A227]/40"
                   }`}
                 >
                   {cat.label}
@@ -88,10 +90,10 @@ export default function ProgramsPage() {
             <div className="flex items-center gap-3">
               <button
                 onClick={() => setOnlineOnly(!onlineOnly)}
-                className={`flex items-center gap-2 px-4 py-2 text-sm font-bold transition-all border rounded-full ${
+                className={`flex items-center gap-2 px-5 py-2.5 text-xs font-black uppercase tracking-wider transition-all border rounded-full ${
                   onlineOnly
-                    ? "bg-primary text-primary-foreground border-primary"
-                    : "bg-card text-foreground border-border hover:border-primary/40"
+                    ? "bg-[#4B2E83] text-white border-[#4B2E83] shadow-lg shadow-[#4B2E83]/20"
+                    : "bg-card text-foreground border-border hover:border-[#4B2E83]/40"
                 }`}
               >
                 <Icons.wifi className="w-4 h-4" />
@@ -104,11 +106,11 @@ export default function ProgramsPage() {
           </div>
 
           {/* Programs Grid */}
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-5">
             {filtered.map((program) => (
               <div key={program.slug} className="relative">
                 {program.onlineAvailable && (
-                  <Badge className="absolute top-3 right-3 z-10 bg-primary/90 text-primary-foreground border-0 text-[10px] font-bold uppercase tracking-wider flex items-center gap-1">
+                  <Badge className="absolute top-3 right-3 z-10 bg-[#C9A227]/90 text-[#0a0415] border-0 text-[10px] font-black uppercase tracking-wider flex items-center gap-1 shadow-lg shadow-[#C9A227]/20">
                     <Icons.wifi className="w-3 h-3" />
                     Online
                   </Badge>
@@ -125,7 +127,13 @@ export default function ProgramsPage() {
             ))}
           </div>
           {filtered.length === 0 && (
-            <p className="text-center text-muted-foreground py-12">No programs found matching your filters.</p>
+            <div className="text-center py-16">
+              <div className="w-16 h-16 bg-muted rounded-full flex items-center justify-center mx-auto mb-4">
+                <Icons.search className="w-7 h-7 text-muted-foreground" />
+              </div>
+              <p className="text-muted-foreground font-bold">No programs found matching your filters.</p>
+              <p className="text-sm text-muted-foreground mt-1">Try adjusting your filter selections.</p>
+            </div>
           )}
         </div>
       </section>

@@ -1,3 +1,6 @@
+"use client"
+
+import { motion } from "framer-motion"
 import { Card } from "@/components/ui/card"
 import { Icons } from "@/components/icons"
 
@@ -7,29 +10,29 @@ export function StatsSection() {
       icon: Icons.laptop,
       value: "100%",
       label: "Fully Online",
-      color: "text-secondary",
-      bgColor: "from-secondary/20 to-secondary/5",
+      color: "text-[#C9A227]",
+      glow: "bg-[#C9A227]/10",
     },
     {
       icon: Icons.clock,
       value: "24/7",
       label: "LMS Access",
-      color: "text-primary",
-      bgColor: "from-primary/20 to-primary/5",
+      color: "text-[#C9A227]",
+      glow: "bg-[#4B2E83]/10",
     },
     {
       icon: Icons.graduationCap,
       value: "30+",
       label: "Degree Programs",
-      color: "text-secondary",
-      bgColor: "from-secondary/20 to-secondary/5",
+      color: "text-[#C9A227]",
+      glow: "bg-[#C9A227]/10",
     },
     {
       icon: Icons.award,
       value: "97%",
       label: "Receive Financial Aid",
-      color: "text-primary",
-      bgColor: "from-primary/20 to-primary/5",
+      color: "text-[#C9A227]",
+      glow: "bg-[#4B2E83]/10",
     },
   ]
 
@@ -42,82 +45,119 @@ export function StatsSection() {
   return (
     <section
       id="stats"
-      className="py-16 sm:py-24 lg:py-32 bg-gradient-to-br from-[#1a0a2e] via-[#2d1b4e] to-[#1a0a2e] relative overflow-hidden"
+      className="py-20 sm:py-28 lg:py-36 bg-gradient-to-br from-[#0a0415] via-[#1a0a2e] to-[#0a0415] relative overflow-hidden"
     >
-      {/* Background blurs - hidden on mobile for performance */}
+      {/* Background elements */}
       <div className="absolute inset-0 hidden sm:block">
-        <div className="absolute top-0 left-1/4 w-[400px] lg:w-[600px] h-[400px] lg:h-[600px] bg-secondary/10 rounded-full blur-[120px]" />
-        <div className="absolute bottom-0 right-1/4 w-[300px] lg:w-[500px] h-[300px] lg:h-[500px] bg-primary/10 rounded-full blur-[100px]" />
+        <div className="absolute top-0 left-1/4 w-[600px] h-[600px] bg-[#C9A227]/6 rounded-full blur-[150px]" />
+        <div className="absolute bottom-0 right-1/4 w-[500px] h-[500px] bg-[#4B2E83]/8 rounded-full blur-[120px]" />
       </div>
-
-      <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-secondary to-transparent" />
+      <div
+        className="absolute inset-0 opacity-[0.03]"
+        style={{
+          backgroundImage: `
+            linear-gradient(rgba(201, 162, 39, 0.15) 1px, transparent 1px),
+            linear-gradient(90deg, rgba(201, 162, 39, 0.15) 1px, transparent 1px)
+          `,
+          backgroundSize: "60px 60px",
+        }}
+      />
+      <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-[#C9A227]/40 to-transparent" />
 
       <div className="px-5 sm:px-6 max-w-7xl mx-auto relative z-10">
         {/* Header */}
-        <div className="text-center mb-10 sm:mb-16 lg:mb-20">
-          <p className="text-secondary font-black uppercase tracking-[0.2em] sm:tracking-[0.3em] text-[10px] sm:text-sm mb-3 sm:mb-6">
-            By the Numbers
-          </p>
-          <h2 className="text-2xl sm:text-4xl md:text-5xl lg:text-7xl font-black text-white mb-4 sm:mb-6 tracking-tight">
-            ONLINE <span className="text-secondary">EXCELLENCE</span>
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6 }}
+          className="text-center mb-12 sm:mb-20"
+        >
+          <motion.div
+            initial={{ scale: 0.8, opacity: 0 }}
+            whileInView={{ scale: 1, opacity: 1 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5 }}
+            className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-[#C9A227]/10 border border-[#C9A227]/20 mb-6"
+          >
+            <span className="w-2 h-2 rounded-full bg-[#C9A227] animate-pulse" />
+            <span className="text-[#C9A227] font-bold uppercase tracking-[0.15em] text-[10px] sm:text-xs">
+              By the Numbers
+            </span>
+          </motion.div>
+          <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-7xl font-black text-white mb-4 sm:mb-6 tracking-tight">
+            ONLINE{" "}
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#C9A227] via-yellow-400 to-[#C9A227]">
+              EXCELLENCE
+            </span>
           </h2>
           <div className="flex items-center justify-center gap-4 sm:gap-6">
-            <div className="h-px w-12 sm:w-20 bg-gradient-to-r from-transparent to-secondary" />
-            <Icons.bookOpen className="w-5 h-5 sm:w-8 sm:h-8 text-secondary" />
-            <div className="h-px w-12 sm:w-20 bg-gradient-to-l from-transparent to-secondary" />
+            <div className="h-px w-12 sm:w-24 bg-gradient-to-r from-transparent to-[#C9A227]/50" />
+            <div className="w-2 h-2 rounded-full bg-[#C9A227]/40" />
+            <div className="h-px w-12 sm:w-24 bg-gradient-to-l from-transparent to-[#C9A227]/50" />
           </div>
-        </div>
+        </motion.div>
 
         {/* Stats grid */}
-        <div className="grid grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-6 lg:gap-8 mb-10 sm:mb-16 lg:mb-20">
+        <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6 lg:gap-8 mb-12 sm:mb-20">
           {stats.map((stat, index) => {
             const IconComponent = stat.icon
             return (
-              <Card
+              <motion.div
                 key={index}
-                className="relative p-4 sm:p-6 lg:p-10 text-center bg-white/5 backdrop-blur-sm border-0 hover:bg-white/10 transition-all duration-500 group overflow-hidden"
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.5, delay: index * 0.1 }}
               >
-                <div className="absolute inset-0 bg-gradient-to-br from-secondary/0 to-secondary/0 group-hover:from-secondary/10 group-hover:to-primary/10 transition-all duration-500" />
-                <div className="relative z-10">
-                  <div
-                    className={`w-10 h-10 sm:w-16 sm:h-16 lg:w-20 lg:h-20 mx-auto mb-3 sm:mb-6 lg:mb-8 bg-gradient-to-br ${stat.bgColor} flex items-center justify-center group-hover:scale-110 transition-transform duration-500`}
-                  >
-                    <IconComponent className={`w-5 h-5 sm:w-8 sm:h-8 lg:w-10 lg:h-10 ${stat.color}`} />
+                <Card className="relative p-5 sm:p-8 lg:p-10 text-center bg-white/[0.03] backdrop-blur-sm border border-white/[0.06] hover:border-[#C9A227]/30 transition-all duration-500 group overflow-hidden">
+                  {/* Hover accent */}
+                  <div className="absolute top-0 left-0 right-0 h-[2px] bg-gradient-to-r from-[#C9A227] to-yellow-400 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+                  <div className={`absolute -top-20 left-1/2 -translate-x-1/2 w-40 h-40 ${stat.glow} rounded-full blur-[60px] opacity-0 group-hover:opacity-100 transition-opacity duration-500`} />
+
+                  <div className="relative z-10">
+                    <div className="w-12 h-12 sm:w-16 sm:h-16 mx-auto mb-4 sm:mb-6 bg-[#C9A227]/10 rounded-xl flex items-center justify-center group-hover:bg-[#C9A227]/20 group-hover:scale-110 transition-all duration-500">
+                      <IconComponent className="w-6 h-6 sm:w-8 sm:h-8 text-[#C9A227]" />
+                    </div>
+                    <div className="text-3xl sm:text-5xl lg:text-6xl font-black mb-2 sm:mb-3 text-white tracking-tight">
+                      {stat.value}
+                    </div>
+                    <div className="text-[10px] sm:text-xs font-bold text-white/50 uppercase tracking-widest">
+                      {stat.label}
+                    </div>
                   </div>
-                  <div className="text-2xl sm:text-4xl md:text-5xl lg:text-7xl font-black mb-1 sm:mb-4 text-white tracking-tight">
-                    {stat.value}
-                  </div>
-                  <div className="text-[10px] sm:text-xs lg:text-sm font-bold text-white/70 uppercase tracking-wider">
-                    {stat.label}
-                  </div>
-                </div>
-              </Card>
+                </Card>
+              </motion.div>
             )
           })}
         </div>
 
         {/* Highlights */}
         <div className="max-w-5xl mx-auto">
-          <div className="flex flex-col sm:grid sm:grid-cols-3 gap-2.5 sm:gap-4 lg:gap-6">
+          <div className="flex flex-col sm:grid sm:grid-cols-3 gap-3 sm:gap-5">
             {highlights.map((highlight, index) => {
               const IconComponent = highlight.icon
               return (
-                <div
+                <motion.div
                   key={index}
-                  className="flex items-center gap-3 sm:gap-4 lg:gap-5 p-3.5 sm:p-5 lg:p-6 bg-white/5 backdrop-blur-sm border border-white/10 hover:border-secondary/50 transition-all duration-300 group"
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.5, delay: 0.4 + index * 0.1 }}
+                  className="flex items-center gap-4 p-4 sm:p-5 bg-white/[0.03] backdrop-blur-sm border border-white/[0.06] rounded-xl hover:border-[#C9A227]/30 transition-all duration-300 group"
                 >
-                  <div className="w-9 h-9 sm:w-12 sm:h-12 lg:w-14 lg:h-14 bg-gradient-to-br from-secondary/20 to-secondary/5 flex items-center justify-center flex-shrink-0 group-hover:from-secondary/30 group-hover:to-secondary/10 transition-all">
-                    <IconComponent className="w-4 h-4 sm:w-6 sm:h-6 lg:w-7 lg:h-7 text-secondary" />
+                  <div className="w-10 h-10 sm:w-12 sm:h-12 bg-[#C9A227]/10 rounded-lg flex items-center justify-center flex-shrink-0 group-hover:bg-[#C9A227]/20 transition-colors">
+                    <IconComponent className="w-5 h-5 sm:w-6 sm:h-6 text-[#C9A227]" />
                   </div>
-                  <p className="text-sm sm:text-base lg:text-lg font-bold text-white">{highlight.text}</p>
-                </div>
+                  <p className="text-sm sm:text-base font-bold text-white/80">{highlight.text}</p>
+                </motion.div>
               )
             })}
           </div>
         </div>
       </div>
 
-      <div className="absolute bottom-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-primary to-transparent" />
+      <div className="absolute bottom-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-[#4B2E83]/30 to-transparent" />
     </section>
   )
 }
