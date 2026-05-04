@@ -81,6 +81,44 @@ const studentStories = [
   },
 ]
 
+function FeaturedReasonCard() {
+  const FeaturedIcon = reasons[0].icon
+  return (
+    <motion.div
+      initial={{ opacity: 0, y: 20 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true }}
+      transition={{ duration: 0.6 }}
+      className="mb-4 sm:mb-6"
+    >
+      <Card className="relative overflow-hidden bg-gradient-to-br from-[#1a0a2e] via-[#2d1450] to-[#1a0a2e] border-0 p-6 sm:p-10 lg:p-14">
+        <div className="absolute inset-0 noise-overlay opacity-50" />
+        <div className="absolute top-0 right-0 w-[300px] h-[300px] bg-[#C9A227]/10 rounded-full blur-[100px]" />
+        <div className="absolute bottom-0 left-0 w-[200px] h-[200px] bg-[#4B2E83]/20 rounded-full blur-[80px]" />
+        <div className="relative z-10 flex flex-col lg:flex-row items-start lg:items-center gap-6 lg:gap-12">
+          <div className="w-14 h-14 sm:w-16 sm:h-16 rounded-2xl bg-[#C9A227] flex items-center justify-center flex-shrink-0 shadow-lg shadow-[#C9A227]/20">
+            <FeaturedIcon className="w-7 h-7 sm:w-8 sm:h-8 text-[#1a0a2e]" />
+          </div>
+          <div className="flex-1">
+            <h3 className="font-black text-white text-xl sm:text-2xl lg:text-3xl mb-2 sm:mb-3">{reasons[0].title}</h3>
+            <p className="text-white/70 text-sm sm:text-base lg:text-lg leading-relaxed max-w-2xl">{reasons[0].description}</p>
+          </div>
+          <div className="hidden lg:flex items-center gap-3 flex-shrink-0">
+            <div className="flex flex-col items-center gap-1 px-6 py-4 rounded-xl bg-white/5 border border-white/10">
+              <span className="text-[#C9A227] font-black text-2xl">30+</span>
+              <span className="text-white/50 text-xs font-medium">Programs</span>
+            </div>
+            <div className="flex flex-col items-center gap-1 px-6 py-4 rounded-xl bg-white/5 border border-white/10">
+              <span className="text-[#C9A227] font-black text-2xl">24/7</span>
+              <span className="text-white/50 text-xs font-medium">Access</span>
+            </div>
+          </div>
+        </div>
+      </Card>
+    </motion.div>
+  )
+}
+
 export function WhyMilesSection() {
   return (
     <section id="why-miles" className="py-16 sm:py-24 lg:py-32 bg-background relative overflow-hidden">
