@@ -1,12 +1,9 @@
 "use client"
 
-import { useState, useEffect } from "react"
-import Link from "next/link"
-import { usePathname, useRouter } from "next/navigation"
+import { useState, useEffect, useCallback } from "react"
 import { Button } from "@/components/ui/button"
 import { Icons } from "@/components/icons"
 import Image from "next/image"
-import { Sheet, SheetContent, SheetTrigger, SheetTitle } from "@/components/ui/sheet"
 import {
   NavigationMenu,
   NavigationMenuContent,
@@ -15,463 +12,375 @@ import {
   NavigationMenuList,
   NavigationMenuTrigger,
 } from "@/components/ui/navigation-menu"
-import {
-  DropdownMenu,
-  DropdownMenuContent,
-  DropdownMenuItem,
-  DropdownMenuSeparator,
-  DropdownMenuTrigger,
-} from "@/components/ui/dropdown-menu"
 import { cn } from "@/lib/utils"
-import { useAuth } from "@/lib/auth-context"
-
-const journeyLinks = [
-  { title: "Start Your Journey", href: "/journey/onboarding", description: "Personalized onboarding experience" },
-  { title: "My Dashboard", href: "/journey/dashboard", description: "Your learning command center" },
-  { title: "Career Pathways", href: "/journey/careers", description: "Major-to-career visualization" },
-  { title: "Student Success", href: "/journey/success", description: "Academic command center" },
-  { title: "Alumni Network", href: "/journey/alumni", description: "Post-graduation journey" },
-]
-
-const admissionsLinks = [
-  { title: "Apply Now", href: "/apply", description: "Start your free application" },
-  { title: "Admissions Overview", href: "/admissions", description: "Requirements & process" },
-  { title: "Deadlines", href: "/deadlines", description: "Important dates by student type" },
-  { title: "Tuition & Costs", href: "/costs", description: "Affordable online education" },
-  { title: "Financial Aid", href: "/financial-aid", description: "Scholarships, grants & aid" },
-  { title: "Virtual Info Session", href: "/visit", description: "Attend a live info session" },
-]
-
-const academicsLinks = [
-  { title: "Online Programs", href: "/programs", description: "30+ degree programs online" },
-  { title: "How Online Works", href: "/online", description: "LMS, lectures & support" },
-  { title: "Why Miles Online", href: "/explore", description: "What sets us apart" },
-]
-
-const studentLinks = [
-  { title: "Virtual Student Life", href: "/campus-life", description: "Online community & events" },
-  { title: "Student Resources", href: "/housing-dining", description: "Tech support, tutoring & more" },
-]
-
-const allMobileLinks = [
-  { section: "Journey", links: journeyLinks },
-  { section: "Admissions", links: admissionsLinks },
-  { section: "Academics", links: academicsLinks },
-  { section: "Student Life", links: studentLinks },
-]
 
 export function Navigation() {
+  const [isOpen, setIsOpen] = useState(false)
   const [isScrolled, setIsScrolled] = useState(false)
-  const [mobileOpen, setMobileOpen] = useState(false)
-  const pathname = usePathname()
-  const router = useRouter()
-  const { user, signOut } = useAuth()
+  const [activeSection, setActiveSection] = useState("hero")
+  const [isMobile, setIsMobile] = useState(false)
+
+  // Detect mobile device
+  useEffect(() => {
+    const checkMobile = () => setIsMobile(window.innerWidth < 1024)
+    checkMobile()
+    window.addEventListener("resize", checkMobile)
+    return () => window.removeEventListener("resize", checkMobile)
+  }, [])
 
   useEffect(() => {
-    const handleScroll = () => setIsScrolled(window.scrollY > 10)
+    const handleScroll = () => {
+      setIsScrolled(window.scrollY > 10)
+
+      const sections = ["hero", "about", "apply", "academics", "campus-life", "athletics"]
+      for (const section of sections.reverse()) {
+        const element = document.getElementById(section)
+        if (element && window.scrollY >= element.offsetTop - 100) {
+          setActiveSection(section)
+          break
+        }
+      }
+    }
     window.addEventListener("scroll", handleScroll, { passive: true })
     return () => window.removeEventListener("scroll", handleScroll)
   }, [])
 
   useEffect(() => {
-    setMobileOpen(false)
-  }, [pathname])
+    const handleEscape = (e: KeyboardEvent) => {
+      if (e.key === "Escape") setIsOpen(false)
+    }
+    if (isOpen) {
+      document.addEventListener("keydown", handleEscape)
+      document.body.style.overflow = "hidden"
+    } else {
+      document.body.style.overflow = ""
+    }
+    return () => {
+      document.removeEventListener("keydown", handleEscape)
+      document.body.style.overflow = ""
+    }
+  }, [isOpen])
 
-  const isJourneyPage = pathname?.startsWith("/journey")
+  const admissionsLinks = [
+    { title: "Apply Now", href: "https://myexperience.miles.edu", description: "Start your application online" },
+    { title: "How to Apply", href: "#apply", description: "3 simple steps to enrollment" },
+    { title: "Tuition & Costs", href: "#costs", description: "Affordable education investment" },
+    { title: "Financial Aid", href: "#financial-aid", description: "Scholarships, grants, and aid options" },
+    { title: "Schedule a Visit", href: "https://www.miles.edu/visit", description: "Tour our Birmingham campus" },
+  ]
 
-  const handleSignOut = () => {
-    signOut()
-    router.push("/")
-  }
+  const academicsLinks = [
+    { title: "Academic Programs", href: "#academics", description: "30+ degree programs" },
+    { title: "Accreditation", href: "https://www.miles.edu/accreditation", description: "SACSCOC accredited" },
+    { title: "Faculty", href: "https://www.miles.edu/faculty", description: "Expert instructors" },
+    { title: "Career Services", href: "https://www.miles.edu/career-services", description: "Job placement support" },
+  ]
+
+  const campusLinks = [
+    { title: "Campus Life", href: "#campus-life", description: "Student organizations & activities" },
+    { title: "Athletics", href: "#athletics", description: "NCAA Division II sports" },
+    { title: "Housing", href: "https://www.miles.edu/housing", description: "On-campus residence halls" },
+    { title: "Student Resources", href: "https://www.miles.edu/student-services", description: "Support services" },
+  ]
+
+  const bottomNavItems = [
+    { id: "hero", icon: Icons.home, label: "Home", href: "#hero" },
+    { id: "apply", icon: Icons.fileText, label: "Apply", href: "#apply" },
+    { id: "academics", icon: Icons.graduationCap, label: "Programs", href: "#academics" },
+    { id: "campus-life", icon: Icons.heart, label: "Campus", href: "#campus-life" },
+    { id: "chat", icon: Icons.messageCircle, label: "Chat", href: "/chat" },
+  ]
 
   return (
-    <nav
-      className={cn(
-        "fixed top-0 left-0 right-0 z-50 transition-all duration-300",
-        isScrolled
-          ? "bg-[#1a0a2e]/95 backdrop-blur-xl shadow-xl border-b border-white/5"
-          : isJourneyPage
-            ? "bg-transparent"
-            : "bg-primary shadow-lg",
-      )}
-      style={{ paddingTop: "env(safe-area-inset-top)" }}
-    >
-      <div className="px-4 sm:px-6 max-w-7xl mx-auto">
-        <div className="flex items-center justify-between h-14 sm:h-16">
-          {/* Logo */}
-          <Link href="/" className="flex items-center flex-shrink-0 py-2">
-            <Image
-              src="/images/design-mode/IMG_1498.PNG.png"
-              alt="Miles College"
-              width={180}
-              height={54}
-              className="hidden sm:block h-10 md:h-12 w-auto"
-              priority
-            />
-            <span className="sm:hidden text-base font-black tracking-tight text-white">
-              MILES<span className="text-[#C9A227]">.</span>
-            </span>
-          </Link>
+    <>
+      {/* Top Navigation Bar - Fixed 64px height */}
+      <nav
+        className={cn(
+          "fixed top-0 left-0 right-0 z-50 bg-primary text-primary-foreground transition-all duration-300",
+          isScrolled ? "shadow-xl" : "shadow-lg",
+        )}
+        style={{ paddingTop: "env(safe-area-inset-top)" }}
+      >
+        <div className="container mx-auto px-4 sm:px-6">
+          <div className="flex items-center justify-between h-16">
+            <div className="flex items-center flex-shrink-0">
+              <a href="#hero" className="flex items-center py-2">
+                <Image
+                  src="/images/design-mode/IMG_1498.PNG.png"
+                  alt="Miles College"
+                  width={180}
+                  height={54}
+                  className="h-10 sm:h-11 md:h-12 w-auto"
+                  priority
+                />
+              </a>
+            </div>
 
-          {/* Desktop Navigation */}
-          <div className="hidden lg:flex items-center gap-4">
-            <NavigationMenu>
-              <NavigationMenuList className="gap-1">
-                <NavigationMenuItem>
-                  <NavigationMenuTrigger className="bg-transparent text-sm font-semibold text-white/90 hover:text-[#C9A227] data-[state=open]:text-[#C9A227]">
-                    Journey
-                  </NavigationMenuTrigger>
-                  <NavigationMenuContent>
-                    <ul className="grid w-[400px] gap-3 p-4 md:w-[500px] md:grid-cols-2">
-                      {journeyLinks.map((link) => (
-                        <li key={link.href}>
-                          <NavigationMenuLink asChild>
-                            <Link
-                              href={link.href}
-                              className="block select-none rounded-lg p-3 leading-none no-underline outline-none transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground"
-                            >
-                              <div className="text-sm font-semibold leading-none">{link.title}</div>
-                              <p className="line-clamp-2 text-sm leading-snug text-muted-foreground mt-1">
-                                {link.description}
-                              </p>
-                            </Link>
-                          </NavigationMenuLink>
-                        </li>
-                      ))}
-                    </ul>
-                  </NavigationMenuContent>
-                </NavigationMenuItem>
+            {/* Desktop Navigation */}
+            <div className="hidden lg:flex items-center gap-4">
+              <NavigationMenu>
+                <NavigationMenuList className="gap-2">
+                  <NavigationMenuItem>
+                    <a href="#about" className="text-sm font-semibold hover:text-secondary transition-colors px-3 py-2">
+                      About
+                    </a>
+                  </NavigationMenuItem>
 
-                <NavigationMenuItem>
-                  <NavigationMenuTrigger className="bg-transparent text-sm font-semibold text-white/90 hover:text-[#C9A227]">
-                    Admissions
-                  </NavigationMenuTrigger>
-                  <NavigationMenuContent>
-                    <ul className="grid w-[400px] gap-3 p-4 md:w-[500px] md:grid-cols-2">
-                      {admissionsLinks.map((link) => (
-                        <li key={link.href}>
-                          <NavigationMenuLink asChild>
-                            <Link
-                              href={link.href}
-                              className="block select-none rounded-lg p-3 leading-none no-underline outline-none transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground"
-                            >
-                              <div className="text-sm font-semibold leading-none">{link.title}</div>
-                              <p className="line-clamp-2 text-sm leading-snug text-muted-foreground mt-1">
-                                {link.description}
-                              </p>
-                            </Link>
-                          </NavigationMenuLink>
-                        </li>
-                      ))}
-                    </ul>
-                  </NavigationMenuContent>
-                </NavigationMenuItem>
+                  <NavigationMenuItem>
+                    <NavigationMenuTrigger className="bg-transparent text-sm font-semibold hover:text-secondary">
+                      Admissions
+                    </NavigationMenuTrigger>
+                    <NavigationMenuContent>
+                      <ul className="grid w-[400px] gap-3 p-4 md:w-[500px] md:grid-cols-2">
+                        {admissionsLinks.map((link) => (
+                          <li key={link.href}>
+                            <NavigationMenuLink asChild>
+                              <a
+                                href={link.href}
+                                {...(link.href.startsWith("http") && {
+                                  target: "_blank",
+                                  rel: "noopener noreferrer",
+                                })}
+                                className="block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground"
+                              >
+                                <div className="text-sm font-semibold leading-none">{link.title}</div>
+                                <p className="line-clamp-2 text-sm leading-snug text-muted-foreground">
+                                  {link.description}
+                                </p>
+                              </a>
+                            </NavigationMenuLink>
+                          </li>
+                        ))}
+                      </ul>
+                    </NavigationMenuContent>
+                  </NavigationMenuItem>
 
-                <NavigationMenuItem>
-                  <NavigationMenuTrigger className="bg-transparent text-sm font-semibold text-white/90 hover:text-[#C9A227] data-[state=open]:text-[#C9A227]">
-                    Academics
-                  </NavigationMenuTrigger>
-                  <NavigationMenuContent>
-                    <ul className="grid w-[400px] gap-3 p-4">
-                      {academicsLinks.map((link) => (
-                        <li key={link.href}>
-                          <NavigationMenuLink asChild>
-                            <Link
-                              href={link.href}
-                              className="block select-none rounded-lg p-3 leading-none no-underline outline-none transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground"
-                            >
-                              <div className="text-sm font-semibold leading-none">{link.title}</div>
-                              <p className="line-clamp-2 text-sm leading-snug text-muted-foreground mt-1">
-                                {link.description}
-                              </p>
-                            </Link>
-                          </NavigationMenuLink>
-                        </li>
-                      ))}
-                    </ul>
-                  </NavigationMenuContent>
-                </NavigationMenuItem>
+                  <NavigationMenuItem>
+                    <NavigationMenuTrigger className="bg-transparent text-sm font-semibold hover:text-secondary">
+                      Academics
+                    </NavigationMenuTrigger>
+                    <NavigationMenuContent>
+                      <ul className="grid w-[400px] gap-3 p-4">
+                        {academicsLinks.map((link) => (
+                          <li key={link.href}>
+                            <NavigationMenuLink asChild>
+                              <a
+                                href={link.href}
+                                {...(link.href.startsWith("http") && {
+                                  target: "_blank",
+                                  rel: "noopener noreferrer",
+                                })}
+                                className="block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground"
+                              >
+                                <div className="text-sm font-semibold leading-none">{link.title}</div>
+                                <p className="line-clamp-2 text-sm leading-snug text-muted-foreground">
+                                  {link.description}
+                                </p>
+                              </a>
+                            </NavigationMenuLink>
+                          </li>
+                        ))}
+                      </ul>
+                    </NavigationMenuContent>
+                  </NavigationMenuItem>
 
-                <NavigationMenuItem>
-                  <NavigationMenuTrigger className="bg-transparent text-sm font-semibold text-white/90 hover:text-[#C9A227] data-[state=open]:text-[#C9A227]">
-                    Student Life
-                  </NavigationMenuTrigger>
-                  <NavigationMenuContent>
-                    <ul className="grid w-[400px] gap-3 p-4">
-                      {studentLinks.map((link) => (
-                        <li key={link.href}>
-                          <NavigationMenuLink asChild>
-                            <Link
-                              href={link.href}
-                              className="block select-none rounded-lg p-3 leading-none no-underline outline-none transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground"
-                            >
-                              <div className="text-sm font-semibold leading-none">{link.title}</div>
-                              <p className="line-clamp-2 text-sm leading-snug text-muted-foreground mt-1">
-                                {link.description}
-                              </p>
-                            </Link>
-                          </NavigationMenuLink>
-                        </li>
-                      ))}
-                    </ul>
-                  </NavigationMenuContent>
-                </NavigationMenuItem>
+                  <NavigationMenuItem>
+                    <NavigationMenuTrigger className="bg-transparent text-sm font-semibold hover:text-secondary">
+                      Campus Life
+                    </NavigationMenuTrigger>
+                    <NavigationMenuContent>
+                      <ul className="grid w-[400px] gap-3 p-4">
+                        {campusLinks.map((link) => (
+                          <li key={link.href}>
+                            <NavigationMenuLink asChild>
+                              <a
+                                href={link.href}
+                                {...(link.href.startsWith("http") && {
+                                  target: "_blank",
+                                  rel: "noopener noreferrer",
+                                })}
+                                className="block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground"
+                              >
+                                <div className="text-sm font-semibold leading-none">{link.title}</div>
+                                <p className="line-clamp-2 text-sm leading-snug text-muted-foreground">
+                                  {link.description}
+                                </p>
+                              </a>
+                            </NavigationMenuLink>
+                          </li>
+                        ))}
+                      </ul>
+                    </NavigationMenuContent>
+                  </NavigationMenuItem>
+                </NavigationMenuList>
+              </NavigationMenu>
 
-                <NavigationMenuItem>
-                  <Link href="/chat" className="text-sm font-semibold text-white/90 hover:text-[#C9A227] transition-colors px-3 py-2">
-                    Ask Miles
-                  </Link>
-                </NavigationMenuItem>
-              </NavigationMenuList>
-            </NavigationMenu>
+              <div className="flex items-center gap-3 ml-2">
+                <Button variant="outline" size="sm" className="font-semibold bg-transparent" asChild>
+                  <a href="tel:205-929-1657">
+                    <Icons.phone className="w-4 h-4 mr-2" />
+                    (205) 929-1657
+                  </a>
+                </Button>
+                <Button variant="secondary" size="sm" className="font-bold shadow-lg" asChild>
+                  <a href="https://myexperience.miles.edu" target="_blank" rel="noopener noreferrer">
+                    Apply Now
+                  </a>
+                </Button>
+              </div>
+            </div>
 
-            <div className="flex items-center gap-3 ml-2">
-              {user ? (
-                <DropdownMenu>
-                  <DropdownMenuTrigger asChild>
-                    <button className="flex items-center gap-2 px-3 py-2 rounded-lg hover:bg-white/10 transition-colors">
-                      <div className="w-8 h-8 rounded-full bg-[#C9A227]/20 border-2 border-[#C9A227]/50 flex items-center justify-center">
-                        <span className="text-xs font-black text-[#C9A227]">
-                          {user.firstName.charAt(0)}{user.lastName.charAt(0)}
-                        </span>
-                      </div>
-                      <span className="text-sm font-semibold text-white/90 hidden xl:block">
-                        {user.firstName}
-                      </span>
-                      <Icons.chevronDown className="w-3 h-3 text-white/50" />
-                    </button>
-                  </DropdownMenuTrigger>
-                  <DropdownMenuContent align="end" className="w-56">
-                    <div className="px-3 py-2 border-b border-border">
-                      <p className="text-sm font-bold text-foreground">{user.firstName} {user.lastName}</p>
-                      <p className="text-xs text-muted-foreground">{user.email}</p>
-                    </div>
-                    <DropdownMenuItem asChild>
-                      <Link href="/journey/dashboard" className="flex items-center gap-2 cursor-pointer">
-                        <Icons.trendingUp className="w-4 h-4" />
-                        My Dashboard
-                      </Link>
-                    </DropdownMenuItem>
-                    <DropdownMenuItem asChild>
-                      <Link href="/portal" className="flex items-center gap-2 cursor-pointer">
-                        <Icons.fileText className="w-4 h-4" />
-                        Enrollment Checklist
-                      </Link>
-                    </DropdownMenuItem>
-                    <DropdownMenuItem asChild>
-                      <Link href="/journey/onboarding" className="flex items-center gap-2 cursor-pointer">
-                        <Icons.user className="w-4 h-4" />
-                        My Profile
-                      </Link>
-                    </DropdownMenuItem>
-                    <DropdownMenuSeparator />
-                    <DropdownMenuItem
-                      onClick={handleSignOut}
-                      className="flex items-center gap-2 cursor-pointer text-destructive focus:text-destructive"
-                    >
-                      <Icons.logOut className="w-4 h-4" />
-                      Sign Out
-                    </DropdownMenuItem>
-                  </DropdownMenuContent>
-                </DropdownMenu>
-              ) : (
-                <>
-                  <Button
-                    size="sm"
-                    variant="ghost"
-                    className="font-semibold text-white/80 hover:text-white hover:bg-white/10"
-                    asChild
-                  >
-                    <Link href="/login">Sign In</Link>
-                  </Button>
-                  <Button
-                    size="sm"
-                    className="font-bold bg-[#C9A227] text-[#1a0a2e] hover:bg-yellow-400 shadow-lg"
-                    asChild
-                  >
-                    <Link href="/signup">Get Started</Link>
-                  </Button>
-                </>
-              )}
+            <div className="lg:hidden flex items-center gap-1">
+              <a
+                href="tel:2059291657"
+                className="flex items-center justify-center w-12 h-12 rounded-full hover:bg-white/10 transition-colors"
+                aria-label="Call Admissions"
+              >
+                <Icons.phone className="w-5 h-5" />
+              </a>
+              <button
+                className="flex items-center justify-center w-12 h-12 rounded-full hover:bg-white/10 transition-colors"
+                onClick={() => setIsOpen(!isOpen)}
+                aria-label="Toggle menu"
+                aria-expanded={isOpen}
+              >
+                {isOpen ? <Icons.close className="w-6 h-6" /> : <Icons.menu className="w-6 h-6" />}
+              </button>
             </div>
           </div>
 
-          {/* Mobile menu */}
-          <div className="flex items-center gap-2 lg:hidden">
-            {user ? (
-              <Link
-                href="/journey/dashboard"
-                className="flex items-center justify-center w-9 h-9 rounded-full bg-[#C9A227]/20 border-2 border-[#C9A227]/50"
+          {/* Mobile Menu Dropdown */}
+          {isOpen && (
+            <>
+              <div
+                className="lg:hidden fixed inset-0 top-16 bg-black/60 backdrop-blur-sm z-40 animate-fade-in"
+                onClick={() => setIsOpen(false)}
+                style={{ paddingTop: "env(safe-area-inset-top)" }}
+              />
+              <div
+                className="lg:hidden fixed left-0 right-0 top-16 bg-primary z-50 border-t border-white/10 overflow-y-auto animate-fade-in-up"
+                style={{
+                  maxHeight: "calc(100vh - 64px - 72px - env(safe-area-inset-top) - env(safe-area-inset-bottom))",
+                  marginTop: "env(safe-area-inset-top)",
+                }}
               >
-                <span className="text-xs font-black text-[#C9A227]">
-                  {user.firstName.charAt(0)}{user.lastName.charAt(0)}
-                </span>
-              </Link>
-            ) : (
-              <Button
-                size="sm"
-                className="font-bold bg-[#C9A227] text-[#1a0a2e] hover:bg-yellow-400 shadow-lg text-xs h-9 px-3 rounded-full"
-                asChild
-              >
-                <Link href="/signup">Start</Link>
-              </Button>
-            )}
-            <Sheet open={mobileOpen} onOpenChange={setMobileOpen}>
-              <SheetTrigger asChild>
-                <button
-                  className="flex items-center justify-center w-10 h-10 rounded-full text-white hover:bg-white/10 transition-colors"
-                  aria-label="Open menu"
-                >
-                  <Icons.menu className="w-5 h-5" />
-                </button>
-              </SheetTrigger>
-              <SheetContent
-                side="right"
-                className="w-[85vw] max-w-[320px] bg-[#0a0415] text-white border-white/10 p-0 overflow-y-auto"
-              >
-                <SheetTitle className="sr-only">Navigation Menu</SheetTitle>
+                <div className="py-3">
+                  <a
+                    href="#about"
+                    className="flex items-center gap-4 py-4 px-6 text-lg font-semibold hover:text-secondary hover:bg-white/5 transition-colors"
+                    onClick={() => setIsOpen(false)}
+                  >
+                    <Icons.info className="w-6 h-6 text-secondary" />
+                    About Miles College
+                  </a>
 
-                {/* Mobile nav header */}
-                <div className="flex items-center justify-between px-5 pt-6 pb-4 border-b border-white/10">
-                  {user ? (
-                    <div className="flex items-center gap-3">
-                      <div className="w-10 h-10 rounded-full bg-[#C9A227]/20 border-2 border-[#C9A227]/50 flex items-center justify-center">
-                        <span className="text-sm font-black text-[#C9A227]">
-                          {user.firstName.charAt(0)}{user.lastName.charAt(0)}
-                        </span>
-                      </div>
-                      <div>
-                        <p className="text-sm font-bold text-white">{user.firstName} {user.lastName}</p>
-                        <p className="text-xs text-white/40">{user.email}</p>
-                      </div>
-                    </div>
-                  ) : (
-                    <span className="text-lg font-black tracking-tight text-white">
-                      MILES<span className="text-[#C9A227]">.</span>
-                    </span>
-                  )}
-                </div>
-
-                {/* Mobile nav sections */}
-                <div className="px-5 py-4 flex flex-col gap-5">
-                  {/* Auth quick links for signed-in users */}
-                  {user && (
-                    <div>
-                      <p className="text-[10px] font-bold uppercase tracking-[0.2em] text-[#C9A227]/70 mb-2 px-1">
-                        My Account
-                      </p>
-                      <div className="flex flex-col">
-                        <Link
-                          href="/journey/dashboard"
-                          className={cn(
-                            "flex items-center justify-between px-3 py-2.5 rounded-lg transition-colors",
-                            pathname === "/journey/dashboard"
-                              ? "bg-[#C9A227]/10 text-[#C9A227]"
-                              : "text-white/80 active:bg-white/5",
-                          )}
-                        >
-                          <div className="min-w-0">
-                            <span className="text-sm font-semibold block">My Dashboard</span>
-                            <span className="text-[11px] text-white/40 block">Track your journey progress</span>
-                          </div>
-                          <Icons.arrowRight className="w-3.5 h-3.5 text-white/20 flex-shrink-0 ml-2" />
-                        </Link>
-                        <Link
-                          href="/portal"
-                          className="flex items-center justify-between px-3 py-2.5 rounded-lg transition-colors text-white/80 active:bg-white/5"
-                        >
-                          <div className="min-w-0">
-                            <span className="text-sm font-semibold block">Enrollment Checklist</span>
-                            <span className="text-[11px] text-white/40 block">Track admissions steps</span>
-                          </div>
-                          <Icons.arrowRight className="w-3.5 h-3.5 text-white/20 flex-shrink-0 ml-2" />
-                        </Link>
-                      </div>
-                    </div>
-                  )}
-
-                  {allMobileLinks.map((section) => (
-                    <div key={section.section}>
-                      <p className="text-[10px] font-bold uppercase tracking-[0.2em] text-[#C9A227]/70 mb-2 px-1">
-                        {section.section}
-                      </p>
-                      <div className="flex flex-col">
-                        {section.links.map((link) => (
-                          <Link
-                            key={link.href}
-                            href={link.href}
-                            className={cn(
-                              "flex items-center justify-between px-3 py-2.5 rounded-lg transition-colors",
-                              pathname === link.href
-                                ? "bg-[#C9A227]/10 text-[#C9A227]"
-                                : "text-white/80 active:bg-white/5",
-                            )}
-                          >
-                            <div className="min-w-0">
-                              <span className="text-sm font-semibold block truncate">{link.title}</span>
-                              <span className="text-[11px] text-white/40 block truncate">{link.description}</span>
-                            </div>
-                            <Icons.arrowRight className="w-3.5 h-3.5 text-white/20 flex-shrink-0 ml-2" />
-                          </Link>
-                        ))}
-                      </div>
-                    </div>
-                  ))}
-
-                  {/* Contact section */}
-                  <div className="pt-4 border-t border-white/10 flex flex-col gap-2">
-                    {user ? (
-                      <Button
-                        size="sm"
-                        variant="outline"
-                        className="w-full font-bold border-white/20 text-white hover:bg-white/10 h-11 rounded-lg"
-                        onClick={handleSignOut}
-                      >
-                        <Icons.logOut className="w-4 h-4 mr-2" />
-                        Sign Out
-                      </Button>
-                    ) : (
-                      <>
-                        <Button
-                          size="sm"
-                          className="w-full font-bold bg-[#C9A227] text-[#1a0a2e] hover:bg-yellow-400 h-11 rounded-lg"
-                          asChild
-                        >
-                          <Link href="/signup">Create Account</Link>
-                        </Button>
-                        <Button
-                          size="sm"
-                          variant="outline"
-                          className="w-full font-bold border-white/20 text-white hover:bg-white/10 h-11 rounded-lg"
-                          asChild
-                        >
-                          <Link href="/login">Sign In</Link>
-                        </Button>
-                      </>
-                    )}
-                    <div className="grid grid-cols-2 gap-2 mt-1">
+                  <div className="border-t border-white/10 mt-2 pt-2">
+                    <p className="px-6 py-3 text-xs font-bold uppercase tracking-wider text-secondary">Admissions</p>
+                    {admissionsLinks.map((link) => (
                       <a
-                        href="tel:205-929-1657"
-                        className="flex items-center justify-center gap-1.5 px-3 py-2.5 rounded-lg bg-white/5 text-white/70 text-xs font-medium"
+                        key={link.href}
+                        href={link.href}
+                        {...(link.href.startsWith("http") && { target: "_blank", rel: "noopener noreferrer" })}
+                        className="flex items-center gap-4 py-4 px-6 text-base hover:text-secondary hover:bg-white/5 transition-colors"
+                        onClick={() => setIsOpen(false)}
                       >
-                        <Icons.phone className="w-3.5 h-3.5 text-[#C9A227]" />
-                        Call
+                        <Icons.chevronRight className="w-5 h-5 text-white/40" />
+                        {link.title}
                       </a>
+                    ))}
+                  </div>
+
+                  <div className="border-t border-white/10 mt-2 pt-2">
+                    <p className="px-6 py-3 text-xs font-bold uppercase tracking-wider text-secondary">Academics</p>
+                    {academicsLinks.map((link) => (
                       <a
-                        href="mailto:admissions@miles.edu"
-                        className="flex items-center justify-center gap-1.5 px-3 py-2.5 rounded-lg bg-white/5 text-white/70 text-xs font-medium"
+                        key={link.href}
+                        href={link.href}
+                        {...(link.href.startsWith("http") && { target: "_blank", rel: "noopener noreferrer" })}
+                        className="flex items-center gap-4 py-4 px-6 text-base hover:text-secondary hover:bg-white/5 transition-colors"
+                        onClick={() => setIsOpen(false)}
                       >
-                        <Icons.mail className="w-3.5 h-3.5 text-[#C9A227]" />
-                        Email
+                        <Icons.chevronRight className="w-5 h-5 text-white/40" />
+                        {link.title}
                       </a>
-                    </div>
+                    ))}
+                  </div>
+
+                  <div className="border-t border-white/10 mt-2 pt-2">
+                    <p className="px-6 py-3 text-xs font-bold uppercase tracking-wider text-secondary">Campus Life</p>
+                    {campusLinks.map((link) => (
+                      <a
+                        key={link.href}
+                        href={link.href}
+                        {...(link.href.startsWith("http") && { target: "_blank", rel: "noopener noreferrer" })}
+                        className="flex items-center gap-4 py-4 px-6 text-base hover:text-secondary hover:bg-white/5 transition-colors"
+                        onClick={() => setIsOpen(false)}
+                      >
+                        <Icons.chevronRight className="w-5 h-5 text-white/40" />
+                        {link.title}
+                      </a>
+                    ))}
+                  </div>
+
+                  <div className="px-5 py-5 space-y-3 border-t border-white/10 mt-3">
+                    <Button variant="secondary" size="lg" className="w-full font-bold text-lg h-14" asChild>
+                      <a href="https://myexperience.miles.edu" target="_blank" rel="noopener noreferrer">
+                        Apply Now - FREE
+                      </a>
+                    </Button>
                   </div>
                 </div>
-              </SheetContent>
-            </Sheet>
-          </div>
+              </div>
+            </>
+          )}
         </div>
-      </div>
-    </nav>
+      </nav>
+
+      {/* Bottom Navigation Bar - Fixed 72px height */}
+      <nav
+        className="lg:hidden fixed bottom-0 left-0 right-0 z-40 bg-primary/98 backdrop-blur-xl border-t border-white/10 shadow-[0_-4px_20px_rgba(0,0,0,0.15)]"
+        style={{ paddingBottom: "env(safe-area-inset-bottom)" }}
+      >
+        <div className="flex items-center justify-around h-[72px] px-2">
+          {bottomNavItems.map((item) => {
+            const IconComponent = item.icon
+            const isActive =
+              activeSection === item.id ||
+              (item.id === "chat" && typeof window !== "undefined" && window.location.pathname === "/chat")
+            return (
+              <a
+                key={item.id}
+                href={item.href}
+                className={cn(
+                  "flex flex-col items-center justify-center flex-1 h-[64px] rounded-xl transition-all duration-200 relative mx-1 active:scale-95",
+                  isActive 
+                    ? "text-secondary bg-white/15" 
+                    : "text-white/60 hover:text-white hover:bg-white/5",
+                )}
+              >
+                <div className={cn(
+                  "relative mb-1 transition-transform duration-200",
+                  isActive && "scale-110"
+                )}>
+                  <IconComponent className="w-6 h-6" />
+                  {isActive && (
+                    <span className="absolute -top-1 -right-1 w-2 h-2 bg-secondary rounded-full animate-pulse" />
+                  )}
+                </div>
+                <span className={cn(
+                  "text-[10px] font-bold uppercase tracking-wider transition-all",
+                  isActive ? "text-secondary" : "text-white/60"
+                )}>
+                  {item.label}
+                </span>
+              </a>
+            )
+          })}
+        </div>
+      </nav>
+
+      {/* Bottom nav spacer for body content */}
+      <div className="lg:hidden h-[72px]" style={{ paddingBottom: "env(safe-area-inset-bottom)" }} />
+    </>
   )
 }
