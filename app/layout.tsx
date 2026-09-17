@@ -1,9 +1,8 @@
 import type React from "react"
 import type { Metadata, Viewport } from "next"
 import { Montserrat, DM_Sans } from "next/font/google"
-import { AuthProvider } from "@/lib/auth-context"
 import "./globals.css"
-
+import { FloatingChatWidget } from "@/components/floating-chat-widget"
 
 const montserrat = Montserrat({
   weight: ["400", "500", "600", "700", "800", "900"],
@@ -20,19 +19,18 @@ const dmSans = DM_Sans({
 })
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://www.miles.edu"),
-  title: "Miles College Online - Earn Your Accredited Degree 100% Online",
+  title: "Miles College - Where Excellence Meets Tradition",
   description:
-    "Earn your accredited degree from Miles College 100% online. Flexible scheduling, dedicated support, and HBCU excellence -- from anywhere. 30+ programs, 97% receive financial aid.",
+    "Discover Miles College, Birmingham's Premier HBCU. 97% of students receive scholarships, 30+ majors, NCAA Division II athletics, and a vibrant campus community. Founded 1898.",
   keywords: [
     "Miles College",
-    "Online Degree",
-    "Online Learning",
-    "HBCU Online",
-    "Online College",
-    "Flexible Degree Programs",
-    "Accredited Online University",
-    "Distance Learning",
+    "HBCU",
+    "Birmingham Alabama",
+    "College Scholarships",
+    "NCAA Division II",
+    "Purple Marching Machine",
+    "Golden Bears",
+    "Christian Methodist Episcopal",
   ],
   authors: [{ name: "Miles College" }],
   creator: "Miles College",
@@ -42,9 +40,9 @@ export const metadata: Metadata = {
     locale: "en_US",
     url: "https://www.miles.edu",
     siteName: "Miles College",
-    title: "Miles College Online - Accredited Degrees, 100% Online",
+    title: "Miles College - Where Excellence Meets Tradition",
     description:
-      "Earn your degree from Miles College 100% online. HBCU excellence with flexible scheduling, 30+ programs, and 97% financial aid rate. Apply today!",
+      "Discover Miles College, Birmingham's Premier HBCU. 97% of students receive scholarships, 30+ majors, NCAA Division II athletics. Apply today!",
     images: [
       {
         url: "/images/campus-hero.jpeg",
@@ -56,8 +54,8 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Miles College Online - Accredited Degrees, 100% Online",
-    description: "HBCU excellence, 100% online. 30+ programs, flexible scheduling, 97% financial aid rate. Apply today!",
+    title: "Miles College - Where Excellence Meets Tradition",
+    description: "Birmingham's Premier HBCU. 97% scholarships, 30+ majors, NCAA Division II athletics. Apply today!",
     images: ["/images/campus-hero.jpeg"],
     creator: "@milescollege",
   },
@@ -110,9 +108,10 @@ export default function RootLayout({
         <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
       </head>
       <body className={`${montserrat.variable} ${dmSans.variable} font-sans antialiased min-h-screen`}>
-        <AuthProvider>
+        <main className="relative">
           {children}
-        </AuthProvider>
+        </main>
+        <FloatingChatWidget />
       </body>
     </html>
   )

@@ -1,362 +1,193 @@
-"use client"
-
-import { useEffect, useState, useRef } from "react"
-import { motion, useScroll, useTransform, AnimatePresence } from "framer-motion"
+import { Badge } from "@/components/ui/badge"
 import { Button } from "@/components/ui/button"
 import { Icons } from "@/components/icons"
 import Image from "next/image"
-import Link from "next/link"
-
-const words = ["FUTURE", "DEGREE", "JOURNEY", "CAREER", "DREAMS"]
 
 export function HeroSection() {
-  const [currentWord, setCurrentWord] = useState(0)
-  const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 })
-  const containerRef = useRef<HTMLDivElement>(null)
-  const { scrollY } = useScroll()
-
-  const backgroundY = useTransform(scrollY, [0, 500], [0, 150])
-  const textY = useTransform(scrollY, [0, 500], [0, -50])
-  const opacity = useTransform(scrollY, [0, 400], [1, 0])
-
-  useEffect(() => {
-    const interval = setInterval(() => {
-      setCurrentWord((prev) => (prev + 1) % words.length)
-    }, 2000)
-    return () => clearInterval(interval)
-  }, [])
-
-  useEffect(() => {
-    const handleMouseMove = (e: MouseEvent) => {
-      if (containerRef.current) {
-        const rect = containerRef.current.getBoundingClientRect()
-        setMousePosition({
-          x: (e.clientX - rect.left - rect.width / 2) / 50,
-          y: (e.clientY - rect.top - rect.height / 2) / 50,
-        })
-      }
-    }
-    window.addEventListener("mousemove", handleMouseMove)
-    return () => window.removeEventListener("mousemove", handleMouseMove)
-  }, [])
-
   return (
-    <section
-      ref={containerRef}
-      className="relative min-h-[100svh] overflow-hidden bg-[#0a0415]"
-    >
-      {/* Background layers */}
-      <motion.div className="absolute inset-0" style={{ y: backgroundY }}>
-        <div className="absolute inset-0 bg-gradient-to-br from-[#1a0a2e] via-[#0d0620] to-[#0a0415]" />
-        <motion.div
-          className="absolute inset-0"
-          style={{ x: mousePosition.x * -2, y: mousePosition.y * -2 }}
-        >
-          <Image
-            src="/images/img-0036.jpeg"
-            alt="Miles College Online Learning"
-            fill
-            className="object-cover object-center opacity-30 scale-110"
-            priority
-            sizes="100vw"
-          />
-        </motion.div>
-        <div className="absolute inset-0 bg-gradient-to-t from-[#0a0415] via-transparent to-[#0a0415]/50" />
-        <div className="absolute inset-0 bg-gradient-to-r from-[#0a0415]/80 via-transparent to-[#0a0415]/80" />
-      </motion.div>
-
-      {/* Grid pattern */}
-      <div className="absolute inset-0 pointer-events-none opacity-[0.08] sm:opacity-20">
-        <div
-          className="absolute inset-0"
-          style={{
-            backgroundImage: `
-              linear-gradient(rgba(201, 162, 39, 0.1) 1px, transparent 1px),
-              linear-gradient(90deg, rgba(201, 162, 39, 0.1) 1px, transparent 1px)
-            `,
-            backgroundSize: "40px 40px",
-          }}
+    <section id="hero" className="relative text-white overflow-hidden min-h-[calc(100svh-136px)] lg:min-h-[100svh]">
+      <div className="absolute inset-0 bg-black">
+        <Image
+          src="/images/img-0036.jpeg"
+          alt="Miles College proud graduate in cap and gown"
+          fill
+          className="object-cover object-top sm:object-center opacity-100"
+          priority
+          quality={90}
+          sizes="100vw"
         />
+        {/* Decorative noise overlay - hidden on mobile for performance */}
+        <div className="absolute inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIzMDAiIGhlaWdodD0iMzAwIj48ZmlsdGVyIGlkPSJhIiB4PSIwIiB5PSIwIj48ZmVUdXJidWxlbmNlIGJhc2VGcmVxdWVuY3k9Ii43NSIgc3RpdGNoVGlsZXM9InN0aXRjaCIgdHlwZT0iZnJhY3RhbE5vaXNlIi8+PGZlQ29sb3JNYXRyaXggdHlwZT0ic2F0dXJhdGUiIHZhbHVlcz0iMCIvPjwvZmlsdGVyPjxyZWN0IHdpZHRoPSIxMDAlIiBoZWlnaHQ9IjEwMCUiIGZpbHRlcj0idXJsKCNhKSIgb3BhY2l0eT0iMC4wNSIvPjwvc3ZnPg==')] opacity-40 mix-blend-overlay hidden sm:block" />
       </div>
 
-      {/* Ambient orbs - desktop only */}
-      <div className="absolute inset-0 overflow-hidden pointer-events-none hidden sm:block">
-        <motion.div
-          className="absolute top-[20%] right-[10%] w-[300px] lg:w-[400px] h-[300px] lg:h-[400px] rounded-full"
-          style={{
-            background: "radial-gradient(circle, rgba(201, 162, 39, 0.15) 0%, transparent 70%)",
-            x: mousePosition.x * 3,
-            y: mousePosition.y * 3,
-          }}
-          animate={{ scale: [1, 1.2, 1] }}
-          transition={{ duration: 8, repeat: Infinity, ease: "easeInOut" }}
-        />
-        <motion.div
-          className="absolute bottom-[10%] left-[5%] w-[400px] lg:w-[500px] h-[400px] lg:h-[500px] rounded-full"
-          style={{
-            background: "radial-gradient(circle, rgba(75, 46, 131, 0.2) 0%, transparent 70%)",
-            x: mousePosition.x * -2,
-            y: mousePosition.y * -2,
-          }}
-          animate={{ scale: [1.2, 1, 1.2] }}
-          transition={{ duration: 10, repeat: Infinity, ease: "easeInOut" }}
-        />
-      </div>
+      <div className="absolute inset-0 bg-gradient-to-r from-black/95 via-primary/85 to-black/90 sm:from-black/90 sm:via-primary/50 sm:to-black/60" />
+      <div className="absolute inset-0 bg-gradient-to-t from-black/95 via-black/70 to-primary/50 sm:from-black/95 sm:via-black/30 sm:to-primary/20" />
 
-      {/* Floating context pills - large screens only */}
-      <motion.div
-        className="absolute inset-0 pointer-events-none hidden xl:block"
-        style={{ opacity }}
-      >
-        {[
-          { text: "100% Online", delay: 0 },
-          { text: "HBCU Excellence", delay: 0.2 },
-          { text: "Flexible Schedule", delay: 0.4 },
-          { text: "Accredited Degrees", delay: 0.6 },
-        ].map((element, i) => (
-          <motion.div
-            key={element.text}
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 1.5 + element.delay, duration: 0.8 }}
-            className={`absolute text-xs font-medium tracking-widest uppercase px-4 py-2 rounded-full backdrop-blur-sm border ${
-              i % 2 === 0
-                ? "bg-[#C9A227]/10 border-[#C9A227]/20 text-[#C9A227]"
-                : "bg-white/5 border-white/10 text-white/60"
-            }`}
-            style={{
-              top: `${20 + i * 18}%`,
-              right: i % 2 === 0 ? "8%" : "12%",
-            }}
-          >
-            {element.text}
-          </motion.div>
-        ))}
-      </motion.div>
+      {/* Top accent line */}
+      <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-secondary via-yellow-400 to-secondary" />
 
-      {/* Main Content */}
-      <motion.div
-        className="relative z-10 min-h-[100svh] flex flex-col justify-end pb-8 sm:justify-center sm:pb-0"
-        style={{ y: textY, opacity }}
-      >
-        <div className="px-5 sm:px-6 lg:px-12 max-w-7xl mx-auto w-full">
-          {/* Top accent */}
-          <motion.div
-            initial={{ opacity: 0, x: -20 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.8, delay: 0.2 }}
-            className="flex items-center gap-3 mb-6 sm:mb-8"
-          >
-            <div className="w-8 sm:w-16 lg:w-24 h-px bg-gradient-to-r from-[#C9A227] to-transparent" />
-            <span className="text-[#C9A227] text-[10px] sm:text-xs lg:text-sm font-bold tracking-[0.2em] sm:tracking-[0.3em] uppercase">
-              Miles College Online
-            </span>
-          </motion.div>
+      {/* Decorative blurs - hidden on mobile for performance */}
+      <div
+        className="absolute top-0 right-0 w-[400px] lg:w-[600px] h-[400px] lg:h-[600px] bg-secondary/10 rounded-full blur-[100px] animate-pulse hidden md:block"
+        style={{ animationDuration: "4s" }}
+      />
+      <div className="absolute bottom-0 left-0 w-[500px] lg:w-[800px] h-[500px] lg:h-[800px] bg-primary/20 rounded-full blur-[150px] hidden md:block" />
 
-          {/* Typography Block */}
-          <div className="mb-6 sm:mb-10 lg:mb-12">
-            <motion.div
-              initial={{ opacity: 0, y: 40 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 1, delay: 0.4 }}
-            >
-              <h1 className="font-black tracking-tighter leading-[0.85]">
-                <span className="block text-white/90 text-[13vw] sm:text-[10vw] md:text-[8vw] lg:text-[120px]">
-                  BUILD YOUR
-                </span>
-              </h1>
-            </motion.div>
-
-            {/* Rotating word */}
-            <motion.div
-              initial={{ opacity: 0, y: 40 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 1, delay: 0.6 }}
-              className="relative h-[15vw] sm:h-[12vw] md:h-[10vw] lg:h-[140px] overflow-hidden"
-            >
-              <AnimatePresence mode="wait">
-                <motion.span
-                  key={currentWord}
-                  initial={{ y: 80, opacity: 0, rotateX: -45 }}
-                  animate={{ y: 0, opacity: 1, rotateX: 0 }}
-                  exit={{ y: -80, opacity: 0, rotateX: 45 }}
-                  transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
-                  className="absolute inset-0 font-black tracking-tighter text-[15vw] sm:text-[12vw] md:text-[10vw] lg:text-[140px] leading-none"
-                  style={{
-                    background: "linear-gradient(135deg, #C9A227 0%, #FFD700 50%, #C9A227 100%)",
-                    backgroundSize: "200% auto",
-                    WebkitBackgroundClip: "text",
-                    WebkitTextFillColor: "transparent",
-                    backgroundClip: "text",
-                  }}
-                >
-                  {words[currentWord]}
-                </motion.span>
-              </AnimatePresence>
-            </motion.div>
-          </div>
-
-          {/* Subtext */}
-          <motion.p
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.8 }}
-            className="text-sm sm:text-base lg:text-xl text-white/60 leading-relaxed max-w-md sm:max-w-lg lg:max-w-xl mb-8 sm:mb-10"
-          >
-            Earn your accredited degree 100% online.{" "}
-            <span className="text-white/90 font-medium">
-              HBCU excellence meets flexible learning
-            </span>
-            -- study anywhere, on your schedule.
-          </motion.p>
-
-          {/* Journey stages - horizontal scroll on mobile */}
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 1 }}
-            className="mb-8 sm:mb-10 -mx-5 px-5 sm:mx-0 sm:px-0"
-          >
-            <div className="flex items-center gap-2 sm:gap-3 overflow-x-auto scrollbar-hide pb-2 sm:pb-0 sm:flex-wrap">
-              {["Explore", "Apply", "Enroll", "Learn", "Graduate"].map((stage, i) => (
-                <div key={stage} className="flex items-center gap-2 sm:gap-3 flex-shrink-0">
-                  <span
-                    className={`text-[11px] sm:text-xs lg:text-sm font-semibold whitespace-nowrap ${
-                      i === 0 ? "text-[#C9A227]" : "text-white/40"
-                    }`}
-                  >
-                    {stage}
+      <div className="relative z-10 min-h-[calc(100svh-136px)] lg:min-h-[100svh] flex items-center pt-20 sm:pt-24 pb-8 lg:pb-0">
+        <div className="container mx-auto px-5 sm:px-6 lg:px-12 py-4 sm:py-16">
+          <div className="grid lg:grid-cols-12 gap-6 lg:gap-16 items-center">
+            <div className="lg:col-span-7 space-y-4 sm:space-y-6">
+              {/* Badges */}
+              <div className="flex flex-wrap gap-1.5 sm:gap-3 animate-fade-in-up">
+                <Badge className="px-2.5 py-1 sm:px-5 sm:py-2.5 text-[9px] sm:text-xs font-black bg-secondary text-primary border-0 shadow-lg uppercase tracking-wider">
+                  <span className="flex items-center gap-1">
+                    <span className="w-1.5 h-1.5 sm:w-2 sm:h-2 bg-primary rounded-full animate-pulse" />
+                    HBCU
                   </span>
-                  {i < 4 && (
-                    <div
-                      className={`w-4 sm:w-6 lg:w-8 h-px ${
-                        i === 0 ? "bg-[#C9A227]" : "bg-white/20"
-                      }`}
-                    />
-                  )}
-                </div>
-              ))}
-            </div>
-          </motion.div>
+                </Badge>
+                <Badge className="px-2.5 py-1 sm:px-5 sm:py-2.5 text-[9px] sm:text-xs font-black bg-white/20 text-white border border-white/30 backdrop-blur-sm uppercase tracking-wider">
+                  EST. 1898
+                </Badge>
+                <Badge className="px-2.5 py-1 sm:px-5 sm:py-2.5 text-[9px] sm:text-xs font-black bg-white/20 text-white border border-secondary/40 backdrop-blur-sm uppercase tracking-wider">
+                  NCAA DIV II
+                </Badge>
+              </div>
 
-          {/* CTAs */}
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 1.2 }}
-            className="flex flex-col sm:flex-row gap-3 sm:gap-4 mb-10 sm:mb-16"
-          >
-            <Button
-              size="lg"
-              className="group text-sm sm:text-base lg:text-lg h-12 sm:h-14 lg:h-16 px-6 sm:px-10 lg:px-12 font-black bg-[#C9A227] hover:bg-[#d4af37] text-[#0a0415] rounded-full transition-all duration-500"
-              asChild
-            >
-              <Link href="/apply">
-                <span className="flex items-center gap-2 sm:gap-3">
-                  Apply Now
-                  <motion.span
-                    animate={{ x: [0, 4, 0] }}
-                    transition={{ duration: 1.5, repeat: Infinity }}
-                  >
-                    <Icons.arrowRight className="w-4 h-4 sm:w-5 sm:h-5" />
-                  </motion.span>
-                </span>
-              </Link>
-            </Button>
-            <Button
-              size="lg"
-              variant="outline"
-              className="text-sm sm:text-base lg:text-lg h-12 sm:h-14 lg:h-16 px-6 sm:px-10 lg:px-12 font-bold bg-transparent border border-white/20 text-white hover:bg-white/5 hover:border-white/40 rounded-full backdrop-blur-sm transition-all duration-300"
-              asChild
-            >
-              <Link href="/programs">
-                <span className="flex items-center gap-2 sm:gap-3">
-                  <Icons.laptop className="w-3.5 h-3.5 sm:w-4 sm:h-4" />
-                  Explore Programs
-                </span>
-              </Link>
-            </Button>
-          </motion.div>
+              {/* Main heading */}
+              <div className="space-y-2 sm:space-y-4 animate-fade-in-up delay-100">
+                <p className="text-secondary font-black text-[10px] sm:text-base md:text-xl tracking-[0.1em] sm:tracking-[0.3em] uppercase">
+                  Birmingham&apos;s Premier HBCU
+                </p>
+                <h1 className="font-black leading-[0.9] tracking-tight">
+                  <span className="block text-white text-[2.5rem] sm:text-5xl md:text-6xl lg:text-7xl drop-shadow-lg">
+                    YOUR
+                  </span>
+                  <span className="block text-white text-[2.5rem] sm:text-5xl md:text-6xl lg:text-7xl drop-shadow-lg">
+                    LEGACY
+                  </span>
+                  <span className="block relative">
+                    <span className="text-transparent bg-clip-text bg-gradient-to-r from-secondary via-yellow-300 to-secondary text-[2.5rem] sm:text-5xl md:text-6xl lg:text-7xl">
+                      STARTS HERE
+                    </span>
+                    <span className="absolute -bottom-1 sm:-bottom-2 left-0 w-full h-1 sm:h-2 bg-gradient-to-r from-secondary via-yellow-400 to-secondary rounded-full" />
+                  </span>
+                </h1>
+              </div>
 
-          {/* Stats */}
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 1.4 }}
-            className="pt-6 sm:pt-8 border-t border-white/10"
-          >
-            <div className="grid grid-cols-4 gap-3 sm:gap-6 lg:gap-8">
-              {[
-                { value: "100%", label: "Online" },
-                { value: "30+", label: "Programs" },
-                { value: "97%", label: "Receive Aid" },
-                { value: "24/7", label: "Access" },
-              ].map((stat, i) => (
-                <motion.div
-                  key={stat.label}
-                  initial={{ opacity: 0, y: 15 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ delay: 1.6 + i * 0.1 }}
-                  className="text-center sm:text-left"
+              {/* Description */}
+              <div className="animate-fade-in-up delay-200">
+                <p className="text-sm sm:text-lg md:text-xl text-white/90 leading-relaxed max-w-xl">
+                  Birmingham&apos;s <span className="text-secondary font-bold">only 4-year HBCU</span>.
+                  <span className="hidden sm:inline">
+                    {" "}
+                    Over <span className="text-secondary font-bold">30 degree programs</span> with a personalized{" "}
+                    <span className="text-secondary font-bold">17:1 student-faculty ratio</span>.
+                  </span>
+                  <span className="sm:hidden">
+                    {" "}
+                    <span className="text-secondary font-bold">30+ programs</span>,{" "}
+                    <span className="text-secondary font-bold">17:1 ratio</span>.
+                  </span>
+                </p>
+              </div>
+
+              {/* CTA Button */}
+              <div className="flex flex-col sm:flex-row gap-3 pt-2 sm:pt-4 animate-fade-in-up delay-300">
+                <Button
+                  size="lg"
+                  className="group w-full sm:w-auto text-base sm:text-xl px-6 sm:px-10 py-6 font-black bg-secondary hover:bg-yellow-400 text-primary shadow-xl hover:shadow-2xl transition-all duration-300 rounded-none border-2 border-secondary hover:border-yellow-400"
+                  asChild
                 >
-                  <div className="text-lg sm:text-2xl md:text-3xl lg:text-4xl font-black text-white mb-0.5 sm:mb-1">
-                    {stat.value}
+                  <a href="https://myexperience.miles.edu" target="_blank" rel="noopener noreferrer">
+                    <span className="flex items-center justify-center gap-2 sm:gap-3">
+                      APPLY NOW - FREE
+                      <Icons.arrowRight className="w-5 h-5 sm:w-6 sm:h-6 group-hover:translate-x-1 transition-transform" />
+                    </span>
+                  </a>
+                </Button>
+              </div>
+
+              {/* Stats */}
+              <div className="pt-4 sm:pt-8 border-t border-white/20 animate-fade-in-up delay-400">
+                <div className="grid grid-cols-3 gap-2 sm:flex sm:gap-8 lg:gap-12">
+                  <div className="text-center sm:text-left p-2 sm:p-0 rounded-lg bg-white/5 sm:bg-transparent">
+                    <p className="text-xl sm:text-4xl md:text-5xl font-black text-secondary leading-none">30+</p>
+                    <p className="text-[9px] sm:text-xs md:text-sm text-white/70 font-semibold uppercase tracking-wider mt-1">
+                      Programs
+                    </p>
                   </div>
-                  <div className="text-[9px] sm:text-xs lg:text-sm text-white/40 uppercase tracking-wider font-medium">
-                    {stat.label}
+                  <div className="hidden sm:block w-px h-12 sm:h-16 bg-white/30 flex-shrink-0" />
+                  <div className="text-center sm:text-left p-2 sm:p-0 rounded-lg bg-white/5 sm:bg-transparent">
+                    <p className="text-xl sm:text-4xl md:text-5xl font-black text-secondary leading-none">17:1</p>
+                    <p className="text-[9px] sm:text-xs md:text-sm text-white/70 font-semibold uppercase tracking-wider mt-1">
+                      Ratio
+                    </p>
                   </div>
-                </motion.div>
-              ))}
+                  <div className="hidden sm:block w-px h-12 sm:h-16 bg-white/30 flex-shrink-0" />
+                  <div className="text-center sm:text-left p-2 sm:p-0 rounded-lg bg-white/5 sm:bg-transparent">
+                    <p className="text-xl sm:text-4xl md:text-5xl font-black text-secondary leading-none">126+</p>
+                    <p className="text-[9px] sm:text-xs md:text-sm text-white/70 font-semibold uppercase tracking-wider mt-1">
+                      Years
+                    </p>
+                  </div>
+                </div>
+              </div>
             </div>
-          </motion.div>
+
+            {/* Desktop testimonial card - unchanged */}
+            <div className="lg:col-span-5 hidden lg:block animate-fade-in-right delay-300">
+              <div className="relative group">
+                <div className="absolute -inset-4 bg-gradient-to-br from-secondary/40 via-yellow-400/20 to-primary/40 rounded-xl blur-2xl opacity-60 group-hover:opacity-80 transition-opacity" />
+                <div className="relative bg-black/60 backdrop-blur-xl border border-white/20 p-8 lg:p-10 hover:border-secondary/40 transition-all duration-300">
+                  <div className="absolute -top-6 -left-2 text-secondary/80 text-8xl font-serif leading-none">
+                    &ldquo;
+                  </div>
+                  <div className="relative">
+                    <div className="flex items-center gap-4 mb-6">
+                      <div className="w-14 h-14 rounded-full bg-gradient-to-br from-secondary via-yellow-400 to-yellow-500 flex items-center justify-center shadow-lg">
+                        <Icons.graduationCap className="w-7 h-7 text-primary" />
+                      </div>
+                      <div>
+                        <p className="font-black text-white text-lg">Student Success</p>
+                        <p className="text-secondary font-bold text-sm">Class of 2024</p>
+                      </div>
+                    </div>
+                    <blockquote className="text-white/90 text-lg lg:text-xl leading-relaxed mb-6 font-medium">
+                      &ldquo;Miles College transformed my life. The personalized attention and tight-knit community gave
+                      me the foundation to achieve my dreams.&rdquo;
+                    </blockquote>
+                    <div className="flex items-center gap-3">
+                      <div className="flex gap-1">
+                        {[...Array(5)].map((_, i) => (
+                          <Icons.star key={i} className="w-5 h-5 text-secondary fill-secondary" />
+                        ))}
+                      </div>
+                      <span className="text-white/60 text-xs font-bold uppercase tracking-wider">
+                        Golden Bear Alumni
+                      </span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
-      </motion.div>
+      </div>
 
-      {/* Side decorative lines - desktop only */}
-      <div className="absolute right-0 top-0 bottom-0 w-px bg-gradient-to-b from-transparent via-[#C9A227]/20 to-transparent hidden lg:block" />
-      <div className="absolute left-0 top-0 bottom-0 w-px bg-gradient-to-b from-transparent via-white/5 to-transparent hidden lg:block" />
-
-      {/* Bottom gradient */}
-      <div className="absolute bottom-0 left-0 right-0 h-20 sm:h-32 lg:h-48 bg-gradient-to-t from-background to-transparent z-20 pointer-events-none" />
+      {/* Bottom gradient fade */}
+      <div className="absolute bottom-0 left-0 right-0 h-16 sm:h-32 bg-gradient-to-t from-background via-background/80 to-transparent z-10" />
 
       {/* Scroll indicator - desktop only */}
-      <motion.div
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ delay: 2 }}
-        className="absolute bottom-8 sm:bottom-12 left-1/2 -translate-x-1/2 z-30 hidden sm:block"
-      >
-        <button
-          onClick={() =>
-            document.getElementById("stats")?.scrollIntoView({ behavior: "smooth" })
-          }
-          className="flex flex-col items-center gap-3 text-white/30 hover:text-[#C9A227] transition-colors group cursor-pointer"
+      <div className="absolute bottom-4 sm:bottom-8 left-1/2 -translate-x-1/2 z-20 animate-fade-in-up delay-500 hidden lg:flex">
+        <a
+          href="#stats"
+          className="flex flex-col items-center gap-2 text-white/60 hover:text-secondary transition-colors group"
         >
-          <span className="text-[10px] font-bold uppercase tracking-[0.3em]">
-            Scroll to Explore
-          </span>
-          <motion.div
-            animate={{ y: [0, 6, 0] }}
-            transition={{ duration: 1.5, repeat: Infinity, ease: "easeInOut" }}
-            className="w-5 h-8 rounded-full border-2 border-current flex items-start justify-center p-1.5"
-          >
-            <motion.div
-              animate={{ opacity: [0.3, 1, 0.3], y: [0, 6, 0] }}
-              transition={{ duration: 1.5, repeat: Infinity, ease: "easeInOut" }}
-              className="w-1 h-1.5 bg-current rounded-full"
-            />
-          </motion.div>
-        </button>
-      </motion.div>
-
-      {/* Corner accents - desktop only */}
-      <div className="absolute top-0 left-0 w-20 sm:w-32 h-20 sm:h-32 pointer-events-none hidden sm:block">
-        <div className="absolute top-0 left-0 w-full h-px bg-gradient-to-r from-[#C9A227] to-transparent" />
-        <div className="absolute top-0 left-0 h-full w-px bg-gradient-to-b from-[#C9A227] to-transparent" />
-      </div>
-      <div className="absolute top-0 right-0 w-20 sm:w-32 h-20 sm:h-32 pointer-events-none hidden sm:block">
-        <div className="absolute top-0 right-0 w-full h-px bg-gradient-to-l from-[#C9A227] to-transparent" />
-        <div className="absolute top-0 right-0 h-full w-px bg-gradient-to-b from-[#C9A227] to-transparent" />
+          <span className="text-[10px] font-bold uppercase tracking-[0.3em]">Discover More</span>
+          <div className="w-5 h-8 rounded-full border-2 border-current flex items-start justify-center p-1 group-hover:border-secondary transition-colors">
+            <div className="w-1 h-1 bg-current rounded-full animate-bounce" />
+          </div>
+        </a>
       </div>
     </section>
   )
